@@ -1,0 +1,142 @@
+{
+  "name": "Brisa Laser: Fluxo B - Conversão Zandu (Handoff)",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "zandu-handoff",
+        "options": {}
+      },
+      "name": "Webhook Zandu",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1,
+      "position": [400, 400],
+      "id": "webhook-zandu-id"
+    },
+    {
+      "parameters": {
+        "jsCode": "const body = $input.first().json.body || $input.first().json;\n// Extrair telefone e QTD de áreas do webhook do Zandu\n// Ajustar conforme o payload real do Zandu\nconst telefone = body.phone || body.telefone;\nconst qtdAreas = body.areas || body.qtd_areas || 0;\n\nreturn [{ json: { telefone: String(telefone).replace(/^55/, ''), qtdAreas } }];"
+      },
+      "name": "Parse Dados Zandu",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [624, 400],
+      "id": "parse-zandu-id"
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "documentId": {
+          "__rl": true,
+          "value": "14Lxf4lJoKRFTkzGyDgNYvLzJZlLY7WUZb25YzI1cUQU",
+          "mode": "id"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 551067343,
+          "mode": "list",
+          "cachedResultName": "CAMPANHAS",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/14Lxf4lJoKRFTkzGyDgNYvLzJZlLY7WUZb25YzI1cUQU/edit#gid=551067343"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "QTD de Áreas": "={{ $json.qtdAreas }}",
+            "Agendado": "Sim"
+          }
+        },
+        "search": {
+          "options": {
+            "column": "Telefone",
+            "value": "={{ $json.telefone }}"
+          }
+        },
+        "options": {
+          "locationDefine": {
+            "values": {
+              "headerRow": 2
+            }
+          }
+        }
+      },
+      "name": "Atualizar Planilha Auditoria",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.5,
+      "position": [848, 400],
+      "id": "update-sheets-id",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "UjCbXnN1VkFY6mjA"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "lead",
+        "operation": "update",
+        "leadId": "=// Precisamos buscar o Lead ID via telefone no Kommo se não vier no webhook",
+        "statusId": 1234567,
+        "additionalFields": {}
+      },
+      "name": "Mover Lead no Kommo",
+      "type": "n8n-nodes-base.kommo",
+      "typeVersion": 1,
+      "position": [1072, 400],
+      "id": "update-kommo-id",
+      "credentials": {
+        "kommoApi": {
+          "id": "pode_usar_a_que_ja_existe"
+        }
+      },
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "content": "## 🎯 Fluxo B: Conversão & Transição\nEste fluxo é responsável por fechar o ciclo do cliente.\n\n**O que ele faz:**\n1. Recebe o agendamento do Zandu.\n2. Localiza o lead na Planilha de Auditoria via Telefone.\n3. Preenche a **QTD de Áreas** e marca como **Agendado = Sim**.\n4. Move o lead no Kommo para a etapa **'Agendado'**.",
+        "height": 380,
+        "width": 1000,
+        "color": 6
+      },
+      "name": "Sticky Note",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [360, 260],
+      "id": "note-id"
+    }
+  ],
+  "connections": {
+    "Webhook Zandu": {
+      "main": [
+        [
+          {
+            "node": "Parse Dados Zandu",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Parse Dados Zandu": {
+      "main": [
+        [
+          {
+            "node": "Atualizar Planilha Auditoria",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Atualizar Planilha Auditoria": {
+      "main": [
+        [
+          {
+            "node": "Mover Lead no Kommo",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  }
+}

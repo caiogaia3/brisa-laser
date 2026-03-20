@@ -1,0 +1,628 @@
+ ,,,TABELA DE FATURAMENTO DE LEADS,,,,,,,
+Nome do Cliente,,Telefone,Plataforma,Data do Primeiro Contato,Data do Ultimo Contato,Observacao§,Qtd. Áreas,Cliente Agendou,Cliente Compareceu,Receita
+Marta Freitas,,,Meta Ads,01/06/2025,02/06/2025,"Chamou, preferiu não agendar. Apenas curiosidade",,Não,,
+Carla,,,Google Ads,31/05/2025,28/06/2025,Não Interessada,,Não,,
+Nuria Antonio,,,Google Ads,01/06/2025,28/06/2025,Não Interessada,,Não,,
+Keila,,,Meta Ads,01/06/2025,28/06/2025,Não Interessada,,Não,,
+Barbara,,,Meta Ads,02/06/2025,28/06/2025,Não Interessada,,Não,,
+Lucas,,,Google Ads,02/06/2025,02/06/2025,Agendou,"1,00",Sim,Sim,"R$ 59,90"
+Edmeire,,,Meta Ads,01/06/2025,02/06/2025,Agendou,,Sim,Não,
+Luciana Rodrigues,,,Google Ads,02/06/2025,02/06/2025,Agendou,"2,00",Sim,Sim,"R$ 119,80"
+Maelson,,,Google Ads,02/06/2025,03/06/2025,"Chamou e não agendou, estra viagem pelos proximos 2 meses",,Não,,
+Juciana,,,Meta Ads,02/06/2025,28/06/2025,Não Interessada,,Não,,
+Michelle Raquel,,,Meta Ads,03/06/2025,28/06/2025,Não Interessada,,Não,,
+Melissa,,,Google Ads,02/06/2025,02/06/2025,Agendou,"2,00",Sim,Sim,"R$ 119,80"
+Safira Lopes,,,Google Ads,03/06/2025,03/06/2025,Agendou,"1,00",Sim,Sim,"R$ 59,90"
+Daiane,,,Google Ads,03/06/2025,03/06/2025,Agendou,"3,00",Sim,Sim,"R$ 179,70"
+Juliana Santos,,,Google Ads,03/06/2025,28/06/2025,Não Interessada,,Não,,
+Ana Paula Santos,,,Google Ads,05/06/2025,05/06/2025,Agendou,"3,00",Sim,Sim,"R$ 179,70"
+João Victor,,,Google Ads,05/06/2025,09/07/2025,Respondeu atraves das mensagens esta incluso no 50% de desconto.,"2,00",Sim,Sim,"R$ 119,80"
+Cristiana Borges,,,Google Ads,05/06/2025,05/06/2025,Agendou,"1,00",Sim,Sim,"R$ 59,90"
+Talita,,,Google Ads,05/06/2025,05/06/2025,Agendou,"3,00",Sim,Não,"R$ 0,00"
+Ana Paula,,,Meta Ads,05/06/2025,28/06/2025,Não Interessada,,Não,,
+Pamela Ribeiro,,,Google Ads,06/06/2025,28/06/2025,Não Interessada,,Não,,
+Cezar Moreno,,,Meta Ads,06/06/2025,,Interesse em outro procedimento que não temos na clinica,,Não,,
+Odarison Souza,,,Google Ads,06/06/2025,06/06/2025,Agendou,"1,00",Sim,Sim,"R$ 59,90"
+Mariy,,,Google Ads,06/06/2025,06/06/2025,Agendou,"1,00",Sim,Sim,"R$ 59,90"
+Gaby,,,Google Ads,06/06/2025,28/06/2025,Não Interessada,,Não,,
+Samyra,,,Meta Ads,06/06/2025,27/06/2025,Agendou,"0,50",Sim,Não,"R$ 0,00"
+Amanda,,,Google Ads,07/06/2025,17/06/2025,Agendou ,"1,00",Sim,Sim,"R$ 59,90"
+Bruna Barbosa,,,Google Ads,07/06/2025,28/06/2025,Não interessada,,Não,,
+Lorena,,,Google Ads,08/06/2025,10/06/2025,Agendou,"2,00",Sim,Sim,"R$ 119,80"
+Gisele,,,Google Ads,07/06/2025,02/09/2025,"Agendou, atraves das mensagens prontas  50% de desconto, ira depilar 2 aréas","1,00",Sim,Sim,"R$ 59,90"
+Gabriela,,,Google Ads,09/06/2025,09/06/2025,Agendou,"1,00",Sim,Sim,"R$ 59,90"
+Romilda Lemos,,,Meta Ads,09/06/2025,28/06/2025,Não Interessada,,Não,,
+Kauã,,,Google Ads,10/06/2025,,Mora em outro estado,,Não,,
+Maria De lurdes,,,Google Ads,10/06/2025,10/06/2025,Agendou para as filhas ,"2,00",Sim,Sim,"R$ 119,80"
+Yasmin,,,Google Ads,08/06/2025,10/06/2025,Não agendou ,,Não,,
+Thais Lima ,,,Google Ads,12/06/2025,12/06/2025,Agendou ,"1,00",Sim,Sim,"R$ 59,90"
+Receba Alvez ,,,Google Ads,16/06/2025,16/06/2025,Agendou,"4,00",Sim,Sim,"R$ 239,60"
+Beatriz,,,Google Ads,19/06/2025,20/06/2025,Agendou,"2,00",Sim,Sim,"R$ 119,80"
+Fernanda Oliveira ,,,Google Ads,20/06/2025,20/06/2025,Chamou com interesse em outro procedimento.,,Não,,
+Beatriz Borges ,,,Google Ads,20/06/2025,20/06/2025,Interesse em outro procedimento que não realizamos na clinica ,,Não,,
+Thais Arantes ,,,Google Ads,21/06/2025,21/06/2025,,"2,00",Sim,Sim,"R$ 119,80"
+Maria Laura ,,,Google Ads,22/06/2025,23/06/2025,Agendou,"1,00",Sim,Sim,"R$ 59,90"
+Priscila,,,Google Ads,26/06/2025,26/06/2025,Agendou,,Sim,Não,
+Samira ,,,Google Ads,28/06/2025,18/07/2025,não agendou ,,Não,Não,
+Liliam Rodrigues,,,Google Ads,29/06/2025,30/06/2025,Agendou,"1,00",Sim,Sim,"R$ 59,90"
+Gabriela Cristina ,,,Google Ads,30/06/2025,30/06/2025,Agendou ,"1,00",Sim,Sim,"R$ 59,90"
+Cynthia Moreira,,,Google Ads,01/07/2025,01/07/2025,Agendou,"2,00",Sim,Sim,"R$ 119,80"
+Meire Marques,,,Google Ads,01/07/2025,01/07/2025,Agendou ,"2,00",Sim,Sim,"R$ 119,80"
+Erika Regina,,,Google Ads,02/07/2025,02/07/2025,Agendou,"1,00",Sim,Não,"R$ 0,00"
+Ana Julia,,,Google Ads,02/07/2025,18/07/2025,Não Interessada,,Não,,
+Jose Geraldo,,,Google Ads,03/07/2025,18/07/2025,Não Interessado,,Não,,
+Ana Julia Gomes ,,,Google Ads,04/07/2025,03/07/2025,Agendou,"2,00",Sim,Sim,"R$ 119,80"
+Priscila,,,Google Ads,04/07/2025,04/07/2025,Agendou,"1,00",Sim,Não,"R$ 0,00"
+Elisangela ,,,Google Ads,03/07/2025,02/08/2025,Agendou,"2,00",Sim,Sim,"R$ 119,80"
+Luciana Silva,,,Google Ads,05/07/2025,05/07/2025,Agendou ,"2,00",Sim,Não,"R$ 0,00"
+Alice,,,Google Ads,05/07/2025,18/07/2025,Não agendou ,,Não,,
+Marcos Antonio Silva,,,Google Ads,07/07/2025,07/07/2025,Optou por não depilar mais.,,Não,,
+Samara Ribeiro,,,Google Ads,08/07/2025,08/07/2025,Agendou  ,"2,00",Sim,Sim,"R$ 119,80"
+Larissa Martins,,,Google Ads,08/07/2025,08/07/2025,Agendou ,"2,00",Sim,Sim,"R$ 119,80"
+Alice Barbasa,,,Google Ads,10/07/2025,18/07/2025,Agendou,"2,00",Sim,Sim,"R$ 119,80"
+Giovanna Bizinoto,,,Google Ads,11/07/2025,18/07/2025,Agendou,"3,00",Sim,Sim,"R$ 179,70"
+Priscilla Ferreira,,,Google Ads,14/07/2025,14/07/2025,Agendou,"2,00",Sim,Sim,"R$ 119,80"
+Juliana Pessato,,,Google Ads,13/07/2025,14/07/2025,Agendou ,"1,00",Sim,Sim,"R$ 59,90"
+Filha Da Priscilla,,,Google Ads,14/07/2025,14/07/2025,Agendou ,"2,00",Sim,Sim,"R$ 119,80"
+Cassia,,,Google Ads,16/07/2025,22/07/2025,Agendou,"1,00",Sim,Sim,"R$ 59,90"
+Renata ,,,Google Ads,15/07/2025,18/07/2025,"Agendou, agendou para o marido","4,00",Sim,Sim,"R$ 239,60"
+Antonia ,,,Google Ads,16/07/2025,27/08/2025,"Agendou, atraves das mensagens prontas  50% de desconto","0,50",Sim,Sim,"R$ 29,95"
+Quel,,,Google Ads,17/07/2025,29/08/2025,Não agendou ,,Não,,
+Kayque,,,Google Ads,17/07/2025,29/08/2025,Não agendou ,,Não,,
+Camila Sud,,,Google Ads,19/07/2025,29/08/2025,"Agendou, atraves das mensagens prontas  50% de desconto","0,50",Sim,Sim,"R$ 29,95"
+João Lucas,,,Google Ads,21/07/2025,21/07/2025,Agendou,"2,00",Sim,Sim,"R$ 119,80"
+Laura Pedrosa,,,Google Ads,21/07/2025,18/08/2025,Fechou pacote de 5 sessões,"4,29",Sim,Sim,"R$ 256,97"
+Jordely Maria,,,Google Ads,22/07/2025,22/07/2025,Agendou ,"3,00",Sim,Sim,"R$ 179,70"
+Franciele Cordeiro,,,Google Ads,22/07/2025,24/07/2025,Agendou,"1,00",Sim,Sim,"R$ 59,90"
+Emilly,,,Google Ads,22/07/2025,24/07/2025,Agendou,"1,00",Sim,Sim,"R$ 59,90"
+Perola,,,Google Ads,23/07/2025,24/07/2025,Agendou,"2,00",Sim,Sim,"R$ 119,80"
+Regiane,,,Google Ads,23/07/2025,24/07/2025,Agendou,"1,00",Sim,Sim,"R$ 59,90"
+Fernanda Oliveira ,,,Google Ads,24/07/2025,26/08/2025,Não agendou ,,Não,,
+Lucas,,,Google Ads,28/07/2025,,Tinha interesse em outro prodecimento que não realizamos,,Não,,
+Taciana ,,,Google Ads,28/07/2025,28/07/2025,Agendou,"1,00",Sim,Sim,"R$ 59,90"
+Brenda,,,Google Ads,28/07/2025,,Tinha interesse em outro prodecimento que não realizamos,,Não,,
+Ricardo,,,Google Ads,29/07/2025,29/08/2025,Agendou,"3,00",Sim,Sim,"R$ 179,70"
+Gislane,,,Google Ads,28/07/2025,29/08/2025,Não agendou ,,Não,,
+Rayane ,,,Google Ads,29/07/2025,30/08/2025,Agendou ,"2,00",Sim,Sim,"R$ 119,80"
+Daniella,,,Google Ads,30/07/2025,30/08/2025,Agendou,"1,00",Sim,Sim,"R$ 59,90"
+Ivy Nascimento,,,Google Ads,30/07/2025,02/10/2025,Agendou,"2,00",Sim,Sim,"R$ 119,80"
+Marlione,,,Google Ads,02/08/2025,04/08/2025,Agendou,"1,00",Sim,Não,"R$ 0,00"
+Matheus Candido,,,Google Ads,02/08/2025,04/08/2025,Agendou,"1,00",Sim,Sim,"R$ 59,90"
+Vitória,,,Google Ads,04/08/2025,04/08/2025,Agendou,"2,00",Sim,Sim,"R$ 119,80"
+Rafaela ,,,Google Ads,04/08/2025,29/08/2025,Não agendou ,,Não,,
+Enila,,,Google Ads,05/08/2025,05/08/2025,"Agendou, irmã tambem","3,00",Sim,Sim,"R$ 179,70"
+Maria Fernanda,,,Google Ads,05/08/2025,05/08/2025,Agendou,"2,00",Sim,Sim,"R$ 119,80"
+Amanda Silva,,,Google Ads,05/08/2025,05/08/2025,Agendou,"3,00",Sim,Sim,"R$ 179,70"
+Losy,,,Google Ads,13/08/2025,29/08/2025,Não agendou ,,Não,,
+Cauayne,,,Google Ads,18/08/2025,18/08/2025,Agendou,"2,00",Sim,Não,"R$ 0,00"
+Tayna,,,Google Ads,18/08/2025,,Mora fora,,Não,,
+Kamille,,,Google Ads,19/08/2025,19/08/2025,"Desmarcou, e não reagendou ",,Não,,
+Regina,,,Google Ads,19/08/2025,26/08/2025,Não agendou ,,Não,,
+Gabriela,,,Google Ads,19/08/2025,19/08/2025,Agendou,"1,00",Sim,Sim,"R$ 59,90"
+Virginia Ferreria,,,Google Ads,19/08/2025,19/08/2025,Agendou,"1,00",Sim,Sim,"R$ 59,90"
+Barbara Gabriela,,,Google Ads,20/08/2025,20/08/2025,Agendou,"2,00",Sim,Sim,"R$ 119,80"
+Pollyanne,,,Google Ads,21/08/2025,,Agendou,"2,00",Sim,Sim,"R$ 119,80"
+Maria,,,Google Ads,21/08/2025,29/08/2025,Não agendou ,,Não,,
+Fabiana,,,Google Ads,21/08/2025,30/08/2025,Não agendou ,,Não,,
+Daniella ,,,Google Ads,22/08/2025,29/08/2025,Não agendou ,,Não,,
+Maria Eduarda,,,Google Ads,22/08/2025,03/09/2025,Agendou atraves da promoção dos 50%,"1,00",Sim,Sim,"R$ 59,90"
+Elizabeth,,,Google Ads,24/08/2025,29/08/2025,Não agendou ,,Não,,
+Maria do carmo,,,Meta Ads,24/08/2025,17/09/2025,Agendou,"2,00",Sim,Sim,"R$ 119,80"
+Ilton,,,Meta Ads,24/08/2025,,"Tem cabelo branco, laser não pega em cabelos brancos., mora em Uberlandia",,Não,,
+Neli,,,Meta Ads,24/08/2025,,Aguardando,,Não,,
+Ana ,,,Meta Ads,25/08/2025,29/08/2025,Não agendou ,,Não,,
+Julia,,,Meta Ads,25/08/2025,29/08/2025,Não agendou ,,Não,,
+Bruna  ,,,Google Ads,25/08/2025,,Não agendou ,,Não,,
+Brunna Arruda,,,Google Ads,27/08/2025,27/08/2025,Agendou,"5,00",Sim,Sim,"R$ 299,50"
+Luciane,,,Meta Ads,27/08/2025,,Sem retorno,,Não,,
+Gabriela,,,Google Ads,28/08/2025,28/08/2025,"Agendou, fechou pacote de 5 sessões virilha ","4,29",Sim,Sim,"R$ 256,97"
+Nathalia Aparecida,,,Google Ads,28/08/2025,28/08/2025,Agendou,"2,00",Sim,Sim,"R$ 119,80"
+Beatriz,,,Google Ads,28/08/2025,28/08/2025,Agendou,"1,00",Sim,Sim,"R$ 59,90"
+Ana Carolina,,,Google Ads,28/08/2025,28/08/2025,Desmarcou e não reagendou,,Não,,
+Isabelle,,,Google Ads,28/08/2025,28/08/2025,"Agendou, fechou pacote de 5 sessões virilha ","4,29",Sim,Sim,"R$ 256,97"
+Jennyfer,,,Google Ads,29/08/2025,29/08/2025,Agendou,"2,00",Sim,Sim,"R$ 119,80"
+Estefani,,,Google Ads,29/08/2025,29/08/2025,Desmarcou,,Não,Não,
+Robson,,,Google Ads,29/08/2025,11/09/2025,Sem retorno,,Não,,
+Nilza,,,Google Ads,29/08/2025,11/09/2025,Sem retorno,,Não,,
+Mariana,,,Google Ads,01/09/2025,11/09/2025,Sem retorno,,Não,,
+ Maria Rafaela,,,Google Ads,01/09/2025,11/09/2025,Sem retorno,,Não,,
+Nilva,,,Meta Ads,01/09/2025,11/09/2025,Sem retorno,,Não,,
+Nayara,,,Google Ads,01/09/2025,01/09/2025,Agendou,"1,00",Sim,Sim,"R$ 59,90"
+Livia,,,Google Ads,01/09/2025,02/09/2025,Agendou,"6,00",Sim,Sim,"R$ 359,40"
+Simone Raquel ,,,Google Ads,02/09/2025,04/09/2025,Agendou,"4,29",Sim,Sim,"R$ 256,97"
+Leidiane Moreira Duarte,,,Google Ads,04/09/2025,04/09/2025,Agendou,"2,00",Sim,Sim,"R$ 119,80"
+Jessica Pereira de frança,,,Google Ads,03/09/2025,04/09/2025,Agendou,"1,00",Sim,Sim,"R$ 59,90"
+Sem nome,,,Google Ads,04/09/2025,,Tinha interesse em depilar na cera,,Não,,
+Bruno Gusso,,,Google Ads,04/09/2025,05/09/2025,Agendou,"8,29",Sim,Sim,"R$ 496,57"
+Fernada ,,,Google Ads,05/09/2025,06/10/2025,"Agendou, fechou pacote de 20 sessoes para filha","16,58",Sim,Sim,"R$ 993,14"
+VIvian,,,Google Ads,06/09/2025,29/09/2025,Não tinha interesse ,,Não,,
+João ,,,Google Ads,07/09/2025,09/09/2025,Agendou,"1,00",Sim,Sim,"R$ 59,90"
+Ana Carolina ,,,Google Ads,09/09/2025,11/09/2025,Não tinha interesse ,,Não,,
+Ana Paula Brito,,,Google Ads,10/10/2025,20/10/2025,Agendou,"1,00",Sim,Sim,"R$ 59,90"
+Leonardo,,,Google Ads,10/10/2025,29/09/2025,Sem retorno,,Não,,
+Thalia,,,Google Ads,11/09/2025,29/09/2025,Sem retorno,,Não,,
+Aline,,,Google Ads,11/09/2025,18/09/2025,Agendou,"1,00",Sim,Não,"R$ 0,00"
+Ana   julia costa,,,Google Ads,11/09/2025,11/09/2025,Agendou,"1,00",Sim,Sim,"R$ 59,90"
+Jade Felix ,,31 8561-3522,Google Ads,11/09/2025,08/10/2025,Entrei em contato 07/11,,Não,,
+Olivia,,,Google Ads,11/09/2025,11/09/2025,Agendou,"1,00",Sim,Sim,"R$ 59,90"
+Carol,,,Google Ads,11/09/2025,,Interesse em outro procedimento,,Não,,
+Wanderson Freitas ,,34 9912-3763,Google Ads,13/09/2025,08/10/2025,Não respondeu mais mensagens ,,Não,,
+Selete,,,Google Ads,13/09/2025,13/09/2025,Agendou ,"1,00",Sim,Sim,"R$ 59,90"
+Luis antonio,,,Google Ads,09/09/2025,09/09/2025,Agendou ,"1,00",Sim,Sim,"R$ 59,90"
+Pedro,,,Google Ads,16/09/2025,16/09/2025,Agendou,"2,00",Sim,Sim,"R$ 119,80"
+Denilson Guedes ,,34 9804-7734,Google Ads,13/09/2025,08/10/2025,Aguardando,,Não,,
+Cynthia  ,,,Google Ads,15/09/2025,17/09/2025,Agendou,"2,00",Sim,Sim,"R$ 119,80"
+Vanessa Rodrigues de Aquino,,38 9995-9839,Google Ads,15/09/2025,,Agendou ,"1,00",Sim,Sim,"R$ 59,90"
+Brenda,, 34 9158-3963,Google Ads,16/09/2025,,Sem retorno,,Não,,
+,,,Google Ads,16/09/2025,29/09/2025,Aguardando,,,,
+Andressa,,34 8838-9044,Google Ads,15/09/2025,08/10/2025,Tinha interesse em outro procedimento ,,Não,,
+Elaine,,,Google Ads,15/09/2025,,Interesse em outro procedimento,,Não,,
+Christieli,,,Google Ads,18/09/2025,08/10/2025,Aguardando,,Não,,
+Taty,,16 98845-8953,Google Ads,18/09/2025,08/10/2025,Aguardando,,Não,,
+Yasmin,,34 9776-3924,Google Ads,13/09/2025,19/09/2025,Sem retorno ,,Não,,
+Wilton,,11 95830-6813,Google Ads,20/09/2025,08/10/2025,Mandou oi e não teve mais interação,,Não,,
+Thalita,,,Google Ads,22/09/2025,22/09/2025,Agendou,"2,00",Sim,Sim,"R$ 119,80"
+Laura  ,,,Google Ads,22/09/2025,29/09/2025,Sem retorno,,Não,,
+Amanda,,34 9892-6362,Meta Ads,23/09/2025,08/10/2025,"Não responde, voltei a entrar em contato 08/11/2025",,Não,,
+Larissa Soares,,,Google Ads,24/09/2025,24/09/2025,Agendou,"2,00",Sim,Sim,"R$ 119,80"
+Raissa Bianchi,,16 99321-2531,Google Ads,24/09/2025,08/10/2025,"Não responde, voltei a entrar em contato 08/11/2025",,Não,,
+Izaura,,,Google Ads,25/09/2025,,Tinha interesse em outro prodecimento que não realizamos,,Não,,
+Rayanne,,34 9196-5347,Google Ads,25/09/2025,08/10/2025,Voltei a mandar mensagem dia 08/11/2025,,Não,,
+Terezinha,,,Meta Ads,26/09/2025,,Interesse em outros procedimentos,,Não,,
+Sueli,,11 94318-6136,Meta Ads,26/09/2025,08/10/2025,Aguardando,,Não,,
+Manoel,,31 9549-8820,Google Ads,26/09/2025,08/10/2025,Não responde ,,Não,,
+Yasmin,,,Google Ads,27/09/2025,17/10/2025,Agendou,"1,00",Sim,Sim,"R$ 59,90"
+Edilson,,,Google Ads,27/09/2025,08/10/2025,Não encontrei contato que bate com nome e datas ,,Não,,
+Ian,,34 9136-2657,Google Ads,27/09/2025,08/10/2025,Voltei a mandar mensagem dia 08/11/2025,,Não,,
+Marciele Negrao,, 19 98737-4971,Google Ads,28/09/2025,08/10/2025,Queria fazer apenas clareamento ,,Não,,
+Claudia,,,Google Ads,28/09/2025,,Interesse em outro procedimento,,Não,,
+Rafaela Valeriano,,,Google Ads,29/09/2025,29/09/2025,Agendou,"2,00",Sim,Sim,"R$ 119,80"
+Rafaela ,, 34 9712-9773,Google Ads,29/09/2025,08/10/2025,"Não responde, voltei a entrar em contato 08/11/2025",,Não,,
+Gislaine,,,Google Ads,29/09/2025,,Interesse em outro procedimento,,Não,,
+Flavia Souza ,,35 9925-1502,Google Ads,30/09/2025,08/10/2025,"Não responde, voltei a entrar em contato 08/11/2025",,Não,,
+Lais Matos,,,Google Ads,01/10/2025,07/10/2025,Agendou,"2,00",Sim,Sim,"R$ 119,80"
+Edilson,,62 9688-0751,Google Ads,01/10/2025,08/10/2025,Voltei a mandar mensagem dia 08/11/2025,,Não,,
+Juliano ,,,Google Ads,01/10/2025,01/10/2025,Agendou,"1,00",Sim,Sim,"R$ 59,90"
+Juvinal,,,Google Ads,01/10/2025,01/10/2025,Agendou,"8,29",Sim,Sim,"R$ 496,57"
+Amilton,,,Google Ads,01/10/2025,,"Sem retorno, queria fazer uma depilção total para o casamento, porem falou que não compensava",,Não,,
+Jose savio de Albuquerque procopio,,,Google Ads,01/10/2025,01/10/2025,Agendou,"2,00",Sim,Sim,"R$ 119,80"
+João Vitor Junqueira,,13 99641-5294,Google Ads,01/10/2025,08/10/2025,"Não responde, voltei a entrar em contato 08/11/2025",,Não,,
+Silen,,,Google Ads,06/10/2025,06/10/2025,Agendou,"3,00",Sim,Sim,"R$ 179,70"
+Maria cecilia,,34 93169-615,Google Ads,04/10/2025,07/10/2025,Agendou ,"5,00",Sim,Sim,"R$ 299,50"
+Gabriela Maia,,,Google Ads,04/10/2025,07/10/2025,Agendou,"2,00",Sim,Sim,"R$ 119,80"
+Ana,,34 9984-6292,Google Ads,05/10/2025,08/10/2025,Não cabe no orçamento no momento ,,Não,,
+Franciele Flavia,,,Google Ads,05/10/2025,05/10/2025,Agendou,"2,00",Sim,Sim,"R$ 119,80"
+Vitoria,,,Google Ads,02/10/2025,02/10/2025,Agendou,"1,00",Sim,Sim,"R$ 59,90"
+Natalia,,,Google Ads,02/10/2025,02/10/2025,Esta Gravida,"1,00",Sim,Não,"R$ 0,00"
+Rosana,,,Google Ads,06/10/2025,06/10/2025,Agendou,"1,00",Sim,Não,"R$ 0,00"
+Duda,,34 91532-164,Google Ads,06/10/2025,08/10/2025,Não responde as mensagens ,,Não,,
+Guilherme,, 34 88439-841,Google Ads,06/10/2025,,Não responde as mensagens ,,Não,,
+Bianca Marques,,,Google Ads,06/10/2025,08/10/2025,Agendou,"1,00",Sim,Sim,"R$ 59,90"
+Emanuelle Pereira ,,34 98322-292,Google Ads,06/10/2025,08/10/2025,Voltei a entrar em contato no dia 08/11/2025,,Não,,
+Nara,,34 91537-771,Google Ads,07/10/2025,,Interesse em outros procedimentos,,Não,,
+Josiane,, 34 88438-066,Google Ads,07/10/2025,,Não cabe no orçamento no momento ,,Não,,
+Gabriela Ferreira,,,Google Ads,08/10/2025,,Interesse em outro procedimento,,Não,,
+Larisse,,65 99884-753,Google Ads,08/10/2025,,Queria saber valores apenas ,,Não,,
+Silvana de oliveira,,,Google Ads,09/10/2025,,Agendou,"2,00",Sim,Sim,"R$ 119,80"
+Anna Julia,,34 8855-0043,Google Ads,10/10/2025,,Voltei a entrar em contato dia 08/11/2025,,Não,,
+Roberta  Fernandes do Nascimento,,35 99570-565,Meta Ads,10/10/2025,10/10/2025,Agendou,"1,00",Sim,Sim,"R$ 59,90"
+Lumiar,,,Google Ads,13/10/2025,,Não encontrei no whats nem no Kommo,,Não,,
+Kennedy,,,Meta Ads,12/10/2025,,Não tem interesse,,Não,,
+Yasminn vitoria Amaral Batista,,,Google Ads,13/10/2025,16-10,Agendou,"2,00",Sim,Não,"R$ 0,00"
+Giovanna,,34 93147-282,Google Ads,12/10/2025,,Voltei a entrar em contato dia 08/11/2025,,Não,,
+Lazaro Aparecido,,34 99926-810,Google Ads,11/10/2025,,Aguardando,,Não,,
+Maria  ,,,Google Ads,13/10/2025,13/10/2025,Agendou,"2,00",Sim,Sim,"R$ 119,80"
+Ariana Rodrigues,, 34 92722-144,Google Ads,13/10/2025,13/10/2025,Voltei a entrar em contato no dia 08/11/2025,,Não,,
+Marcio ,,,Meta Ads,13/10/2025,13/10/2025,Agendou,"2,00",Sim,Não,"R$ 0,00"
+Elaine Fidelis ,, 34 91154-622,Meta Ads,13/10/2025,,"Não responde, voltei a entrar em contato 08/11/2025",,Não,,
+Rosana,,,Meta Ads,14/10/2025,14/10/2025,Agendou,"1,00",Sim,Sim,"R$ 59,90"
+Lorena Aparecida Ferreira Silva,,34 96918-601,Google Ads,14/10/2025,22/10/2025,Agendou,"3,00",Sim,Sim,"R$ 179,70"
+Sem nome,,,Google Ads,14/10/2025,,Aguardando,,,,
+Sem nome,,,Google Ads,14/10/2025,,Aguardando,,,,
+Milena Barcelos,,34 88562-566,Meta Ads,14/10/2025,27/10/2025,Agendou ,"2,00",Sim,Sim,"R$ 119,80"
+Daiane Paz ,,,Google Ads,15/10/2025,21/10/2025,Agendou,"2,00",Sim,Sim,"R$ 119,80"
+Cadu,,34 91413-051,Google Ads,15/10/2025,,"Não responde, voltei a entrar em contato 08/11/2025",,Não,,
+Ana Clara Mendonça Santos,,34 84275-595,Google Ads,15/10/2025,15/10/2025,Agendou 15,"1,00",Sim,Sim,"R$ 59,90"
+Elisa,,,Google Ads,15/10/2025,15/10/2025,Agendou,"8,29",Sim,Sim,"R$ 496,57"
+Yasmin,,34 97763-924,Google Ads,16/10/2025,,Disse que volta a entrar em contato ,,Não,,
+Angelica Aparecida,, 34 96534-131,Meta Ads,16/10/2025,,Não tem interesse no momento ,,Não,,
+Elisa Beatriz Abrahão Cezarini,,34 97641-401,Meta Ads,15/10/2025,,Comprou pacote ,"8,29",Sim,Sim,"R$ 496,57"
+Andreza,,34 88796-955,Google Ads,16/10/2025,,"Não responde, voltei a entrar em contato 08/11/2025",,Não,,
+Vitoria Muniz Soares,,34 84112-355,Google Ads,16/10/2025,16/10/2025,Agendou,"1,00",Sim,Sim,"R$ 59,90"
+Maria Paula Silva Gomes ,,34 84131-773,Google Ads,16/10/2025,,Agendou,"2,00",Sim,Sim,"R$ 119,80"
+Miriã,,34 99262-604,Google Ads,16/10/2025,,Voltei a entrar em contato dia 08/11/2025,,Não,,
+Mariana de Sousa ,,(34) 98719-1639,Meta Ads,16/10/2025,,Agendou ,"1,00",Sim,Sim,"R$ 59,90"
+Maxilene de Souza Amorim,,31 89086-624,Meta Ads,19/10/2025,,Agendou,"1,00",Sim,Sim,"R$ 59,90"
+Taty,,34 84425-535,Meta Ads,19/10/2025,07/11/2025,Voltei a entrar em contato dia 07/11/2025,,Não,,
+Maria,,34 9144-5547,Meta Ads,20/10/2025,,Em busca de outro procedimento ,,Não,,
+Jonathan,,34 91311-376,Google Ads,20/10/2025,,Não quis agendar ,,Não,,
+Denise da Silva ,,34 91979-079,Google Ads,20/10/2025,,Agendou,"2,00",Sim,Sim,"R$ 119,80"
+Kellen Greice ,,34 88190-745,Google Ads,21/10/2025,,Agendou ,"3,00",Sim,Sim,"R$ 179,70"
+Ingrid Rebeca Marques,,34 9661-0501,Google Ads,22/10/2025,,Agendou,"1,00",Sim,Não,"R$ 0,00"
+Ana Luiza Alves Cruz,,34 97819-495,Meta Ads,22/10/2025,,Entrei em contato 07/11,"2,00",Sim,Sim,"R$ 119,80"
+Luciana,,34 97624-775,Meta Ads,22/10/2025,,Não deu seguimento no atendimento ,,Não,,
+Ananda Muniz,,34 84185-758,Google Ads,22/10/2025,,Agendou,"2,00",Sim,Sim,"R$ 119,80"
+Eliton,, 34 99799-427,Google Ads,23/10/2025,,Não responde mensagens ,,Não,,
+Jennifer moon,, 34 8404-8701,Google Ads,23/10/2025,,Não respondeu á nenhuma mensagem ,,Não,,
+Juliana Morais ,,34 9842-4939,Google Ads,24/10/2025,,Não responde mensagens ,,Não,,
+Kelly,,,Google Ads,25/10/2025,,Agendou,"1,00",Sim,Sim,"R$ 59,90"
+Gabriel alexandre,, 34 98607-137,Google Ads,27/10/2025,,Não responde mensagens ,,Não,,
+Danilo,,34 88927-317,Google Ads,27/10/2025,,Queria laser para remoção de tatuagem ,,Não,,
+Yasmin,,,Google Ads,28/10/2025,,Agendou,"2,00",Sim,Não,"R$ 0,00"
+Geovana Paula,,55 34 92289-372,Google Ads,27/10/2025,,Agendou,"2,00",Sim,Sim,"R$ 119,80"
+Fernanda Aparecida da Silva Araujo,, 34 91107-685,Google Ads,27/10/2025,05/11/2025,Agendou ,"1,00",Sim,Sim,"R$ 59,90"
+Sabrina Luana de Sousa Silva ,, 34 91622-133,Google Ads,29/10/2025,,Em contato 07/11,"2,00",Sim,Sim,"R$ 119,80"
+Cryslaine,, 82 94236-642,Google Ads,27/10/2025,,Não responde mensagens ,,Não,,
+Kellen Greice ,,34 88190-745,Google Ads,21/10/2025,30/10/2025,Agendou,"4,00",Sim,Sim,"R$ 239,60"
+Lorena Aparecida Ferreira ,,34 96918-601,Google Ads,10/10/2025,14/10/2025,Agendou ,"3,00",Sim,Sim,"R$ 179,70"
+Nathalia Capolis de Castro ,,34 98934-826,Google Ads,31/10/2025,,Agendou ,"2,00",Sim,Sim,"R$ 119,80"
+Tuanny Moraes ,,34 99371-491,Google Ads,04/11/2025,,Agendou ,"4,00",Sim,Sim,"R$ 239,60"
+Jailly Santos ,, 81 82685-052,Google Ads,04/11/2025,,Ainda em contato com a cliente ,,Não,,
+Gabrielle Cristina de Souza Conceição,,34 99964-971,Google Ads,05/11/2025,,Agendou ,"2,00",Sim,Sim,"R$ 119,80"
+Wilton ,,,Google Ads,05/11/2025,,Achou valor alto ,,Não,,
+Dienny Silva Cardoso,,34 992857-107,Google Ads,05/11/2025,,Agendou ,"4,00",Sim,Sim,"R$ 239,60"
+Pamella ,,34 96772-311,Google Ads,05/11/2025,,Sem retorno nas mensagens ,,Não,,
+Karine Ferreira ,,34 99857-654,Google Ads,06/11/2025,,"Cliente quer o laser acrus, estou convertendo","4,00",Sim,Não,"R$ 0,00"
+Ana Claudia Marques ,,(34) 98858-9291,Google Ads,06/11/2025,,Em contato ,,Não,,
+Ana Jaciela de Lima Penha,,(84) 99678-5053,Google Ads,06/11/2025,,Agendou ,"1,00",Sim,Sim,"R$ 59,90"
+Gabriela Dantas Costa,,(34) 99948-2477,Google Ads,06/11/2025,,Agendou ,"1,00",Sim,Sim,"R$ 59,90"
+Maria Vitória ,,16 99140-4819,Google Ads,06/11/2025,,"Está procurando o laser Lightsheer, estou procurando converter ",,Não,,
+Glaucia Soares Andrade,,34 98560-002,Google Ads,06/11/2025,07/11/2025,Agendou(enviei msg dia 27-11),"1,00",Sim,Não,"R$ 0,00"
+Millena,, 34 91921-852,Google Ads,08/11/2025,,Em contato ,,Não,,
+Andreza de souza macedo franco,, 34 88399-136,Meta Ads,10/11/2025,,Agendou ,"3,00",Sim,Sim,"R$ 179,70"
+Amanda ,,34 98926-362,Google Ads,10/11/2025,,Amanda disse que vai aguardar para ver se vamos ter Black ,,Não,,
+Larissa ,, 34 9281-0829,Google Ads,10/11/2025,,Em contato Estou reagendado com ela 27/11 ,"2,00",Sim,Não,"R$ 0,00"
+Maria Vitória ,,34 991545311,Google Ads,10/11/2025,,Não responde mensagens ,,Não,,
+Lucas Oliveira ,,(34) 98446-0486,Meta Ads,10/11/2025,,Por enquanto ainda não vai agendar ,,Não,,
+Alanis ,,(34) 99122-0174,Google Ads,10/11/2025,,Em contato ,,Não,,
+Rozemeire,,,Meta Ads,10/11/2025,,Queria fazer laser lavieen ,,Não,,
+Katriely,,34 88834-391,Meta Ads,10/11/2025,,Queria remover uma verruga ,,Não,,
+Camila Souza Cardoso,, 34 92387-923,Google Ads,10/11/2025,,Agendou ,"1,00",Sim,Sim,"R$ 59,90"
+Milena Marega ,,34 92355-016,Google Ads,11/11/2025,,Agendou para dia 28/11,"1,00",Sim,Sim,"R$ 59,90"
+Ana Flavia Ramos,,34 93003-650,Google Ads,11/11/2025,,Em contato ,"4,00",Sim,Sim,"R$ 239,60"
+Gabriel Zeoti Passaglia ,,34 84246-011,Google Ads,11/11/2025,,Vai ver e retorna para agendar ,,Não,,
+Taciana Oliveira ,, 34 93236-470,Google Ads,11/11/2025,,Agendou ,"8,29",Sim,Sim,"R$ 496,57"
+Gislaine Oliveira,,34 88050-600,Google Ads,13/11/2025,,Nao responde,,Não,,
+Edhuarda,,34 84311-876,Google Ads,13/11/2025,,Não responde as mensagens ,,Não,,
+Bruna Jesus parros Pantaleão,,34 84197-386,Google Ads,13/11/2025,,Agendou ,"8,30",Sim,Sim,"R$ 497,17"
+Xitão,,34 91127-613,Google Ads,14/11/2025,,Queria fazer na barba mais a maioria dos pêlos são brancos ,,Não,,
+Ines ,,34 88394-676,Meta Ads,15/11/2025,18/11/2025,Não responde,,Não,,
+Tamaturgo Douglas Matos Lacerda silva,, 34 97940-614,Google Ads,15/11/2025,18/11/2025,Não responde,,Não,,
+Jamila ,,34 88292-962,Meta Ads,16/11/2025,18/11/2025,Não responde,,Não,,
+Damarcos ,,82 81505-671,Google Ads,16/11/2025,18/11/2025,Não responde,,Não,,
+Ana Cecilia ,,(34) 99990-0059,Meta Ads,16/11/2025,18/11/2025,Não responde,,Não,,
+Jeorgiana,,(34) 99919-0821,Meta Ads,16/11/2025,18/11/2025,Não responde,,Não,,
+Amandinha ,,(34) 99682-8148,Meta Ads,16/11/2025,,Em contato,,Não,,
+Karla,,(34) 99940-4942,Google Ads,17/11/2025,,Não responde,,Não,,
+Laudice Aparecida de Oliveira,,(34) 99990-1528,Google Ads,17/11/2025,,Agendou para 01/12/2025,"2,00",Sim,Sim,"R$ 119,80"
+ Luana Sintia ,, 61 92144-493,Google Ads,19/11/2025,27/11/2025,Agendou dia 04/12,"8,30",Sim,Sim,"R$ 497,17"
+Roseane,,71 96230-087,Google Ads,21/11/2025,,Queria massagem modeladora ,,Não,,
+Samanntha Morais,,34 91260-019,Meta Ads,21/11/2025,,Achou valor alto ,,Não,,
+Keli ,, 34 96847-961,Meta Ads,23/11/2025,27/11/2025,Não responde,,Não,,
+Valdenici Santos Figueiredo ,,55 34 9133-1204,Google Ads,24/11/2025,,Agendou para dia 08/12,"2,00",Sim,Sim,"R$ 119,80"
+Liz Maceio,,55 82 8168-6358,Google Ads,24/11/2025,,"Viajou para Belgica e retorna em julho, quando voltar entra em contato",,Não,,
+Amanda Fernandes ,, 34 97950-210,Google Ads,22/11/2025,27/11/2025,Nao responde,,Não,,
+Gersa,,34 96612-700,Meta Ads,25/11/2025,,Não responde,,Não,,
+Alaor Luiz  ,,34 97692-440,Google Ads,25/11/2025,,Queria limpeza de pele apenas ,,Não,,
+Sheila kusugte da Silva,,15 99734-6924,Google Ads,26/11/2025,,Agendou e nao compareceu. Não responde as mensagens mais ,"2,00",Sim,Não,"R$ 0,00"
+João Henrique ,,55 34 91193-265,Google Ads,26/11/2025,,Nao responde,,Não,,
+Gicele Gomes ,,55 34 8801-4121,Google Ads,27/11/2025,,Agendou para dia 08/12,"2,00",Sim,Sim,"R$ 119,80"
+Tiago Lemes ,,55 34 88047-316,Google Ads,27/11/2025,,Não responde,,Não,,
+Não respondeu qual nome ,,55 11 95596-9739,Google Ads,27/11/2025,,Não responde mensagens ,,Não,,
+Luisa Rios ,,34 9204-8878,Google Ads,28/11/2025,,Agendou para dia 15/12,"1,00",Sim,Sim,"R$ 59,90"
+Cristiane Pereira ,, 34 9330-9300,Meta Ads,29/11/2025,,"Teve um problema no banco, quando resolver vai reagendar","2,00",Sim,,"R$ 0,00"
+Maria ,,55 34 91441-908,Google Ads,29/11/2025,,Vai me informar outro dia melhor dia 09 ela nao consegue ,,Não,,
+Ednei ,,55 17 99153-6660,Google Ads,30/11/2025,,Não responde,,Não,,
+Billa,,55 38 99603-008,Google Ads,30/11/2025,,DIsse que entra em contato dia 10 para agendar,,Não,,
+Lais Carvalho ,,55 34 91995-300,Meta Ads,01/12/2025,,Não responde,,Não,,
+Tailândia Pereira de Jesus,, 75 8896-8334,Google Ads,01/12/2025,,Não responde,,Não,,
+Rayara da Silva Santos,,55 34 92479-356,Google Ads,02/12/2025,,Não responde,,Não,,
+Letícia Campos Souza,,34 992272309,Google Ads,02/12/2025,,Agendou para dia 11/12,"2,00",Sim,Sim,"R$ 119,80"
+Danielle,,(16) 99171-0484,Google Ads,03/12/2025,,Não responde,,Não,,
+Lorrane Batista da Silva,,(34) 99634-7572,Google Ads,03/12/2025,,Sessão experimenta,"0,00",Sim,Sim,"R$ 0,00"
+Ryana Beatriz,,(34) 98843-5938,Google Ads,04/12/2025,,Agendou para o dia 20/12,"1,00",Sim,Sim,"R$ 59,90"
+Samira Silva,,55 34 84221-513,Google Ads,04/12/2025,,Agendou para o dia 22/12 e indicou a cunhada,"2,00",Sim,Sim,"R$ 119,80"
+Carolina Natália de Freitas Faria,,(34)97990271,Google Ads,05/12/2025,,Agendou para dia 05/12,"2,00",Sim,Sim,"R$ 119,80"
+Maria Eduarda Dos Santos Ferreira,,(34)98682276,Google Ads,05/12/2025,,Agendou para dia 11/12,"8,29",Sim,Sim,"R$ 496,57"
+Clara,,55 34 96311-887,Google Ads,05/12/2025,,Queria realizar clareamento de virilha apenas,,Não,,
+Isadora Cardoso,,55 31 84319-134,Orgânico,05/12/2025,,"Queria saber qual o laser era usado na clinica, queria o laser laser light sheer",,Não,,
+Ellen Martins,,(21)980835182,Orgânico,05/12/2025,,"A irma que realizou a sessão, por acontecimentos intimos.","1,00",Sim,Sim,"R$ 59,90"
+Sandra Dantas,,55 34 96503-661,Orgânico,06/12/2025,,Agendou para dia 06/12,"2,00",Sim,Sim,"R$ 119,80"
+Alessandra,,(34)91652169,Google Ads,06/12/2025,,Nao responde,,Não,,
+Maria Abadia,,55 34 93188-107,Orgânico,08/12/2025,,Em contato,,Não,,
+Helena,,553498786321,Google Ads,08/12/2025,,Queria fazer clareamento intimo,,Não,,
+Rhafaella Beatriz Martins Silva,,(34)98786321,Orgânico,08/12/2025,,Agendou para dia 09/12,"1,00",Sim,Sim,"R$ 59,90"
+Daiane,,55 34 91589-252,Google Ads,10/12/2025,,Queria fazer sombracelhas e cilios,,Não,,
+Maraisa Moura,,(34)96864194,Google Ads,10/12/2025,,Não responde,,Não,,
+Rhuan Moreira,,(34) 92000-3616,Google Ads,11/12/2025,,Agendou e nao compareceu e nao responde as msg,"2,00",Sim,Não,"R$ 0,00"
+Thalissa Stecca,,(553) 59230-4486,Orgânico,11/12/2025,,Disse que esta viajando e nao tem interesse por enquanto.,"1,00",Sim,Não,"R$ 0,00"
+Taíssa Filiacci,,(34)88227645,Indicação,11/12/2025,,Agendou para dia 16/12,"1,00",Sim,Sim,"R$ 59,90"
+Geovana Silva,,(34)99984685102,Instagram,10/12/2025,,Agendou para dia 11/12,"1,00",Sim,Sim,"R$ 59,90"
+Flavia Lemes de Souza,,(34) 99652-5207,Instagram,10/12/2025,,Agendou para dia 10/12,"3,00",Sim,Sim,"R$ 179,70"
+Leticia Guedes,,(34)96365073,Orgânico,11/12/2025,,Nao responde,,,,
+Raphaela,,55 34 91510-907,Orgânico,11/12/2025,,Agendou para dia 16/12,"4,00",Sim,Sim,"R$ 239,60"
+.,,(34)97167902,Google Ads,11/12/2025,,Esta gravida e queria realizar depilação,,Não,Não,
+Kamille,,(34)88290551,Orgânico,11/12/2025,,Agendou dia 22/12,"1,00",Sim,Não,"R$ 0,00"
+Heloisa Sousa,,(34)88541687,Orgânico,11/12/2025,,Nao responde,,Não,,
+Law,,(34)84235153,Google Ads,15/12/2025,,"Esta com duvidas pessoas, se resolver entrra em contato",,Não,,
+Dany,,(34)92855612,Orgânico,15/12/2025,,Agendou para dia 18/12,"16,60",Sim,Sim,"R$ 994,34"
+Jefferson de oliveira Silva,,(34)97088518,Google Ads,02/11/2025,,Agendou para dia 06/01,"8,00",Sim,Sim,"R$ 479,20"
+Isabella Freitas Ferreira,,(34)99781106,Google Ads,24/11/2025,,Agendou para dia 28//11,"2,00",Sim,Sim,"R$ 119,80"
+Ana,,(34)99846292,Google Ads,05/10/2025,,"Estava sem dinheiro, mais pra frente marca","10,00",Não,Não,"R$ 0,00"
+Rosana Resende Caetano,,(34)98280099,Google Ads,06/10/2025,,Agendou dia 09/10,"1,00",Sim,Sim,"R$ 59,90"
+Gabriel Ferreira,,(34)91479827,Google Ads,08/10/2025,,Queria saber se trabalham com cicatrizes,,Não,,
+Silvia Silveira,,(16)991882767,Google Ads,09/10/2025,,Nao responde,"2,00",Não,,"R$ 0,00"
+Janaina Mendes,,(34)91027630,Google Ads,16/10/2025,,Queria fazer clareamento,,Não,,
+Mari,,(34)84264870,Google Ads,29/10/2025,,Nao responde,,Não,,
+Tauanny,,(38)99051066,Google Ads,04/11/2025,,Nao responde,,Não,,
+Rafaela,,(61)99137576,Orgânico,15/12/2025,,Agendou dia 19/12,"1,00",Sim,Sim,"R$ 59,90"
+Carla,,(82)94251301,Google Ads,04/11/2025,,Nao responde,,Não,,
+Vanessa,,(12)981531085,Google Ads,11/11/2025,,Nao tem interesse no atendimentto,,Não,,
+Natali Ramiris,,(34)97323665,Google Ads,11/11/2025,,Nao responde,,Não,,
+Vanessa Fernanda Miranda,,(34)84306954,Google Ads,11/12/2025,,Nao responde,,Não,,
+Josi,,(34)98130368,Orgânico,15/12/2025,,agendou dia 23/12,"3,00",Sim,Sim,"R$ 179,70"
+A vida é boa,,(34)91714049,Orgânico,15/12/2025,,Vai entrar em contato depois.,,Não,,
+Renata,,(34)91099181,Orgânico,15/12/2025,,Agendou 19/12 ,"1,00",Sim,Sim,"R$ 59,90"
+Bruna ,,(34)99519409,Google Ads,13/11/2025,,Nao responde,,Não,,
+Vi,,(34)88585729,Google Ads,16/12/2025,,Agendou dia 26/12,"1,00",Sim,Sim,"R$ 59,90"
+Olavo Ruas,,(34)88040840,Indicação,16/12/2025,,Agendou dia 18/12,"3,00",Sim,Sim,"R$ 179,70"
+Luisa Jeronimo,,(34)84173433,Google Ads,17/11/2025,,Nao responde,,Não,,
+Romilda,,(34)96421009,Google Ads,18/11/2025,,Nao responde,,Não,,
+Silvia Leticia,,(34)88113757,Google Ads,20/11/2025,,Nao responde,,Não,,
+Larissa de Souza duque Lucas,,(16)991978141,Google Ads,24/11/2025,,Nao responde ,,Não,,
+Alexandra,,(34)84262446,Orgânico,26/11/2025,,Agendou dia 01/12 ,"1,00",Sim,Sim,"R$ 59,90"
+Paula Miranda,,(19)996147683,Orgânico,18/11/2025,,Não responde,"2,00",Não,,"R$ 0,00"
+Gaby Pires,,(34)97623616,Orgânico,16/12/2025,,Agendou dia 18/12 sessao experimental dia 07/02 fechou pacote,"16,60",Sim,Sim,"R$ 994,34"
+Isabella Falbo,,(64)81572030,Google Ads,17/12/2025,,Não responde,,Não,,
+Anna claudia,,(34)9776394,Google Ads,17/12/2025,,Cliente compareceu ,"20,00",Sim,Sim,"R$ 1.198,00"
+Thayanne,,(9) 88267-3076,Orgânico,17/12/2025,,Não responde,,Não,,
+Cleia,,(3) 49293-6785,Orgânico,17/12/2025,,Agendou dia 27/12 sessao experimental,"0,00",Sim,Sim,"R$ 0,00"
+Kamilly Vitoria,,(34)91191508,Orgânico,18/12/2025,,Não responde,,Não,,
+Lucelia,,(34)99925654,Orgânico,18/12/2025,,Cliente compareceu ,"1,00",Sim,Sim,"R$ 59,90"
+Gyovanna Oliveira,,(34)96385410,Orgânico,18/12/2025,,Agendou 09/01,"1,00",Sim,Sim,"R$ 59,90"
+Alda Vitoria,,(34)84265389,Orgânico,18/12/2025,,Em contato,,Não,,
+Maria Amelia,,(3) 49978-7588,Orgânico,18/12/2025,,Cliente compareceu ,"1,00",Sim,Sim,"R$ 59,90"
+Laisla Serafim,,(34)91342376,Orgânico,19/12/2025,,Vai agendar depois.,,Não,,
+Rafaela ,,(34)84033660,Orgânico,19/12/2025,,Agendou dia 02/01,"2,00",Sim,Sim,"R$ 119,80"
+Vanessa Moraes,,553492059110,Orgânico,20/12/2025,,Reagendou 24/01,"2,00",Sim,Não,"R$ 0,00"
+Joao Augusto,,3491960049,Orgânico,22/12/2025,,Vai planejar e depois entra em contato,,Não,,
+~,,3484251582,Google Ads,22/12/2025,,Vai entrar em contato depois.,,Não,,
+Denise santos,,553499725547,Google Ads,22/12/2025,,Agendou dia 23/12,"1,00",Sim,Sim,"R$ 59,90"
+camila araujo,,556192074272,Google Ads,22/12/2025,,Agendou dia 22/12,"1,00",Sim,Não,"R$ 0,00"
+Gabriela,,3492970878,Orgânico,22/12/2025,,Agendou 23/12,"1,00",Sim,Sim,"R$ 59,90"
+nathalia ribeiro,,553491131134,Google Ads,22/12/2025,,Agendou dia 12/01 ,"1,00",Sim,Não,"R$ 0,00"
+Laura Argondizi Carneiro Morgado,,553498941716,Orgânico,21/11/2025,,Agendou ,"24,90",Sim,Sim,"R$ 1.491,51"
+Morena,,553491605994,Orgânico,23/12/2025,,Vai esperar receber,,Não,,
+,,553484404354,Google Ads,26/12/2025,,Queria apenas fazer clareamento intimo,,Não,,
+Milena Borges,,3497983424,Google Ads,26/12/2025,,Não responde,,Não,,
+Maria Eduarda,,553496775207,Indicação,26/12/2025,,Agendou dia 27/12,"2,00",Sim,Sim,"R$ 119,80"
+Flavio,,553491462080,Orgânico,26/12/2025,,Queria fazer clareamento nas axilas,,Não,,
+Marilsa,,34988785840,Instagram,29/12/2025,,Agendou para dia 02/01,"8,30",Sim,Sim,"R$ 497,17"
+Marcia Siqueira,,34988314267,Google Ads,29/12/2025,,Não responde,,Não,,
+Isabela Olial,,35988835967,Google Ads,29/12/2025,,Agendou dia 02/01,"1,00",Sim,Sim,"R$ 59,90"
+Lo Ruama Marinara,,3498615455,Orgânico,30/12/2025,,Não responde,,Não,,
+Matheus ,,3491698277,Google Ads,02/01/2026,,Agendou 23/01,"2,00",Sim,Sim,"R$ 119,80"
+Jailson Antonio,,3496897055,Instagram,02/01/2026,,Iria retornar para agendar,,Não,,
+Luisa,,6198256785,Google Ads,02/01/2026,,Nao responde,,Não,,
+Evelyn sousa,,3487191955,Google Ads,05/01/2026,,Queria procedimento de estrias,,Não,,
+Augusto,,3499773171,Instagram,05//01/2026,,Nao responde,,Não,,
+Jaciany santos,,3499303634,Google Ads,05/01/2025,,Nao responde,,Não,,
+Barbara martins,,553497758344,Orgânico,05/01//2026,,Agendou dia 04/02,"1,00",Sim,Sim,"R$ 59,90"
+Vitoria de lima barbosa,,34988524774,Orgânico,29/12/2025,,Agendou 27/01,"3,00",Sim,Sim,"R$ 179,70"
+Josiany Soares,,7798609227,Orgânico,06/01/2026,,agendou dia 06/01,"1,00",Sim,Sim,"R$ 59,90"
+Vitoria ,,3491887240,Orgânico,06/01/2026,,Nao responde,,Não,,
+Evelyn sousa,,3487191955,Google Ads,05/01/2026,,Queria procedimento de estrias,,Não,,
+Miller de Oliveira,,553498229313,Google Ads,06/01/2026,,Agendou dia 10/01,"4,00",Sim,Sim,"R$ 239,60"
+Jonathan,,3492398332,Orgânico,06/01/2026,,Pediu para enecerrar o atendimento pq nao tem interesse,,Não,,
+kamila,,553488580587,Google Ads,06/01/2026,,Agendou 10/01 ,"1,00",Sim,Sim,"R$ 59,90"
+Debora,,3492861831,Orgânico,07/01/2026,,Agendou dia 08/01,"3,00",Sim,Sim,"R$ 179,70"
+Ana,,3484275595,Orgânico,07/01/2026,,Agendou dia 15/01,"1,00",Sim,Sim,"R$ 59,90"
+Nubia,,34988081193,Orgânico,07/01/2026,,Nao responde,,Não,,
+Larissa stefany,,6191039505,Orgânico,07/01/2026,,Queria saber o valor e nao tem interesse em agendar,"1,00",Não,,"R$ 0,00"
+Maria Fernanda,,34984260504,Orgânico,07/01/2026,,Agendou dia 09/02,"1,00",Sim,Sim,"R$ 59,90"
+Maria eduarda,,34998030021,Orgânico,07/01/2026,,Agendou dia 08/01,"1,00",Sim,Sim,"R$ 59,90"
+CELES,,34984235153,Orgânico,07/01/2026,,Não responde,,Não,,
+Rayssa aparecida,,3496366945,Google Ads,07/01/2026,,Queria fazer clareamento apenas.,,Não,,
+Lupita,,553491380841,Google Ads,08/01/2026,,Agendou dia 15/01,"1,00",Sim,Não,"R$ 0,00"
+Leiliane Gonçalves Ferreira,,553492738734,Orgânico,08/01/2026,,Reagendou dia 12/01,"1,00",Sim,Sim,"R$ 59,90"
+Ana Julia,,3497318377,Google Ads,08/01/2026,,Vai pesquisar sobre e retorna,,Não,,
+Wanderson Militao,,34988496598,Orgânico,08/01/2026,,Queria tratamento foliculite,,Não,,
+Vanda ,,3491309932,Google Ads,08//01/2026,,Agendou para a filha 10/01,"2,00",Sim,Sim,"R$ 119,80"
+tiz,,34984274466,Orgânico,09/01/2026,,Nao responde,,Não,,
+Thais,,3498671157,Orgânico,08/01/2026,,Nao responde,,Não,,
+Jamilly xavier,,34984369738,Google Ads,12/01/2026,,Nao responde,,Não,,
+Jheninha,,3496585248,Google Ads,12/01/2026,,Queria clareamentto intimo,,Não,,
+Marina Francoso ,,3492013595,Google Ads,12/01/2026,,Nao responde,,Não,,
+Gabi alves,,3497686353,Orgânico,12/01/2026,,Nao responde,,Não,,
+Francine ,,6196595360,Orgânico,12/01/2026,,Nao responde,,Não,,
+Ruth,,16994087776,Orgânico,12/01/2026,,Nao responde,,Não,,
+Fe,,3496998416,Orgânico,13/01/2026,,Agendou dia 15/01,"4,00",Sim,Sim,"R$ 239,60"
+Julie ,,3195236170,Orgânico,14/01/2026,,Mes que vem agenda,,Não,,
+Rose Borges,,3492046226,Orgânico,13/01/2026,,Agendou dia 14/01,"1,00",Sim,Sim,"R$ 59,90"
+Fernanda Tenorio ,,3496797879,Google Ads,13/01/2026,,Mes que vem agenda,,Não,,
+Ivana,,34984279383,Google Ads,15/01/2026,,Agendou dia 27/01,"1,00",Sim,Sim,"R$ 59,90"
+Linaara kathrein,,1(862)3074530,Google Ads,15/01/2026,,Vai entrar em contato depois.,,Não,,
+11,,3491160170,Orgânico,15/01/2026,,Nao responde,,Não,,
+luiza lira,,3492949346,Orgânico,15/01/2026,,Nao responde,,Não,,
+victorya,,3498032307,Orgânico,15/01/2026,,Nao responde,,Não,,
+Laryssa Dias,,3492268027,Orgânico,15/01/2026,,Agendou dia 22/01,"1,00",Sim,Sim,"R$ 59,90"
+Gabi Paranhos,,553498157707,Orgânico,14/01/2026,,Agendou dia 22/01,"1,00",Sim,Sim,"R$ 59,90"
+Fernanda Vieira da Silva,,553496998416,Google Ads,13/01/2026,,Agendou dia 15/01,"4,00",Sim,Sim,"R$ 239,60"
+Deya,,3496646914,Google Ads,15/01/2026,,Vai agendar dps,,Não,,
+Maicon cesar,,553488915136,Orgânico,15/01/2026,,Nao responde,,Não,,
+Rafaella,,6192283472,Google Ads,16/01/2026,,Nao responde,,Não,,
+Bianca,,3499960316,Orgânico,16/01/2026,,Agendou dia 19/01,"1,00",Sim,Não,"R$ 0,00"
+Amanda Arduini,,3496605070,Orgânico,16/01/2026,,Agendou dia 17/01,"16,60",Sim,Sim,"R$ 994,34"
+Ketlen,,3898509380,Google Ads,15/01/2026,,Nao responde,,Não,,
+Dell,,553492984569,Orgânico,16/01/2026,,Passou o contato da namorada para agendar,"2,00",Não,,"R$ 0,00"
+Glenda Rosa,,553498837928,Indicação,16/01/2026,,Namorado passou contato e ela agendou,"2,00",Sim,,"R$ 0,00"
+Preta,,553491878175,Google Ads,16/01/2026,,NAO RESPONDE,,Não,,
+sara araujo,,553884088157,Orgânico,16/01/2026,,Agendou dia 20/01,"2,00",Sim,Sim,"R$ 119,80"
+Arthur e Gabriel,,553488931677,Google Ads,16/01/2026,,Nao responde,,Não,,
+Alejandra,,553498916792,Google Ads,19/01/2026,,Agendou dia 12/02,"1,00",Sim,Não,"R$ 0,00"
+Denise,,3496917120,Orgânico,16/01//2026,,Vai ver e avisa,"1,00",Não,,"R$ 0,00"
+Maria Clara,,3499572825,Orgânico,19/01/2026,,Agendou dia 30/01 sessao experimental,"0,00",Sim,Sim,"R$ 0,00"
+Ana JuliA,,34988600304,Google Ads,19/01/2026,,Nao responde,,Não,,
+Elly,,558393063273,Google Ads,19/01/2026,,Vai ver e depois retorna,,Não,,
+Thiago,,3498016719,Google Ads,20/01/2026,,Nao responde,,Não,,
+Jessica ,,34988796967,Orgânico,19/01/2026,,Nao responde,,Não,,
+suely nogueira,,34984128978,Orgânico,19/01/2026,,Agendou dia 21/02,"2,00",Sim,,"R$ 0,00"
+Igor,,3493343948,Google Ads,20/01/2026,,Nao responde,,Não,,
+Lourraine Petreski,,3492328334,Instagram,19/01/2026,,Vai alinhar com a amiga e entrar em contato depois,,Não,,
+Kamila,,553496996414,Google Ads,20/01/2026,,Vai ver e entra em contato,,Não,,
+Jessica F belo,,553488796967,Orgânico,18/01/2026,,Vai agendar mais para frente,,Não,,
+Laryssa dias,,553492268027,Orgânico,15/01/2026,,Teve um emprevisto ,"1,00",Sim,Não,"R$ 0,00"
+Michaely Stefani Puppi,,553491985734,Google Ads,22/01/2026,,Agendou dia 24/01 sessao experimental e dia 26 vai realizar a virillha,"1,00",Sim,Sim,"R$ 59,90"
+Larissa,,553488560683,Orgânico,22/01/2026,,Agendou dia 21/02,,Não,,
+Lara Leticia,,553491393487,Google Ads,22/01/2026,,Agendou dia 04/02,"1,00",Sim,Sim,"R$ 59,90"
+Lorena,,3491523814,Orgânico,22/01/2026,,"Esta gravida, iria entrar em contato com a medica",,Não,,
+Ronaldo,,3491608715,Orgânico,23/01/2026,,Vai entrar em contato depois.,,Não,,
+Mariana,,553497756689,Google Ads,23/01/2026,,Agendou dia 09/02 sessao experimental,,Sim,,
+Livia de Almeida,,16992102346,Orgânico,26/01/2026,,Agendou dia 26/01,"1,00",Sim,Sim,"R$ 59,90"
+washington,,34988246162,Orgânico,26/01/2026,,Queria realizar clareamento,,Não,,
+Livia Marchiori,,3496450112,Orgânico,26/01/2026,,Agendou dia 26/01,"16,60",Sim,Sim,"R$ 994,34"
+Rafaell Queiroz,,31989709709,Indicação,24/01/2026,,Agendou dia 30/01,"1,50",Sim,Sim,"R$ 89,85"
+Flavia,,3491865313,Orgânico,24/01/2026,,Agendou dia 30/01,"1,00",Sim,Sim,"R$ 59,90"
+Talita Lima,,34984030083,Orgânico,26/01/2026,,Queria clareamento,,Não,,
+Jamilly kesia soares ferreira,,3492470101,Google Ads,26/01/2026,,Queria laser de tirar mancha,,Não,,
+Felipe,,89981185736,Orgânico,26/01/2026,,Agendou dia 19/02,"3,00",Sim,,"R$ 0,00"
+Ana,,34988083593,Orgânico,27/01/2026,,"Esta com furunculo, entra em contato dps",,Não,,
+Ana Carolina,,3491356998,Google Ads,27/01/2026,,Agendou dia 05/02,"1,00",Sim,Sim,"R$ 59,90"
+Guilherme Junior,,3491178877,Orgânico,27/01/2026,,"Queria horario dia 28/01, mas laser estava alugado/ mora fora",,Não,,
+Janaira Pereira Carvalho,,34988435055,Orgânico,28/01/2026,,Agendou dia 29/01 sessao experimental,"0,00",Sim,Sim,"R$ 0,00"
+Lorraine Aparecida vilasboa,,34998006290,Orgânico,28/01/2026,,Nao responde,,Não,,
+Jane,,11958128284,Orgânico,28/01/2026,,Esta analisando,,Não,,
+Natalia Gomees,,3493367453,Google Ads,29/01/2026,,Nao responde,,Não,,
+Cleiton Goncalves,,61981398729,Orgânico,30/01/2026,,Queria laser para vitiligo,,Não,,
+Yasmin Gabryelle ,,38984031556,Google Ads,30/01/2026,,Nao responde,,Não,,
+Lourrainy gaido,,34997161648,Google Ads,02/02/2026,,Nao responde,,Não,,
+Samara,,3499614280,Google Ads,02/02/2026,,Queria clareamento de manchas,,Não,,
+Karen,,34991121833,Google Ads,02/02/2026,,NAO RESPONDE,,Não,,
+Isabel,,34996685406,Google Ads,02/02/2026,,Nao responde,,Não,,
+Samela Beletato de Carvalho,,5516991932903,Orgânico,03/02/2026,,Agendou 04/02,"1,00",Sim,Sim,"R$ 59,90"
+Yasmin Oliveira,,553488387105,Orgânico,03/02/2026,,Nao responde,,Não,,
+Juliana Alves,,553484076984,Instagram,02/02/2026,,Agendou dia 06/02,"1,00",Sim,Não,"R$ 0,00"
+Rosinha Tomain,,553499083850,Instagram,02/02/2026,,Nao responde,,Não,,
+Saionara,,34984426464,Google Ads,04/02/2026,,Nao responde,,Não,,
+Ana luisa,,553491142635,Orgânico,04/02/2026,,Vai alinhar e depois entra em contato,,Não,,
+Herberth,,553499976306,Indicação,05/02/2026,,Agendou para namorada,"2,00",Sim,Sim,"R$ 119,80"
+Valdeni,,3899756907,Google Ads,05/02/2026,,Agendou dia 12/02,"1,00",Sim,Sim,"R$ 59,90"
+Silvania,,34984446197,Google Ads,05/02/2026,,Agendou dia 19/02,"3,00",Sim,,"R$ 0,00"
+Julia Ferraz,,34992205980,Instagram,06/02/2026,,Nao responde,,Não,,
+Nicole ,,11968275943,Orgânico,06/02/2026,,Divulgacao de trabalho,,Não,,
+Karla salatiel,,3499983150,Orgânico,04/02/2026,,Agendou dia 14/02,,Sim,,
+Vitoria,,3496552253,Google Ads,06/02/2026,,Queria realizar limpeza de pele,,Não,,
+Karolina Keylla,,34991743837,Google Ads,07/02/2026,,Nao responde,,Não,,
+Estefany,,3497275662,Orgânico,09/02/2026,,Agendou uma sessao experimental 14/02,,Sim,,
+Bruna Souza Melo,,3497745202,Orgânico,09/02/2026,,Agendou dia 12/02,"8,30",Sim,Sim,"R$ 497,17"
+Mariana Abdanur,,3499291091,Instagram,09/02/2026,,Nao responde,,Não,,
+Marcela Francisco Moreira Resende,,553491794824,Instagram,09/02/2026,,Agendou dia 18/02,"1,00",Sim,Sim,"R$ 59,90"
+Fabiana Venceslau de Assis,,553498653314,Orgânico,09/02/2026,,Agendou dia 11/02,"24,90",Sim,Sim,"R$ 1.491,51"
+Ynara,,3491955192,Orgânico,10/02/2026,,Agendou dia 18/02,"2,00",Sim,Sim,"R$ 119,80"
+Cris Lemes,,3498814871,Orgânico,10/02/2026,,Mes que vem ela agenda,,Não,,
+Vitoria,,34984265886,Orgânico,10/02/2026,,Nao responde,,Não,,
+Alekssandra,,34988728447,Instagram,09/02/2026,,Agendou dia 13/02,"1,00",Sim,Sim,"R$ 59,90"
+Joao Vitor Dos santos silva,,82933002681,Instagram,11/02/2026,,Nao responde,,Não,,
+Giovana Neto Sene,,3491510876,Instagram,11/02/2026,,Nao responde,,Não,,
+Doraci de Almeida Salmazo,,11989061264,Google Ads,11/02/2026,,Agendou dia 13/02,"2,00",Sim,Sim,"R$ 119,80"
+Taislaine,,34984281046,Instagram,12/02/2026,,Queria o laser soprano,,Não,,
+Juliana Santos,,34998041255,Instagram,12/02/2026,,Agendou dia 14/02,"1,00",Sim,Sim,"R$ 59,90"
+Adriana oliveira/ diana ,,34992686113,Orgânico,12/02/2026,,Agendou dia 14/02,"1,00",Sim,Não,"R$ 0,00"
+Fernanda Felícia,,34991768252,Google Ads,13/02/2026,,Agendou pro dia 21/02,"2,00",Sim,Não,"R$ 0,00"
+Bruna Mundim Ramos,,38 999776688,Indicação,10/02/2026,,Agendou dia 13/02,"3,00",Sim,Sim,"R$ 179,70"
+maria julia,,3497706668,Indicação,19/02/2026,,agendou dia 19/02,"5,00",Sim,Sim,"R$ 299,50"
+sophia,,3491979190,Orgânico,20/02/2026,,vai agendar terça feira 24/02,,Não,Não,
+brenno ,,3484137626,Google Ads,20/02/2026,,nao respondeu mais ,,Não,Não,
+jadson ,,3484441975,Orgânico,20/02/2026,,nao respondeu mais ,,Não,Não,
+micaela aparecida ,,3499217709,Indicação,20/02/2026,,agendou para 20/02,"0,00",Sim,Sim,"R$ 0,00"
+´´brincesa´´,,3498802298,Orgânico,20/02/2026,,nao respondeu mais ,,Não,Não,
+maria denilma ,,3499655033,Orgânico,20/02/2026,,agendeou para 21/02,"1,00",Sim,Sim,"R$ 59,90"
+michelle fernandes caixota ,,34 8895-0930,Orgânico,13/02/2026,,agendou dia 15/02,"2,00",Sim,Sim,"R$ 119,80"
+maria fernanda ,,34 9112-0212,Orgânico,15/12/2026,,nao respondeu mais ,,Não,Não,
+gracielle dos santos rodrigues ,,34 9802-0014,Google Ads,15/02/2026,,agendou para dia 21/02,,Sim,Não,
+Cristiane Santana,,34 9184-8410,Google Ads,21/02/2026,,agendou para dia 26/02 - NÃO COMPARECEU,"1,00",Sim,Não,"R$ 0,00"
+Carlos Sene,,34 9339-5704,Google Ads,21/02/2026,,aguardando resposta ,,Não,Não,
+debora ,,34 8431-5255,Google Ads,22/02/2026,,disse que entra em contato para marcar,,Não,Não,
+barbara ,,12 99112-9074,Google Ads,22/02/2026,,agendou para 21/03,,Sim,,
+gabrielle,,34 9305-9258,Google Ads,22/02/2026,,agendou para dia 26/02,"2,00",Sim,Sim,"R$ 119,80"
+Lucrécia Maia Peres,,34 9116-7822,Google Ads,23/03/2026,,agendou para dia 03/03,"1,50",Sim,Sim,"R$ 89,85"
+tayane,,34 8878-2050,Orgânico,23/02/2026,,aguardando resposta ,,Não,Não,
+Valen Rezende,, 45 9969-0429,Google Ads,24/02/2026,,agendou para dia 27/02,"2,00",Sim,Sim,"R$ 119,80"
+Fernanda Maria de Sá,,34 9299-8765,Google Ads,24/02/2026,,agendou para 06/03,"0,00",Sim,Sim,"R$ 0,00"
+Yasmin Hazime Miziara,,34 9694-4474,Google Ads,24/02/2026,,agendou para 06/03,"8,00",Sim,Sim,"R$ 479,20"
+Gabrielle Bessa,,34 9305-9258,Orgânico,24/02/2026,,agendou para 26/02,"2,00",Sim,Sim,"R$ 119,80"
+duran,,34 9213-5711,Google Ads,26/02/2026,,nao respondeu mais,,Não,Não,
+LIDIANE LOPES,,34 8413-1432,Google Ads,26/02/2026,,disse que entra em contato para marcar,,Não,Não,
+aguardando nome ,,34 8417-5743,Google Ads,27/02/2026,,aguardando resposta ,,Não,Não,
+yariane bronze ,,3498349776,Google Ads,27/02/2026,,aguardando resposta ,,Não,Não,
+leticia borges ,,34 9917-6966,Google Ads,28/02/2026,,aguardando respostas ,,Não,Não,
+ana paula ,,38 8805-6633,Indicação,27/02/2026,,agendou para dia 28/02,"4,00",Sim,Sim,"R$ 239,60"
+Jaine dos Santos Campos,,34 9689-5892,Orgânico,28/02/2026,,agendou para 28/02,"1,00",Sim,Sim,"R$ 59,90"
+Cibelle Fabiana,,34 9222-7842,Indicação,28/02/2026,,aguardando resposta ,,Não,,
+mari fanzan,,16 99754-2104,Google Ads,03/03/2026,,aguardando resposta,,Não,,
+Carolline Mendes,,64 8412-1292,Google Ads,03/03/2026,,agendou para dia 04/03,"8,30",Sim,Sim,"R$ 497,17"
+Camila Lemes,, 34 9897-2157,Google Ads,03/03/2026,,aguardando resposta ,,Não,,
+Ana Paula Potente Cunha Matos,,34 8808-3593,Orgânico,04/03/2026,,agendou para 14/03 e cancelou,"1,00",Sim,Não,"R$ 0,00"
+karine ,,82 9936-5750,Google Ads,04/03/2026,,aguardando resposta ,,Não,,
+Luiza Camolezi,,34 8447-8797,Instagram,04/03/2026,,aguardando resposta ,,Não,,
+Amanda Santos da Silva,,34 8417-5743,Google Ads,04/03/2026,,agendou pra 12/03 e faltou,"1,00",Sim,Não,"R$ 0,00"
+Julia Cordeiro Cardoso Silva,,34 9896-4142,Orgânico,04/03/2026,,agendou para dia 21/03,"8,30",Sim,,"R$ 0,00"
+Camila Dutra,,34 8835-4316,Google Ads,04/03/2026,,agendou para dia 09/03,"1,00",Sim,Sim,"R$ 59,90"
+caroline mendes,,,Google Ads,,,,,,,
+kamille furtado,,64 8412-1292,Orgânico,04/03/2026,,agendou para 04/03,"10,00",Sim,Sim,"R$ 599,00"
+Matheus Padua,,34 8898-3035,Google Ads,04/03/2026,,agendou para dia 09/03,"2,00",Sim,Sim,"R$ 119,80"
+Lisley,, 19 97154-6127,Google Ads,04/03/2026,,aguardando resposta,"1,00",Não,,"R$ 0,00"
+Anny Vitoria da Silva Barros,,99 8539-2284,Google Ads,04/03/2026,,agendou para dia 11/03,"8,30",Sim,Sim,"R$ 497,17"
+gabriela ,,34 8719-5835,Google Ads,05/03/2026,,aguardando resposta ,,Não,,
+Hadassa elizama dias milen,,34 8819-8265,Orgânico,05/03/2026,,agendou para dia 09/03 e cancelou,"1,00",Sim,Não,"R$ 0,00"
+Laís Campoi,,34 9940-0222,Orgânico,05/03/2026,,aguardando resposta ,,Não,,
+Letícia Gabriela Inácio,,34 8838-3884,Google Ads,05/03/2026,,agendou para dia 12/03 - reagendou 17/03,"1,00",Sim,,"R$ 0,00"
+Kamylle Furtado,,34 9828-7300,Orgânico,05/03/2026,,agendou para 09/03,"10,00",Sim,Sim,"R$ 599,00"
+´´lulu´´,,63 9251-0480,Google Ads,06/03/2026,,aguardando resposta ,,,,
+Daiane Cristina da Silva Rocha,, 34 8419-5783,Orgânico,06/03/2026,,agendou para 09/03// ja pagou e foi dia 12/03,"1,00",Sim,Sim,"R$ 59,90"
+leandro barcelos ,,34 9128-2872,Google Ads,06/03/2026,,aguardando resposta ,,,,
+amanda ferreira,,34 8837-0361,Google Ads,06/03/2026,,agendou para 09/03,"1,00",Sim,Não,"R$ 0,00"
+erick ,,34 9159-7800,Orgânico,06/03/2026,,aguardando resposta,,,,
+eliana ,,34 9950-3455,Orgânico,09/03/2026,,aguardando resposta ,,,,
+Isabel,,34 9165-2351,Orgânico,09/03/2026,,aguardando resposta ,,,,
+ge barbosa ,,34 9681-6530,Google Ads,09/03/2026,,aguardando resposta ,,,,
+milena ,,34 8442-8814,Google Ads,09/03/2026,,aguardando resposta ,,,,
+gislaine ,, 34 8807-4028,Google Ads,09/03/2026,,aguardando resposta ,,,,
+lenita mascarenhas ,,34 9119-9355,Google Ads,09/03/2026,,aguardando resposta,,,,
+Bianca,,34 9653-6365,Orgânico,09/03/2026,,aguardando resposta ,,,,
+fafa,,34 9122-2141,Orgânico,09/03/2026,,,,,,
+Kamilli Guimarães,,34 9110-9934,Meta Ads,10/11/2026,,aguardando resposta,,,,
+juliana ,,34 9187-7266,Meta Ads,10/11/2026,,aguardando resposta,,,,
+irene,,34 9861-5854,Google Ads,10/11/2026,,aguardando resposta ,,,,
+lurdinha,,34 9260-1147,Meta Ads,10/11/2026,,aguardando resposta,,,,
+Julia Hannah Barbassa Oliveira,, 34 9961-1499,Google Ads,10/11/2026,,agendou para dia 28/03,,Sim,,
+Richard Reis,,34 8859-1883,Google Ads,11/03/2026,,A esposa Grabriela agendou pro dia 04/04,,,,
+Angela Márcia,,34 9914-2567,Google Ads,11/03/2026,,aguardando resposta,,,,
+Cintia,,34 9156-6112,Google Ads,11/03/2026,,aguardando resposta,,,,
+Gabriela Ferreira,,34 9895-0517,Orgânico,11/03/2026,,agendou para dia 04/04,,Sim,,
+tray,,34 9249-4380,Google Ads,11/03/2026,,aguardando resposta,,,,
+Estefani,,61 9945-6393,Orgânico,11/03/2026,,aguardando resposta ,,,,
+Lykayane,,99 8425-4759,Google Ads,11/03/2026,,aguardando resposta ,,,,
+Luzia Pereira,,38 9969-6525,Orgânico,11/03/2026,,Agendou 16/03,"8,00",Sim,Sim,"R$ 479,20"
+Adriane Manzan,,34 9968-2327,Orgânico,12/03/2026,,aguardando resposta,,,,
+Suzeli,, 34 9142-0186,Instagram,12/03/2026,,aguardando resposta ,,,,
+Camile,,34 8425-1136,Google Ads,12/03/2026,,agendou 17/03,,Sim,,
+Valdirene Morais,, 34 9105-6503,Google Ads,12/03/2026,,aguardando resposta ,,,,
+Renata Lemes,,3498687869,Orgânico,12/03/2026,,agendou pra 13/03,"8,30",Sim,Sim,"R$ 497,17"
+Nilza ,,3498688562,,11/03/2026,,Aguardando,,,,
+Felipe Zambrano Consule,,34984302690,Orgânico,13/03/2026,,agendou pra 19/03,,Sim,,
+Maria Cecília Dias de Melo Alves ,,34997086960,Orgânico,13/03/2026,,agendou pra avaliação 17/03,,Sim,,
+Yasmim,,34988544166,Orgânico,13/03/2026,,agendou 16/03,,Sim,,
+Gláucia ,,34988776549,Google Ads,13/03/2026,,Nao respondeu,,,,
+tali,,34 9921-5015,Orgânico,16/03/2026,,nao respondeu ainda,,,,
+rosilda,, 34 9196-1821,Orgânico,16/03/2026,,nao respondeu ainda,,,,
+kamila,,34 9885-1597,Orgânico,16/03/2026,,nao respondeu ainda,,,,
+danhubya alves ,,5534996847919,Orgânico,16/03/2026,,veio pessoalmente e agendou para 17/03,,Sim,,
+Myrielle,, 34 9692-4240,Google Ads,16/03/2026,,nao respondeu ainda,,,,
+silva,,34 9181-0451,Google Ads,16/03/2026,,nao respondeu mais ,,,,
+Lucimara Alves De Paula,,5534996556401,Orgânico,10/03/2026,,agendou para dia 12/03,"8,00",Sim,Sim,"R$ 479,20"
+Arthur Sá,,553499947167,Instagram,17/03/2026,,agendou para o dia 18/03,"1,00",Sim,,"R$ 0,00"
+Tamara Amaral,,553497627887,Google Ads,17/03/2026,,,,,,
+Paulo R,,553491314022,Google Ads,17/03/2026,,,,,,
+Ariane Araújo,,3498931688,Orgânico,17/03/2026,,Lead Auditado (v1.0),,Sim,,
+Priscilla Vasconcelos,,3492191498,Orgânico,17/03/2026,,Lead Auditado (v1.0),,,,

@@ -1,0 +1,215 @@
+{
+  "name": "Brisa Laser: UTM 360º (V9.0 - DUAL WEBHOOK)",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "kommo-leads-utm",
+        "options": {}
+      },
+      "name": "Webhook Kommo",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1,
+      "position": [
+        250,
+        300
+      ],
+      "id": "webhook-kommo"
+    },
+    {
+      "parameters": {
+        "jsCode": "// Extrai lead_id do webhook do Kommo\nconst raw = $input.item.json;\nlet leadId = null;\n\nfunction hunter(obj) {\n    if (!obj || typeof obj !== 'object') return;\n    for (let key in obj) {\n        const value = obj[key];\n        const keyStr = decodeURIComponent(key);\n        if ((keyStr.includes('[id]') || keyStr === 'id' || keyStr === 'lead_id') && !leadId && /^\\d+$/.test(String(value))) {\n            leadId = String(value);\n        }\n        if (typeof value === 'object') hunter(value);\n    }\n}\nhunter(raw);\nif (!leadId && raw.body) hunter(raw.body);\nif (!leadId) {\n    const bodyStr = JSON.stringify(raw);\n    const m = bodyStr.match(/\"id\"\\s*:\\s*\"?(\\d+)\"?/i) || bodyStr.match(/\\[id\\]=(\\d+)/i);\n    if (m) leadId = m[1];\n}\nif (!leadId) return [];\nreturn [{ json: { lead_id: leadId } }];"
+      },
+      "name": "Parse Lead ID",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 1,
+      "position": [
+        450,
+        300
+      ],
+      "id": "parse-id"
+    },
+    {
+      "parameters": {
+        "amount": 20,
+        "unit": "seconds"
+      },
+      "name": "Wait 20s",
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        630,
+        300
+      ],
+      "id": "wait-20s",
+      "webhookId": "wait-20s-hook"
+    },
+    {
+      "parameters": {
+        "method": "GET",
+        "url": "=https://brisalaser.amocrm.com/api/v4/leads/{{$node[\"Parse Lead ID\"].json.lead_id}}?with=contacts",
+        "authentication": "none",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImp0aSI6Ijc3MzliYWExZmVkNTU3ZDIxNGI0ZmQ0YTMwMzQzMjk5ZGIxZjE0MmRmM2FiZWUwZjE5NmY1N2JjNWNhZjdjN2RjMDE5NDliNjRmY2E0YzMxIn0.eyJhdWQiOiJmOWIyMGI3MC1hYjY2LTQ4ODAtOTBiNS03YTdkNTZkOTBjNDAiLCJqdGkiOiI3NzM5YmFhMWZlZDU1N2QyMTRiNGZkNGEzMDM0MzI5OWRiMWYxNDJkZjNhYmVlMGYxOTZmNTdiYzVjYWY3YzdkYzAxOTQ5YjY0ZmNhNGMzMSIsImlhdCI6MTc3MzM2MjAzMCwibmJmIjoxNzczMzYyMDMwLCJleHAiOjE5MjM1MjMyMDAsInN1YiI6IjEzNTE5MDc5IiwiZ3JhbnRfdHlwZSI6IiIsImFjY291bnRfaWQiOjM0ODgwMjYzLCJiYXNlX2RvbWFpbiI6ImtvbW1vLmNvbSIsInZlcnNpb24iOjIsInNjb3BlcyI6WyJwdXNoX25vdGlmaWNhdGlvbnMiLCJmaWxlcyIsImNybSIsImZpbGVzX2RlbGV0ZSIsIm5vdGlmaWNhdGlvbnMiXSwiaGFzaF91dWlkIjoiNjAwMmQ1NTItOTQzOS00MDUxLWE3ZWMtOTQ3ZjY3NDE4NjMwIiwiYXBpX2RvbWFpbiI6ImFwaS1nLmtvbW1vLmNvbSJ9.VbeZU-lBllVqkJ2BkCIdjpnoynvzFzEh1E1zzxFgCxdAWK3gUp8C6rzdlYRKM8MWaIHy79A4iIfSAso-vnYy-0MzzFSAP0v_IbkIQ2xypQnrCn5n1g4XHWWxJr80KnVW1HtkRJO2DqPeLZBkR62V7Cw1-ZQT2N3BiV_0-ejVmDvYeX8NkSkOQOMpayW-YKn_ZgFvnENiSscsKfsBXubV6nJeQqR-ycxZGkNCTwM6MsjmJ-oFxvbCIEBeK0PD8kjrMdX_Di1JVzHOJhbIwfRwc-91Jmu5cd2Rc40RPky8bWaL5hk9ePlzKcMpgQlPYkZeK7KhCrDKYAPxFZDrqPYeqg"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "name": "Get Lead + Contacts",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        810,
+        300
+      ],
+      "id": "get-lead"
+    },
+    {
+      "parameters": {
+        "jsCode": "// ═══ CLASSIFICAÇÃO UTM V9.0 ═══\n// Busca o contato e o protocolo\nconst lead = $input.item.json;\nconst leadId = $node[\"Parse Lead ID\"].json.lead_id;\nconst contactId = lead._embedded?.contacts?.[0]?.id || null;\n\n// Como a mensagem não está disponível via API,\n// usamos o source_id do lead para classificar\n// source_id 44372 = WhatsApp widget (pode mapear outros no futuro)\n// Para agora: classificar como \"Orgânico\" (padrão do WhatsApp direto)\n// A classificação fina será feita pelo website script (Caminho 2 futuro)\n\nlet protocol = \"DIRETO\";\nlet result = { tag: \"Orgânico\", id: 661750 };\n\nconst map = {\n  \"SITE-ADS\": { tag: \"Lead Google\", id: 661748 },\n  \"GOOGLE-GMB\": { tag: \"Lead GMB\", id: 677211 },\n  \"GOOGLE-ORG\": { tag: \"Lead Google\", id: 677213 },\n  \"FACEBOOK-SOC\": { tag: \"Lead Facebook\", id: 677215 },\n  \"INSTA-BIO\": { tag: \"Lead Instagram\", id: 670780 },\n  \"QR-CODE\": { tag: \"Lead C. Visita\", id: 677217 },\n  \"INDICACAO\": { tag: \"Indicação\", id: 661752 },\n  \"DIRETO\": { tag: \"Orgânico\", id: 661750 }\n};\n\n// Tenta ler a nota mais recente para ver se o protocolo já foi indexado\ntry {\n  const notesResp = await this.helpers.httpRequest({\n    method: 'GET',\n    url: 'https://brisalaser.amocrm.com/api/v4/leads/' + leadId + '/notes?limit=10',\n    headers: { 'Authorization': 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImp0aSI6Ijc3MzliYWExZmVkNTU3ZDIxNGI0ZmQ0YTMwMzQzMjk5ZGIxZjE0MmRmM2FiZWUwZjE5NmY1N2JjNWNhZjdjN2RjMDE5NDliNjRmY2E0YzMxIn0.eyJhdWQiOiJmOWIyMGI3MC1hYjY2LTQ4ODAtOTBiNS03YTdkNTZkOTBjNDAiLCJqdGkiOiI3NzM5YmFhMWZlZDU1N2QyMTRiNGZkNGEzMDM0MzI5OWRiMWYxNDJkZjNhYmVlMGYxOTZmNTdiYzVjYWY3YzdkYzAxOTQ5YjY0ZmNhNGMzMSIsImlhdCI6MTc3MzM2MjAzMCwibmJmIjoxNzczMzYyMDMwLCJleHAiOjE5MjM1MjMyMDAsInN1YiI6IjEzNTE5MDc5IiwiZ3JhbnRfdHlwZSI6IiIsImFjY291bnRfaWQiOjM0ODgwMjYzLCJiYXNlX2RvbWFpbiI6ImtvbW1vLmNvbSIsInZlcnNpb24iOjIsInNjb3BlcyI6WyJwdXNoX25vdGlmaWNhdGlvbnMiLCJmaWxlcyIsImNybSIsImZpbGVzX2RlbGV0ZSIsIm5vdGlmaWNhdGlvbnMiXSwiaGFzaF91dWlkIjoiNjAwMmQ1NTItOTQzOS00MDUxLWE3ZWMtOTQ3ZjY3NDE4NjMwIiwiYXBpX2RvbWFpbiI6ImFwaS1nLmtvbW1vLmNvbSJ9.VbeZU-lBllVqkJ2BkCIdjpnoynvzFzEh1E1zzxFgCxdAWK3gUp8C6rzdlYRKM8MWaIHy79A4iIfSAso-vnYy-0MzzFSAP0v_IbkIQ2xypQnrCn5n1g4XHWWxJr80KnVW1HtkRJO2DqPeLZBkR62V7Cw1-ZQT2N3BiV_0-ejVmDvYeX8NkSkOQOMpayW-YKn_ZgFvnENiSscsKfsBXubV6nJeQqR-ycxZGkNCTwM6MsjmJ-oFxvbCIEBeK0PD8kjrMdX_Di1JVzHOJhbIwfRwc-91Jmu5cd2Rc40RPky8bWaL5hk9ePlzKcMpgQlPYkZeK7KhCrDKYAPxFZDrqPYeqg' },\n    json: true\n  });\n  const notes = notesResp._embedded?.notes || [];\n  for (const note of notes) {\n    const txt = note.params?.text || note.params?.service_message || \"\";\n    const match = txt.match(/\\[Prot: ([^\\]]+)\\]/);\n    if (match) {\n      protocol = match[1];\n      result = map[protocol] || map[\"DIRETO\"];\n      break;\n    }\n  }\n} catch(e) {}\n\nreturn [{\n  json: {\n    lead_id: leadId,\n    contact_id: contactId,\n    target_tag: result.tag,\n    target_field_id: result.id,\n    protocol: protocol\n  }\n}];"
+      },
+      "name": "UTM Logic",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1000,
+        300
+      ],
+      "id": "utm-logic"
+    },
+    {
+      "parameters": {
+        "method": "PATCH",
+        "url": "=https://brisalaser.amocrm.com/api/v4/leads/{{$json.lead_id}}",
+        "authentication": "none",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImp0aSI6Ijc3MzliYWExZmVkNTU3ZDIxNGI0ZmQ0YTMwMzQzMjk5ZGIxZjE0MmRmM2FiZWUwZjE5NmY1N2JjNWNhZjdjN2RjMDE5NDliNjRmY2E0YzMxIn0.eyJhdWQiOiJmOWIyMGI3MC1hYjY2LTQ4ODAtOTBiNS03YTdkNTZkOTBjNDAiLCJqdGkiOiI3NzM5YmFhMWZlZDU1N2QyMTRiNGZkNGEzMDM0MzI5OWRiMWYxNDJkZjNhYmVlMGYxOTZmNTdiYzVjYWY3YzdkYzAxOTQ5YjY0ZmNhNGMzMSIsImlhdCI6MTc3MzM2MjAzMCwibmJmIjoxNzczMzYyMDMwLCJleHAiOjE5MjM1MjMyMDAsInN1YiI6IjEzNTE5MDc5IiwiZ3JhbnRfdHlwZSI6IiIsImFjY291bnRfaWQiOjM0ODgwMjYzLCJiYXNlX2RvbWFpbiI6ImtvbW1vLmNvbSIsInZlcnNpb24iOjIsInNjb3BlcyI6WyJwdXNoX25vdGlmaWNhdGlvbnMiLCJmaWxlcyIsImNybSIsImZpbGVzX2RlbGV0ZSIsIm5vdGlmaWNhdGlvbnMiXSwiaGFzaF91dWlkIjoiNjAwMmQ1NTItOTQzOS00MDUxLWE3ZWMtOTQ3ZjY3NDE4NjMwIiwiYXBpX2RvbWFpbiI6ImFwaS1nLmtvbW1vLmNvbSJ9.VbeZU-lBllVqkJ2BkCIdjpnoynvzFzEh1E1zzxFgCxdAWK3gUp8C6rzdlYRKM8MWaIHy79A4iIfSAso-vnYy-0MzzFSAP0v_IbkIQ2xypQnrCn5n1g4XHWWxJr80KnVW1HtkRJO2DqPeLZBkR62V7Cw1-ZQT2N3BiV_0-ejVmDvYeX8NkSkOQOMpayW-YKn_ZgFvnENiSscsKfsBXubV6nJeQqR-ycxZGkNCTwM6MsjmJ-oFxvbCIEBeK0PD8kjrMdX_Di1JVzHOJhbIwfRwc-91Jmu5cd2Rc40RPky8bWaL5hk9ePlzKcMpgQlPYkZeK7KhCrDKYAPxFZDrqPYeqg"
+            },
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\"tags\": [{\"name\": \"{{$json.target_tag}}\"}]}",
+        "options": {}
+      },
+      "name": "Tag Lead",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        1200,
+        200
+      ],
+      "id": "tag-lead"
+    },
+    {
+      "parameters": {
+        "method": "PATCH",
+        "url": "=https://brisalaser.amocrm.com/api/v4/contacts/{{$node[\"UTM Logic\"].json.contact_id}}",
+        "authentication": "none",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImp0aSI6Ijc3MzliYWExZmVkNTU3ZDIxNGI0ZmQ0YTMwMzQzMjk5ZGIxZjE0MmRmM2FiZWUwZjE5NmY1N2JjNWNhZjdjN2RjMDE5NDliNjRmY2E0YzMxIn0.eyJhdWQiOiJmOWIyMGI3MC1hYjY2LTQ4ODAtOTBiNS03YTdkNTZkOTBjNDAiLCJqdGkiOiI3NzM5YmFhMWZlZDU1N2QyMTRiNGZkNGEzMDM0MzI5OWRiMWYxNDJkZjNhYmVlMGYxOTZmNTdiYzVjYWY3YzdkYzAxOTQ5YjY0ZmNhNGMzMSIsImlhdCI6MTc3MzM2MjAzMCwibmJmIjoxNzczMzYyMDMwLCJleHAiOjE5MjM1MjMyMDAsInN1YiI6IjEzNTE5MDc5IiwiZ3JhbnRfdHlwZSI6IiIsImFjY291bnRfaWQiOjM0ODgwMjYzLCJiYXNlX2RvbWFpbiI6ImtvbW1vLmNvbSIsInZlcnNpb24iOjIsInNjb3BlcyI6WyJwdXNoX25vdGlmaWNhdGlvbnMiLCJmaWxlcyIsImNybSIsImZpbGVzX2RlbGV0ZSIsIm5vdGlmaWNhdGlvbnMiXSwiaGFzaF91dWlkIjoiNjAwMmQ1NTItOTQzOS00MDUxLWE3ZWMtOTQ3ZjY3NDE4NjMwIiwiYXBpX2RvbWFpbiI6ImFwaS1nLmtvbW1vLmNvbSJ9.VbeZU-lBllVqkJ2BkCIdjpnoynvzFzEh1E1zzxFgCxdAWK3gUp8C6rzdlYRKM8MWaIHy79A4iIfSAso-vnYy-0MzzFSAP0v_IbkIQ2xypQnrCn5n1g4XHWWxJr80KnVW1HtkRJO2DqPeLZBkR62V7Cw1-ZQT2N3BiV_0-ejVmDvYeX8NkSkOQOMpayW-YKn_ZgFvnENiSscsKfsBXubV6nJeQqR-ycxZGkNCTwM6MsjmJ-oFxvbCIEBeK0PD8kjrMdX_Di1JVzHOJhbIwfRwc-91Jmu5cd2Rc40RPky8bWaL5hk9ePlzKcMpgQlPYkZeK7KhCrDKYAPxFZDrqPYeqg"
+            },
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\"custom_fields_values\": [{\"field_id\": 793698, \"values\": [{\"enum_id\": {{$node[\"UTM Logic\"].json.target_field_id}} }]}]}",
+        "options": {}
+      },
+      "name": "Set Contact Origin",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        1200,
+        400
+      ],
+      "id": "set-origin"
+    }
+  ],
+  "connections": {
+    "Webhook Kommo": {
+      "main": [
+        [
+          {
+            "node": "Parse Lead ID",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Parse Lead ID": {
+      "main": [
+        [
+          {
+            "node": "Wait 20s",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait 20s": {
+      "main": [
+        [
+          {
+            "node": "Get Lead + Contacts",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Lead + Contacts": {
+      "main": [
+        [
+          {
+            "node": "UTM Logic",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "UTM Logic": {
+      "main": [
+        [
+          {
+            "node": "Tag Lead",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Set Contact Origin",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1"
+  }
+}

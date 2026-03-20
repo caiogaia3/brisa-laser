@@ -1,0 +1,207 @@
+{
+  "name": "Brisa Laser: Auditoria Sheets V6.0 (FINAL)",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "kommo-audit",
+        "options": {}
+      },
+      "id": "webhook-1",
+      "name": "Webhook Kommo",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1,
+      "position": [200, 300]
+    },
+    {
+      "parameters": {
+        "mode": "runOnceForAllItems",
+        "jsCode": "const body = $input.first().json.body || $input.first().json;\nlet leadId = null;\n\nif (body['leads[status][0][id]']) {\n  leadId = body['leads[status][0][id]'];\n} else if (body['leads[add][0][id]']) {\n  leadId = body['leads[add][0][id]'];\n}\nif (!leadId && body.leads) {\n  if (body.leads.status && body.leads.status[0]) leadId = body.leads.status[0].id;\n  else if (body.leads.add && body.leads.add[0]) leadId = body.leads.add[0].id;\n}\nif (!leadId) {\n  for (const key of Object.keys(body)) {\n    if (key.includes('[id]') && body[key]) { leadId = body[key]; break; }\n  }\n}\nif (!leadId) throw new Error('Lead ID não encontrado');\n\nreturn [{ json: { leadId: String(leadId) } }];"
+      },
+      "id": "extract-id",
+      "name": "Extrair Lead ID",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [420, 300]
+    },
+    {
+      "parameters": {
+        "method": "GET",
+        "url": "=https://brisalaser.amocrm.com/api/v4/leads/{{ $json.leadId }}?with=contacts",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImp0aSI6Ijc3MzliYWExZmVkNTU3ZDIxNGI0ZmQ0YTMwMzQzMjk5ZGIxZjE0MmRmM2FiZWUwZjE5NmY1N2JjNWNhZjdjN2RjMDE5NDliNjRmY2E0YzMxIn0.eyJhdWQiOiJmOWIyMGI3MC1hYjY2LTQ4ODAtOTBiNS03YTdkNTZkOTBjNDAiLCJqdGkiOiI3NzM5YmFhMWZlZDU1N2QyMTRiNGZkNGEzMDM0MzI5OWRiMWYxNDJkZjNhYmVlMGYxOTZmNTdiYzVjYWY3YzdkYzAxOTQ5YjY0ZmNhNGMzMSIsImlhdCI6MTc3MzM2MjAzMCwibmJmIjoxNzczMzYyMDMwLCJleHAiOjE5MjM1MjMyMDAsInN1YiI6IjEzNTE5MDc5IiwiZ3JhbnRfdHlwZSI6IiIsImFjY291bnRfaWQiOjM0ODgwMjYzLCJiYXNlX2RvbWFpbiI6ImtvbW1vLmNvbSIsInZlcnNpb24iOjIsInNjb3BlcyI6WyJwdXNoX25vdGlmaWNhdGlvbnMiLCJmaWxlcyIsImNybSIsImZpbGVzX2RlbGV0ZSIsIm5vdGlmaWNhdGlvbnMiXSwiaGFzaF91dWlkIjoiNjAwMmQ1NTItOTQzOS00MDUxLWE3ZWMtOTQ3ZjY3NDE4NjMwIiwiYXBpX2RvbWFpbiI6ImFwaS1nLmtvbW1vLmNvbSJ9.VbeZU-lBllVqkJ2BkCIdjpnoynvzFzEh1E1zzxFgCxdAWK3gUp8C6rzdlYRKM8MWaIHy79A4iIfSAso-vnYy-0MzzFSAP0v_IbkIQ2xypQnrCn5n1g4XHWWxJr80KnVW1HtkRJO2DqPeLZBkR62V7Cw1-ZQT2N3BiV_0-ejVmDvYeX8NkSkOQOMpayW-YKn_ZgFvnENiSscsKfsBXubV6nJeQqR-ycxZGkNCTwM6MsjmJ-oFxvbCIEBeK0PD8kjrMdX_Di1JVzHOJhbIwfRwc-91Jmu5cd2Rc40RPky8bWaL5hk9ePlzKcMpgQlPYkZeK7KhCrDKYAPxFZDrqPYeqg"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "get-lead",
+      "name": "Buscar Lead Kommo",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [640, 300]
+    },
+    {
+      "parameters": {
+        "mode": "runOnceForAllItems",
+        "jsCode": "const lead = $input.first().json;\n\n// === PLATAFORMA (Campo 793698) ===\nlet plataforma = 'Não Classificado';\nconst customFields = lead.custom_fields_values || [];\nconst origemField = customFields.find(f => f.field_id === 793698);\nif (origemField) plataforma = origemField.values[0].value;\n\n// === CONTATO (Nome e Telefone) ===\nconst contato = lead._embedded?.contacts?.[0] || {};\nlet nome = contato.name || lead.name || 'Sem Nome';\nlet telefone = '';\n\n// Tentar buscar contato completo via API para pegar telefone\nconst contactId = contato.id;\nif (contactId) {\n  try {\n    const resp = await this.helpers.httpRequest({\n      method: 'GET',\n      url: 'https://brisalaser.kommo.com/api/v4/contacts/' + contactId,\n      headers: { 'Authorization': 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImp0aSI6Ijc3MzliYWExZmVkNTU3ZDIxNGI0ZmQ0YTMwMzQzMjk5ZGIxZjE0MmRmM2FiZWUwZjE5NmY1N2JjNWNhZjdjN2RjMDE5NDliNjRmY2E0YzMxIn0.eyJhdWQiOiJmOWIyMGI3MC1hYjY2LTQ4ODAtOTBiNS03YTdkNTZkOTBjNDAiLCJqdGkiOiI3NzM5YmFhMWZlZDU1N2QyMTRiNGZkNGEzMDM0MzI5OWRiMWYxNDJkZjNhYmVlMGYxOTZmNTdiYzVjYWY3YzdkYzAxOTQ5YjY0ZmNhNGMzMSIsImlhdCI6MTc3MzM2MjAzMCwibmJmIjoxNzczMzYyMDMwLCJleHAiOjE5MjM1MjMyMDAsInN1YiI6IjEzNTE5MDc5IiwiZ3JhbnRfdHlwZSI6IiIsImFjY291bnRfaWQiOjM0ODgwMjYzLCJiYXNlX2RvbWFpbiI6ImtvbW1vLmNvbSIsInZlcnNpb24iOjIsInNjb3BlcyI6WyJwdXNoX25vdGlmaWNhdGlvbnMiLCJmaWxlcyIsImNybSIsImZpbGVzX2RlbGV0ZSIsIm5vdGlmaWNhdGlvbnMiXSwiaGFzaF91dWlkIjoiNjAwMmQ1NTItOTQzOS00MDUxLWE3ZWMtOTQ3ZjY3NDE4NjMwIiwiYXBpX2RvbWFpbiI6ImFwaS1nLmtvbW1vLmNvbSJ9.VbeZU-lBllVqkJ2BkCIdjpnoynvzFzEh1E1zzxFgCxdAWK3gUp8C6rzdlYRKM8MWaIHy79A4iIfSAso-vnYy-0MzzFSAP0v_IbkIQ2xypQnrCn5n1g4XHWWxJr80KnVW1HtkRJO2DqPeLZBkR62V7Cw1-ZQT2N3BiV_0-ejVmDvYeX8NkSkOQOMpayW-YKn_ZgFvnENiSscsKfsBXubV6nJeQqR-ycxZGkNCTwM6MsjmJ-oFxvbCIEBeK0PD8kjrMdX_Di1JVzHOJhbIwfRwc-91Jmu5cd2Rc40RPky8bWaL5hk9ePlzKcMpgQlPYkZeK7KhCrDKYAPxFZDrqPYeqg' },\n      json: true\n    });\n    nome = resp.name || nome;\n    const cFields = resp.custom_fields_values || [];\n    const phoneField = cFields.find(f => f.field_code === 'PHONE');\n    if (phoneField) {\n      let digits = String(phoneField.values[0].value || '').replace(/\\D/g, '');\n      telefone = digits.replace(/^55/, '');\n    }\n  } catch(e) { /* Se falhar, segue sem telefone */ }\n}\n\n// Se nao achou telefone no contato, tenta no lead\nif (!telefone && lead.custom_fields_values) {\n  const leadPhone = lead.custom_fields_values.find(f => f.field_code === 'PHONE');\n  if (leadPhone) {\n    let digits = String(leadPhone.values[0].value || '').replace(/\\D/g, '');\n    telefone = digits.replace(/^55/, '');\n  }\n}\n\nconst hoje = new Date().toLocaleDateString('pt-BR', { timeZone: 'America/Sao_Paulo' });\nreturn [{ json: { 'Nome do Cliente': nome, 'Telefone': telefone, 'Plataforma': plataforma, 'Data do Primeiro Contato': hoje } }];"
+      },
+      "id": "extract-and-format",
+      "name": "Formatar para Sheets",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [860, 300]
+    },
+    {
+      "parameters": {
+        "operation": "lookup",
+        "documentId": { "__rl": true, "value": "14Lxf4lJoKRFTkzGyDgNYvLzJZlLY7WUZb25YzI1cUQU", "mode": "id" },
+        "sheetName": { "__rl": true, "value": "CAMPANHAS", "mode": "name" },
+        "lookupColumn": "Telefone",
+        "lookupValue": "={{ $json['Telefone'] }}",
+        "options": {}
+      },
+      "id": "lookup-tel",
+      "name": "Lookup Telefone",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.5,
+      "position": [1520, 300],
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "UjCbXnN1VkFY6mjA",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": { "caseSensitive": true, "leftValue": "", "typeValidation": "strict" },
+          "conditions": [
+            { "id": "c1", "leftValue": "={{ $json['Telefone'] }}", "operator": { "type": "string", "operation": "isEmpty", "singleValue": true } }
+          ],
+          "combinator": "and"
+        }
+      },
+      "id": "if-tel",
+      "name": "Telefone Inédito?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [1740, 300]
+    },
+    {
+      "parameters": {
+        "operation": "lookup",
+        "documentId": { "__rl": true, "value": "14Lxf4lJoKRFTkzGyDgNYvLzJZlLY7WUZb25YzI1cUQU", "mode": "id" },
+        "sheetName": { "__rl": true, "value": "CAMPANHAS", "mode": "name" },
+        "lookupColumn": "Nome do Cliente",
+        "lookupValue": "={{ $('Formatar para Sheets').item.json['Nome do Cliente'] }}",
+        "options": {}
+      },
+      "id": "lookup-name",
+      "name": "Lookup Nome (Fallback)",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.5,
+      "position": [1960, 400],
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "UjCbXnN1VkFY6mjA",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "conditions": [
+            { "id": "c2", "leftValue": "={{ $json['Nome do Cliente'] }}", "operator": { "type": "string", "operation": "isEmpty", "singleValue": true } }
+          ]
+        }
+      },
+      "id": "if-name",
+      "name": "Nome Inédito?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [2180, 400]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "conditions": [
+            { "id": "c3", "leftValue": "={{ $json['Telefone'] }}", "operator": { "type": "string", "operation": "isEmpty", "singleValue": true } }
+          ]
+        }
+      },
+      "id": "if-old",
+      "name": "Linha Antiga (Sem Tel)?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [2400, 500]
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "documentId": { "__rl": true, "value": "14Lxf4lJoKRFTkzGyDgNYvLzJZlLY7WUZb25YzI1cUQU", "mode": "id" },
+        "sheetName": { "__rl": true, "value": "CAMPANHAS", "mode": "name" },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Telefone": "={{ $('Formatar para Sheets').item.json['Telefone'] }}",
+            "Data do Primeiro Contato": "={{ $('Formatar para Sheets').item.json['Data do Primeiro Contato'] }}"
+          },
+          "matchingColumns": ["Nome do Cliente"]
+        },
+        "options": {}
+      },
+      "id": "update-old",
+      "name": "Atualizar Lead Antigo",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.5,
+      "position": [2620, 600],
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "UjCbXnN1VkFY6mjA",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": { "__rl": true, "value": "14Lxf4lJoKRFTkzGyDgNYvLzJZlLY7WUZb25YzI1cUQU", "mode": "id" },
+        "sheetName": { "__rl": true, "value": "CAMPANHAS", "mode": "name" },
+        "columns": { "mappingMode": "autoMapInputData" },
+        "options": {}
+      },
+      "id": "append-new",
+      "name": "Lançar Novo Lead",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.5,
+      "position": [2620, 300],
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "UjCbXnN1VkFY6mjA",
+          "name": "Google Sheets account"
+        }
+      }
+    }
+  ],
+  "connections": {
+    "Webhook Kommo": { "main": [[{ "node": "Extrair Lead ID", "type": "main", "index": 0 }]] },
+    "Extrair Lead ID": { "main": [[{ "node": "Buscar Lead Kommo", "type": "main", "index": 0 }]] },
+    "Buscar Lead Kommo": { "main": [[{ "node": "Formatar para Sheets", "type": "main", "index": 0 }]] },
+    "Formatar para Sheets": { "main": [[{ "node": "Lookup Telefone", "type": "main", "index": 0 }]] },
+    "Lookup Telefone": { "main": [[{ "node": "Telefone Inédito?", "type": "main", "index": 0 }]] },
+    "Telefone Inédito?": { "main": [[{ "node": "Lookup Nome (Fallback)", "type": "main", "index": 0 }], []] },
+    "Lookup Nome (Fallback)": { "main": [[{ "node": "Nome Inédito?", "type": "main", "index": 0 }]] },
+    "Nome Inédito?": { "main": [[{ "node": "Lançar Novo Lead", "type": "main", "index": 0 }], [{ "node": "Linha Antiga (Sem Tel)?", "type": "main", "index": 0 }]] },
+    "Linha Antiga (Sem Tel)?": { "main": [[{ "node": "Atualizar Lead Antigo", "type": "main", "index": 0 }], [{ "node": "Lançar Novo Lead", "type": "main", "index": 0 }]] }
+  },
+  "settings": {
+    "executionOrder": "v1"
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "strict": true,
+    "outDir": "./dist",
+    "rootDir": ".",
+    "declaration": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "resolveJsonModule": true
+  },
+  "include": [
+    "jarvis_orchestrator.ts",
+    "zandu-api.ts"
+  ],
+  "exclude": [
+    "node_modules",
+    "dist",
+    "Kommo-MCP",
+    "Zandu-MCP",
+    "n8n-mcp"
+  ]
+}

@@ -1,21 +1,22 @@
 :root {
-  --color-bg: #0a0a0f;
-  --color-surface: #12121a;
-  --color-surface-hover: #1a1a24;
-  --color-glass: rgba(255, 255, 255, 0.04);
+  --color-bg: #015870; /* Brisa Dark Blue Master */
+  --color-surface: rgba(1, 88, 112, 0.4); /* Translucent surface */
+  --color-surface-hover: rgba(1, 88, 112, 0.6);
+  --color-glass: rgba(255, 255, 255, 0.03);
   --color-glass-border: rgba(255, 255, 255, 0.08);
   
-  --color-primary: #3b82f6; /* Azul premium Brisa */
-  --color-primary-hover: #2563eb;
-  --color-primary-light: rgba(59, 130, 246, 0.15);
+  --color-primary: #dc962c; /* Brisa Gold */
+  --color-primary-hover: #d5ac43;
+  --color-primary-light: rgba(220, 150, 44, 0.15);
   
-  --color-accent: #06b6d4;
+  --color-accent: #c7e7f2; /* Brisa Light Blue */
   --color-success: #10b981;
   --color-danger: #ef4444;
   --color-warning: #f59e0b;
   
-  --text-main: #f8fafc;
-  --text-muted: #94a3b8;
+  --text-main: #ffffff; /* SVG Pure White / Off-white */
+  --text-muted: #c7e7f2; /* Brisa Light Blue for muted text */
+  --text-offwhite: #f0e5dc;
   
   --font-family: 'Inter', system-ui, -apple-system, sans-serif;
   --radius: 12px;
@@ -23,7 +24,7 @@
   --radius-full: 9999px;
   --shadow-sm: 0 1px 2px rgba(0,0,0,0.5);
   --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.5), 0 2px 4px -2px rgba(0,0,0,0.5);
-  --shadow-glow: 0 0 15px rgba(59, 130, 246, 0.3);
+  --shadow-glow: 0 0 20px rgba(1, 88, 112, 0.5);
 }
 
 * {

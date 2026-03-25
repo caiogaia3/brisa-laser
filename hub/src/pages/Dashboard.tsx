@@ -23,7 +23,7 @@ export const Dashboard = () => {
           </div>
         ) : (
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '24px' }}>
-            {kpis.slice(0, 4).map((kpi, index) => (
+            {kpis.map((kpi, index) => (
               <KPICard key={index} {...kpi} />
             ))}
           </div>

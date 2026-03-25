@@ -1,30 +1,28 @@
-import { useState, useMemo, useEffect } from 'react';
+import { useMemo } from 'react';
 import { RevenueChart } from '../components/Charts/RevenueChart';
 import { DRETable } from '../components/Tables/DRETable';
 import { KPICard } from '../components/Cards/KPICard';
 import { useKPIs } from '../hooks/useKPIs';
 import { useDRE } from '../hooks/useDRE';
+import { usePeriodStore } from '../store/usePeriodStore';
+import { LancamentoForm } from '../components/Financeiro/LancamentoForm';
 
 export const Financeiro = () => {
   const { data: historyData } = useKPIs();
-  const [selectedMonth, setSelectedMonth] = useState<string>('');
+  const { month, year } = usePeriodStore();
   
-  const { loading, dreData, availableMonths } = useDRE(selectedMonth);
+  // Convert standard month/year to YYYY-MM
+  const periodString = `${year}-${String(month + 1).padStart(2, '0')}`;
+  
+  const { loading, dreData } = useDRE(periodString);
 
-  // Definir mês inicial se não houver um selecionado e tivermos meses disponíveis
-  useEffect(() => {
-    if (!selectedMonth && availableMonths.length > 0) {
-      setSelectedMonth(availableMonths[0]);
-    }
-  }, [availableMonths, selectedMonth]);
-
-  // Converter historyData para Array se necessário para o gráfico
+  // Convert historyData to Array if needed
   const chartData = useMemo(() => {
     if (!historyData) return [];
     return Array.isArray(historyData) ? historyData : [historyData];
   }, [historyData]);
 
-  // Calcular KPIs dinamicamente da DRE
+  // Transform DRE data for KPIs dynamically
   const kpis = useMemo(() => {
     const faturamentoRow = dreData.find(d => d.line_label.toLowerCase().includes('receita bruta'));
     const faturamento = faturamentoRow ? faturamentoRow.amount : 0;
@@ -43,34 +41,13 @@ export const Financeiro = () => {
 
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '32px' }}>
-      <header style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
-        <div>
-          <h1 style={{ marginBottom: '8px' }}>Financeiro & DRE</h1>
-          <p>Acompanhamento de receita, custos detalhados e Demonstração do Resultado do Exercício.</p>
-        </div>
-        
-        <div className="glass-panel" style={{ padding: '8px 16px', display: 'flex', alignItems: 'center', gap: '12px' }}>
-          <span style={{ fontSize: '0.875rem', fontWeight: 500, color: 'var(--text-secondary)' }}>Período:</span>
-          <select 
-            value={selectedMonth} 
-            onChange={(e) => setSelectedMonth(e.target.value)}
-            style={{ 
-              background: 'transparent', 
-              border: 'none', 
-              color: 'white', 
-              fontWeight: 600,
-              outline: 'none',
-              cursor: 'pointer'
-            }}
-          >
-            {availableMonths.map(m => (
-              <option key={m} value={m} style={{ background: '#1a1a1a' }}>
-                {new Date(m + 'T00:00:00').toLocaleDateString('pt-BR', { month: 'long', year: 'numeric' })}
-              </option>
-            ))}
-          </select>
-        </div>
+      <header>
+        <h1 style={{ marginBottom: '8px' }}>Controle Financeiro & DRE</h1>
+        <p>Lançamentos diários e fluxo contábil mensal (conectado ao seletor superior).</p>
       </header>
+
+      {/* NOVO: Formulário de Lançamento Tático */}
+      <LancamentoForm />
 
       <section style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '24px' }}>
         <KPICard 
@@ -103,23 +80,23 @@ export const Financeiro = () => {
         />
       </section>
 
-      <section className="glass-panel" style={{ padding: '24px' }}>
-        <h3 style={{ marginBottom: '24px' }}>Evolução Mensal (Histórico BI)</h3>
-        <div style={{ height: '400px' }}>
-          <RevenueChart data={chartData} />
-        </div>
-      </section>
+      <div style={{ display: 'grid', gridTemplateColumns: 'minmax(0, 1fr) minmax(0, 1fr)', gap: '24px' }}>
+        <section className="glass-panel" style={{ padding: '24px' }}>
+          <h3 style={{ marginBottom: '24px' }}>Evolução Mensal</h3>
+          <div style={{ height: '400px' }}>
+            {historyData ? <RevenueChart data={chartData} /> : <p>Carregando histórico...</p>}
+          </div>
+        </section>
 
-      <section className="glass-panel" style={{ padding: '24px' }}>
-        <h3 style={{ marginBottom: '24px' }}>Demonstrativo do Resultado (DRE)</h3>
-        {loading ? (
-          <div style={{ padding: '40px', textAlign: 'center', color: 'var(--text-secondary)' }}>Carregando dados reais...</div>
-        ) : (
-          <DRETable data={dreData} />
-        )}
-      </section>
+        <section className="glass-panel" style={{ padding: '24px' }}>
+          <h3 style={{ marginBottom: '24px' }}>DRE Resumido ({periodString})</h3>
+          {loading ? (
+            <div style={{ padding: '40px', textAlign: 'center', color: 'var(--text-muted)' }}>Mapeando contas de {periodString}...</div>
+          ) : (
+            <DRETable data={dreData} />
+          )}
+        </section>
+      </div>
     </div>
   );
 };
-
-

@@ -1,5 +1,5 @@
-
 import { Search, Bell, Sparkles } from 'lucide-react';
+import { PeriodSelector } from '../Navigation/PeriodSelector';
 
 export const Header = ({ onOpenChat }: { onOpenChat?: () => void }) => {
   return (
@@ -15,7 +15,9 @@ export const Header = ({ onOpenChat }: { onOpenChat?: () => void }) => {
       top: 0,
       zIndex: 10
     }}>
-      <div style={{ display: 'flex', alignItems: 'center', gap: '16px', flex: 1 }}>
+      <div style={{ display: 'flex', alignItems: 'center', gap: '24px', flex: 1 }}>
+        <PeriodSelector />
+        
         <div className="glass-panel" style={{ 
           display: 'flex', alignItems: 'center', gap: '12px', 
           padding: '8px 16px', width: '320px', borderRadius: 'var(--radius-full)'
@@ -23,7 +25,7 @@ export const Header = ({ onOpenChat }: { onOpenChat?: () => void }) => {
           <Search size={18} color="var(--text-muted)" />
           <input 
             type="text" 
-            placeholder="Pergunte ao Jarvis... (Cmd+K)" 
+            placeholder="Pergunte ao Jarvis CFO... (Cmd+K)" 
             style={{ 
               background: 'transparent', border: 'none', color: 'var(--text-main)', 
               outline: 'none', width: '100%', fontSize: '0.875rem' 

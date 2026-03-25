@@ -2,18 +2,17 @@ export interface ViewMasterBI {
   period_month: string;
   store_id: string;
   receita_total: number;
-  custo_total: number;
-  lucro: number;
   ebitda: number;
+  lucro_liquido: number;
+  investimento_mkt_real: number;
   leads_gerados: number;
   agendamentos: number;
   comparecimentos: number;
-  vendas_pdv: number;
-  margem_lucro: number | null;
-  taxa_agendamento: number | null;
-  taxa_comparecimento: number | null;
-  taxa_conversao_pdv: number | null;
-  ticket_medio: number | null;
+  taxa_comparecimento: number;
+  custo_por_lead: number;
+  roas: number;
+  sessoes_site: number;
+  conversoes_site: number;
 }
 
 export interface FinDRE {

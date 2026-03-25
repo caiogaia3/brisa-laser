@@ -9,12 +9,12 @@ interface RevenueChartProps {
 
 export const RevenueChart = ({ data }: RevenueChartProps) => {
   // Mock data for design if no database records
-  const chartData = data.length > 0 ? data : [
-    { period_month: 'Out 2025', receita_total: 110000, custo_total: 80000 },
-    { period_month: 'Nov 2025', receita_total: 125000, custo_total: 82000 },
-    { period_month: 'Dez 2025', receita_total: 160000, custo_total: 95000 },
-    { period_month: 'Jan 2026', receita_total: 135000, custo_total: 85000 },
-    { period_month: 'Fev 2026', receita_total: 142500, custo_total: 85200 },
+  const chartData: any[] = data.length > 0 ? data : [
+    { period_month: 'Out 2025', receita_total: 110000, investimento_mkt_real: 12000 },
+    { period_month: 'Nov 2025', receita_total: 125000, investimento_mkt_real: 14000 },
+    { period_month: 'Dez 2025', receita_total: 160000, investimento_mkt_real: 18000 },
+    { period_month: 'Jan 2026', receita_total: 135000, investimento_mkt_real: 15000 },
+    { period_month: 'Fev 2026', receita_total: 142500, investimento_mkt_real: 16000 },
   ];
 
   return (
@@ -45,7 +45,7 @@ export const RevenueChart = ({ data }: RevenueChartProps) => {
             formatter={(value: any) => [`R$ ${Number(value).toLocaleString('pt-BR')}`, '']}
           />
           <Area type="monotone" name="Receita" dataKey="receita_total" stroke="var(--color-success)" fillOpacity={1} fill="url(#colorReceita)" strokeWidth={2} />
-          <Area type="monotone" name="Custos" dataKey="custo_total" stroke="var(--color-danger)" fillOpacity={1} fill="url(#colorCusto)" strokeWidth={2} />
+          <Area type="monotone" name="Investimento MKT" dataKey="investimento_mkt_real" stroke="var(--color-danger)" fillOpacity={1} fill="url(#colorCusto)" strokeWidth={2} />
         </AreaChart>
       </ResponsiveContainer>
     </div>

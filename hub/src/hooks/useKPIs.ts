@@ -1,22 +1,25 @@
 import { useState, useEffect } from 'react';
 import { supabase } from '../lib/supabase';
-import type { ViewMasterBI, KPI } from '../lib/types';
+import type { KPI } from '../lib/types';
+import { usePeriodStore } from '../store/usePeriodStore';
 
 export function useKPIs() {
   const [loading, setLoading] = useState(true);
-  const [data, setData] = useState<ViewMasterBI | null>(null);
+  const [data, setData] = useState<any | null>(null);
   const [kpis, setKpis] = useState<KPI[]>([]);
+  const { month, year } = usePeriodStore();
 
   useEffect(() => {
     async function fetchKPIs() {
       try {
         setLoading(true);
-        // Busca do Supabase View Master BI (último mês com dados)
-        const { data, error } = await supabase
-          .from('vw_brisa_master_bi')
+        const periodString = `${year}-${String(month + 1).padStart(2, '0')}-01`;
+
+        // Busca do Supabase View DRE Executiva
+        const { data: dreData, error } = await supabase
+          .from('vw_kpis_executivos')
           .select('*')
-          .order('period_month', { ascending: false })
-          .limit(1)
+          .eq('mes', periodString)
           .single();
 
         if (error && error.code !== 'PGRST116') {
@@ -24,50 +27,73 @@ export function useKPIs() {
           throw error;
         }
 
-        // Se não existir dados reais ainda (banco zerado ou falha no RLS anon), usamos mock de alta qualidade para design
-        if (!data || error) {
-          console.warn("Sem dados reais, exibindo mock");
+        if (!dreData) {
+          // Zeroed state if no data for the month
           setKpis([
-            { title: 'Receita Total', value: '142.500', change: 12.5, prefix: 'R$', trend: 'up' },
-            { title: 'Lucro Líquido', value: '38.400', change: 8.2, prefix: 'R$', trend: 'up' },
-            { title: 'Custos Totais', value: '85.200', change: -2.4, prefix: 'R$', trend: 'down' },
-            { title: 'Total Leads (Mês)', value: '894', change: 15.3, trend: 'up' },
-            { title: 'Agendamentos', value: '256', change: 5.1, trend: 'up' },
-            { title: 'Taxa Comparecimento', value: '62.5', change: 0, suffix: '%', trend: 'neutral' },
+            { title: 'Receita Bruta', value: '0', change: 0, prefix: 'R$', trend: 'neutral' },
+            { title: 'Margem de Contribuição', value: '0', change: 0, prefix: 'R$', trend: 'neutral' },
+            { title: 'Despesas Totais', value: '0', change: 0, prefix: 'R$', trend: 'neutral' },
+            { title: 'Despesas Fixas', value: '0', change: 0, prefix: 'R$', trend: 'neutral' },
+            { title: 'EBITDA (LAJIDA)', value: '0', change: 0, prefix: 'R$', trend: 'neutral' },
+            { title: 'Lucro Líquido Final', value: '0', change: 0, prefix: 'R$', trend: 'neutral' },
+            { title: 'Ponto Equilíbrio (Break-even)', value: '0', change: 0, prefix: 'R$', trend: 'neutral' },
           ]);
+          setData(null);
           setLoading(false);
           return;
         }
 
-        setData(data as ViewMasterBI);
+        setData(dreData);
         
-        // Setup dinâmico real baseado no retorno
+        // Setup dinâmico real baseado no retorno da View
         const formattedKPIs: KPI[] = [
           { 
-            title: 'Receita Total (Mês)', 
-            value: (data.receita_total || 0).toLocaleString('pt-BR'), 
-            change: 0, // Precisaria da comparação com mês passado 
+            title: 'Receita Bruta', 
+            value: (dreData.receita_bruta || 0).toLocaleString('pt-BR'), 
+            change: 0,
+            prefix: 'R$', 
+            trend: (dreData.receita_bruta || 0) > 0 ? 'up' : 'neutral' 
+          },
+          { 
+            title: 'Margem de Contribuição', 
+            value: (dreData.margem_contribuicao || 0).toLocaleString('pt-BR'), 
+            change: 0, 
+            prefix: 'R$', 
+            trend: (dreData.margem_contribuicao || 0) > 0 ? 'up' : 'down' 
+          },
+          { 
+            title: 'Despesas Totais', 
+            value: (dreData.despesas_totais || 0).toLocaleString('pt-BR'), 
+            change: 0, 
+            prefix: 'R$', 
+            trend: 'down' 
+          },
+          { 
+            title: 'Despesas Fixas', 
+            value: (dreData.despesas_fixas || 0).toLocaleString('pt-BR'), 
+            change: 0, 
             prefix: 'R$', 
             trend: 'neutral' 
           },
           { 
-            title: 'EBITDA', 
-            value: (data.ebitda || 0).toLocaleString('pt-BR'), 
+            title: 'EBITDA (LAJIDA)', 
+            value: (dreData.ebitda || 0).toLocaleString('pt-BR'), 
             change: 0, 
             prefix: 'R$', 
-            trend: 'neutral' 
+            trend: (dreData.ebitda || 0) > 0 ? 'up' : 'down' 
           },
           { 
-            title: 'Leads Gerados', 
-            value: data.leads_gerados || 0, 
+            title: 'Lucro Líquido Final', 
+            value: (dreData.lucro_liquido || 0).toLocaleString('pt-BR'), 
             change: 0, 
-            trend: 'neutral' 
+            prefix: 'R$', 
+            trend: (dreData.lucro_liquido || 0) > 0 ? 'up' : 'down' 
           },
           { 
-            title: 'Taxa Comparecimento', 
-            value: ((data.taxa_comparecimento || 0) * 100).toFixed(1), 
+            title: 'Break-even (Ponto Mágico)', 
+            value: (dreData.breakeven || 0).toLocaleString('pt-BR'), 
             change: 0, 
-            suffix: '%', 
+            prefix: 'R$', 
             trend: 'neutral' 
           },
         ];
@@ -81,7 +107,7 @@ export function useKPIs() {
     }
 
     fetchKPIs();
-  }, []);
+  }, [month, year]);
 
   return { loading, data, kpis };
 }

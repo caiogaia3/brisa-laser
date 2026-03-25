@@ -7,7 +7,10 @@
     "build": "tsc",
     "health": "npx tsx jarvis_orchestrator.ts health",
     "discover": "npx tsx jarvis_orchestrator.ts discover",
-    "genesis": "npx tsx jarvis_orchestrator.ts genesis"
+    "genesis": "npx tsx jarvis_orchestrator.ts genesis",
+    "sync:dre": "npx tsx scripts/sync_dre.ts",
+    "sync:leads": "npx tsx scripts/sync_leads.ts",
+    "backfill": "npx tsx scripts/backfill_dashboard.ts"
   },
   "dependencies": {
     "axios": "^1.6.0",

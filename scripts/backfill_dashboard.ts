@@ -11,8 +11,8 @@ const zandu = new ZanduAPI({
 });
 
 // Configurações Supabase
-const SUPABASE_URL = 'https://nrvazcesqvuqtlunqtnw.supabase.co/rest/v1';
-const SUPABASE_KEY = 'sb_publishable_KOMRCO0RBEMJndWtzMXdnA_7JpjjEbh';
+const SUPABASE_URL = process.env.SUPABASE_URL || 'https://nrvazcesqvuqtlunqtnw.supabase.co/rest/v1';
+const SUPABASE_KEY = process.env.SUPABASE_KEY || '';
 
 async function pushToSupabase(table: string, data: any[]) {
     if (data.length === 0) return;

@@ -1,9 +1,10 @@
 const fs = require('fs');
 const axios = require('axios');
+require('dotenv').config();
 
 // Configurações Supabase
-const SUPABASE_URL = 'https://nrvazcesqvuqtlunqtnw.supabase.co/rest/v1';
-const SUPABASE_KEY = 'sb_publishable_KOMRCO0RBEMJndWtzMXdnA_7JpjjEbh';
+const SUPABASE_URL = process.env.SUPABASE_URL || 'https://nrvazcesqvuqtlunqtnw.supabase.co/rest/v1';
+const SUPABASE_KEY = process.env.SUPABASE_KEY || '';
 
 function normalizePhone(phone) {
     return phone.replace(/\D/g, '').slice(-8); // Compara os últimos 8 dígitos para evitar erros de 55/DDD

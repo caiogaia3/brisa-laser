@@ -2,12 +2,12 @@ const axios = require('axios');
 require('dotenv').config();
 
 // Configurações Zandu
-const ZANDU_API_KEY = '45c5cd8d-1aab-4f86-a231-aef1e93f91bf';
-const ZANDU_API_URL = 'https://api.zandu.com.br';
+const ZANDU_API_KEY = process.env.ZANDU_API_KEY || '';
+const ZANDU_API_URL = process.env.ZANDU_API_URL || 'https://api.zandu.com.br';
 
 // Configurações Supabase
-const SUPABASE_URL = 'https://nrvazcesqvuqtlunqtnw.supabase.co/rest/v1';
-const SUPABASE_KEY = 'sb_publishable_KOMRCO0RBEMJndWtzMXdnA_7JpjjEbh';
+const SUPABASE_URL = process.env.SUPABASE_URL || 'https://nrvazcesqvuqtlunqtnw.supabase.co/rest/v1';
+const SUPABASE_KEY = process.env.SUPABASE_KEY || '';
 
 async function pushToSupabase(table, data) {
     if (data.length === 0) return;

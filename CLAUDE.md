@@ -3,8 +3,9 @@
 Este arquivo é a bússola do projeto. Ele contém o estado atual, a arquitetura e os comandos necessários para manter a Brisa Laser operando em alta performance.
 
 ## 📍 Estado Atual (Março 2026)
-- **Fase**: Automação de Dados & BI (Fase 3). Dashboard Mestre SSOT em construção.
-- **Sub-fase**: Implementação BI — Plano completo em `PLANO_BI_DASHBOARD.md`
+- **Fase**: Automação de Dados & BI (Fase 3). Dashboard Mestre SSOT e Hub Operacionais.
+- **Sub-fase**: Refinamento de UI e BI Conversacional.
+- **Brisa Intelligence Hub**: AO VIVO via Vercel (https://brisa-laser-git-main-caio-gaias-projects.vercel.app/).
 - **Workflows Ativos (RE-AUTORIZADOS)**:
   - `I4zsFxPBCBjxYbQv`: O Arquivista Master (Integrado) 🏛️
   - `KT0EQr8ocoBKuKEq`: Sistema Zandu Master (Unificado & Enriquecido) ✅
@@ -110,6 +111,9 @@ Este arquivo é a bússola do projeto. Ele contém o estado atual, a arquitetura
 | `jarvis_orchestrator.ts` | Orquestrador Kommo ↔ Zandu |
 | `zandu-api.ts` | Wrapper da API Zandu |
 | `package.json` | Scripts: health, discover, genesis, sync:dre, sync:leads, backfill |
+| `hub/` | Aplicação Web React (Dashboard + Jarvis) |
+| `supabase/functions/chat/` | Backend do Copilot (Roteador LLM Híbrido) |
+| `hub/vercel.json` | Configuração de SPA Routing |
 
 ### scripts/
 | Arquivo | Propósito |

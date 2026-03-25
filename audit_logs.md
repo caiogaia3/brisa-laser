@@ -35,9 +35,13 @@ Este arquivo registra as interações estratégicas e decisões tomadas pelos ag
 | 12:40 | Jarvis | Unificação Zandu | Sucesso ✅ | Criado endpoint único `/zandu-webhook` (POST) com roteamento via `lastEvent`. |
 | 13:10 | Jarvis | Enriquecimento Zandu | Sucesso ✅ | Adicionado nó "Buscar Pessoa" para recuperar telefone via API Zandu automaticamente. |
 | 13:30 | Jarvis | Fix ISA IA | Sucesso ✅ | Corrigida autenticação (headers) na tool de contexto da ISA. |
+| 16:30 | Jarvis | Brisa Hub (DRE) | Sucesso ✅ | Implementada DRE Real com 17 meses de histórico e seletor de mês. |
+| 16:40 | Jarvis | IA Router (Jarvis) | Sucesso ✅ | Criado roteador Gemini/OpenAI para garantir resiliência 24/7. |
+| 16:45 | Jarvis | Deploy Vercel SPA | Sucesso ✅ | Adicionado vercel.json para consertar erro 404 em rotas diretas. |
 
 ---
 
 ## 🛡️ Notas de Auditoria
-- **Humanização**: Todas as mensagens geradas via `ask_kommo` hoje mantiveram o tom consultivo.
-- **Segurança**: Chaves API validadas nos MCPs locais.
+- **IA Fallback**: Configurado para tentar Gemini e cair para OpenAI caso haja erro de quota ou recusa de conteúdo.
+- **Deduplicação Leads**: O sync de marketing agora gera IDs determinísticos para leads sem telefone.
+- **Segurança**: Chaves API validadas nos MCPs locais e configuradas nos Secrets do Supabase.

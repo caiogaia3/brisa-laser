@@ -22,8 +22,9 @@ export const DRETable = ({ matrixData, months }: DRETableProps) => {
   return (
     <div style={{ 
       width: '100%',
+      maxWidth: '100%', 
       overflowX: 'auto', 
-      maxHeight: '70vh', 
+      maxHeight: 'calc(100vh - 280px)', 
       border: '1px solid var(--color-glass-border)', 
       borderRadius: '8px',
       backgroundColor: 'var(--color-bg)',
@@ -32,11 +33,11 @@ export const DRETable = ({ matrixData, months }: DRETableProps) => {
       <table style={{ 
         width: 'max-content',
         minWidth: '100%',
-        borderCollapse: 'separate', 
+        borderCollapse: 'separate', /* Critical for sticky first column borders */
         borderSpacing: 0,
-        fontSize: '0.75rem', /* Decreased font size as requested */
+        fontSize: '0.75rem',
       }}>
-        <thead style={{ position: 'sticky', top: 0, zIndex: 20 }}>
+        <thead style={{ position: 'sticky', top: 0, zIndex: 40 }}>
           <tr>
             <th style={{ 
               padding: '10px 16px', 
@@ -46,9 +47,9 @@ export const DRETable = ({ matrixData, months }: DRETableProps) => {
               position: 'sticky', 
               left: 0, 
               backgroundColor: 'var(--color-surface)', 
-              zIndex: 30, 
-              borderRight: '1px solid var(--color-glass-border)',
-              borderBottom: '1px solid var(--color-glass-border)',
+              zIndex: 50, 
+              borderRight: '2px solid var(--color-glass-border)',
+              borderBottom: '2px solid var(--color-glass-border)',
               minWidth: '280px'
             }}>
               Conta / Descrição Detalhada
@@ -60,7 +61,7 @@ export const DRETable = ({ matrixData, months }: DRETableProps) => {
                 fontWeight: 700, 
                 color: 'var(--text-main)', 
                 backgroundColor: 'var(--color-surface)',
-                borderBottom: '1px solid var(--color-glass-border)',
+                borderBottom: '2px solid var(--color-glass-border)',
                 borderRight: '1px solid rgba(255,255,255,0.05)',
                 minWidth: '100px'
               }}>
@@ -88,7 +89,7 @@ export const DRETable = ({ matrixData, months }: DRETableProps) => {
                   position: 'sticky', 
                   left: 0, 
                   backgroundColor: subtotal || header ? '#12121a' : 'var(--color-bg)', 
-                  zIndex: 10, 
+                  zIndex: 20, 
                   borderRight: '2px solid var(--color-glass-border)',
                   borderBottom: '1px solid rgba(255,255,255,0.05)',
                   color: subtotal || header ? 'var(--color-primary)' : 'var(--text-main)',
@@ -125,4 +126,3 @@ export const DRETable = ({ matrixData, months }: DRETableProps) => {
     </div>
   );
 };
-

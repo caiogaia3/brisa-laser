@@ -112,22 +112,38 @@ export const Sidebar = () => {
           <h3 style={{ fontSize: '0.875rem', textTransform: 'uppercase', letterSpacing: '0.05em', color: 'var(--text-muted)' }}>Módulo Financeiro</h3>
         </div>
         <nav style={{ padding: '12px', display: 'flex', flexDirection: 'column', gap: '4px', minWidth: '220px' }}>
-          <a href="#kpis" style={{
+          <NavLink to="/financeiro" end style={({ isActive }) => ({
             display: 'flex', alignItems: 'center', gap: '12px',
             padding: '10px 12px', borderRadius: '8px',
-            textDecoration: 'none', color: 'var(--text-main)',
-            fontSize: '0.875rem', transition: 'background 0.2s'
-          }} className="hover:bg-white/5">
-            <BarChart2 size={16} color="var(--color-primary)" /> Visão Executiva
-          </a>
-          <a href="#dre" style={{
+            textDecoration: 'none', color: isActive ? 'var(--color-primary)' : 'var(--text-main)',
+            backgroundColor: isActive ? 'rgba(59, 130, 246, 0.1)' : 'transparent',
+            fontSize: '0.875rem', transition: 'all 0.2s',
+            fontWeight: isActive ? 600 : 400
+          })} className="hover:bg-white/5">
+            <BarChart2 size={16} /> Visão Executiva
+          </NavLink>
+          
+          <NavLink to="/financeiro/lancamento" style={({ isActive }) => ({
             display: 'flex', alignItems: 'center', gap: '12px',
             padding: '10px 12px', borderRadius: '8px',
-            textDecoration: 'none', color: 'var(--text-main)',
-            fontSize: '0.875rem', transition: 'background 0.2s'
-          }} className="hover:bg-white/5">
-            <FileText size={16} color="var(--color-accent)" /> Visão Contábil (DRE)
-          </a>
+            textDecoration: 'none', color: isActive ? 'var(--color-primary)' : 'var(--text-main)',
+            backgroundColor: isActive ? 'rgba(59, 130, 246, 0.1)' : 'transparent',
+            fontSize: '0.875rem', transition: 'all 0.2s',
+            fontWeight: isActive ? 600 : 400
+          })} className="hover:bg-white/5">
+            <Settings size={16} /> Tático (Lançamentos)
+          </NavLink>
+
+          <NavLink to="/financeiro/dre" style={({ isActive }) => ({
+            display: 'flex', alignItems: 'center', gap: '12px',
+            padding: '10px 12px', borderRadius: '8px',
+            textDecoration: 'none', color: isActive ? 'var(--color-accent)' : 'var(--text-main)',
+            backgroundColor: isActive ? 'rgba(16, 185, 129, 0.1)' : 'transparent',
+            fontSize: '0.875rem', transition: 'all 0.2s',
+            fontWeight: isActive ? 600 : 400
+          })} className="hover:bg-white/5">
+            <FileText size={16} /> Visão Contábil (DRE)
+          </NavLink>
         </nav>
       </aside>
     </>

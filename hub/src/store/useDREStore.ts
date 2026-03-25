@@ -20,7 +20,7 @@ interface DREState {
   subcategorias: Subcategoria[];
   isLoading: boolean;
   fetchCatalog: () => Promise<void>;
-  suggestCategory: (query: string) => { cat?: Categoria; sub?: Subcategoria } | null;
+  suggestCategory: (query: string) => { cat?: Categoria; sub?: Subcategoria; tipo?: string } | null;
 }
 
 export const useDREStore = create<DREState>((set, get) => ({
@@ -50,24 +50,27 @@ export const useDREStore = create<DREState>((set, get) => ({
 
   suggestCategory: (query: string) => {
     const { categorias, subcategorias } = get();
-    if (!query || query.length < 3) return null;
+    if (!query || query.length < 2) return null;
 
-    // Fuzzy search in subcategories first
-    const fuseSubs = new Fuse(subcategorias, { keys: ['nome'], threshold: 0.4 });
-    const subResult = fuseSubs.search(query);
+    const normalizedQuery = query.toLowerCase();
+
+    // 1. Search in subcategories (The "Codau" case)
+    const fuseSubs = new Fuse(subcategorias, { keys: ['nome'], threshold: 0.3 });
+    const subResult = fuseSubs.search(normalizedQuery);
 
     if (subResult.length > 0) {
       const sub = subResult[0].item;
       const cat = categorias.find(c => c.id === sub.categoria_id);
-      return { cat, sub };
+      return { cat, sub, tipo: cat?.tipo || 'saida' };
     }
 
-    // Fallback to fuzzy search in categories
-    const fuseCats = new Fuse(categorias, { keys: ['nome'], threshold: 0.4 });
-    const catResult = fuseCats.search(query);
+    // 2. Search in categories
+    const fuseCats = new Fuse(categorias, { keys: ['nome'], threshold: 0.3 });
+    const catResult = fuseCats.search(normalizedQuery);
     
     if (catResult.length > 0) {
-      return { cat: catResult[0].item, sub: undefined };
+      const cat = catResult[0].item;
+      return { cat, sub: undefined, tipo: cat.tipo };
     }
 
     return null;

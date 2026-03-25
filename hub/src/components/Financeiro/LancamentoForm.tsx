@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { useDREStore } from '../../store/useDREStore';
 import { usePeriodStore } from '../../store/usePeriodStore';
 import { supabase } from '../../lib/supabase';
-import { Save, Info, PlusCircle } from 'lucide-react';
+import { Save, PlusCircle } from 'lucide-react';
 
 export const LancamentoForm = ({ onSaved }: { onSaved?: () => void }) => {
   const { month, year } = usePeriodStore();
@@ -40,12 +40,12 @@ export const LancamentoForm = ({ onSaved }: { onSaved?: () => void }) => {
     const val = e.target.value;
     setDescricao(val);
 
-    const suggestion = suggestCategory(val);
-    if (suggestion && suggestion.cat) {
-      setGhostText(` ➔ ${suggestion.cat.nome} ${suggestion.sub ? `(${suggestion.sub.nome})` : ''}`);
-      setCategoriaId(suggestion.cat.id);
-      if (suggestion.sub) setSubcategoriaId(suggestion.sub.id);
-      setTipo(suggestion.cat.tipo);
+    const result = suggestCategory(val);
+    if (result && result.cat) {
+      setGhostText(` ➔ ${result.cat.nome} ${result.sub ? `(${result.sub.nome})` : ''}`);
+      setCategoriaId(result.cat.id);
+      if (result.sub) setSubcategoriaId(result.sub.id);
+      if (result.tipo) setTipo(result.tipo as 'entrada' | 'saida');
     } else {
       setGhostText('');
     }
@@ -53,7 +53,6 @@ export const LancamentoForm = ({ onSaved }: { onSaved?: () => void }) => {
 
   const handleDescricaoKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === 'Tab' && ghostText) {
-      // Confirm cascade
       e.preventDefault();
       setGhostText('');
       valorRef.current?.focus();
@@ -82,11 +81,19 @@ export const LancamentoForm = ({ onSaved }: { onSaved?: () => void }) => {
       setValor('');
       setGhostText('');
       if (onSaved) onSaved();
-      // Keep date and categories for rapid entry
     }
   };
 
   const filteredSubs = subcategorias.filter(s => s.categoria_id === categoriaId);
+
+  // Group categories by DRE sections
+  const sections = [
+    { label: '🔵 1. RECEITA BRUTA (+)', secao: 1, color: 'var(--color-primary)' },
+    { label: '🔴 2. DEDUÇÕES E CUSTOS VARIÁVEIS (-)', secao: 2, color: 'var(--color-danger)' },
+    { label: '🟡 3. DESPESAS FIXAS / G&A (-)', secao: 3, color: '#f1c40f' },
+    { label: '🟣 4. DISTRIBUIÇÃO E FINANCEIRO (-)', secao: 4, color: '#9b59b6' },
+    { label: '⚫ 5. CAPEX E RESERVAS (-)', secao: 5, color: '#34495e' }
+  ];
 
   return (
     <div className="glass-panel" style={{ padding: '24px', position: 'relative', overflow: 'hidden' }}>
@@ -100,25 +107,21 @@ export const LancamentoForm = ({ onSaved }: { onSaved?: () => void }) => {
           <strong>Lançamento Rápido</strong>
         </h2>
         
-        <div style={{ display: 'flex', gap: '12px' }}>
-          <button style={{ 
-            backgroundColor: tipo === 'entrada' ? 'var(--color-success)' : 'transparent',
-            color: tipo === 'entrada' ? '#fff' : 'var(--text-muted)',
-            border: `1px solid ${tipo === 'entrada' ? 'var(--color-success)' : 'var(--color-glass-border)'}`,
-            padding: '4px 16px', borderRadius: 'var(--radius-full)', cursor: 'pointer', transition: 'all 0.2s'
-          }} onClick={() => setTipo('entrada')} type="button">Entrada</button>
-          
-          <button style={{ 
-             backgroundColor: tipo === 'saida' ? 'var(--color-danger)' : 'transparent',
-             color: tipo === 'saida' ? '#fff' : 'var(--text-muted)',
-             border: `1px solid ${tipo === 'saida' ? 'var(--color-danger)' : 'var(--color-glass-border)'}`,
-             padding: '4px 16px', borderRadius: 'var(--radius-full)', cursor: 'pointer', transition: 'all 0.2s'
-          }} onClick={() => setTipo('saida')} type="button">Saída</button>
+        <div style={{ display: 'flex', gap: '8px', alignItems: 'center' }}>
+          <div style={{ 
+            fontSize: '10px', textTransform: 'uppercase', letterSpacing: '1px', 
+            padding: '4px 8px', borderRadius: '4px',
+            backgroundColor: tipo === 'entrada' ? 'rgba(76, 175, 80, 0.1)' : 'rgba(244, 67, 54, 0.1)',
+            color: tipo === 'entrada' ? 'var(--color-success)' : 'var(--color-danger)',
+            border: `1px solid ${tipo === 'entrada' ? 'var(--color-success)' : 'var(--color-danger)'}`
+          }}>
+            Tipo: {tipo === 'entrada' ? 'Entrada (+)' : 'Saída (-)'}
+          </div>
         </div>
       </div>
 
       <form onSubmit={handleSubmit} style={{ display: 'flex', flexWrap: 'wrap', gap: '16px', position: 'relative', zIndex: 1 }}>
-        <div style={{ flex: '0 0 140px' }}>
+        <div style={{ flex: '0 0 160px' }}>
           <label style={{ display: 'block', fontSize: '12px', color: 'var(--text-muted)', marginBottom: '4px' }}>Data</label>
           <input 
             type="date" 
@@ -127,14 +130,14 @@ export const LancamentoForm = ({ onSaved }: { onSaved?: () => void }) => {
           />
         </div>
 
-        <div style={{ flex: 1, minWidth: '250px', position: 'relative' }}>
+        <div style={{ flex: 1, minWidth: '300px', position: 'relative' }}>
           <label style={{ display: 'block', fontSize: '12px', color: 'var(--text-muted)', marginBottom: '4px' }}>
-            Descrição <span style={{ color: 'var(--color-primary)', fontSize: '10px', marginLeft: '4px' }}>✨ Inteligência Local</span>
+            Descrição <span style={{ color: 'var(--color-primary)', fontSize: '10px', marginLeft: '4px' }}>✨ Sugestão Inteligente</span>
           </label>
           <div style={{ position: 'relative' }}>
             <input 
               type="text" 
-              value={descricao} onChange={handleDescricaoChange} onKeyDown={handleDescricaoKeyDown} required placeholder="Ex: google ads..."
+              value={descricao} onChange={handleDescricaoChange} onKeyDown={handleDescricaoKeyDown} required placeholder="Ex: Codau, Google Ads..."
               style={{ width: '100%', padding: '10px 12px', borderRadius: '8px', background: 'rgba(0,0,0,0.2)', border: '1px solid var(--color-glass-border)', color: 'var(--text-main)', outline: 'none', position: 'relative', zIndex: 2 }}
             />
             {ghostText && (
@@ -146,51 +149,66 @@ export const LancamentoForm = ({ onSaved }: { onSaved?: () => void }) => {
           </div>
         </div>
 
-        <div style={{ flex: '1 1 200px' }}>
-          <label style={{ display: 'flex', justifyContent: 'space-between', fontSize: '12px', color: 'var(--text-muted)', marginBottom: '4px' }}>
-            Categoria 
-            <button type="button" style={{ background: 'none', border: 'none', color: 'var(--color-primary)', display: 'flex', alignItems: 'center', gap: '2px', cursor: 'pointer' }}><Info size={12}/> Plano</button>
-          </label>
+        <div style={{ flex: '1 1 250px' }}>
+          <label style={{ fontSize: '12px', color: 'var(--text-muted)', marginBottom: '4px', display: 'block' }}>Grupo DRE (Categoria)</label>
           <select 
-            value={categoriaId} onChange={e => setCategoriaId(e.target.value)} required
+            value={categoriaId} 
+            onChange={e => {
+              const cat = categorias.find(c => c.id === e.target.value);
+              setCategoriaId(e.target.value);
+              if (cat) setTipo(cat.tipo);
+              setSubcategoriaId('');
+            }} 
+            required
             style={{ width: '100%', padding: '10px 12px', borderRadius: '8px', background: 'rgba(0,0,0,0.2)', border: '1px solid var(--color-glass-border)', color: 'var(--text-main)', outline: 'none', appearance: 'none' }}
           >
-            <option value="" disabled>Selecione...</option>
-            {categorias.filter(c => c.tipo === tipo).map(c => (
-              <option key={c.id} value={c.id}>{c.nome}</option>
+            <option value="" disabled>Selecione o Grupo...</option>
+            {sections.map(sec => (
+               <optgroup key={sec.secao} label={sec.label} style={{ background: '#111', color: sec.color }}>
+                  {categorias.filter(c => c.secao_dre === sec.secao).map(c => (
+                    <option key={c.id} value={c.id} style={{ color: '#fff' }}>{c.nome}</option>
+                  ))}
+               </optgroup>
             ))}
           </select>
         </div>
 
         <div style={{ flex: '1 1 200px' }}>
-          <label style={{ display: 'block', fontSize: '12px', color: 'var(--text-muted)', marginBottom: '4px' }}>Detalhamento</label>
+          <label style={{ display: 'block', fontSize: '12px', color: 'var(--text-muted)', marginBottom: '4px' }}>Subcategoria (Opcional)</label>
           <select 
             value={subcategoriaId} onChange={e => setSubcategoriaId(e.target.value)}
             style={{ width: '100%', padding: '10px 12px', borderRadius: '8px', background: 'rgba(0,0,0,0.2)', border: '1px solid var(--color-glass-border)', color: 'var(--text-main)', outline: 'none', appearance: 'none' }}
           >
-            <option value="">(Opcional)</option>
+            <option value="">Selecione Detalhe...</option>
             {filteredSubs.map(s => (
               <option key={s.id} value={s.id}>{s.nome}</option>
             ))}
           </select>
         </div>
 
-        <div style={{ flex: '0 0 140px' }}>
+        <div style={{ flex: '0 0 160px' }}>
           <label style={{ display: 'block', fontSize: '12px', color: 'var(--text-muted)', marginBottom: '4px' }}>Valor (R$)</label>
           <input 
-            type="number" step="0.01" min="0" ref={valorRef}
-            value={valor} onChange={e => setValor(e.target.value)} required placeholder="0,00"
+            type="text" 
+            ref={valorRef}
+            value={valor} 
+            onChange={e => {
+              // Simple comma to dot masker
+              const val = e.target.value.replace(/[^0-9,.]/g, '');
+              setValor(val);
+            }} 
+            required placeholder="0,00"
             style={{ width: '100%', padding: '10px 12px', borderRadius: '8px', background: 'rgba(0,0,0,0.2)', border: '1px solid var(--color-glass-border)', color: 'var(--color-primary)', fontWeight: 'bold', outline: 'none' }}
           />
         </div>
 
         <div style={{ display: 'flex', alignItems: 'flex-end' }}>
           <button type="submit" style={{ 
-            height: '40px', padding: '0 24px', borderRadius: '8px',
+            height: '42px', padding: '0 32px', borderRadius: '8px',
             background: 'var(--color-primary)', color: 'var(--color-bg)', border: 'none',
             fontWeight: 'bold', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '8px', boxShadow: 'var(--shadow-glow)'
           }}>
-            <Save size={18} /> Salvar
+            <Save size={18} /> Salvar Lançamento
           </button>
         </div>
       </form>

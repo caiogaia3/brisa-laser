@@ -1,46 +1,80 @@
 import type { FinDRE } from '../../lib/types';
 
 interface DRETableProps {
-  data: FinDRE[];
+  uniqueLines: { id: number; label: string; is_subtotal: boolean; category: string }[];
+  months: string[];
+  matrixData: FinDRE[];
 }
 
-export const DRETable = ({ data }: DRETableProps) => {
+export const DRETable = ({ uniqueLines, months, matrixData }: DRETableProps) => {
+  const getValue = (lineId: number, month: string) => {
+    const item = matrixData.find(d => d.id === lineId && d.period_month === month);
+    return item ? item.amount : 0;
+  };
+
+  const formatMonth = (dateString: string) => {
+    const date = new Date(dateString + 'T00:00:00');
+    return date.toLocaleDateString('pt-BR', { month: 'short', year: '2-digit' }).replace(' de ', '/');
+  };
+
   return (
-    <div style={{ overflowX: 'auto' }}>
-      <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '0.925rem' }}>
-        <thead>
-          <tr style={{ textAlign: 'left', borderBottom: '1px solid var(--border-color)' }}>
-            <th style={{ padding: '12px 16px', color: 'var(--text-secondary)', fontWeight: 500 }}>Descrição</th>
-            <th style={{ padding: '12px 16px', color: 'var(--text-secondary)', fontWeight: 500 }}>Categoria</th>
-            <th style={{ padding: '12px 16px', color: 'var(--text-secondary)', fontWeight: 500, textAlign: 'right' }}>Valor</th>
+    <div style={{ overflowX: 'auto', maxHeight: '600px', border: '1px solid var(--color-glass-border)', borderRadius: '8px' }}>
+      <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '0.85rem', minWidth: '800px' }}>
+        <thead style={{ position: 'sticky', top: 0, zIndex: 10, backgroundColor: 'var(--color-surface)', boxShadow: '0 2px 4px rgba(0,0,0,0.5)' }}>
+          <tr style={{ borderBottom: '1px solid var(--color-glass-border)' }}>
+            <th style={{ padding: '8px 12px', textAlign: 'left', fontWeight: 'bold', color: 'var(--text-muted)', position: 'sticky', left: 0, backgroundColor: 'var(--color-surface)', zIndex: 11, borderRight: '1px solid var(--color-glass-border)' }}>Conta / Descrição Detalhada</th>
+            {months.map(m => (
+              <th key={m} style={{ padding: '8px 12px', textAlign: 'right', fontWeight: 'bold', color: 'var(--text-main)', borderRight: '1px solid var(--color-glass-border)' }}>
+                {formatMonth(m)}
+              </th>
+            ))}
           </tr>
         </thead>
         <tbody>
-          {data.map((item) => (
+          {uniqueLines.map((line) => (
             <tr 
-              key={item.id} 
+              key={line.id} 
               style={{ 
-                borderBottom: '1px solid rgba(255,255,255,0.05)',
-                fontWeight: item.is_subtotal ? 700 : 400,
-                background: item.is_subtotal ? 'rgba(255,255,255,0.02)' : 'transparent',
-                color: item.amount < 0 && !item.is_subtotal ? '#ff4d4d' : 'inherit'
+                borderBottom: '1px solid var(--color-glass-border)',
+                fontWeight: line.is_subtotal ? 700 : 400,
+                backgroundColor: line.is_subtotal ? 'rgba(59, 130, 246, 0.1)' : 'transparent',
               }}
+              className="hover:bg-white/5 transition-colors"
             >
-              <td style={{ padding: '12px 16px' }}>{item.line_label}</td>
-              <td style={{ padding: '12px 16px', fontSize: '0.75rem', opacity: 0.6, textTransform: 'uppercase' }}>
-                {item.category.replace('_', ' ')}
+              <td style={{ 
+                padding: '8px 12px', 
+                position: 'sticky', 
+                left: 0, 
+                backgroundColor: line.is_subtotal ? '#0f172a' : 'var(--color-bg)', 
+                zIndex: 5, 
+                borderRight: '1px solid var(--color-glass-border)',
+                color: line.is_subtotal ? 'var(--color-primary)' : 'var(--text-main)',
+                whiteSpace: 'nowrap'
+              }}>
+                {line.label}
               </td>
-              <td style={{ padding: '12px 16px', textAlign: 'right' }}>
-                {new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(item.amount)}
-              </td>
+              
+              {months.map(m => {
+                const val = getValue(line.id, m);
+                const isNegative = val < 0 && !line.is_subtotal;
+                return (
+                  <td key={`${line.id}-${m}`} style={{ 
+                    padding: '8px 12px', 
+                    textAlign: 'right',
+                    borderRight: '1px solid var(--color-glass-border)',
+                    color: isNegative ? 'var(--color-danger)' : (line.is_subtotal && val < 0 ? 'var(--color-danger)' : 'inherit')
+                  }}>
+                    {new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(val)}
+                  </td>
+                );
+              })}
             </tr>
           ))}
         </tbody>
       </table>
-      {data.length === 0 && (
-        <div style={{ padding: '40px', textAlign: 'center', opacity: 0.5 }}>Nenhum dado encontrado para este período.</div>
+      {uniqueLines.length === 0 && (
+        <div style={{ padding: '40px', textAlign: 'center', opacity: 0.5 }}>Nenhum dado DRE histórico encontrado.</div>
       )}
     </div>
   );
 };
-

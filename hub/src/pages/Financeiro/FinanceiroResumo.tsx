@@ -14,19 +14,25 @@ export const FinanceiroResumo = () => {
   const { matrixData, months } = useDREMatrix();
 
   const currentMonthPivot = useMemo(() => {
-    const currentMonthData = matrixData.filter(d => d.period_month === periodString);
-    const extract = (labelKeyword: string) => {
-      const row = currentMonthData.find(d => d.line_label.toLowerCase().includes(labelKeyword));
-      return row ? row.amount : 0;
+    const extract = (labelKeywords: string[]) => {
+      const row = matrixData.find(d => 
+        labelKeywords.some(kw => d.conta_descricao.toLowerCase().includes(kw.toLowerCase()))
+      );
+      return row ? (row.valores[periodString] || 0) : 0;
     };
 
-    const receitaBruta = extract('receita bruta') || extract('receita total');
-    const margins = currentMonthData.filter(d => d.category === 'custo_variavel' || d.category === 'despesa_fixa');
-    const despesasTotais = margins.reduce((acc, curr) => acc + curr.amount, 0);
-    const despesasFixas = currentMonthData.filter(d => d.category === 'despesa_fixa').reduce((acc, curr) => acc + curr.amount, 0);
-    const lucroLiquido = extract('lucro líquido');
-    const margemContribuicao = extract('margem de contribuição') || (receitaBruta + margins.filter(m => m.category === 'custo_variavel').reduce((acc, curr) => acc + curr.amount, 0));
-    const ebitda = extract('lajida');
+    const receitaBruta = extract(['TOTAL RECEITA BRUTA']);
+    const despesasFixas = extract(['TOTAL DESPESAS FIXAS']);
+    const lucroLiquido = extract(['LUCRO LÍQUIDO FINAL']);
+    const margemContribuicao = extract(['MARGEM DE CONTRIBUIÇÃO']);
+    const ebitda = extract(['LAJIDA (EBITDA)']);
+    const saldoFinal = extract(['SALDO FINAL DE CAIXA']);
+
+    // Para despesas totais (Operacionais + Fixas) no dashboard
+    // No CSV, temos RECEITA LÍQUIDA (Nivel 3). Despesas totais seriam Receita Bruta - Lucro?
+    // Vamos usar a lógica: Receita Bruta - Margem = Variáveis. Variáveis + Fixas = Totais.
+    const despesasVariaveis = receitaBruta - margemContribuicao; 
+    const despesasTotais = despesasVariaveis + Math.abs(despesasFixas);
     
     let margemPercent = receitaBruta > 0 ? (margemContribuicao / receitaBruta) : 0.0001;
     if (margemPercent <= 0) margemPercent = 0.0001; 
@@ -40,18 +46,20 @@ export const FinanceiroResumo = () => {
       lucro_liquido: lucroLiquido,
       breakeven,
       despesas_fixas: Math.abs(despesasFixas),
-      saldo_final: lucroLiquido
+      saldo_final: saldoFinal
     };
   }, [matrixData, periodString]);
 
   const trendData = useMemo(() => {
+    const receitaRow = matrixData.find(d => d.conta_descricao.includes('TOTAL RECEITA BRUTA'));
+    const ebitdaRow = matrixData.find(d => d.conta_descricao.includes('LAJIDA (EBITDA)'));
+
     return months.map(mStr => {
-      const ms = matrixData.filter(d => d.period_month === mStr);
-      const getLine = (kw: string) => (ms.find(x => x.line_label.toLowerCase().includes(kw))?.amount || 0);
+      const date = new Date(mStr + '-01T12:00:00');
       return {
-        month: new Date(mStr + 'T00:00:00').toLocaleDateString('pt-BR', { month: 'short' }),
-        receita: getLine('receita bruta') || getLine('receita total'),
-        ebitda: getLine('lajida')
+        month: date.toLocaleDateString('pt-BR', { month: 'short' }),
+        receita: receitaRow ? (receitaRow.valores[mStr] || 0) : 0,
+        ebitda: ebitdaRow ? (ebitdaRow.valores[mStr] || 0) : 0
       };
     });
   }, [matrixData, months]);

@@ -24,10 +24,10 @@ export const Sidebar = () => {
   return (
     <>
       {/* Primary Sidebar (Floating Expansion) */}
-      <aside 
+      <aside
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
-        style={{ 
+        style={{
           width: isHovered ? '260px' : '84px',
           backgroundColor: 'var(--color-surface)',
           borderRight: '1px solid var(--color-glass-border)',
@@ -49,15 +49,15 @@ export const Sidebar = () => {
             }}>
               {/* Premium White SVG Logo */}
               <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M12 2L2 7L12 12L22 7L12 2Z" fill="white" fillOpacity="0.2" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                <path d="M2 17L12 22L22 17" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                <path d="M2 12L12 17L22 12" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                <path d="M12 2L2 7L12 12L22 7L12 2Z" fill="white" fillOpacity="0.2" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                <path d="M2 17L12 22L22 17" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                <path d="M2 12L12 17L22 12" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
               </svg>
             </div>
             <h2 style={{ fontSize: '1.25rem', fontWeight: 'bold', color: 'white', opacity: isHovered ? 1 : 0, transition: 'opacity 0.2s', whiteSpace: 'nowrap' }}>Brisa Hub</h2>
           </div>
         </div>
-        
+
         <nav style={{ flex: 1, padding: '24px 12px', display: 'flex', flexDirection: 'column', gap: '8px', minWidth: '260px' }}>
           {navItems.map((item) => (
             <NavLink
@@ -81,7 +81,7 @@ export const Sidebar = () => {
             </NavLink>
           ))}
         </nav>
-        
+
         <div style={{ padding: '24px 12px', borderTop: '1px solid var(--color-glass-border)', minWidth: '260px' }}>
           <div style={{ padding: '12px', display: 'flex', gap: '16px', alignItems: 'center', borderRadius: 'var(--radius-lg)', background: isHovered ? 'rgba(255,255,255,0.03)' : 'transparent', transition: 'background 0.3s' }}>
             <div style={{ minWidth: '36px', height: '36px', borderRadius: '50%', backgroundColor: 'var(--color-primary)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '14px', fontWeight: 'bold' }}>
@@ -120,9 +120,9 @@ export const Sidebar = () => {
             fontSize: '0.875rem', transition: 'all 0.2s',
             fontWeight: isActive ? 600 : 400
           })} className="hover:bg-white/5">
-            <BarChart2 size={16} /> Visão Executiva
+            <BarChart2 size={16} /> Resumo
           </NavLink>
-          
+
           <NavLink to="/financeiro/lancamento" style={({ isActive }) => ({
             display: 'flex', alignItems: 'center', gap: '12px',
             padding: '10px 12px', borderRadius: '8px',
@@ -131,7 +131,7 @@ export const Sidebar = () => {
             fontSize: '0.875rem', transition: 'all 0.2s',
             fontWeight: isActive ? 600 : 400
           })} className="hover:bg-white/5">
-            <Settings size={16} /> Tático (Lançamentos)
+            <Settings size={16} /> Controle Financeiro
           </NavLink>
 
           <NavLink to="/financeiro/dre" style={({ isActive }) => ({
@@ -142,7 +142,7 @@ export const Sidebar = () => {
             fontSize: '0.875rem', transition: 'all 0.2s',
             fontWeight: isActive ? 600 : 400
           })} className="hover:bg-white/5">
-            <FileText size={16} /> Visão Contábil (DRE)
+            <FileText size={16} /> DRE
           </NavLink>
         </nav>
       </aside>

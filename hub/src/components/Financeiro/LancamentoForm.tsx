@@ -66,7 +66,7 @@ export const LancamentoForm = ({ onSaved }: { onSaved?: () => void }) => {
 
     const numericValor = parseFloat(valor.replace(',', '.'));
 
-    const { error } = await supabase.from('dre_lancamentos').insert([{
+    const { error } = await supabase.from('fin_lancamentos').insert([{
       data,
       descricao,
       valor: numericValor,

@@ -33,8 +33,8 @@ export const useDREStore = create<DREState>((set, get) => ({
     
     // Fetch Categorias and Subcategorias in parallel
     const [catsRes, subsRes] = await Promise.all([
-      supabase.from('dre_categorias').select('*').order('ordem'),
-      supabase.from('dre_subcategorias').select('*')
+      supabase.from('fin_categorias').select('*').order('ordem'),
+      supabase.from('fin_subcategorias').select('*')
     ]);
 
     if (catsRes.data && subsRes.data) {

@@ -15,32 +15,84 @@ export function useDREMatrix() {
   const [months, setMonths] = useState<string[]>([]);
 
   useEffect(() => {
-    async function fetchDREMatrix() {
+    async function fetchHybridDRE() {
       setLoading(true);
       try {
-        const { data, error } = await supabase
-          .from('fin_dre_matriz')
+        // 1. Fetch History Matrix
+        const { data: history, error: historyError } = await supabase
+          .from('fin_matriz')
           .select('*')
           .order('ordem', { ascending: true });
 
-        if (error) throw error;
+        if (historyError) throw historyError;
         
-        if (data && data.length > 0) {
-          setMatrixData(data);
+        // 2. Determine Current Month
+        const now = new Date();
+        const currentMonthKey = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}`;
+        
+        // 3. Fetch Live Lancamentos for current month
+        const { data: liveData, error: liveError } = await supabase
+          .from('fin_lancamentos')
+          .select('*, fin_categorias(nome, secao_dre)')
+          .gte('data', `${currentMonthKey}-01`)
+          .lte('data', `${currentMonthKey}-31`);
+
+        if (liveError) throw liveError;
+
+        if (history && history.length > 0) {
+          // Identify all months across history
+          let allMonths = Object.keys(history[0].valores).sort();
           
-          // Months are the keys in the 'valores' object of the first row
-          const firstRow = data[0];
-          const sortedMonths = Object.keys(firstRow.valores).sort();
-          setMonths(sortedMonths);
+          // Force current month into columns if missing
+          if (!allMonths.includes(currentMonthKey)) {
+            allMonths.push(currentMonthKey);
+          }
+          allMonths = allMonths.sort();
+          setMonths(allMonths);
+
+          // 4. Merge Live data into Matrix Rows
+          const merged = history.map(row => {
+            const updatedValores = { ...row.valores };
+            
+            // Initial zero for current month if it's new
+            if (!updatedValores[currentMonthKey]) updatedValores[currentMonthKey] = 0;
+
+            if (liveData) {
+              const liveSum = liveData.reduce((acc, l: any) => {
+                const secao = l.fin_categorias?.secao_dre;
+                
+                // Logic to match DRE rows to account sections based on Spreadsheet Niveis
+                const isReceitaTotal = row.conta_descricao.includes('FATURAMENTO TOTAL BRUTO') && secao === 1;
+                const isDeducaoTotal = row.conta_descricao.includes('DEDUÇÕES DA RECEITA BRUTA') && secao === 2;
+                const isDespesaFixaTotal = row.conta_descricao.includes('DESPESAS FIXAS') && secao === 3;
+                const isProLaboreTotal = row.conta_descricao.includes('PRO-LABORE') && secao === 4;
+                const isInvestimentoTotal = row.conta_descricao.includes('INVESTIMENTOS') && secao === 5;
+
+                if (isReceitaTotal || isDeducaoTotal || isDespesaFixaTotal || isProLaboreTotal || isInvestimentoTotal) {
+                   return acc + (l.tipo === 'entrada' ? l.valor : -l.valor);
+                }
+                return acc;
+              }, 0);
+
+              // Update the current month value if we found entries
+              if (liveSum !== 0) {
+                 updatedValores[currentMonthKey] = liveSum;
+              }
+            }
+
+            return { ...row, valores: updatedValores };
+          });
+
+          setMatrixData(merged);
         }
       } catch (err) {
-        console.error('Erro ao buscar DRE Matrix:', err);
+        console.error('Erro ao buscar DRE Híbrido:', err);
       } finally {
         setLoading(false);
       }
     }
 
-    fetchDREMatrix();
+    fetchHybridDRE();
   }, []);
 
   return { loading, matrixData, months };

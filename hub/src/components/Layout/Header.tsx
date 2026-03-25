@@ -1,5 +1,5 @@
 import { Search, Bell, Sparkles } from 'lucide-react';
-import { PeriodSelector } from '../Navigation/PeriodSelector';
+import { DateSegmentedControl } from '../Navigation/DateSegmentedControl';
 
 export const Header = ({ onOpenChat }: { onOpenChat?: () => void }) => {
   return (
@@ -16,8 +16,6 @@ export const Header = ({ onOpenChat }: { onOpenChat?: () => void }) => {
       zIndex: 10
     }}>
       <div style={{ display: 'flex', alignItems: 'center', gap: '24px', flex: 1 }}>
-        <PeriodSelector />
-        
         <div className="glass-panel" style={{ 
           display: 'flex', alignItems: 'center', gap: '12px', 
           padding: '8px 16px', width: '320px', borderRadius: 'var(--radius-full)'
@@ -36,6 +34,8 @@ export const Header = ({ onOpenChat }: { onOpenChat?: () => void }) => {
       </div>
 
       <div style={{ display: 'flex', alignItems: 'center', gap: '24px' }}>
+        <DateSegmentedControl />
+
         <button className="glass-panel" onClick={onOpenChat} style={{
           display: 'flex', alignItems: 'center', gap: '8px', 
           padding: '8px 16px', borderRadius: 'var(--radius-full)',

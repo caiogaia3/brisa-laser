@@ -1,36 +1,56 @@
 import { create } from 'zustand';
 
+type PeriodPreset = 'today' | '7d' | '30d' | 'custom';
+
 interface PeriodState {
-  month: number; // 0-11
+  preset: PeriodPreset;
+  startDate: Date;
+  endDate: Date;
+  
+  // Legacy support parameters (temporary to prevent breaking other pages immediately)
+  month: number;
   year: number;
-  setPeriod: (month: number, year: number) => void;
-  nextMonth: () => void;
-  prevMonth: () => void;
+
+  setPreset: (preset: PeriodPreset) => void;
+  setCustomRange: (start: Date, end: Date) => void;
 }
 
 export const usePeriodStore = create<PeriodState>((set) => {
-  const today = new Date();
-  
+  const getDatesForPreset = (preset: PeriodPreset) => {
+    const end = new Date();
+    const start = new Date();
+    
+    if (preset === 'today') {
+      start.setHours(0,0,0,0);
+    } else if (preset === '7d') {
+      start.setDate(end.getDate() - 7);
+    } else if (preset === '30d') {
+      start.setDate(end.getDate() - 30);
+    }
+    
+    return { startDate: start, endDate: end, month: start.getMonth(), year: start.getFullYear() };
+  };
+
+  const initialDates = getDatesForPreset('30d');
+
   return {
-    month: today.getMonth(),
-    year: today.getFullYear(),
+    preset: '30d',
+    startDate: initialDates.startDate,
+    endDate: initialDates.endDate,
+    month: initialDates.month,
+    year: initialDates.year,
     
-    setPeriod: (month, year) => set({ month, year }),
+    setPreset: (preset) => set(() => ({ 
+      preset, 
+      ...(preset !== 'custom' ? getDatesForPreset(preset) : {})
+    })),
     
-    nextMonth: () => set((state) => {
-      const isDecember = state.month === 11;
-      return {
-        month: isDecember ? 0 : state.month + 1,
-        year: isDecember ? state.year + 1 : state.year
-      };
+    setCustomRange: (start, end) => set({ 
+      preset: 'custom', 
+      startDate: start, 
+      endDate: end,
+      month: start.getMonth(), 
+      year: start.getFullYear()
     }),
-    
-    prevMonth: () => set((state) => {
-      const isJanuary = state.month === 0;
-      return {
-        month: isJanuary ? 11 : state.month - 1,
-        year: isJanuary ? state.year - 1 : state.year
-      };
-    })
   };
 });

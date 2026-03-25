@@ -15,10 +15,10 @@ export const DateSegmentedControl = () => {
   );
 
   const presets = [
-    { id: 'today', label: 'Today' },
-    { id: '7d', label: '7 Days' },
-    { id: '30d', label: '30 Days' },
-    { id: 'custom', label: 'Custom' }
+    { id: 'today', label: 'Hoje' },
+    { id: '7d', label: '7 Dias' },
+    { id: '30d', label: '30 Dias' },
+    { id: 'custom', label: 'Personalizado' }
   ];
 
   const handleSelect = (id: string) => {

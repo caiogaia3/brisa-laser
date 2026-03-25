@@ -1,20 +1,46 @@
-import { DataTable } from './DataTable';
+import type { FinDRE } from '../../lib/types';
 
-export const DRETable = () => {
-  // Mock data for DRE Table (would normally be fetched)
-  const data = [
-    { id: 1, date: '15/03/2026', category: 'Custo Fixo', subcategory: 'Aluguel Matriz', amount: 8500 },
-    { id: 2, date: '14/03/2026', category: 'Receita', subcategory: 'Vendas PDV', amount: 3200 },
-    { id: 3, date: '12/03/2026', category: 'Custo Variável', subcategory: 'Taxa Cartão', amount: 120 },
-    { id: 4, date: '10/03/2026', category: 'Custo Fixo', subcategory: 'Folha Pagamento', amount: 35000 },
-  ];
+interface DRETableProps {
+  data: FinDRE[];
+}
 
-  const columns = [
-    { key: 'date', label: 'Data', align: 'left' as const },
-    { key: 'category', label: 'Categoria', align: 'left' as const },
-    { key: 'subcategory', label: 'Descrição', align: 'left' as const },
-    { key: 'amount', label: 'Valor', align: 'right' as const, format: (val: number) => `R$ ${val.toLocaleString('pt-BR')}` },
-  ];
-
-  return <DataTable columns={columns} data={data} keyField="id" />;
+export const DRETable = ({ data }: DRETableProps) => {
+  return (
+    <div style={{ overflowX: 'auto' }}>
+      <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '0.925rem' }}>
+        <thead>
+          <tr style={{ textAlign: 'left', borderBottom: '1px solid var(--border-color)' }}>
+            <th style={{ padding: '12px 16px', color: 'var(--text-secondary)', fontWeight: 500 }}>Descrição</th>
+            <th style={{ padding: '12px 16px', color: 'var(--text-secondary)', fontWeight: 500 }}>Categoria</th>
+            <th style={{ padding: '12px 16px', color: 'var(--text-secondary)', fontWeight: 500, textAlign: 'right' }}>Valor</th>
+          </tr>
+        </thead>
+        <tbody>
+          {data.map((item) => (
+            <tr 
+              key={item.id} 
+              style={{ 
+                borderBottom: '1px solid rgba(255,255,255,0.05)',
+                fontWeight: item.is_subtotal ? 700 : 400,
+                background: item.is_subtotal ? 'rgba(255,255,255,0.02)' : 'transparent',
+                color: item.amount < 0 && !item.is_subtotal ? '#ff4d4d' : 'inherit'
+              }}
+            >
+              <td style={{ padding: '12px 16px' }}>{item.line_label}</td>
+              <td style={{ padding: '12px 16px', fontSize: '0.75rem', opacity: 0.6, textTransform: 'uppercase' }}>
+                {item.category.replace('_', ' ')}
+              </td>
+              <td style={{ padding: '12px 16px', textAlign: 'right' }}>
+                {new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(item.amount)}
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+      {data.length === 0 && (
+        <div style={{ padding: '40px', textAlign: 'center', opacity: 0.5 }}>Nenhum dado encontrado para este período.</div>
+      )}
+    </div>
+  );
 };
+

@@ -16,6 +16,17 @@ export interface ViewMasterBI {
   ticket_medio: number | null;
 }
 
+export interface FinDRE {
+  id: number;
+  store_id: string;
+  period_month: string;
+  category: 'receita' | 'deducao' | 'custo_variavel' | 'despesa_fixa' | 'pro_labore' | 'financeiro' | 'caixa' | 'outros';
+  line_label: string;
+  is_subtotal: boolean;
+  amount: number;
+  updated_at: string;
+}
+
 export interface KPI {
   title: string;
   value: string | number;

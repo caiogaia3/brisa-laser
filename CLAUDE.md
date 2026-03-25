@@ -83,6 +83,12 @@ Este arquivo é a bússola do projeto. Ele contém o estado atual, a arquitetura
     - `SKILL_LOOKER_COPILOT.md` criado como guia para o Antigravity configurar o Looker Studio (conexão, campos, KPIs, paleta)
     - `package.json` atualizado com npm scripts: `sync:dre`, `sync:leads`, `backfill`
     - **VITÓRIA TÉCNICA**: View master operacional integrando DRE, Leads e Zandu.
+- [x] **SESSÃO HUB & IA (25/03/26)**: Operacionalização do Brisa Intelligence Hub (React/Vite).
+    - Criado **Roteador LLM Híbrido** (Gemini ↔ OpenAI) com fallback automático.
+    - Implementada **DRE Financeira Real** com 17 meses de histórico e seletor de mês.
+    - Resolvido **SPA Routing** na Vercel via `vercel.json` (fix 404).
+    - Sync de Leads otimizado com IDs determinísticos para prevenir duplicidade.
+    - Deploy contínuo ativado via GitHub `caiogaia3/brisa-laser`.
 - [x] **DOCUMENTAÇÃO VISUAL (Fluxogramas Whimsical — 25/03/26)**: Sessão completa de documentação visual do ecossistema Brisa Laser via Jarvis (Antigravity). Detalhes:
     - 8 fluxogramas Mermaid estilizados criados, prontos para import no Whimsical
     - **Macro**: Visão geral do ecossistema (Ads → Isa IA → Kommo → Zandu → n8n → Supabase → Looker)

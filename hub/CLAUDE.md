@@ -15,6 +15,7 @@ Kiro-style Spec Driven Development implementation on AI-DLC (AI Development Life
 
 ### Active Specifications
 - [BACKEND_SPEC.md](./BACKEND_SPEC.md) - SSOT para Integração Supabase/n8n.
+- [BRISA_STRATEGY_PLAYBOOK.md](./BRISA_STRATEGY_PLAYBOOK.md) - Bíblia de Métricas CFO.
 - [context.md](./context.md) - Status e Contexto do Hub.
 - Check `.kiro/specs/` for active specifications.
 - Use `/kiro:spec-status [feature-name]` to check progress.

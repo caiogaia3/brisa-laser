@@ -74,6 +74,55 @@ export const Dashboard = () => {
         <SummaryTab />
       </section>
 
+      {/* 💰 OKRs Secundários: Financeiro & Lucratividade */}
+      <section>
+        <h2 style={{ fontSize: '1rem', color: 'var(--text-muted)', marginBottom: '16px', display: 'flex', alignItems: 'center', gap: '8px', fontWeight: 800 }}>
+          <DollarSign size={16} color="var(--color-orange)" /> OKRs Secundários: Financeiro (Impacto no Lucro)
+        </h2>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '20px' }}>
+          <OKRTracker 
+            title="Meta Faturamento Bruto"
+            current={142500}
+            target={150000}
+            prefix="R$ "
+            unit=""
+            tooltipTitle="Gross Revenue Goal"
+            tooltipContent="O combustível para a meta de Dominância. Meta mensal baseada no OKR Engine."
+            secondaryOKRs={[{label: 'Pacotes', progress: 95}, {label: 'Upgrade', progress: 60}]}
+          />
+          <OKRTracker 
+            title="Gestão de Despesas Fixas"
+            current={11200}
+            target={12000}
+            prefix="R$ "
+            unit=""
+            tooltipTitle="Fixed OpEx Ceiling"
+            tooltipContent="Controlar o fixo é o que protege a 'Lucratividade Blindada'. Teto máximo: R$ 12k."
+            secondaryOKRs={[{label: 'Manutenção', progress: 100}, {label: 'Insumos', progress: 85}]}
+          />
+          <OKRTracker 
+            title="Margem de Contribuição"
+            current={97.2}
+            target={98}
+            unit="%"
+            tooltipTitle="Contribution Margin"
+            tooltipContent="Reflete quanto sobra após pagar os custos variáveis. Vital para a saúde do CFO."
+            secondaryOKRs={[{label: 'Diretos', progress: 98}, {label: 'Comissões', progress: 95}]}
+          />
+          <OKRTracker 
+            title="Erosão de Preço (Burn)"
+            current={12.4}
+            target={15}
+            unit="%"
+            tooltipTitle="Price Erosion / Discounts"
+            tooltipContent="Monitora o volume de descontos. Acima de 15% destrói o valor da marca Brisa."
+            secondaryOKRs={[{label: 'Cupons', progress: 40}, {label: 'Black Friday', progress: 10}]}
+          />
+        </div>
+      </section>
+
+      <div style={{ height: '32px' }} />
+
       {/* Seção de KPIs Financeiros (Supabase DRE) */}
       <section>
         <h2 style={{ fontSize: '1rem', color: 'var(--text-muted)', marginBottom: '16px', display: 'flex', alignItems: 'center', gap: '8px' }}>

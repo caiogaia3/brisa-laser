@@ -11,12 +11,15 @@ Estes são os indicadores que comandam a saúde da empresa. Cada um no Dash ter�
 1.  **Valor Médio por Visita (ATV - Average Transaction Value)**
     *   **Meta**: > $248,75.
     *   **CFO Insight**: Diferencia clínica premium de popular. Foca na venda de pacotes de alto valor vs sessões avulsas de retoque. Meta > R$ 248,75 garante faturamento escalável.
+    *   **Apoio (Secundário)**: Erosão de Preço < 15%.
 2.  **Ratio LTV/CAC (Growth Machine)**
     *   **Meta**: > 3.0x.
     *   **CFO Insight**: O motor de crescimento patrimonial. Mede quanto cada Real investido gera de lucro vitalício. Se > 3.0x, a empresa está criando valor real de mercado.
+    *   **Apoio (Secundário)**: Meta Faturamento Bruto.
 3.  **Margem Bruta (Gross Margin %)**
-    *   **Meta**: 95%+.
+    *   *Meta**: 95%+.
     *   **CFO Insight**: No laser, o custo marginal do disparo é mínimo. Uma queda aqui indica vazamento de lucro, erro de precificação ou excesso de descontos agressivos.
+    *   **Apoio (Secundário)**: Margem de Contribuição e Gestão de Despesas Fixas.
 4.  **Taxa de Comparecimento (Show-up Rate)**
     *   **Meta**: > 70%.
     *   **CFO Insight**: Mede a eficiência do funil comercial e dos lembretes. Comparecimento < 70% desperdiça investimento em Ads e ociosa a equipe da clínica.

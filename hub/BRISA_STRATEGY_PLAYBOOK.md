@@ -16,7 +16,6 @@ Este documento é a nossa **Única Fonte de Verdade** para a tomada de decisão 
 - **Taxa de Conversão por Origem**: Qual canal traz o cliente que fecha?
 - **Eficiência de Agendamento por Origem**: Compara se o lead de um canal é mais "difícil" de agendar que outro.
 - **Ticket Médio por Origem**: Identificar se clientes do Google compram pacotes mais caros que os do Instagram.
-- **Valor / Qtd / Ticket por Origem**: Visão 360º da rentabilidade de cada canal.
 
 ---
 
@@ -25,41 +24,39 @@ Este documento é a nossa **Única Fonte de Verdade** para a tomada de decisão 
 ### Funil de Vendas (CFO View)
 - **Taxa de Conversão Geral**: Total de Vendas / Total de Oportunidades.
 - **Taxa de Comparecimento (Show-up)**: Confirmados / Agendados. Crucial para medir eficiência da recepção.
-- **Funil Visual**: Representação gráfica do lead até o "Contrato Assinado".
+- **Performance por Vendedor**: Ranking de Ticket Médio, Valor e volume (ABC dos vendedores).
 
-### Performance por Vendedor (Comissionamento & ROI)
-- **Ticket Médio por Vendedor**: Quem vende pacotes mais caros?
-- **Valor Vendido por Vendedor**: Volume bruto de fechamento.
-- **Quantidade de Vendas**: Volume de transações.
+### 🪙 [NOVO] Estratégia de Clientes (LTV & Retenção)
+- **Taxa de Recompra (Cross-Sell Rate)**: 
+    - **O que**: % de clientes que compram uma nova área após o primeiro pacote.
+    - **Estratégia**: É 7x mais barato vender para quem já é cliente. 
+    - **Meta**: 30% de base ativa recomprando.
+- **LTV (Lifetime Value)**: 
+    - **O que**: Valor total que um cliente deixa na Brisa em toda sua vida.
+    - **Golden Ratio**: O LTV deve ser **3x maior que o CAC**.
 
 ---
 
 ## 🔴 3. Setor: Financeiro & Operacional (CFO Radar)
 
 ### Eficiência & Rentabilidade
-- **Receita por Visita (ATV - Average Transaction Value)**: 
-    - **Meta: > $248,75**. 
-    - Foco em pacotes de alto valor vs sessões avulsas.
-- **Volume Diário de Visitas**: 
-    - **Meta: 12 clientes/dia**. 
-    - Ponto de sustentabilidade da unidade.
-- **Margem Bruta (%)**: 
-    - **Meta: 95%+**. 
-    - Baixo custo direto, alta lucratividade bruta.
-- **LER (Labor Efficiency Ratio)**: 
-    - **Meta: < 30%**. 
-    - Relação entre folha de pagamento e receita total.
-- **Mix de Pacotes (%)**: 
-    - **Meta: 70%**. 
-    - Motor de previsibilidade e fluxo de caixa.
+- **Receita por Visita (ATV - Average Transaction Value)**: Meta: > $248,75.
+- **Volume Diário de Visitas**: Meta: 12 clientes/dia.
+- **Margem Bruta (%)**: Meta: 95%+.
+- **LER (Labor Efficiency Ratio)**: Meta: < 30%.
+- **Mix de Pacotes (%)**: Meta: 70%.
 
-### Investimento & CAC
-- **CAC (Custo de Aquisição)**: 
-    - **Meta: < 20% do valor do pacote completo**.
-    - Recuperação do investimento em no máximo 2 visitas.
-- **Utilização de Equipamentos**: 
-    - **Meta: > 60%**.
-    - Justificar o CAPEX (investimento na máquina).
+### 🏛️ [NOVO] Gestão de Ativos & Equity
+- **Payback do Ativo (Máquina/Clínica)**: 
+    - **O que**: Tempo para recuperar o Capex (investimento inicial) da unidade.
+    - **Estratégia**: Decidir abertura de novas unidades. 
+    - **Meta**: < 18 meses.
+- **Erosão de Preço (Discount Burn)**: 
+    - **O que**: % de desconto médio aplicado na venda.
+    - **Estratégia**: Proteger o valor da marca e a margem líquida. 
+    - **Meta**: < 15%.
+- **Receita por m²**: 
+    - **O que**: Faturamento total / Área da clínica. Eficiência do metro quadrado.
 
 ---
 
@@ -68,17 +65,16 @@ Este documento é a nossa **Única Fonte de Verdade** para a tomada de decisão 
 ### 📊 Padrões Visuais de Monitoramento
 - **Ticket Médio por Venda**: Ranking por serviço (Barba, Virilha, etc).
 - **Valor Arrecadado por Serviço**: Onde está o dinheiro grosso?
-- **Qtd Vendida por Serviço**: Onde está o volume de trabalho?
 - **Valor / Ticket por Meio de Pagamento**: Preferência do cliente (Cartão, Pix, Parcelado).
-- **Recompras no Mês**: Fidelização e LTV.
+- **Ciclo de Caixa (Liquidez)**: Gap entre pagamento de anúncios/salários e recebimento do cartão parcelado.
 
 ---
 
 > [!IMPORTANT]
 > **Metas de Ouro**: O sistema deve alertar (Glow Vermelho) sempre que:
 > 1. O volume de visitas cair abaixo de 10/dia.
-> 2. A margem bruta cair abaixo de 90%.
-> 3. O ATV ficar abaixo de $240,00.
+> 2. A erosão de preço (descontos) ultrapassar 20%.
+> 3. A taxa de recompra (cross-sell) for inferior a 15%.
 
 > [!TIP]
-> **Referências Visuais**: Todos os dashboards do Hub devem seguir os padrões de cores e disposição salvos no diretório `src/assets/inspiration/` para manter a fidelidade operacional com os sistemas legados.
+> **Referências Visuais**: Todos os dashboards do Hub devem seguir os padrões de cores e disposição salvos no diretório `src/assets/inspiration/`.

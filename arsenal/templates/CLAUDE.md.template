@@ -1,0 +1,101 @@
+# Claude Code Configuration — [PROJECT_NAME]
+
+## 📖 LEIA PRIMEIRO — Context da Sessão
+
+Antes de responder qualquer pergunta, leia:
+```
+./context.md
+```
+
+Este arquivo contém:
+- ✅ Estado atual do projeto
+- 💡 Decisões tomadas (e por quê)
+- 🐛 Erros já resolvidos
+- 🗂️ Arquivos importantes
+- ⏭️ Próximos passos
+
+**Protocolo Claude:**
+- Ao completar uma etapa: "Claude, atualize o context.md"
+- Ao encontrar erro novo: "Adicione em 'Erros Já Resolvidos'"
+- Ao iniciar nova sessão: "Leia context.md e confirme o estado"
+
+---
+
+## 🎯 Tipo de Projeto
+[Descreva o tipo: Next.js + Supabase, Python FastAPI, etc]
+
+## 📚 Bibliotecas Disponíveis
+
+Antes de implementar qualquer feature, leia:
+- **Catálogo geral:** `/Users/CaioGaia/Documents/PROJETOS /arsenal/CATALOG.md`
+- **Ferramentas pessoais:** `/Users/CaioGaia/Documents/PROJETOS /arsenal/pessoal/CATALOG.md`
+- **Automação de Context:** `/Users/CaioGaia/Documents/PROJETOS /arsenal/pessoal/context-automation.md`
+
+**Se for SaaS novo:**
+- **Workflow de Planejamento:** `/Users/CaioGaia/Documents/PROJETOS /arsenal/pessoal/workflows/buildsaas-workflow.md`
+  - Ativar com: `/build-saas` (7 etapas de descoberta + documentos automáticos)
+
+**Checklist de Segurança (OBRIGATÓRIO):**
+- **Regras de Segurança:** `./securitycoderules.md` ou `/Users/CaioGaia/Documents/PROJETOS /arsenal/templates/securitycoderules.md`
+  - Validar antes de QUALQUER deploy em produção
+  - Cobre: auth, RLS, APIs, data protection, async, LangGraph, code quality
+
+**Como usar:** Peça ao Claude para sugerir ferramentas da biblioteca antes de começar.
+
+## 🤖 Modo Autônomo
+
+Claude opera em modo autônomo neste projeto:
+- Executa ações de rotina SEM pedir aprovação (criar pastas, copiar arquivos, rodar scripts, editar arquivos)
+- Pede confirmação APENAS para: `git push --force`, deletar arquivos permanentemente, ações irreversíveis
+- Ao detectar "novo projeto": cria pasta em `/ativo/`, roda `setup-projeto.sh` automaticamente
+- Ao detectar novo asset (skill/MCP/workflow): oferece integrar ao arsenal automaticamente
+- Ao iniciar sessão: lê `context.md` e confirma estado sem precisar ser solicitado
+
+## 📋 Protocolos deste Projeto
+
+- **Commits:** Use `/commit` skill com mensagens descritivas
+- **PRs:** Use `gh pr create` com template
+- **Branching:** `feature/[nome]`, `fix/[nome]`, `docs/[nome]`
+- **Testing:** Rodar testes antes de push (`npm test` ou `pytest`)
+
+## 🗂️ Estrutura de Pastas
+
+```
+.
+├── src/              # código fonte
+├── tests/            # testes
+├── docs/             # documentação
+├── .env.example      # variáveis de exemplo
+└── CLAUDE.md         # este arquivo
+```
+
+## 🚀 Como Começar
+
+1. Copiar `.env.example` para `.env.local` e preencher variáveis
+2. Instalar dependências: `npm install` ou `pip install -r requirements.txt`
+3. Rodar em desenvolvimento: `npm run dev` ou `python main.py`
+4. Ler `/memoria/[projeto].md` para contexto anterior
+
+## 📝 Memória do Projeto
+
+Mantenha um arquivo `/memoria/[projeto].md` com:
+- Decisões arquiteturais
+- Stack escolhido e por quê
+- Próximas tarefas
+- Bugs conhecidos
+- Padrões de código
+
+## 🔒 Segurança
+
+- Nunca commit `.env` ou arquivos com secrets
+- Use variáveis de ambiente
+- Ler skill `security/` da biblioteca para auditorias
+
+## 🎨 Padrões de Código
+
+[Adicione seus padrões específicos]
+
+---
+
+**Template criado:** 2026-03-20
+**Mantido pela:** Biblioteca Mestra

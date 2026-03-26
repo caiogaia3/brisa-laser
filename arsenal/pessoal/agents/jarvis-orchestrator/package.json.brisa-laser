@@ -1,0 +1,21 @@
+{
+  "name": "brisa-laser-jarvis",
+  "version": "1.0.0",
+  "description": "Jarvis Orchestrator 4.0 — Brisa Laser Multi-Agent System",
+  "type": "module",
+  "scripts": {
+    "build": "tsc",
+    "health": "npx tsx jarvis_orchestrator.ts health",
+    "discover": "npx tsx jarvis_orchestrator.ts discover",
+    "genesis": "npx tsx jarvis_orchestrator.ts genesis"
+  },
+  "dependencies": {
+    "axios": "^1.6.0",
+    "dotenv": "^16.3.1"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "tsx": "^4.0.0",
+    "typescript": "^5.0.0"
+  }
+}

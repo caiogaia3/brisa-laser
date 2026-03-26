@@ -1,5 +1,5 @@
 # Pro-Max Design System 💎 (Brisa Hub)
-**Versão:** 1.0 (CFO Grade)
+**Versão:** 1.2 (Pro-Max Deluxe)
 **Base:** [ui-ux-pro-max-skill](https://github.com/nextlevelbuilder/ui-ux-pro-max-skill.git)
 
 ## 🎨 Paleta de Cores (Tokens CSS)

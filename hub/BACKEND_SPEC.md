@@ -12,28 +12,26 @@ Todas as requisições API/Views do Supabase precisarão receber 2 parâmetros o
 - `period_preset`: `'today'` | `'7d'` | `'30d'` | `'custom'` (com `start_date` e `end_date`).
 
 ---
-
-## 2. Especificação: Cards de KPI (Pro-Max v1.0)
+ 
+## 2. Especificação: Cards de KPI (Pro-Max v1.2)
 Para que os cards de Resumo Executivo fiquem com a densidade visual premium ("Pro-Max"), a View do banco deve devolver:
 
 **Objeto Esperado por KPI (Ex: Receita Bruta):**
 ```json
 {
-  "value": 150000.00,
+  "value": "R$ 150.000,00", // Retorno em STRING formatada (pt-BR)
   "change_percentage": 8.4, 
-  // Regra: Se o preset for '7d', compara com os 7 dias ANTERIORES.
-  // Negativo ou Positivo. O Frontend renderiza o "Pill Badge" (Pílula) automaticamente.
   "sparkline_data": [
-      // Regra: ARRAY OBRIGATÓRIO DE 20 pontos de tendência.
-      // Renderizado horizontalmente à direita do badge do KPI.
-      {"val": 1200}, {"val": 1500}, /* ... */
+      {"val": 1200}, {"val": 1500} /* ARRAY OBRIGATÓRIO DE 20 pontos */
   ]
 }
 ```
 
 ---
 
-## 3. Especificação: Gráfico Principal (Receita vs Despesas Estratégicas)
+## 3. Especificação: Gráficos Premium (Visual Layer)
+- **Margem Donut**: O backend deve prover as 3 métricas base: `receita_bruta`, `despesas_fixas` e `despesas_totais`. O frontend calculará a "Margem Saudável" e o "Lucro Líquido" para o Donut.
+- **Break-even Progress**: Requer `receita_bruta` e `breakeven` (meta). O componente linear gerencia o progresso percentual e o efeito LED.
 O gráfico central em ciano e laranja interativo altera sua granularidade com base no `period_preset`:
 - Se **'today'**: O backend deve agrupar de hora em hora (24 pontos).
 - Se **'7d'**: O backend deve agrupar por Dia da Semana (7 pontos - Seg, Ter, Qua).
@@ -63,7 +61,8 @@ O controle de qual loja um usuário pode ver:
 
 ## 6. Histórico de Entregas (Até o momento)
 - **Estado Atual (26/03/2026)**:
-    - [x] **Fase 2 (UI Polish)**: Layout Pro-Max concluído com Glassmorphism.
-    - [x] **KPICards**: Redesenhados com Badge Pílula + Sparkline Row.
-    - [x] **Charts**: Tooltips premium com blur de 16px e sombras LED.
-    - [ ] **Fase 3 (Backend Integration)**: Implementação de PDF Export e Metas Dinâmicas.
+    - [x] **Fase 2 (UI Polish)**: Layout Pro-Max v1.2 concluído e estável.
+    - [x] **KPICards**: Redesenhados com Densidade Extra-Bold (800) e ritmo vertical otimizado.
+    - [x] **Charts Premium**: Donut Chart interativo com brilho neon e layout de legendas laterais.
+    - [x] **Deploy Fix**: Resolução de conflitos de tipos TS para deploy contínuo.
+    - [ ] **Fase 3 (Backend Integration)**: Implementação de PDF Export e Metas Dinâmicas (OKR Engine).

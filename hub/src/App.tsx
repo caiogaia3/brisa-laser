@@ -6,8 +6,8 @@ import { Marketing } from './pages/Marketing';
 import { Financeiro } from './pages/Financeiro';
 import { FinanceiroResumo } from './pages/Financeiro/FinanceiroResumo';
 import { FinanceiroDRE } from './pages/Financeiro/FinanceiroDRE';
-
-const Config = () => <div><h1 style={{ marginBottom: '8px' }}>Configurações</h1><p>Em breve...</p></div>;
+import { Configuracoes } from './pages/Configuracoes';
+import { OKRs } from './pages/OKRs';
 
 function App() {
   return (
@@ -20,7 +20,8 @@ function App() {
             <Route index element={<FinanceiroResumo />} />
             <Route path="dre" element={<FinanceiroDRE />} />
           </Route>
-          <Route path="config" element={<Config />} />
+          <Route path="okrs" element={<OKRs />} />
+          <Route path="config" element={<Configuracoes />} />
           <Route path="*" element={<Navigate to="/" replace />} />
         </Route>
       </Routes>

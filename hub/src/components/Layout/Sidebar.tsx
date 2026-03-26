@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { NavLink } from 'react-router-dom';
-import { LayoutDashboard, PieChart, DollarSign, Settings } from 'lucide-react';
+import { LayoutDashboard, PieChart, DollarSign, Settings, Target } from 'lucide-react';
 import { clsx, type ClassValue } from 'clsx';
 import { twMerge } from 'tailwind-merge';
 
@@ -12,7 +12,7 @@ const navItems = [
   { icon: LayoutDashboard, label: 'Resumo Executivo', to: '/' },
   { icon: PieChart, label: 'Marketing & Ads', to: '/marketing' },
   { icon: DollarSign, label: 'Financeiro DRE', to: '/financeiro' },
-  { icon: Settings, label: 'Configurações', to: '/config' },
+  { icon: Target, label: 'OKRs & Metas', to: '/okrs' },
 ];
 
 export const Sidebar = () => {
@@ -45,11 +45,12 @@ export const Sidebar = () => {
             <div style={{
               display: 'flex', alignItems: 'center', justifyContent: 'center'
             }}>
-              {/* Premium White SVG Logo */}
-              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M12 2L2 7L12 12L22 7L12 2Z" fill="white" fillOpacity="0.2" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                <path d="M2 17L12 22L22 17" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                <path d="M2 12L12 17L22 12" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+              {/* Premium White SVG Logo (Brisa "B" Flower) */}
+              <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="16" cy="16" r="14" stroke="white" strokeWidth="1" strokeOpacity="1"/>
+                <path d="M16 6C18 10 21 12 26 14C21 16 18 18 16 26C14 18 10 16 6 14C10 12 14 10 16 6Z" stroke="white" strokeWidth="1" strokeLinejoin="round"/>
+                <path d="M16 2C19 8 23 10 30 14C23 18 19 24 16 30C13 24 7 18 2 14C7 10 13 8 16 2Z" stroke="white" strokeOpacity="0.4" strokeWidth="1" strokeLinejoin="round"/>
+                <text x="16" y="21" fill="white" fontSize="14" fontFamily="serif" textAnchor="middle" fontWeight="normal">B</text>
               </svg>
             </div>
             <h2 style={{ fontSize: '1.25rem', fontWeight: 'bold', color: 'white', opacity: isHovered ? 1 : 0, transition: 'opacity 0.2s', whiteSpace: 'nowrap' }}>Brisa Hub</h2>
@@ -81,15 +82,24 @@ export const Sidebar = () => {
         </nav>
 
         <div style={{ padding: '24px 12px', borderTop: '1px solid var(--color-glass-border)', minWidth: '260px' }}>
-          <div style={{ padding: '12px', display: 'flex', gap: '16px', alignItems: 'center', borderRadius: 'var(--radius-lg)', background: isHovered ? 'rgba(255,255,255,0.03)' : 'transparent', transition: 'background 0.3s' }}>
-            <div style={{ minWidth: '36px', height: '36px', borderRadius: '50%', backgroundColor: 'var(--color-primary)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '14px', fontWeight: 'bold' }}>
-              MB
+          <NavLink
+            to="/config"
+            style={({ isActive }) => ({
+              display: 'flex', alignItems: 'center', gap: '16px',
+              padding: '12px', borderRadius: 'var(--radius)',
+              textDecoration: 'none',
+              color: isActive ? 'var(--text-main)' : 'var(--text-muted)',
+              backgroundColor: isActive && isHovered ? 'var(--color-primary-light)' : 'transparent',
+              border: isActive && isHovered ? '1px solid rgba(59, 130, 246, 0.3)' : '1px solid transparent',
+              transition: 'all 0.2s',
+              fontWeight: isActive ? 600 : 400
+            })}
+          >
+            <div style={{ minWidth: '36px', display: 'flex', justifyContent: 'center' }}>
+              <Settings size={24} style={{ color: 'inherit' }} />
             </div>
-            <div style={{ opacity: isHovered ? 1 : 0, transition: 'opacity 0.2s', whiteSpace: 'nowrap' }}>
-              <p style={{ fontSize: '0.875rem', fontWeight: 600, color: 'var(--text-main)' }}>Marcio Brisa</p>
-              <p style={{ fontSize: '0.75rem', color: 'var(--text-muted)' }}>CEO</p>
-            </div>
-          </div>
+            <span style={{ opacity: isHovered ? 1 : 0, transition: 'opacity 0.2s', whiteSpace: 'nowrap' }}>Configurações</span>
+          </NavLink>
         </div>
       </aside>
     </>

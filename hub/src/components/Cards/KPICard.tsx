@@ -1,7 +1,7 @@
-
 import { useId } from 'react';
 import { ArrowUp, ArrowDown, Minus } from 'lucide-react';
 import { ResponsiveContainer, AreaChart, Area, YAxis } from 'recharts';
+import InfoTooltip from '../Common/InfoTooltip';
 
 interface KPICardProps {
   title: string;
@@ -9,9 +9,21 @@ interface KPICardProps {
   change: number;
   prefix?: string;
   suffix?: string;
+  isGolden?: boolean;
+  tooltipTitle?: string;
+  tooltipContent?: string;
 }
 
-export const KPICard = ({ title, value, change, prefix, suffix }: KPICardProps) => {
+export const KPICard = ({ 
+  title, 
+  value, 
+  change, 
+  prefix, 
+  suffix, 
+  isGolden,
+  tooltipTitle,
+  tooltipContent 
+}: KPICardProps) => {
   const isPositive = change > 0;
   const isNegative = change < 0;
   const color = isPositive ? '#4ade80' : isNegative ? '#f87171' : 'var(--text-muted)';
@@ -23,7 +35,7 @@ export const KPICard = ({ title, value, change, prefix, suffix }: KPICardProps) 
   }));
 
   return (
-    <div className="liquid-glass" style={{ 
+    <div className={`liquid-glass ${isGolden ? 'status-alert' : ''}`} style={{ 
       padding: '16px 18px 12px 18px', 
       height: '110px', 
       display: 'flex', 
@@ -37,9 +49,14 @@ export const KPICard = ({ title, value, change, prefix, suffix }: KPICardProps) 
           fontWeight: 700, 
           color: 'var(--text-dim)', 
           textTransform: 'uppercase', 
-          letterSpacing: '0.08em' 
+          letterSpacing: '0.08em',
+          display: 'flex',
+          alignItems: 'center'
         }}>
           {title}
+          {tooltipTitle && tooltipContent && (
+            <InfoTooltip title={tooltipTitle} content={tooltipContent} />
+          )}
         </div>
         
         <div style={{ display: 'flex', alignItems: 'baseline', gap: '4px' }}>

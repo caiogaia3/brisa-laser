@@ -16,6 +16,14 @@
 - **Border**: `rgba(255, 255, 255, 0.06)`.
 - **Shadow**: Inset glow + deep drop shadow.
 - **Interatividade**: Hover com brilho ciano (`shadow-glow-cyan`).
+- **Golden Status (Alert)**: 
+    - Classe: `.status-alert`
+    - Efeito: Borda `rgba(239, 68, 68, 0.5)` + Shadow Glow Vermelho pulsante.
+    - Gatilho: Quando a métrica está abaixo da meta do Playbook.
+- **Info Tooltip (`(i)`)**:
+    - Classe: `.info-icon`
+    - Style: Circular, `14px`, Muted border.
+    - Active: `.info-tooltip` - Liquid Glass, blur 28px, Z-index alto, Título Gold, Texto Branco.
 
 ### 2. Glass Panel (`.glass-panel`) [Legacy/Secondary]
 - **Blur**: `16px`.
@@ -34,11 +42,18 @@
 
 ### 5. Charts (Premium Liquid Visuals)
 - **Container**: Todo gráfico deve estar envolto em um `.liquid-glass`.
-- **Donut/Pie**: Layout horizontal (Gráfico à esquerda / Legendas à direita).
-- **Interatividade**: Efeito de "Glow" (drop-shadow) em fatias ativas; cursor pointer.
-- **Break-even**: Barra de progresso linear com brilho LED e indicador de alvo (Target Marker).
-
-### 3. Charts (Recharts Custom)
+- **Zandu Donut (Progress)**: 
+    - Layout: Centralizado para impacto (Donut largo).
+    - Data: Valor principal no centro, Legend no rodapé ou lateral.
+    - Efeito: Glow Neon na cor da série ativa.
+- **King Charts (Cross-Metrics) [Ultra-Premium]**:
+    - **A. ROAS Visual**: `Dual-Axis (Glow-Area + Neon-Line)`. A Área representa a Receita (Preenchimento degradê suave); a Linha representa o Investimento (Traço fino em Ciano Neon).
+    - **B. Eficiência de Ativo**: `Stacked Bar + Scatter Dots`. Colunas agrupadas para horas de uso + Pontos flutuantes (Glow-Dots) para Receita/Hora.
+    - **C. Matriz de Retenção (LTV)**: `Radar Chart (Pentagon)`. Representação de 5 eixos (Volume, Velocidade, CAC, LTV, Conversão). Fundo com *Atmospheric Blur*.
+    - **D. Payback Timeline**: `Step Area Chart`. Visualização em "Degraus" cruzando a linha de zero (Break-even). Área negativa em vermelho fosco; área positiva em verde esmeralda vibrante.
+- **Zandu Bar (Ranking/Mix)**: 
+    - Orientação: Horizontal para legibilidade de textos longos (ex: nomes de áreas).
+    - Style: Barras com cantos arredondados (`4px`) e gradientes sutis.
 - **Tooltips**: Glassmorphism com borda ciano vibrante.
 - **Lines**: Stroke de `2px` com `activeDot` estilo LED (shadow glow).
 

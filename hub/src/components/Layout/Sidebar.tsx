@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import { NavLink, useLocation } from 'react-router-dom';
-import { LayoutDashboard, PieChart, DollarSign, Settings, BarChart2, FileText } from 'lucide-react';
+import { NavLink } from 'react-router-dom';
+import { LayoutDashboard, PieChart, DollarSign, Settings } from 'lucide-react';
 import { clsx, type ClassValue } from 'clsx';
 import { twMerge } from 'tailwind-merge';
 
@@ -17,9 +17,7 @@ const navItems = [
 
 export const Sidebar = () => {
   const [isHovered, setIsHovered] = useState(false);
-  const location = useLocation();
 
-  const isFinanceiro = location.pathname.startsWith('/financeiro');
 
   return (
     <>
@@ -93,47 +91,6 @@ export const Sidebar = () => {
             </div>
           </div>
         </div>
-      </aside>
-
-      {/* Sub-sidebar for Financeiro */}
-      <aside style={{
-        position: 'fixed',
-        left: '84px',
-        top: 0,
-        height: '100vh',
-        width: isFinanceiro ? '220px' : '0px',
-        backgroundColor: '#0c0c14', /* Slightly darker than surface for depth */
-        borderRight: isFinanceiro ? '1px solid var(--color-glass-border)' : 'none',
-        transition: 'width 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
-        overflow: 'hidden',
-        zIndex: 40
-      }}>
-        <div style={{ padding: '24px', height: '80px', display: 'flex', alignItems: 'center', minWidth: '220px' }}>
-          <h3 style={{ fontSize: '0.875rem', textTransform: 'uppercase', letterSpacing: '0.05em', color: 'var(--text-muted)' }}>Módulo Financeiro</h3>
-        </div>
-        <nav style={{ padding: '12px', display: 'flex', flexDirection: 'column', gap: '4px', minWidth: '220px' }}>
-          <NavLink to="/financeiro" end style={({ isActive }) => ({
-            display: 'flex', alignItems: 'center', gap: '12px',
-            padding: '10px 12px', borderRadius: '8px',
-            textDecoration: 'none', color: isActive ? 'var(--color-primary)' : 'var(--text-main)',
-            backgroundColor: isActive ? 'rgba(59, 130, 246, 0.1)' : 'transparent',
-            fontSize: '0.875rem', transition: 'all 0.2s',
-            fontWeight: isActive ? 600 : 400
-          })} className="hover:bg-white/5">
-            <BarChart2 size={16} /> Resumo
-          </NavLink>
-
-          <NavLink to="/financeiro/dre" style={({ isActive }) => ({
-            display: 'flex', alignItems: 'center', gap: '12px',
-            padding: '10px 12px', borderRadius: '8px',
-            textDecoration: 'none', color: isActive ? 'var(--color-accent)' : 'var(--text-main)',
-            backgroundColor: isActive ? 'rgba(16, 185, 129, 0.1)' : 'transparent',
-            fontSize: '0.875rem', transition: 'all 0.2s',
-            fontWeight: isActive ? 600 : 400
-          })} className="hover:bg-white/5">
-            <FileText size={16} /> DRE
-          </NavLink>
-        </nav>
       </aside>
     </>
   );

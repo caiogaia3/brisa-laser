@@ -66,11 +66,6 @@ export const FinanceiroResumo = () => {
 
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '32px' }}>
-      <header>
-        <h1 style={{ marginBottom: '8px' }}>Visão Executiva (CFO)</h1>
-        <p>Acompanhamento de saúde financeira: KPIs de alta densidade e eficiência estrutural.</p>
-      </header>
-
       <section style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '16px' }}>
         <KPICard title="Receita Bruta Total" value={currentMonthPivot.receita_bruta.toLocaleString('pt-BR')} change={0} prefix="R$" trend="neutral" />
         <KPICard title="Despesas Totais" value={currentMonthPivot.despesas_totais.toLocaleString('pt-BR')} change={0} prefix="R$" trend="down" />

@@ -1,4 +1,4 @@
-import { Search, Bell, Sparkles } from 'lucide-react';
+import { Bell, Sparkles } from 'lucide-react';
 import { DateSegmentedControl } from '../Navigation/DateSegmentedControl';
 import { StoreSelector } from '../Navigation/StoreSelector';
 
@@ -16,22 +16,8 @@ export const Header = ({ onOpenChat }: { onOpenChat?: () => void }) => {
       top: 0,
       zIndex: 10
     }}>
-      <div style={{ display: 'flex', alignItems: 'center', gap: '24px', flex: 1 }}>
-        <div className="glass-panel" style={{ 
-          display: 'flex', alignItems: 'center', gap: '12px', 
-          padding: '8px 16px', width: '320px', borderRadius: 'var(--radius-full)'
-        }}>
-          <Search size={18} color="var(--text-muted)" />
-          <input 
-            type="text" 
-            placeholder="Pergunte ao Jarvis CFO... (Cmd+K)" 
-            style={{ 
-              background: 'transparent', border: 'none', color: 'var(--text-main)', 
-              outline: 'none', width: '100%', fontSize: '0.875rem' 
-            }}
-            onClick={onOpenChat}
-          />
-        </div>
+      <div style={{ flex: 1 }}>
+        {/* Espaço reservado para manter o alinhamento do seletor de lojas à direita */}
       </div>
 
       <div style={{ display: 'flex', alignItems: 'center', gap: '24px' }}>

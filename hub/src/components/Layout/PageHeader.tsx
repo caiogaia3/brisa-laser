@@ -10,7 +10,7 @@ interface PageHeaderProps {
 export const PageHeader: React.FC<PageHeaderProps> = ({ 
   title, 
   subtitle, 
-  badge = "PRO-MAX v1.2", 
+  badge = "PRO-MAX v1.5", 
   children 
 }) => {
   return (

@@ -4,7 +4,8 @@ import { RevenueChart } from '../components/Charts/RevenueChart';
 import { LeadsFunnel } from '../components/Charts/LeadsFunnel';
 import { useCrossMetrics } from '../hooks/useCrossMetrics';
 import { useKPIs } from '../hooks/useKPIs';
-import { Bot, TrendingUp, Users, DollarSign, Target, BarChart3, Zap } from 'lucide-react';
+import { Bot, TrendingUp, Users, DollarSign, Target, BarChart3, Zap, ShieldCheck } from 'lucide-react';
+import SummaryTab from '../components/Dashboard/SummaryTab';
 
 export const Dashboard = () => {
   const { loading: kpiLoading, kpis, data } = useKPIs();
@@ -20,6 +21,16 @@ export const Dashboard = () => {
         title="Dashboard Central" 
         subtitle="Visão 360° da performance financeira e operacional da Brisa Laser."
       />
+
+      {/* 👑 The King's Summary (New v1.5 Layer) */}
+      <section>
+        <h2 style={{ fontSize: '1rem', color: 'var(--color-primary)', marginBottom: '20px', display: 'flex', alignItems: 'center', gap: '8px', fontWeight: 800 }}>
+          <ShieldCheck size={18} /> Central de Inteligência Master
+        </h2>
+        <SummaryTab />
+      </section>
+
+      <div style={{ height: '32px' }} />
 
       {/* Seção de KPIs Financeiros (Supabase DRE) */}
       <section>

@@ -1,8 +1,7 @@
 
-import { useMemo } from 'react';
-import { TrendingUp, TrendingDown, Minus } from 'lucide-react';
+import { useId } from 'react';
+import { ArrowUp, ArrowDown, Minus } from 'lucide-react';
 import { ResponsiveContainer, AreaChart, Area, YAxis } from 'recharts';
-import type { KPI } from '../../lib/types';
 
 interface KPICardProps {
   title: string;

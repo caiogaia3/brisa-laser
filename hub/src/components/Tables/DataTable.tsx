@@ -15,7 +15,7 @@ interface TableProps {
 
 export const DataTable = ({ columns, data, keyField }: TableProps) => {
   return (
-    <div className="glass-panel" style={{ overflowX: 'auto' }}>
+    <div className="liquid-glass" style={{ overflowX: 'auto' }}>
       <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'left' }}>
         <thead>
           <tr style={{ borderBottom: '1px solid var(--color-glass-border)', backgroundColor: 'rgba(255,255,255,0.02)' }}>

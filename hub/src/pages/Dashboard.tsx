@@ -60,7 +60,7 @@ export const Dashboard = () => {
 
       {/* Gráficos */}
       <section style={{ display: 'grid', gridTemplateColumns: '2fr 1fr', gap: '24px' }}>
-        <div className="glass-panel" style={{ padding: '24px', minHeight: '400px', display: 'flex', flexDirection: 'column' }}>
+        <div className="liquid-glass" style={{ padding: '24px', minHeight: '400px', display: 'flex', flexDirection: 'column' }}>
           <h3 style={{ marginBottom: '24px', display: 'flex', alignItems: 'center', gap: '8px' }}>
             <TrendingUp size={18} /> Receita Bruta vs Custos Totais
           </h3>
@@ -70,7 +70,7 @@ export const Dashboard = () => {
           </div>
         </div>
         
-        <div className="glass-panel" style={{ padding: '24px', minHeight: '400px', display: 'flex', flexDirection: 'column' }}>
+        <div className="liquid-glass" style={{ padding: '24px', minHeight: '400px', display: 'flex', flexDirection: 'column' }}>
           <h3 style={{ marginBottom: '24px', display: 'flex', alignItems: 'center', gap: '8px' }}>
             <Users size={18} /> Funil Comercial (Mês)
           </h3>
@@ -82,21 +82,21 @@ export const Dashboard = () => {
       
       {/* Summary Row - Sessões GA4 + Conversões */}
       <section style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '20px' }}>
-        <div className="glass-panel" style={{ padding: '24px', textAlign: 'center' }}>
+        <div className="liquid-glass" style={{ padding: '24px', textAlign: 'center' }}>
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px', marginBottom: '8px' }}>
             <BarChart3 size={18} color="var(--color-accent)" />
             <span style={{ fontSize: '0.85rem', color: 'var(--text-muted)' }}>Sessões GA4</span>
           </div>
           <span style={{ fontSize: '2rem', fontWeight: 700, color: 'var(--text-main)' }}>{metrics.sessoes_site.toLocaleString('pt-BR')}</span>
         </div>
-        <div className="glass-panel" style={{ padding: '24px', textAlign: 'center' }}>
+        <div className="liquid-glass" style={{ padding: '24px', textAlign: 'center' }}>
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px', marginBottom: '8px' }}>
             <Zap size={18} color="var(--color-warning)" />
             <span style={{ fontSize: '0.85rem', color: 'var(--text-muted)' }}>Conversões Ads</span>
           </div>
           <span style={{ fontSize: '2rem', fontWeight: 700, color: 'var(--text-main)' }}>{metrics.conversoes_ads}</span>
         </div>
-        <div className="glass-panel" style={{ padding: '24px', textAlign: 'center' }}>
+        <div className="liquid-glass" style={{ padding: '24px', textAlign: 'center' }}>
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px', marginBottom: '8px' }}>
             <Target size={18} color="var(--color-success)" />
             <span style={{ fontSize: '0.85rem', color: 'var(--text-muted)' }}>Tx. Conversão Site</span>

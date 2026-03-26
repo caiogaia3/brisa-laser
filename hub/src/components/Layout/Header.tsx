@@ -28,7 +28,7 @@ export const Header = ({ onOpenChat }: { onOpenChat?: () => void }) => {
 
       {/* Direita: Jarvis e Usuário */}
       <div style={{ flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'flex-end', gap: '24px' }}>
-        <button className="glass-panel" onClick={onOpenChat} style={{
+        <button className="liquid-glass" onClick={onOpenChat} style={{
           display: 'flex', alignItems: 'center', gap: '8px', 
           padding: '8px 16px', borderRadius: 'var(--radius-full)',
           background: 'linear-gradient(90deg, var(--color-primary-light), transparent)',

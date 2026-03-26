@@ -38,7 +38,7 @@ export const ChatPanel = ({ isOpen, onClose }: ChatPanelProps) => {
   };
 
   return (
-    <div className="glass-panel" style={{
+    <div className="liquid-glass" style={{
       position: 'fixed', bottom: '24px', right: '32px',
       width: '400px', height: '600px',
       display: 'flex', flexDirection: 'column',

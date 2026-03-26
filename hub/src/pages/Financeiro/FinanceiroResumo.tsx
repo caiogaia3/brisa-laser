@@ -99,7 +99,7 @@ export const FinanceiroResumo = () => {
       {/* Main Charts & OKRs Row */}
       <section style={{ display: 'grid', gridTemplateColumns: '1fr 280px', gap: '16px' }}>
         {/* Left: Main Performance Chart */}
-        <div className="glass-panel" style={{ padding: '16px', height: '380px', display: 'flex', flexDirection: 'column', border: '1px solid rgba(6, 182, 212, 0.15)' }}>
+        <div className="liquid-glass" style={{ padding: '16px', height: '380px', display: 'flex', flexDirection: 'column', border: '1px solid rgba(6, 182, 212, 0.15)' }}>
           <header style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '12px' }}>
             <div>
               <h3 style={{ fontSize: '0.9rem', color: 'var(--text-main)', display: 'flex', gap: '8px', alignItems: 'center', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
@@ -124,7 +124,7 @@ export const FinanceiroResumo = () => {
         </div>
 
         {/* Right: OKRs */}
-        <div className="glass-panel" style={{ padding: '16px', display: 'flex', flexDirection: 'column', gap: '20px' }}>
+        <div className="liquid-glass" style={{ padding: '16px', display: 'flex', flexDirection: 'column', gap: '20px' }}>
           <header>
             <h3 style={{ fontSize: '0.9rem', color: 'var(--text-main)', marginBottom: '2px', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Live OKRs</h3>
             <p style={{ fontSize: '0.65rem', color: 'var(--text-muted)' }}>Realizado vs Meta</p>
@@ -149,19 +149,19 @@ export const FinanceiroResumo = () => {
 
       {/* Bottom Rows: Secondary Analysis */}
       <section style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '16px' }}>
-        <div className="glass-panel" style={{ padding: '16px', height: '300px', display: 'flex', flexDirection: 'column' }}>
+        <div className="liquid-glass" style={{ padding: '16px', height: '300px', display: 'flex', flexDirection: 'column' }}>
           <h3 style={{ marginBottom: '12px', fontSize: '0.85rem', color: 'var(--text-main)', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Eficiência (Receita/EBITDA)</h3>
           <div style={{ flex: 1, minHeight: 0 }}><DoubleTrendChart data={trendData} /></div>
         </div>
 
-        <div className="glass-panel" style={{ height: '300px', padding: '24px' }}>
+        <div className="liquid-glass" style={{ height: '300px', padding: '24px' }}>
           <h3 style={{ fontSize: '0.75rem', fontWeight: 600, color: 'var(--text-dim)', letterSpacing: '0.05em', marginBottom: '20px', textTransform: 'uppercase' }}>
             Termômetro Break-even
           </h3>
           <BreakEvenProgress data={currentMonthPivot} />
         </div>
 
-        <div className="glass-panel" style={{ height: '300px', padding: '24px' }}>
+        <div className="liquid-glass" style={{ height: '300px', padding: '24px' }}>
           <h3 style={{ fontSize: '0.75rem', fontWeight: 600, color: 'var(--text-dim)', letterSpacing: '0.05em', marginBottom: '20px', textTransform: 'uppercase' }}>
             M. Contribuição (Base 100%)
           </h3>

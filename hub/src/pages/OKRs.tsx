@@ -32,7 +32,7 @@ export const OKRs = () => {
         <p style={{ color: 'var(--text-muted)' }}>Defina os alvos financeiros e de performance para {periodString} na loja selecionada.</p>
       </header>
 
-      <div className="glass-panel" style={{ padding: '32px', maxWidth: '600px' }}>
+      <div className="liquid-glass" style={{ padding: '32px', maxWidth: '600px' }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: '12px', padding: '16px', backgroundColor: 'rgba(59, 130, 246, 0.1)', border: '1px solid rgba(59, 130, 246, 0.2)', borderRadius: '8px', marginBottom: '32px' }}>
           <AlertCircle size={20} style={{ color: 'var(--color-primary)' }} />
           <p style={{ fontSize: '0.875rem', color: 'var(--text-main)' }}>Estas metas alimentarão os gráficos de progresso do Resumo Executivo em tempo real.</p>

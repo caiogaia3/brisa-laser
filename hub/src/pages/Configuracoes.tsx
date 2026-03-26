@@ -17,7 +17,7 @@ export const Configuracoes = () => {
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(400px, 1fr))', gap: '24px' }}>
         
         {/* Gestão de Perfis */}
-        <div className="glass-panel" style={{ padding: '24px', display: 'flex', flexDirection: 'column', gap: '24px' }}>
+        <div className="liquid-glass" style={{ padding: '24px', display: 'flex', flexDirection: 'column', gap: '24px' }}>
           <header style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
             <div style={{ padding: '8px', backgroundColor: 'rgba(59, 130, 246, 0.1)', borderRadius: '8px', color: 'var(--color-primary)' }}>
               <Users size={24} />
@@ -57,7 +57,7 @@ export const Configuracoes = () => {
         </div>
 
         {/* Saúde do Sistema de Sync */}
-        <div className="glass-panel" style={{ padding: '24px', display: 'flex', flexDirection: 'column', gap: '24px' }}>
+        <div className="liquid-glass" style={{ padding: '24px', display: 'flex', flexDirection: 'column', gap: '24px' }}>
           <header style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
             <div style={{ padding: '8px', backgroundColor: 'rgba(16, 185, 129, 0.1)', borderRadius: '8px', color: 'var(--color-success)' }}>
               <Server size={24} />

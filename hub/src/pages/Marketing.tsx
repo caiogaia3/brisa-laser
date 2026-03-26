@@ -134,18 +134,18 @@ export const Marketing = () => {
           </section>
 
           <section style={{ display: 'grid', gridTemplateColumns: '2fr 1fr', gap: '24px' }}>
-            <div className="glass-panel" style={{ padding: '24px', display: 'flex', flexDirection: 'column' }}>
+            <div className="liquid-glass" style={{ padding: '24px', display: 'flex', flexDirection: 'column' }}>
               <h3 style={{ marginBottom: '24px' }}>Investimento em Ads (Google vs Meta)</h3>
               <div style={{ flex: 1, minHeight: '300px' }}><AdsPerfChart /></div>
             </div>
             
-            <div className="glass-panel" style={{ padding: '24px', display: 'flex', flexDirection: 'column' }}>
+            <div className="liquid-glass" style={{ padding: '24px', display: 'flex', flexDirection: 'column' }}>
               <h3 style={{ marginBottom: '24px' }}>Funil Geral</h3>
               <div style={{ flex: 1, minHeight: '300px' }}><LeadsFunnel data={data} /></div>
             </div>
           </section>
 
-          <section className="glass-panel" style={{ padding: '24px' }}>
+          <section className="liquid-glass" style={{ padding: '24px' }}>
             <h3 style={{ marginBottom: '24px' }}>Últimos Leads (Consolidados via n8n)</h3>
             {leadsLoading ? (
               <p style={{ color: 'var(--text-muted)' }}>Carregando leads...</p>
@@ -161,7 +161,7 @@ export const Marketing = () => {
       )}
 
       {activeTab !== 'resumo' && (
-        <div className="glass-panel" style={{ padding: '64px', textAlign: 'center' }}>
+        <div className="liquid-glass" style={{ padding: '64px', textAlign: 'center' }}>
           <h2 style={{ color: 'var(--text-main)', marginBottom: '16px' }}>Visão {activeTab.toUpperCase()} em desenvolvimento</h2>
           <p style={{ color: 'var(--text-muted)' }}>Esta aba apresentará métricas detalhadas via API direta em breve.</p>
         </div>

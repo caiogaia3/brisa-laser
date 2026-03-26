@@ -23,7 +23,7 @@ export const KPICard = ({ title, value, change, prefix, suffix }: KPICardProps) 
   }));
 
   return (
-    <div className="glass-panel" style={{ 
+    <div className="liquid-glass" style={{ 
       padding: '16px 18px 12px 18px', 
       height: '110px', 
       display: 'flex', 

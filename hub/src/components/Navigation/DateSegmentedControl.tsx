@@ -88,7 +88,7 @@ export const DateSegmentedControl = () => {
       </div>
 
       {showCustom && (
-        <div className="glass-panel" style={{
+        <div className="liquid-glass" style={{
           position: 'absolute',
           top: 'calc(100% + 12px)',
           right: 0,

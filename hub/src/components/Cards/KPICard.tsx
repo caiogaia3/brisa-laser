@@ -73,14 +73,13 @@ export const KPICard = ({ title, value, change, trend, prefix = '', suffix = '' 
       {/* Background Sparkline - Premium Integration */}
       <div style={{ 
         position: 'absolute', 
-        bottom: '-1px', 
-        left: '-1px', 
-        right: '-1px', 
+        bottom: '-2px', 
+        left: '8px', 
+        right: '8px', 
         height: '45%', 
         zIndex: 0,
         opacity: 0.6,
-        pointerEvents: 'none',
-        overflow: 'hidden'
+        pointerEvents: 'none'
       }}>
         <ResponsiveContainer width="100%" height="100%">
           <AreaChart data={sparklineData} margin={{ top: 0, right: 0, left: 0, bottom: 0 }}>
@@ -95,7 +94,7 @@ export const KPICard = ({ title, value, change, trend, prefix = '', suffix = '' 
                type="monotone" 
                dataKey="val" 
                stroke={color} 
-               strokeWidth={1.5} 
+               strokeWidth={2} 
                fillOpacity={1} 
                fill={`url(#${gradientId})`} 
                isAnimationActive={false} 

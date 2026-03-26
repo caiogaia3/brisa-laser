@@ -17,7 +17,7 @@ export const StoreSelector = () => {
             background: 'var(--color-surface)',
             color: 'var(--text-main)',
             border: '1px solid var(--color-glass-border)',
-            borderRadius: 'var(--radius)',
+            borderRadius: 'var(--radius-lg)',
             padding: '8px 32px 8px 12px',
             fontSize: '0.875rem',
             fontWeight: 500,

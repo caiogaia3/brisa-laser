@@ -20,6 +20,10 @@
 - **Layout**: 2 níveis (Título/Valor + Badge/Sparkline Row).
 - **Tipografia**: Valor em `1.5rem / 700`, Título em `0.6rem / 600 / All-Caps`.
 
+### 3. Inputs & Selects
+- **Radius**: `14px` (`var(--radius-lg)`) - Padronizado com os cards de radar.
+- **Background**: `var(--color-surface)` com borda sutil.
+
 ### 3. Charts (Recharts Custom)
 - **Tooltips**: Glassmorphism com borda ciano vibrante.
 - **Lines**: Stroke de `2px` com `activeDot` estilo LED (shadow glow).

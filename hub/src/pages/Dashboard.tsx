@@ -5,7 +5,7 @@ import { useCrossMetrics } from '../hooks/useCrossMetrics';
 import { useKPIs } from '../hooks/useKPIs';
 import { Bot, TrendingUp, Users, DollarSign, Target, BarChart3, Zap, ShieldCheck } from 'lucide-react';
 import SummaryTab from '../components/Dashboard/SummaryTab';
-import OKRTracker from '../components/Dashboard/OKRTracker';
+import { OKRList } from '../components/Dashboard/OKRList';
 
 export const Dashboard = () => {
   const { loading: kpiLoading, kpis, data } = useKPIs();
@@ -17,55 +17,6 @@ export const Dashboard = () => {
 
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '32px' }}>
-      {/* 🛡️ The King's OKRs (Strategic Goal Management) */}
-      <section>
-        <h2 style={{ fontSize: '1.25rem', color: 'white', marginBottom: '24px', display: 'flex', alignItems: 'center', gap: '12px', fontWeight: 900 }}>
-          <ShieldCheck size={24} color="var(--color-primary)" />
-          <span>Diretoria: OKRs Rei (Mês)</span>
-        </h2>
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '20px' }}>
-          <OKRTracker 
-            title="Dominância Patrimonial"
-            current={3.4}
-            target={3.5}
-            unit="x"
-            tooltipTitle="LTV/CAC Ratio"
-            tooltipContent="O motor de escala. Mede o valor patrimonial criado por real investido. Meta do C-Level: 3.5x."
-            secondaryOKRs={[{label: 'CPL', progress: 95}, {label: 'Conv', progress: 80}]}
-          />
-          <OKRTracker 
-            title="Excelência Operacional"
-            current={64.8}
-            target={72}
-            unit="%"
-            tooltipTitle="Asset Efficiency"
-            tooltipContent="Mede a utilização real da capacidade instalada. Uma máquina parada é lucro perdido. Meta: 72%."
-            secondaryOKRs={[{label: 'Agenda', progress: 85}, {label: 'Turnover', progress: 100}]}
-          />
-          <OKRTracker 
-            title="Lucratividade Blindada"
-            current={42}
-            target={40}
-            unit=" Dias"
-            tooltipTitle="Payback Speed"
-            tooltipContent="Em quanto tempo o investimento em mídia paga se paga. Meta CFO: < 40 dias."
-            secondaryOKRs={[{label: 'Margem', progress: 98}, {label: 'Burn', progress: 100}]}
-          />
-          <OKRTracker 
-            title="Brand Value (ATV)"
-            current={254.8}
-            target={300}
-            prefix="R$ "
-            unit=""
-            tooltipTitle="Average Transaction Value"
-            tooltipContent="Mede o posicionamento premium. Indica se vendemos pacotes master ou serviços avulsos."
-            secondaryOKRs={[{label: 'Mix', progress: 70}, {label: 'Tickets', progress: 60}]}
-          />
-        </div>
-      </section>
-
-      <div style={{ height: '32px' }} />
-
       {/* 👑 The King's Summary (Consolidated Intelligence) */}
       <section>
         <h2 style={{ fontSize: '1rem', color: 'var(--text-muted)', marginBottom: '20px', display: 'flex', alignItems: 'center', gap: '8px', fontWeight: 800 }}>
@@ -74,49 +25,104 @@ export const Dashboard = () => {
         <SummaryTab />
       </section>
 
-      {/* 💰 OKRs Secundários: Financeiro & Lucratividade */}
+      {/* 🎯 Strategic OKR Engine: List View (v1.6) */}
       <section>
-        <h2 style={{ fontSize: '1rem', color: 'var(--text-muted)', marginBottom: '16px', display: 'flex', alignItems: 'center', gap: '8px', fontWeight: 800 }}>
-          <DollarSign size={16} color="var(--color-orange)" /> OKRs Secundários: Financeiro (Impacto no Lucro)
-        </h2>
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '20px' }}>
-          <OKRTracker 
-            title="Meta Faturamento Bruto"
-            current={142500}
-            target={150000}
-            prefix="R$ "
-            unit=""
-            tooltipTitle="Gross Revenue Goal"
-            tooltipContent="O combustível para a meta de Dominância. Meta mensal baseada no OKR Engine."
-            secondaryOKRs={[{label: 'Pacotes', progress: 95}, {label: 'Upgrade', progress: 60}]}
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
+          <OKRList 
+            title="Diretoria: OKRs Rei (Macro-Estratégia)" 
+            icon={<ShieldCheck size={20} color="var(--color-primary)" />}
+            items={[
+              {
+                category: "Patrimonial",
+                title: "Dominância Patrimonial",
+                current: 3.4,
+                target: 3.5,
+                unit: "x",
+                tooltipTitle: "LTV/CAC Ratio",
+                tooltipContent: "O motor de escala. Mede o valor patrimonial criado por real investido. Meta do C-Level: 3.5x.",
+                secondaryOKRs: [{label: 'CPL', progress: 95}, {label: 'Conv', progress: 80}]
+              },
+              {
+                category: "Eficiência",
+                title: "Excelência Operacional",
+                current: 64.8,
+                target: 72,
+                unit: "%",
+                tooltipTitle: "Asset Efficiency",
+                tooltipContent: "Mede a utilização real da capacidade instalada. Uma máquina parada é lucro perdido. Meta: 72%.",
+                secondaryOKRs: [{label: 'Agenda', progress: 85}, {label: 'Turnover', progress: 100}]
+              },
+              {
+                category: "Liquidez",
+                title: "Lucratividade Blindada",
+                current: 42,
+                target: 40,
+                unit: " Dias",
+                tooltipTitle: "Payback Speed",
+                tooltipContent: "Em quanto tempo o investimento em mídia paga se paga. Meta CFO: < 40 dias.",
+                secondaryOKRs: [{label: 'Margem', progress: 98}, {label: 'Burn', progress: 100}]
+              },
+              {
+                category: "Marca",
+                title: "Brand Value (ATV)",
+                current: 254.8,
+                target: 300,
+                prefix: "R$ ",
+                unit: "",
+                tooltipTitle: "Average Transaction Value",
+                tooltipContent: "Mede o posicionamento premium. Indica se vendemos pacotes master ou serviços avulsos.",
+                secondaryOKRs: [{label: 'Mix', progress: 70}, {label: 'Tickets', progress: 60}]
+              }
+            ]}
           />
-          <OKRTracker 
-            title="Gestão de Despesas Fixas"
-            current={11200}
-            target={12000}
-            prefix="R$ "
-            unit=""
-            tooltipTitle="Fixed OpEx Ceiling"
-            tooltipContent="Controlar o fixo é o que protege a 'Lucratividade Blindada'. Teto máximo: R$ 12k."
-            secondaryOKRs={[{label: 'Manutenção', progress: 100}, {label: 'Insumos', progress: 85}]}
-          />
-          <OKRTracker 
-            title="Margem de Contribuição"
-            current={97.2}
-            target={98}
-            unit="%"
-            tooltipTitle="Contribution Margin"
-            tooltipContent="Reflete quanto sobra após pagar os custos variáveis. Vital para a saúde do CFO."
-            secondaryOKRs={[{label: 'Diretos', progress: 98}, {label: 'Comissões', progress: 95}]}
-          />
-          <OKRTracker 
-            title="Erosão de Preço (Burn)"
-            current={12.4}
-            target={15}
-            unit="%"
-            tooltipTitle="Price Erosion / Discounts"
-            tooltipContent="Monitora o volume de descontos. Acima de 15% destrói o valor da marca Brisa."
-            secondaryOKRs={[{label: 'Cupons', progress: 40}, {label: 'Black Friday', progress: 10}]}
+
+          <OKRList 
+            title="Operacional: OKRs Financeiros (Impacto no Lucro)" 
+            icon={<DollarSign size={20} color="var(--color-orange)" />}
+            items={[
+              {
+                category: "Receita",
+                title: "Meta Faturamento Bruto",
+                current: 142500,
+                target: 150000,
+                prefix: "R$ ",
+                unit: "",
+                tooltipTitle: "Gross Revenue Goal",
+                tooltipContent: "O combustível para a meta de Dominância. Meta mensal baseada no OKR Engine.",
+                secondaryOKRs: [{label: 'Pacotes', progress: 95}, {label: 'Upgrade', progress: 60}]
+              },
+              {
+                category: "Custos",
+                title: "Gestão de Despesas Fixas",
+                current: 11200,
+                target: 12000,
+                prefix: "R$ ",
+                unit: "",
+                tooltipTitle: "Fixed OpEx Ceiling",
+                tooltipContent: "Controlar o fixo é o que protege a 'Lucratividade Blindada'. Teto máximo: R$ 12k.",
+                secondaryOKRs: [{label: 'Manutenção', progress: 100}, {label: 'Insumos', progress: 85}]
+              },
+              {
+                category: "Saúde",
+                title: "Margem de Contribuição",
+                current: 97.2,
+                target: 98,
+                unit: "%",
+                tooltipTitle: "Contribution Margin",
+                tooltipContent: "Reflete quanto sobra após pagar os custos variáveis. Vital para a saúde do CFO.",
+                secondaryOKRs: [{label: 'Diretos', progress: 98}, {label: 'Comissões', progress: 95}]
+              },
+              {
+                category: "Marca",
+                title: "Erosão de Preço (Burn)",
+                current: 12.4,
+                target: 15,
+                unit: "%",
+                tooltipTitle: "Price Erosion / Discounts",
+                tooltipContent: "Monitora o volume de descontos. Acima de 15% destrói o valor da marca Brisa.",
+                secondaryOKRs: [{label: 'Cupons', progress: 40}, {label: 'Black Friday', progress: 10}]
+              }
+            ]}
           />
         </div>
       </section>

@@ -88,47 +88,48 @@ export const DateSegmentedControl = () => {
       </div>
 
       {showCustom && (
-        <div style={{
+        <div className="glass-panel" style={{
           position: 'absolute',
           top: 'calc(100% + 12px)',
           right: 0,
-          background: 'var(--color-surface)',
+          background: 'rgba(10, 10, 15, 0.95)',
+          backdropFilter: 'blur(24px)',
           border: '1px solid var(--color-glass-border)',
           borderRadius: '12px',
-          padding: '16px',
-          minWidth: '240px',
+          padding: '12px',
+          minWidth: '280px',
           zIndex: 50,
-          boxShadow: '0 10px 30px rgba(0,0,0,0.8)'
+          boxShadow: '0 20px 40px rgba(0,0,0,0.6), 0 0 20px rgba(6, 182, 212, 0.05)'
         }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '16px' }}>
-            <Calendar size={16} color="var(--color-primary)" />
-            <h4 style={{ margin: 0, fontSize: '0.9rem' }}>Selecione o Período</h4>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '12px' }}>
+            <Calendar size={14} color="var(--color-primary)" />
+            <h4 style={{ margin: 0, fontSize: '0.8rem', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.05em' }}>Período Custom</h4>
           </div>
           
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '12px', marginBottom: '16px' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '8px', marginBottom: '12px' }}>
             <div>
-              <label style={{ display: 'block', fontSize: '0.75rem', color: 'var(--text-muted)', marginBottom: '4px' }}>Início</label>
+              <label style={{ display: 'block', fontSize: '0.65rem', color: 'var(--text-muted)', marginBottom: '4px', textTransform: 'uppercase' }}>Início</label>
               <input 
                 type="date" 
                 value={tempStart} 
                 onChange={e => setTempStart(e.target.value)}
                 style={{ 
-                  width: '100%', padding: '8px', borderRadius: '6px', 
-                  background: 'var(--color-bg)', border: '1px solid var(--color-glass-border)', 
-                  color: 'var(--text-main)', colorScheme: 'dark' 
+                  width: '100%', padding: '6px 8px', borderRadius: '6px', 
+                  background: 'rgba(0,0,0,0.3)', border: '1px solid var(--color-glass-border)', 
+                  color: 'var(--text-main)', colorScheme: 'dark', fontSize: '0.75rem', outline: 'none'
                 }} 
               />
             </div>
             <div>
-              <label style={{ display: 'block', fontSize: '0.75rem', color: 'var(--text-muted)', marginBottom: '4px' }}>Fim</label>
+              <label style={{ display: 'block', fontSize: '0.65rem', color: 'var(--text-muted)', marginBottom: '4px', textTransform: 'uppercase' }}>Fim</label>
               <input 
                 type="date" 
                 value={tempEnd} 
                 onChange={e => setTempEnd(e.target.value)}
                 style={{ 
-                  width: '100%', padding: '8px', borderRadius: '6px', 
-                  background: 'var(--color-bg)', border: '1px solid var(--color-glass-border)', 
-                  color: 'var(--text-main)', colorScheme: 'dark' 
+                  width: '100%', padding: '6px 8px', borderRadius: '6px', 
+                  background: 'rgba(0,0,0,0.3)', border: '1px solid var(--color-glass-border)', 
+                  color: 'var(--text-main)', colorScheme: 'dark', fontSize: '0.75rem', outline: 'none'
                 }} 
               />
             </div>
@@ -137,12 +138,16 @@ export const DateSegmentedControl = () => {
           <button 
             onClick={applyCustom}
             style={{
-              width: '100%', padding: '8px', borderRadius: '6px',
-              background: 'var(--color-primary)', border: 'none', color: '#fff',
-              fontWeight: 600, cursor: 'pointer'
+              width: '100%', padding: '10px', borderRadius: '8px',
+              background: 'linear-gradient(135deg, var(--color-primary), #0891b2)', 
+              border: 'none', color: '#fff',
+              fontSize: '0.75rem', fontWeight: 700, cursor: 'pointer',
+              transition: 'all 0.2s', boxShadow: '0 4px 12px rgba(6, 182, 212, 0.3)'
             }}
+            onMouseOver={(e) => e.currentTarget.style.filter = 'brightness(1.1)'}
+            onMouseOut={(e) => e.currentTarget.style.filter = 'brightness(1.0)'}
           >
-            Aplicar Filtro
+            APLICAR FILTRO
           </button>
         </div>
       )}

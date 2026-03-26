@@ -38,4 +38,24 @@
 - **Title**: `text-main`, uppercase, weight 800, `1rem`.
 - **Subtitle**: `text-muted`, weight 400, `0.7rem`.
 - **Layout**: Flex col com gap de `2px`.
-- **Navigation**: Tabs compactas (`p-2 rounded-6`) alinhadas à direita.
+
+## 📑 Tabs (Mini-Navigation)
+- **Active**: 
+    - Bg: `rgba(6, 182, 212, 0.08)`
+    - Border: `1px solid var(--color-primary)`
+    - Shadow: `0 0 15px rgba(6, 182, 212, 0.15)`
+    - Color: `var(--color-primary)`
+    - Weight: `700`
+- **Inactive**:
+    - Bg: `transparent`
+    - Color: `var(--text-muted)`
+    - Weight: `500`
+- **General**: Radius `8px`, Font `0.7rem`, Spacing `px-12 py-6`.
+
+## 📅 Period Selector (DatePicker)
+- **Segmented Control**: Pill-style navigation (`H-36px`, blur 10px).
+- **Custom Popover**: 
+    - Layout: Side-by-side (`grid-cols-2`) for start/end dates.
+    - Style: Glass-panel (`blur-24px`), dark bg (`0.95 opacity`).
+    - Inputs: Minimalist, `outline: none`, focus border cyan.
+    - CTA: Gradient `(primary -> dark-cyan)`, shadow glow.

@@ -87,19 +87,19 @@ export const Marketing = () => {
   ];
 
   const tabStyle = (id: string) => ({
-    padding: '8px 16px',
+    padding: '6px 12px',
     borderRadius: '8px',
-    backgroundColor: activeTab === id ? 'rgba(6, 182, 212, 0.1)' : 'transparent',
+    backgroundColor: activeTab === id ? 'rgba(6, 182, 212, 0.08)' : 'transparent',
     color: activeTab === id ? 'var(--color-primary)' : 'var(--text-muted)',
-    border: 'none',
+    border: activeTab === id ? '1px solid var(--color-primary)' : '1px solid transparent',
+    boxShadow: activeTab === id ? '0 0 15px rgba(6, 182, 212, 0.15)' : 'none',
     cursor: 'pointer',
-    fontSize: '0.75rem',
+    fontSize: '0.7rem',
     fontWeight: activeTab === id ? 700 : 500,
     display: 'flex',
     alignItems: 'center',
     gap: '6px',
     transition: 'all 0.2s',
-    borderBottom: activeTab === id ? '2px solid var(--color-primary)' : '2px solid transparent'
   });
 
   return (

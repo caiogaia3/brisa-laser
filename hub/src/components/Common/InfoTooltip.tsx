@@ -42,10 +42,10 @@ const InfoTooltip: React.FC<InfoTooltipProps> = ({ title, content }) => {
           pointerEvents: 'none',
           animation: 'fade-in-up 0.2s ease-out'
         }}>
-          <div style={{ fontSize: '0.7rem', fontWeight: 900, color: 'var(--color-primary)', textTransform: 'uppercase', marginBottom: '4px', letterSpacing: '0.05em' }}>
+          <div style={{ fontSize: '0.62rem', fontWeight: 900, color: 'var(--color-primary)', textTransform: 'uppercase', marginBottom: '6px', letterSpacing: '0.08em' }}>
             {title}
           </div>
-          <div style={{ fontSize: '0.75rem', color: 'rgba(255, 255, 255, 0.8)', lineHeight: '1.4', fontWeight: 400 }}>
+          <div style={{ fontSize: '0.68rem', color: 'rgba(255, 255, 255, 0.9)', lineHeight: '1.45', fontWeight: 450 }}>
             {content}
           </div>
           

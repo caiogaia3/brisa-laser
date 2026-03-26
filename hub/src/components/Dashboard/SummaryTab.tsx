@@ -16,7 +16,7 @@ const SummaryTab: React.FC = () => {
       prefix: "R$",
       isGolden: true,
       tooltipTitle: "ATV (Average Transaction Value)",
-      tooltipContent: "Diferencia clínica 'premium' de 'popular'. Foca em pacotes vs sessões avulsas. Meta: > R$ 248,75."
+      tooltipContent: "Diferencia clínica premium de popular. Foca na venda de pacotes de alto valor vs sessões avulsas de retoque. Meta > R$ 248,75 garante faturamento escalável."
     },
     {
       title: "Ratio LTV/CAC",
@@ -24,7 +24,7 @@ const SummaryTab: React.FC = () => {
       change: 12.1,
       isGolden: true,
       tooltipTitle: "LTV to CAC Ratio",
-      tooltipContent: "Mede o valor patrimonial. Se > 3, cada Real em marketing cria 3 Reais em patrimônio."
+      tooltipContent: "O motor de crescimento patrimonial. Mede quanto cada Real investido gera de lucro vitalício. Se > 3.0x, a empresa está criando valor real de mercado."
     },
     {
       title: "Margem Bruta",
@@ -32,8 +32,8 @@ const SummaryTab: React.FC = () => {
       change: 0.8,
       suffix: "%",
       isGolden: true,
-      tooltipTitle: "Gross Margin",
-      tooltipContent: "No Laser, o custo marginal é zero. Se cair, há vazamento de lucro ou erro de preço. Meta: 95%+"
+      tooltipTitle: "Gross Margin %",
+      tooltipContent: "No laser, o custo marginal do disparo é mínimo. Uma queda aqui indica vazamento de lucro, erro de precificação ou excesso de descontos agressivos."
     },
     {
       title: "Taxa Comparecimento",
@@ -41,8 +41,8 @@ const SummaryTab: React.FC = () => {
       change: -2.1,
       suffix: "%",
       isGolden: false,
-      tooltipTitle: "Show-up Rate",
-      tooltipContent: "Mede a eficiência real das mensagens de WhatsApp e agendamento. Meta: > 70%."
+      tooltipTitle: "Show-up Rate (Real)",
+      tooltipContent: "Mede a eficiência do funil comercial e dos lembretes. Comparecimento < 70% desperdiça investimento em Ads e ociosa a equipe da clínica."
     },
     {
       title: "Utilização Máquina",
@@ -51,7 +51,7 @@ const SummaryTab: React.FC = () => {
       suffix: "%",
       isGolden: true,
       tooltipTitle: "Asset Efficiency",
-      tooltipContent: "Sua máquina é seu maior custo parado. Deve trabalhar o máximo possível. Meta: > 60%."
+      tooltipContent: "Sua máquina de laser é seu maior custo de capital. Cada hora parada é lucro perdido. Meta > 60% garante que o investimento se pague no tempo previsto."
     }
   ];
 

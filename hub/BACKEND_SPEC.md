@@ -78,10 +78,28 @@ O controle de qual loja um usuário pode ver:
 
 ---
 
-## 6. Histórico de Entregas (Até o momento)
+## 7. Lógica dos Assets Master (King Dashboard v1.5) 👑
+Esta seção define o cálculo e a origem de dados para os indicadores de v1.5 ("Liquid Glass").
+
+### 💎 7.1 King KPIs (Elite Layer)
+| KPI | Fórmula | Origem de Dados (Supabase) |
+| :--- | :--- | :--- |
+| **ATV** | `sum(venda_valor) / count(agendamentos_realizados)` | `zandu_sync` + `leads_consolidados` |
+| **LTV/CAC** | `avg(faturamento_vida_lead) / avg(investimento_total / leads_venda)` | `crm_metrics` (v_total_ltv_cac) |
+| **Gross Margin**| `(faturamento - custos_diretos) / faturamento` | `fin_dre_consolidado` |
+| **Show-up Rate**| `count(status='presente') / count(agendamentos)` | `zandu_agendamentos` |
+| **Asset Eff.** | `horas_disparo_laser / horas_disponiveis_agenda` | `laser_utilization_log` |
+
+### 📊 7.2 King Charts (Intelligence Crossing)
+- **ROAS por Origem**: Cruzamento de `sum(ads_spend)` (Meta/Google) vs `sum(receita_confirmada)` (CRM) agrupado por `utm_source`.
+- **Matriz de LTV (Radar)**: View `v_channel_intelligence` que normaliza scores (0-100) para Volume, CAC e LTV.
+- **Payback Timeline**: Cálculo cumulativo `(lucro_diário - investimento_inicial)` ao longo de 90 dias para cada campanha.
+- **Eficiência de Ativo**: `receita_gerada / horas_em_uso` segmentado por `body_area` (Axila, Perna, etc).
+
+---
+
+## 8. Histórico de Entregas (Até o momento)
 - **Estado Atual (26/03/2026)**:
-    - [x] **Fase 2 (UI Polish)**: Layout Pro-Max v1.2 concluído e estável.
-    - [x] **KPICards**: Redesenhados com Densidade Extra-Bold (800) e ritmo vertical otimizado.
-    - [x] **Charts Premium**: Donut Chart interativo com brilho neon e layout de legendas laterais.
-    - [x] **Deploy Fix**: Resolução de conflitos de tipos TS para deploy contínuo.
-    - [ ] **Fase 3 (Backend Integration)**: Implementação de PDF Export e Metas Dinâmicas (OKR Engine).
+    - [x] **Fase 4 (King Dashboard)**: Interface v1.5 "Liquid Glass" com Aba Resumo concluída.
+    - [x] **King Charts Implementation**: ROAS, LTV Radar, Payback e Asset Efficiency em React Estável.
+    - [/] **Fase 5 (Integration Logic)**: Mapeamento de lógica de assets no `BACKEND_SPEC.md` iniciado.

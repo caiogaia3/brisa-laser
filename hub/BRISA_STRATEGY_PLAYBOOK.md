@@ -10,19 +10,19 @@ Estes são os indicadores que comandam a saúde da empresa. Cada um no Dash ter�
 
 1.  **Valor Médio por Visita (ATV - Average Transaction Value)**
     *   **Meta**: > $248,75.
-    *   **CFO Insight**: Diferencia clínica "premium" de "popular". Foca em pacotes vs sessões avulsas.
+    *   **CFO Insight**: Diferencia clínica premium de popular. Foca na venda de pacotes de alto valor vs sessões avulsas de retoque. Meta > R$ 248,75 garante faturamento escalável.
 2.  **Ratio LTV/CAC (Growth Machine)**
     *   **Meta**: > 3.0x.
-    *   **CFO Insight**: Mede o valor patrimonial. Se > 3, cada Real em marketing cria 3 Reais em patrimônio.
+    *   **CFO Insight**: O motor de crescimento patrimonial. Mede quanto cada Real investido gera de lucro vitalício. Se > 3.0x, a empresa está criando valor real de mercado.
 3.  **Margem Bruta (Gross Margin %)**
     *   **Meta**: 95%+.
-    *   **CFO Insight**: No Laser, o custo marginal é zero. Se cair, há vazamento de lucro ou erro de preço.
+    *   **CFO Insight**: No laser, o custo marginal do disparo é mínimo. Uma queda aqui indica vazamento de lucro, erro de precificação ou excesso de descontos agressivos.
 4.  **Taxa de Comparecimento (Show-up Rate)**
     *   **Meta**: > 70%.
-    *   **CFO Insight**: Mede a eficiência real das mensagens de WhatsApp e agendamento.
+    *   **CFO Insight**: Mede a eficiência do funil comercial e dos lembretes. Comparecimento < 70% desperdiça investimento em Ads e ociosa a equipe da clínica.
 5.  **Utilização de Equipamentos (Asset Efficiency)**
     *   **Meta**: > 60%.
-    *   **CFO Insight**: Sua máquina é seu maior custo parado. Deve trabalhar o máximo possível.
+    *   **CFO Insight**: Sua máquina de laser é seu maior custo de capital. Cada hora parada é lucro perdido. Meta > 60% garante que o investimento se pague no tempo previsto.
 
 ---
 

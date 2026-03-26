@@ -91,12 +91,12 @@ export const Marketing = () => {
       </header>
 
       <section style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '24px' }}>
-        <KPICard title="Conversões (Mês)" value={metrics.conversoes_ads} change={0} trend="up" />
-        <KPICard title="Custo por Lead (CPL)" value={fmt(metrics.cpl)} change={0} prefix="R$" trend="down" />
-        <KPICard title="ROAS Global" value={fmt(metrics.roas)} change={0} suffix="x" trend={metrics.roas >= 3 ? 'up' : 'neutral'} />
-        <KPICard title="Investimento Google" value={fmt(metrics.investimento_google)} change={0} prefix="R$" trend="neutral" />
-        <KPICard title="Investimento Meta" value={fmt(metrics.investimento_meta)} change={0} prefix="R$" trend="neutral" />
-        <KPICard title="Leads Gerados" value={metrics.leads_gerados} change={0} trend="up" />
+        <KPICard title="Conversões (Mês)" value={metrics.conversoes_ads.toString()} change={0} />
+        <KPICard title="Custo por Lead (CPL)" value={fmt(metrics.cpl)} change={0} prefix="R$" />
+        <KPICard title="ROAS Global" value={fmt(metrics.roas)} change={0} suffix="x" />
+        <KPICard title="Investimento Google" value={fmt(metrics.investimento_google)} change={0} prefix="R$" />
+        <KPICard title="Investimento Meta" value={fmt(metrics.investimento_meta)} change={0} prefix="R$" />
+        <KPICard title="Leads Gerados" value={metrics.leads_gerados.toString()} change={0} />
       </section>
 
       <section style={{ display: 'grid', gridTemplateColumns: '2fr 1fr', gap: '24px' }}>

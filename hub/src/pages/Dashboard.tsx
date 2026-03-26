@@ -45,16 +45,16 @@ export const Dashboard = () => {
           <Target size={16} /> Performance Ads × Clínica (Multi-Fonte)
         </h2>
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '20px' }}>
-          <KPICard title="Faturamento Zandu" value={fmt(metrics.faturamento_total)} change={0} prefix="R$" trend={metrics.faturamento_total > 0 ? 'up' : 'neutral'} />
-          <KPICard title="Ticket Médio" value={fmt(metrics.ticket_medio)} change={0} prefix="R$" trend="neutral" />
-          <KPICard title="Agendamentos" value={metrics.agendamentos_total} change={0} trend="neutral" />
-          <KPICard title="Taxa Comparecimento" value={`${fmt(metrics.taxa_comparecimento)}`} change={0} suffix="%" trend={metrics.taxa_comparecimento >= 70 ? 'up' : 'down'} />
-          <KPICard title="Leads Gerados" value={metrics.leads_gerados} change={0} trend="neutral" />
-          <KPICard title="Investimento Ads" value={fmt(metrics.investimento_total)} change={0} prefix="R$" trend="neutral" />
-          <KPICard title="CPL (Custo por Lead)" value={fmt(metrics.cpl)} change={0} prefix="R$" trend={metrics.cpl > 0 ? 'down' : 'neutral'} />
-          <KPICard title="ROAS" value={fmt(metrics.roas)} change={0} suffix="x" trend={metrics.roas >= 3 ? 'up' : 'down'} />
-          <KPICard title="CAC" value={fmt(metrics.cac)} change={0} prefix="R$" trend={metrics.cac > 0 ? 'down' : 'neutral'} />
-          <KPICard title="LTV Estimado" value={fmt(metrics.ltv_estimado)} change={0} prefix="R$" trend="up" />
+          <KPICard title="Faturamento Zandu" value={fmt(metrics.faturamento_total)} change={0} prefix="R$" />
+          <KPICard title="Ticket Médio" value={fmt(metrics.ticket_medio)} change={0} prefix="R$" />
+          <KPICard title="Agendamentos" value={metrics.agendamentos_total.toString()} change={0} />
+          <KPICard title="Taxa Comparecimento" value={fmt(metrics.taxa_comparecimento)} change={0} suffix="%" />
+          <KPICard title="Leads Gerados" value={metrics.leads_gerados.toString()} change={0} />
+          <KPICard title="Investimento Ads" value={fmt(metrics.investimento_total)} change={0} prefix="R$" />
+          <KPICard title="CPL (Custo por Lead)" value={fmt(metrics.cpl)} change={0} prefix="R$" />
+          <KPICard title="ROAS" value={fmt(metrics.roas)} change={0} suffix="x" />
+          <KPICard title="CAC" value={fmt(metrics.cac)} change={0} prefix="R$" />
+          <KPICard title="LTV Estimado" value={fmt(metrics.ltv_estimado)} change={5} prefix="R$" />
         </div>
       </section>
 

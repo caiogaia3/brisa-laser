@@ -35,13 +35,13 @@ export function useKPIs() {
         if (!dreData) {
           // Zeroed state if no data for the month
           setKpis([
-            { title: 'Receita Bruta', value: '0', change: 0, prefix: 'R$', trend: 'neutral' },
-            { title: 'Margem de Contribuição', value: '0', change: 0, prefix: 'R$', trend: 'neutral' },
-            { title: 'Despesas Totais', value: '0', change: 0, prefix: 'R$', trend: 'neutral' },
-            { title: 'Despesas Fixas', value: '0', change: 0, prefix: 'R$', trend: 'neutral' },
-            { title: 'EBITDA (LAJIDA)', value: '0', change: 0, prefix: 'R$', trend: 'neutral' },
-            { title: 'Lucro Líquido Final', value: '0', change: 0, prefix: 'R$', trend: 'neutral' },
-            { title: 'Ponto Equilíbrio (Break-even)', value: '0', change: 0, prefix: 'R$', trend: 'neutral' },
+            { title: 'Receita Bruta', value: '0', change: 0, prefix: 'R$' },
+            { title: 'Margem de Contribuição', value: '0', change: 0, prefix: 'R$' },
+            { title: 'Despesas Totais', value: '0', change: 0, prefix: 'R$' },
+            { title: 'Despesas Fixas', value: '0', change: 0, prefix: 'R$' },
+            { title: 'EBITDA (LAJIDA)', value: '0', change: 0, prefix: 'R$' },
+            { title: 'Lucro Líquido Final', value: '0', change: 0, prefix: 'R$' },
+            { title: 'Ponto Equilíbrio (Break-even)', value: '0', change: 0, prefix: 'R$' },
           ]);
           setData(null);
           setLoading(false);
@@ -56,50 +56,43 @@ export function useKPIs() {
             title: 'Receita Bruta', 
             value: (dreData.receita_bruta || 0).toLocaleString('pt-BR'), 
             change: 0,
-            prefix: 'R$', 
-            trend: (dreData.receita_bruta || 0) > 0 ? 'up' : 'neutral' 
+            prefix: 'R$' 
           },
           { 
             title: 'Margem de Contribuição', 
             value: (dreData.margem_contribuicao || 0).toLocaleString('pt-BR'), 
             change: 0, 
-            prefix: 'R$', 
-            trend: (dreData.margem_contribuicao || 0) > 0 ? 'up' : 'down' 
+            prefix: 'R$' 
           },
           { 
             title: 'Despesas Totais', 
             value: (dreData.despesas_totais || 0).toLocaleString('pt-BR'), 
             change: 0, 
-            prefix: 'R$', 
-            trend: 'down' 
+            prefix: 'R$' 
           },
           { 
             title: 'Despesas Fixas', 
             value: (dreData.despesas_fixas || 0).toLocaleString('pt-BR'), 
             change: 0, 
-            prefix: 'R$', 
-            trend: 'neutral' 
+            prefix: 'R$' 
           },
           { 
             title: 'EBITDA (LAJIDA)', 
             value: (dreData.ebitda || 0).toLocaleString('pt-BR'), 
             change: 0, 
-            prefix: 'R$', 
-            trend: (dreData.ebitda || 0) > 0 ? 'up' : 'down' 
+            prefix: 'R$' 
           },
           { 
             title: 'Lucro Líquido Final', 
             value: (dreData.lucro_liquido || 0).toLocaleString('pt-BR'), 
             change: 0, 
-            prefix: 'R$', 
-            trend: (dreData.lucro_liquido || 0) > 0 ? 'up' : 'down' 
+            prefix: 'R$' 
           },
           { 
             title: 'Break-even (Ponto Mágico)', 
             value: (dreData.breakeven || 0).toLocaleString('pt-BR'), 
             change: 0, 
-            prefix: 'R$', 
-            trend: 'neutral' 
+            prefix: 'R$' 
           },
         ];
         

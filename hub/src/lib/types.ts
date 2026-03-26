@@ -28,9 +28,8 @@ export interface FinDRE {
 
 export interface KPI {
   title: string;
-  value: string | number;
+  value: string;
   change: number;
   prefix?: string;
   suffix?: string;
-  trend: 'up' | 'down' | 'neutral';
 }

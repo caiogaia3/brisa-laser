@@ -15,14 +15,20 @@
 - **Radius**: `14px` (`var(--radius-lg)`)
 - **Shadow**: `shadow-[0_8px_32px_0_rgba(0,0,0,0.37)]`
 
-### 2. KPICard (High-Density)
-- **Altura**: `110px`
-- **Layout**: 2 níveis (Título/Valor + Badge/Sparkline Row).
-- **Tipografia**: Valor em `1.5rem / 700`, Título em `0.6rem / 600 / All-Caps`.
+### 2. KPICard (High-Density Pro-Max)
+- **Altura**: `110px`.
+- **Vertical Rhythm**: Título e Valor agrupados no topo para máxima visibilidade; Pill Badge e Sparkline ancorados na base.
+- **Tipografia**: Valor em `1.5rem / 800` (extra-bold), Título em `0.55rem / 700 / All-Caps`.
+- **Padding**: `16px 18px 12px 18px`.
 
 ### 3. Inputs & Selects
 - **Radius**: `14px` (`var(--radius-lg)`) - Padronizado com os cards de radar.
 - **Background**: `var(--color-surface)` com borda sutil.
+
+### 4. Charts (Premium Visuals)
+- **Donut/Pie**: Layout horizontal (Gráfico à esquerda / Legendas à direita).
+- **Interatividade**: Efeito de "Glow" (drop-shadow) em fatias ativas; cursor pointer.
+- **Break-even**: Barra de progresso linear com brilho LED e indicador de alvo (Target Marker).
 
 ### 3. Charts (Recharts Custom)
 - **Tooltips**: Glassmorphism com borda ciano vibrante.

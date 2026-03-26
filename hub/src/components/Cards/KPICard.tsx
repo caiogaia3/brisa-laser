@@ -24,43 +24,40 @@ export const KPICard = ({ title, value, change, prefix, suffix }: KPICardProps) 
 
   return (
     <div className="glass-panel" style={{ 
-      padding: '16px', 
+      padding: '16px 18px 12px 18px', 
+      height: '110px', 
       display: 'flex', 
-      flexDirection: 'column', 
-      justifyContent: 'space-between',
-      height: '110px',
-      borderRadius: 'var(--radius-lg)',
-      position: 'relative'
+      flexDirection: 'column',
+      justifyContent: 'space-between'
     }}>
-      <div>
-        <h3 style={{ 
-          fontSize: '0.6rem', 
-          fontWeight: 600, 
+      {/* Top Section: Title & Value */}
+      <div style={{ display: 'flex', flexDirection: 'column', gap: '2px' }}>
+        <div style={{ 
+          fontSize: '0.55rem', 
+          fontWeight: 700, 
           color: 'var(--text-dim)', 
           textTransform: 'uppercase', 
-          letterSpacing: '0.12em', 
-          margin: '0 0 8px 0',
-        }}>{title}</h3>
-        
-        <div style={{ 
-          fontSize: '1.5rem', 
-          fontWeight: 700, 
-          color: 'var(--text-main)', 
-          display: 'flex', 
-          alignItems: 'baseline', 
-          gap: '2px'
+          letterSpacing: '0.08em' 
         }}>
-          {prefix && <span style={{ fontSize: '0.8rem', color: 'var(--text-muted)', fontWeight: 500 }}>{prefix}</span>}
-          {value}
-          {suffix && <span style={{ fontSize: '0.8rem', color: 'var(--text-muted)', fontWeight: 500 }}>{suffix}</span>}
+          {title}
+        </div>
+        
+        <div style={{ display: 'flex', alignItems: 'baseline', gap: '4px' }}>
+          {prefix && <span style={{ fontSize: '0.75rem', color: 'var(--text-muted)', fontWeight: 600 }}>{prefix}</span>}
+          <span style={{ fontSize: '1.5rem', fontWeight: 800, color: 'var(--text-main)', letterSpacing: '-0.02em' }}>
+            {value}
+          </span>
+          {suffix && <span style={{ fontSize: '0.75rem', color: 'var(--text-muted)', fontWeight: 600 }}>{suffix}</span>}
         </div>
       </div>
 
+      {/* Bottom Section: Trend Badge and Mini Sparkline */}
       <div style={{ 
         display: 'flex', 
         alignItems: 'center', 
-        gap: '12px',
-        marginTop: 'auto'
+        justifyContent: 'space-between',
+        gap: '8px',
+        marginTop: '2px'
       }}>
         {/* Pill Badge Indicator */}
         <div style={{ 

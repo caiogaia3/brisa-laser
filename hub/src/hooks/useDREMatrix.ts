@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react';
 import { supabase } from '../lib/supabase';
 
+import { usePeriodStore } from '../store/usePeriodStore';
+
 export interface DREMatrixRow {
   id: string;
   nivel: number;
@@ -13,6 +15,7 @@ export function useDREMatrix() {
   const [loading, setLoading] = useState(true);
   const [matrixData, setMatrixData] = useState<DREMatrixRow[]>([]);
   const [months, setMonths] = useState<string[]>([]);
+  const { storeId } = usePeriodStore();
 
   useEffect(() => {
     async function fetchHybridDRE() {
@@ -30,12 +33,18 @@ export function useDREMatrix() {
         const now = new Date();
         const currentMonthKey = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}`;
         
-        // 3. Fetch Live Lancamentos for current month
-        const { data: liveData, error: liveError } = await supabase
+        let liveQuery = supabase
           .from('fin_lancamentos')
           .select('*, fin_categorias(nome, secao_dre)')
           .gte('data', `${currentMonthKey}-01`)
           .lte('data', `${currentMonthKey}-31`);
+
+        if (storeId !== 'all') {
+          liveQuery = liveQuery.eq('store_id', storeId);
+        }
+
+        // 3. Fetch Live Lancamentos for current month
+        const { data: liveData, error: liveError } = await liveQuery;
 
         if (liveError) throw liveError;
 

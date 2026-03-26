@@ -7,7 +7,7 @@ export function useKPIs() {
   const [loading, setLoading] = useState(true);
   const [data, setData] = useState<any | null>(null);
   const [kpis, setKpis] = useState<KPI[]>([]);
-  const { month, year } = usePeriodStore();
+  const { month, year, storeId } = usePeriodStore();
 
   useEffect(() => {
     async function fetchKPIs() {
@@ -15,12 +15,17 @@ export function useKPIs() {
         setLoading(true);
         const periodString = `${year}-${String(month + 1).padStart(2, '0')}-01`;
 
-        // Busca do Supabase View DRE Executiva
-        const { data: dreData, error } = await supabase
+        let query = supabase
           .from('vw_kpis_executivos')
           .select('*')
-          .eq('mes', periodString)
-          .single();
+          .eq('mes', periodString);
+
+        if (storeId !== 'all') {
+           query = query.eq('store_id', storeId);
+        }
+
+        // Busca do Supabase View DRE Executiva
+        const { data: dreData, error } = await query.single();
 
         if (error && error.code !== 'PGRST116') {
           console.error("Erro Supabase:", error);

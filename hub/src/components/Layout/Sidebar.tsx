@@ -123,17 +123,6 @@ export const Sidebar = () => {
             <BarChart2 size={16} /> Resumo
           </NavLink>
 
-          <NavLink to="/financeiro/lancamento" style={({ isActive }) => ({
-            display: 'flex', alignItems: 'center', gap: '12px',
-            padding: '10px 12px', borderRadius: '8px',
-            textDecoration: 'none', color: isActive ? 'var(--color-primary)' : 'var(--text-main)',
-            backgroundColor: isActive ? 'rgba(59, 130, 246, 0.1)' : 'transparent',
-            fontSize: '0.875rem', transition: 'all 0.2s',
-            fontWeight: isActive ? 600 : 400
-          })} className="hover:bg-white/5">
-            <Settings size={16} /> Controle Financeiro
-          </NavLink>
-
           <NavLink to="/financeiro/dre" style={({ isActive }) => ({
             display: 'flex', alignItems: 'center', gap: '12px',
             padding: '10px 12px', borderRadius: '8px',

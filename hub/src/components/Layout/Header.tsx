@@ -1,5 +1,6 @@
 import { Search, Bell, Sparkles } from 'lucide-react';
 import { DateSegmentedControl } from '../Navigation/DateSegmentedControl';
+import { StoreSelector } from '../Navigation/StoreSelector';
 
 export const Header = ({ onOpenChat }: { onOpenChat?: () => void }) => {
   return (
@@ -34,6 +35,7 @@ export const Header = ({ onOpenChat }: { onOpenChat?: () => void }) => {
       </div>
 
       <div style={{ display: 'flex', alignItems: 'center', gap: '24px' }}>
+        <StoreSelector />
         <DateSegmentedControl />
 
         <button className="glass-panel" onClick={onOpenChat} style={{

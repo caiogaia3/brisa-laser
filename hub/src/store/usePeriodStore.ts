@@ -1,11 +1,13 @@
 import { create } from 'zustand';
 
 type PeriodPreset = 'today' | '7d' | '30d' | 'custom';
+export type StoreLocation = 'all' | 'brisa-laser' | 'brisa-premium';
 
 interface PeriodState {
   preset: PeriodPreset;
   startDate: Date;
   endDate: Date;
+  storeId: StoreLocation;
   
   // Legacy support parameters (temporary to prevent breaking other pages immediately)
   month: number;
@@ -13,6 +15,7 @@ interface PeriodState {
 
   setPreset: (preset: PeriodPreset) => void;
   setCustomRange: (start: Date, end: Date) => void;
+  setStoreId: (storeId: StoreLocation) => void;
 }
 
 export const usePeriodStore = create<PeriodState>((set) => {
@@ -39,6 +42,7 @@ export const usePeriodStore = create<PeriodState>((set) => {
     endDate: initialDates.endDate,
     month: initialDates.month,
     year: initialDates.year,
+    storeId: 'all',
     
     setPreset: (preset) => set(() => ({ 
       preset, 
@@ -52,5 +56,7 @@ export const usePeriodStore = create<PeriodState>((set) => {
       month: start.getMonth(), 
       year: start.getFullYear()
     }),
+
+    setStoreId: (storeId) => set({ storeId })
   };
 });

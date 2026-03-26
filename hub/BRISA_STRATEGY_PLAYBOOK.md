@@ -4,61 +4,81 @@ Este documento é a nossa **Única Fonte de Verdade** para a tomada de decisão 
 
 ---
 
-## 🔴 1. Setor: Financeiro & Resultados (CFO Radar)
+## 🔵 1. Setor: Marketing Ads (Acelerador de Demanda)
 
-### Margem de Contribuição (%)
-- **O que**: Receita (-) Custos Variáveis.
-- **📈 Puxadores para Cima**: Pacotes de alta tecnologia, redução de desperdício.
-- **📉 Puxadores para Baixo**: Descontos não controlados, aumento de taxas.
+### Métricas de Aquisição (Top of Funnel)
+- **Total de Leads**: Volume bruto de entradas.
+- **CPL (Custo por Lead)**: Eficiência da verba.
+- **Taxa de Conversão Google**: Qualidade da intenção de busca.
+- **Taxa de Conversão Meta**: Eficiência do criativo e segmentação.
 
-### Ponto de Equilíbrio (Break-even)
-- **O que**: Meta de faturamento para lucro zero.
-- **📈 Puxadores para Cima**: Redução de aluguel/custo fixo, aumento do ticket médio.
-
----
-
-## 🔵 2. Setor: Marketing Ads (Acelerador de Demanda)
-
-### 🟢 Cluster: Google Ads (Padrão: Intenção)
-- **Métricas Core**: Investimento, CTR (> 5%), Custo/Conversão (CPA).
-- **Análise de Gênero**: Essencial para ajustar criativos (Feminino vs Masculino).
-- **Termos de Busca**: Identificar "Ouro" (Ex: 'depilação a laser uberaba') vs "Lixo".
-
-### 🟣 Cluster: Meta Ads (Padrão: Desejo)
-- **Métricas Core**: Frequência (< 3), CPL (Custo por Msg), ROI%.
-- **Stop Power (CTR)**: Mede quão "magnético" é o vídeo no feed.
+### 📊 Gráficos de Marketing & Origem
+- **Taxa de Conversão por Origem**: Qual canal traz o cliente que fecha?
+- **Eficiência de Agendamento por Origem**: Compara se o lead de um canal é mais "difícil" de agendar que outro.
+- **Ticket Médio por Origem**: Identificar se clientes do Google compram pacotes mais caros que os do Instagram.
+- **Valor / Qtd / Ticket por Origem**: Visão 360º da rentabilidade de cada canal.
 
 ---
 
-## 🟡 3. Setor: Gestão Zandu (Operação Local)
+## 🟢 2. Setor: Comercial & Conversão (Sales Engine)
 
-### 📊 Padrão Visual 1: Radar de Vendas (Donut Central)
-- **Visual**: Anel de progresso com valor total no centro + comparativo diário (Ontem vs Hoje).
-- **Estratégia**: Monitorar o "batimento cardíaco" diário da unidade. Se hoje < ontem, o comercial precisa de ação imediata.
-- **Benchmark**: 33% melhor que a média dos últimos 3 meses é o sinal de rampa de crescimento.
+### Funil de Vendas (CFO View)
+- **Taxa de Conversão Geral**: Total de Vendas / Total de Oportunidades.
+- **Taxa de Comparecimento (Show-up)**: Confirmados / Agendados. Crucial para medir eficiência da recepção.
+- **Funil Visual**: Representação gráfica do lead até o "Contrato Assinado".
 
-### 📊 Padrão Visual 2: Mix de Itens (Bar Horizontal)
-- **Visual**: Ranking de faturamento por área do corpo (Virilha, Axila, Meia Perna).
-- **Estratégia**: Identificar o "Pareto" da clínica. 80% do faturamento vem de quais áreas?
-- **Ação**: Criar campanhas específicas para áreas de "Ticket Baixo" para aumentar o Mix de Vendas.
-
-### 📊 Padrão Visual 3: Origem da Receita (Bar Stacked/Simple)
-- **Visual**: Divisão por canal (Não informado, Instagram, Google, Indicação).
-- **Estratégia**: Validar se o dinheiro do marketing está virando contrato ou se somos dependentes demais de um único canal.
-
-### 📊 Padrão Visual 4: Curva de Crescimento (Area Chart Histórico)
-- **Visual**: Gráfico de área sombreado mostrando vendas mês a mês (Long Term).
-- **Estratégia**: Visualizar o progresso real da Brisa no tempo. Identificar se novos investimentos em marketing geraram degraus de faturamento permanente.
+### Performance por Vendedor (Comissionamento & ROI)
+- **Ticket Médio por Vendedor**: Quem vende pacotes mais caros?
+- **Valor Vendido por Vendedor**: Volume bruto de fechamento.
+- **Quantidade de Vendas**: Volume de transações.
 
 ---
 
-## 🟢 4. Setor: Comercial & Conversão
+## 🔴 3. Setor: Financeiro & Operacional (CFO Radar)
 
-### Taxas de Funil
-- **Show-up (> 70%)**: Qualidade do agendamento.
-- **Conversão (> 40%)**: Poder de fechamento da equipe na clínica.
+### Eficiência & Rentabilidade
+- **Receita por Visita (ATV - Average Transaction Value)**: 
+    - **Meta: > $248,75**. 
+    - Foco em pacotes de alto valor vs sessões avulsas.
+- **Volume Diário de Visitas**: 
+    - **Meta: 12 clientes/dia**. 
+    - Ponto de sustentabilidade da unidade.
+- **Margem Bruta (%)**: 
+    - **Meta: 95%+**. 
+    - Baixo custo direto, alta lucratividade bruta.
+- **LER (Labor Efficiency Ratio)**: 
+    - **Meta: < 30%**. 
+    - Relação entre folha de pagamento e receita total.
+- **Mix de Pacotes (%)**: 
+    - **Meta: 70%**. 
+    - Motor de previsibilidade e fluxo de caixa.
+
+### Investimento & CAC
+- **CAC (Custo de Aquisição)**: 
+    - **Meta: < 20% do valor do pacote completo**.
+    - Recuperação do investimento em no máximo 2 visitas.
+- **Utilização de Equipamentos**: 
+    - **Meta: > 60%**.
+    - Justificar o CAPEX (investimento na máquina).
+
+---
+
+## 🟡 4. Setor: Gestão Zandu (Operação Local)
+
+### 📊 Padrões Visuais de Monitoramento
+- **Ticket Médio por Venda**: Ranking por serviço (Barba, Virilha, etc).
+- **Valor Arrecadado por Serviço**: Onde está o dinheiro grosso?
+- **Qtd Vendida por Serviço**: Onde está o volume de trabalho?
+- **Valor / Ticket por Meio de Pagamento**: Preferência do cliente (Cartão, Pix, Parcelado).
+- **Recompras no Mês**: Fidelização e LTV.
 
 ---
 
 > [!IMPORTANT]
-> **Referências Visuais**: Todos os dashboards do Hub devem seguir os padrões de cores e disposição salvos no diretório `src/assets/inspiration/` para manter a fidelidade operacional com os sistemas legados (Zandu/Looker).
+> **Metas de Ouro**: O sistema deve alertar (Glow Vermelho) sempre que:
+> 1. O volume de visitas cair abaixo de 10/dia.
+> 2. A margem bruta cair abaixo de 90%.
+> 3. O ATV ficar abaixo de $240,00.
+
+> [!TIP]
+> **Referências Visuais**: Todos os dashboards do Hub devem seguir os padrões de cores e disposição salvos no diretório `src/assets/inspiration/` para manter a fidelidade operacional com os sistemas legados.

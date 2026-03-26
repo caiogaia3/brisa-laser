@@ -7,25 +7,25 @@ interface KingChartROASProps {
 
 const KingChart_ROAS: React.FC<KingChartROASProps> = ({ data }) => {
   return (
-    <div className="liquid-glass p-5 flex flex-col h-full">
-      <div className="flex items-center justify-between mb-4">
+    <div className="liquid-glass" style={{ padding: '20px', display: 'flex', flexDirection: 'column', height: '100%' }}>
+      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '16px' }}>
         <div>
-          <div className="text-[0.6rem] font-bold text-cyan-400 uppercase tracking-widest">King Chart A</div>
-          <div className="text-sm font-black text-white tracking-tight">ROAS Real por Origem</div>
+          <div style={{ fontSize: '0.6rem', fontWeight: 700, color: 'var(--color-primary)', uppercase: 'true', letterSpacing: '0.1em' } as any}>KING CHART A</div>
+          <div style={{ fontSize: '0.875rem', fontWeight: 900, color: 'white', letterSpacing: '-0.02em' }}>ROAS Real por Origem</div>
         </div>
-        <div className="flex gap-4">
-          <div className="flex items-center gap-1.5">
-            <div className="w-2 h-2 rounded-full bg-cyan-500/40" />
-            <span className="text-[0.6rem] text-white/60 uppercase font-bold">Vendas</span>
+        <div style={{ display: 'flex', gap: '16px' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+            <div style={{ width: '8px', height: '8px', borderRadius: '50%', backgroundColor: 'rgba(6, 182, 212, 0.4)' }} />
+            <span style={{ fontSize: '0.6rem', color: 'rgba(255, 255, 255, 0.6)', fontWeight: 700, textTransform: 'uppercase' }}>Vendas</span>
           </div>
-          <div className="flex items-center gap-1.5">
-            <div className="w-2 h-2 rounded-full bg-cyan-400" />
-            <span className="text-[0.6rem] text-white/60 uppercase font-bold">Ads Spend</span>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+            <div style={{ width: '8px', height: '8px', borderRadius: '50%', backgroundColor: 'var(--color-primary)' }} />
+            <span style={{ fontSize: '0.6rem', color: 'rgba(255, 255, 255, 0.6)', fontWeight: 700, textTransform: 'uppercase' }}>Ads Spend</span>
           </div>
         </div>
       </div>
 
-      <div className="flex-1 min-h-[160px]">
+      <div style={{ flex: 1, minHeight: '160px' }}>
         <ResponsiveContainer width="100%" height="100%">
           <ComposedChart data={data} margin={{ top: 10, right: 10, left: -20, bottom: 0 }}>
             <defs>
@@ -75,9 +75,9 @@ const KingChart_ROAS: React.FC<KingChartROASProps> = ({ data }) => {
         </ResponsiveContainer>
       </div>
 
-      <div className="mt-3 flex justify-between items-center bg-white/5 rounded-lg p-2 px-3">
-        <div className="text-[0.65rem] text-white/60 font-medium">ROAS Médio do Período</div>
-        <div className="text-sm font-black text-cyan-400">3.8x</div>
+      <div style={{ marginTop: '12px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', backgroundColor: 'rgba(255, 255, 255, 0.05)', borderRadius: '8px', padding: '8px 12px' }}>
+        <div style={{ fontSize: '0.65rem', color: 'rgba(255, 255, 255, 0.6)', fontWeight: 500 }}>ROAS Médio do Período</div>
+        <div style={{ fontSize: '0.875rem', fontWeight: 900, color: 'var(--color-primary)' }}>3.8x</div>
       </div>
     </div>
   );

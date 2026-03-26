@@ -1,82 +1,61 @@
 import React from 'react';
-import { PieChart, Pie, Cell, ResponsiveContainer } from 'recharts';
 
 interface ZanduDonutProps {
   value: number;
   target: number;
   label: string;
-  subValue?: string;
-  color?: string;
+  subValue: string;
 }
 
-const ZanduDonut: React.FC<ZanduDonutProps> = ({ 
-  value, 
-  target, 
-  label, 
-  subValue,
-  color = '#06b6d4' 
-}) => {
+const ZanduDonut: React.FC<ZanduDonutProps> = ({ value, target, label, subValue }) => {
   const percentage = Math.min((value / target) * 100, 100);
-  const remaining = Math.max(0, 100 - percentage);
-  
-  const data = [
-    { name: 'Progress', value: percentage },
-    { name: 'Remaining', value: remaining }
-  ];
+  const radius = 70;
+  const circumference = 2 * Math.PI * radius;
+  const offset = circumference - (percentage / 100) * circumference;
 
   return (
-    <div className="liquid-glass p-6 h-full flex flex-col items-center justify-center relative overflow-hidden">
-      {/* Background Atmosphere */}
-      <div className="absolute inset-0 radar-atmosphere opacity-20" />
+    <div className="liquid-glass" style={{ padding: '24px', height: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', position: 'relative', overflow: 'hidden' }}>
+      {/* Background Decorative Circles */}
+      <div style={{ position: 'absolute', top: '-20px', right: '-20px', width: '100px', height: '100px', background: 'var(--color-primary)', opacity: 0.05, filter: 'blur(40px)', borderRadius: '50%' }} />
       
-      <div className="w-full h-48 relative z-10">
-        <ResponsiveContainer width="100%" height="100%">
-          <PieChart>
-            <Pie
-              data={data}
-              cx="50%"
-              cy="50%"
-              innerRadius={65}
-              outerRadius={80}
-              startAngle={90}
-              endAngle={450}
-              paddingAngle={0}
-              dataKey="value"
-              stroke="none"
-              isAnimationActive={true}
-            >
-              <Cell fill={color} style={{ filter: `drop-shadow(0 0 8px ${color}60)` }} />
-              <Cell fill="rgba(255, 255, 255, 0.05)" />
-            </Pie>
-          </PieChart>
-        </ResponsiveContainer>
+      <div style={{ position: 'relative', width: '180px', height: '180px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+        <svg width="180" height="180" viewBox="0 0 180 180" style={{ transform: 'rotate(-90deg)' }}>
+          {/* Base Circle */}
+          <circle
+            cx="90" cy="90" r={radius}
+            fill="transparent"
+            stroke="rgba(255,255,255,0.05)"
+            strokeWidth="12"
+          />
+          {/* Progress Circle (Glow) */}
+          <circle
+            cx="90" cy="90" r={radius}
+            fill="transparent"
+            stroke="var(--color-primary)"
+            strokeWidth="12"
+            strokeDasharray={circumference}
+            strokeDashoffset={offset}
+            strokeLinecap="round"
+            style={{ 
+              transition: 'stroke-dashoffset 1s ease-out',
+              filter: 'drop-shadow(0 0 8px var(--color-primary))'
+            }}
+          />
+        </svg>
 
-        {/* Central Content */}
-        <div className="absolute inset-0 flex flex-col items-center justify-center pointer-events-none">
-          {subValue && (
-            <div className="text-[0.65rem] font-bold text-white/40 uppercase tracking-widest mb-1">
-              {subValue}
-            </div>
-          )}
-          <div className="text-2xl font-black text-white tracking-tighter">
+        {/* Center Content */}
+        <div style={{ position: 'absolute', textAlign: 'center', display: 'flex', flexDirection: 'column' }}>
+          <span style={{ fontSize: '0.65rem', fontWeight: 700, color: 'rgba(255, 255, 255, 0.4)', textTransform: 'uppercase', letterSpacing: '0.1em' }}>{subValue}</span>
+          <span style={{ fontSize: '1.25rem', fontWeight: 900, color: 'white', marginTop: '2px' }}>
             R$ {value.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}
-          </div>
-          <div className="text-[0.65rem] font-bold text-white/60 uppercase tracking-widest mt-1">
-            {label}
-          </div>
+          </span>
+          <span style={{ fontSize: '0.75rem', fontWeight: 700, color: 'var(--color-primary)', marginTop: '2px' }}>{percentage.toFixed(1)}%</span>
         </div>
       </div>
 
-      {/* Footer Info */}
-      <div className="mt-4 flex gap-8 z-10">
-        <div className="text-center">
-          <div className="text-[0.55rem] text-white/40 uppercase font-bold tracking-wider mb-0.5">Progresso</div>
-          <div className="text-sm font-bold text-cyan-400">{percentage.toFixed(1)}%</div>
-        </div>
-        <div className="text-center">
-          <div className="text-[0.55rem] text-white/40 uppercase font-bold tracking-wider mb-0.5">Meta</div>
-          <div className="text-sm font-bold text-white/80">R$ {target.toLocaleString('pt-BR')}</div>
-        </div>
+      <div style={{ marginTop: '20px', textAlign: 'center' }}>
+        <div style={{ fontSize: '0.875rem', fontWeight: 800, color: 'white' }}>{label}</div>
+        <div style={{ fontSize: '0.65rem', color: 'rgba(255, 255, 255, 0.4)', marginTop: '4px' }}>Meta: R$ {target.toLocaleString('pt-BR')}</div>
       </div>
     </div>
   );

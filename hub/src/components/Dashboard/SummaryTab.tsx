@@ -89,19 +89,27 @@ const SummaryTab: React.FC = () => {
   ];
 
   return (
-    <div className="flex flex-col gap-6 animate-in fade-in duration-700">
+    <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
       {/* 🚀 Top Row: The 5 King KPIs */}
-      <div className="grid grid-cols-1 md:grid-cols-5 gap-4">
+      <div style={{ 
+        display: 'grid', 
+        gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', 
+        gap: '16px' 
+      }}>
         {kingKPIs.map((kpi, index) => (
           <KPICard key={index} {...kpi} />
         ))}
       </div>
 
       {/* 📊 High-Density Intelligence Grid */}
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
+      <div style={{ 
+        display: 'grid', 
+        gridTemplateColumns: 'repeat(12, 1fr)', 
+        gap: '24px' 
+      }}>
         
         {/* Sales Progress (Zandu Style) */}
-        <div className="lg:col-span-12 xl:col-span-4 h-[320px]">
+        <div style={{ gridColumn: 'span 4', height: '320px' }} className="mobile-col-12">
           <ZanduDonut 
             value={22720.50} 
             target={30000} 
@@ -111,13 +119,30 @@ const SummaryTab: React.FC = () => {
         </div>
 
         {/* King Charts Grid (Cross-Metric Analysis) */}
-        <div className="lg:col-span-12 xl:col-span-8 grid grid-cols-1 md:grid-cols-2 gap-6">
-          <KingChart_ROAS data={roasData} />
-          <KingChart_LTV data={ltvData} />
-          <KingChart_Payback data={paybackData} />
-          <KingChart_Asset data={assetData} />
+        <div style={{ gridColumn: 'span 8' }} className="mobile-col-12">
+          <div style={{ 
+            display: 'grid', 
+            gridTemplateColumns: 'repeat(2, 1fr)', 
+            gap: '24px' 
+          }}>
+            <KingChart_ROAS data={roasData} />
+            <KingChart_LTV data={ltvData} />
+            <KingChart_Payback data={paybackData} />
+            <KingChart_Asset data={assetData} />
+          </div>
         </div>
       </div>
+      
+      <style>{`
+        @media (max-width: 1200px) {
+          .mobile-col-12 { grid-column: span 12 !important; }
+        }
+        @media (max-width: 768px) {
+          div[style*="gridTemplateColumns: repeat(2, 1fr)"] {
+            grid-template-columns: 1fr !important;
+          }
+        }
+      `}</style>
     </div>
   );
 };

@@ -1,5 +1,5 @@
 import React from 'react';
-import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, ReferenceLine } from 'recharts';
+import { Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, AreaChart } from 'recharts';
 
 interface KingChartPaybackProps {
   data: any[];
@@ -7,26 +7,19 @@ interface KingChartPaybackProps {
 
 const KingChart_Payback: React.FC<KingChartPaybackProps> = ({ data }) => {
   return (
-    <div className="liquid-glass p-5 flex flex-col h-full">
-      <div className="flex items-center justify-between mb-4">
-        <div>
-          <div className="text-[0.6rem] font-bold text-cyan-400 uppercase tracking-widest">King Chart C</div>
-          <div className="text-sm font-black text-white tracking-tight">Timeline de Payback</div>
-        </div>
-        <div className="px-2 py-0.5 rounded bg-emerald-500/10 border border-emerald-500/20 text-[0.55rem] font-bold text-emerald-400 uppercase tracking-widest">
-           Payback: 42 Dias
-        </div>
+    <div className="liquid-glass" style={{ padding: '20px', display: 'flex', flexDirection: 'column', height: '100%' }}>
+      <div style={{ marginBottom: '16px' }}>
+        <div style={{ fontSize: '0.6rem', fontWeight: 700, color: 'var(--color-warning)', textTransform: 'uppercase', letterSpacing: '0.1em' }}>KING CHART C</div>
+        <div style={{ fontSize: '0.875rem', fontWeight: 900, color: 'white', letterSpacing: '-0.02em' }}>Timeline de Payback</div>
       </div>
 
-      <div className="flex-1 min-h-[160px]">
+      <div style={{ flex: 1, minHeight: '160px' }}>
         <ResponsiveContainer width="100%" height="100%">
           <AreaChart data={data} margin={{ top: 10, right: 10, left: -20, bottom: 0 }}>
             <defs>
-              <linearGradient id="splitColor" x1="0" y1="0" x2="0" y2="1">
-                <stop offset={0} stopColor="#4ade80" stopOpacity={0.4} />
-                <stop offset={0.5} stopColor="#4ade80" stopOpacity={0.1} />
-                <stop offset={0.5} stopColor="#f87171" stopOpacity={0.1} />
-                <stop offset={1} stopColor="#f87171" stopOpacity={0.4} />
+              <linearGradient id="colorPayback" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="5%" stopColor="var(--color-warning)" stopOpacity={0.2}/>
+                <stop offset="95%" stopColor="var(--color-warning)" stopOpacity={0}/>
               </linearGradient>
             </defs>
             <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.03)" vertical={false} />
@@ -35,37 +28,32 @@ const KingChart_Payback: React.FC<KingChartPaybackProps> = ({ data }) => {
               axisLine={false} 
               tickLine={false} 
               tick={{ fontSize: 10, fill: 'rgba(255,255,255,0.3)' }}
-              dy={10}
             />
-            <YAxis hide />
+            <YAxis hide domain={['auto', 'auto']} />
             <Tooltip 
               contentStyle={{ 
                 background: 'rgba(5, 5, 8, 0.9)', 
                 border: '1px solid rgba(255, 255, 255, 0.1)',
                 borderRadius: '12px',
-                fontSize: '11px',
-                backdropFilter: 'blur(20px)'
+                fontSize: '11px'
               }}
-              itemStyle={{ color: '#fff' }}
             />
-            <ReferenceLine y={0} stroke="rgba(255,255,255,0.1)" strokeWidth={1} />
             <Area 
-              type="step" 
+              type="stepAfter" 
               dataKey="value" 
-              stroke="#06b6d4" 
-              strokeWidth={2}
-              fill="url(#splitColor)" 
-              isAnimationActive={true}
-              style={{ filter: 'drop-shadow(0 0 5px rgba(6, 182, 212, 0.3))' }}
+              stroke="var(--color-warning)" 
+              strokeWidth={3}
+              fillOpacity={1} 
+              fill="url(#colorPayback)" 
+              style={{ filter: 'drop-shadow(0 0 10px rgba(245, 158, 11, 0.3))' }}
             />
           </AreaChart>
         </ResponsiveContainer>
       </div>
 
-      <div className="mt-3 flex justify-between items-center text-[0.6rem] uppercase font-bold tracking-widest text-white/40">
-        <span>Início Campanha</span>
-        <span>Break-even Point</span>
-        <span>Escala</span>
+      <div style={{ marginTop: '12px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', backgroundColor: 'rgba(255, 255, 255, 0.05)', borderRadius: '8px', padding: '8px 12px' }}>
+        <div style={{ fontSize: '0.65rem', color: 'rgba(255, 255, 255, 0.6)', fontWeight: 500 }}>Payback: 42 Dias</div>
+        <div style={{ fontSize: '0.7rem', fontWeight: 700, color: 'var(--color-warning)' }}>Início Campanha</div>
       </div>
     </div>
   );

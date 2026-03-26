@@ -8,6 +8,26 @@ import { DoubleTrendChart } from '../../components/Charts/DoubleTrendChart';
 import { BreakEvenGauge } from '../../components/Charts/BreakEvenGauge';
 import { MarginStackedBar } from '../../components/Charts/MarginStackedBar';
 
+const OKRBar = ({ title, current, goal, isReverse }: { title: string, current: number, goal: number, isReverse?: boolean }) => {
+  const percent = Math.min(100, Math.max(0, goal > 0 ? (current / goal) * 100 : 0));
+  const isGood = isReverse ? current <= goal : current >= goal * 0.8;
+  const color = isGood ? 'var(--color-primary)' : 'var(--color-warning)';
+  
+  return (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+      <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '0.85rem' }}>
+        <span style={{ color: 'var(--text-main)', fontWeight: 500 }}>{title}</span>
+        <span style={{ color: 'var(--text-muted)' }}>
+          {current.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })} / {goal.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}
+        </span>
+      </div>
+      <div style={{ height: '8px', background: 'rgba(255,255,255,0.05)', borderRadius: '4px', overflow: 'hidden' }}>
+        <div style={{ height: '100%', width: `${percent}%`, backgroundColor: color, borderRadius: '4px', transition: 'width 1s ease-in-out' }} />
+      </div>
+    </div>
+  );
+};
+
 export const FinanceiroResumo = () => {
   const { month, year } = usePeriodStore();
   const periodString = `${year}-${String(month + 1).padStart(2, '0')}`;
@@ -74,6 +94,19 @@ export const FinanceiroResumo = () => {
         <KPICard title="Lucro Líquido Final" value={currentMonthPivot.lucro_liquido.toLocaleString('pt-BR')} change={0} prefix="R$" trend={currentMonthPivot.lucro_liquido >= 0 ? 'up' : 'down'} />
         <KPICard title="Saldo Caixa (Mês)" value={currentMonthPivot.saldo_final.toLocaleString('pt-BR')} change={0} prefix="R$" trend="neutral" />
         <KPICard title="Break-even" value={currentMonthPivot.breakeven.toLocaleString('pt-BR')} change={0} prefix="R$" trend="neutral" />
+      </section>
+
+      <section className="glass-panel" style={{ padding: '24px', display: 'flex', flexDirection: 'column', gap: '24px' }}>
+        <header>
+          <h3 style={{ fontSize: '1rem', color: 'var(--text-main)', marginBottom: '4px' }}>OKRs & Metas do Mês</h3>
+          <p style={{ fontSize: '0.75rem', color: 'var(--text-muted)' }}>Acompanhamento direcional contra as metas estabelecidas para a diretoria.</p>
+        </header>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '32px' }}>
+          {/* Mockup Goals for Demo -> This would ideally be fetched from the DB or a Settings table */}
+          <OKRBar title="Meta de Receita Bruta" current={currentMonthPivot.receita_bruta} goal={50000} />
+          <OKRBar title="Teto de Despesas Totais" current={currentMonthPivot.despesas_totais} goal={25000} isReverse />
+          <OKRBar title="Meta de Margem Saudável (R$)" current={currentMonthPivot.margem_contribuicao} goal={20000} />
+        </div>
       </section>
 
       <section style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(450px, 1fr))', gap: '24px' }}>

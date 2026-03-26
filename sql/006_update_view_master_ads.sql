@@ -1,11 +1,11 @@
--- View Master BI v2 (Incorporando Ads & Analytics)
--- Esta view unifica Financeiro, Marketing Leads, Performance de Ads e Analytics
+-- View Master BI v3 (com colunas alinhadas ao Frontend Hub)
+-- Unifica Financeiro (DRE), Marketing Leads, Performance de Ads e Analytics
+-- Mantém: period_month, ebitda, lucro_liquido, leads_gerados, taxa_comparecimento
 
 DROP VIEW IF EXISTS vw_brisa_master_bi;
 
 CREATE OR REPLACE VIEW vw_brisa_master_bi AS
 WITH mkt_ads AS (
-    -- Consolidação de custos de Ads por mês e loja
     SELECT 
         DATE_TRUNC('month', date)::DATE as period,
         store_id,
@@ -16,7 +16,6 @@ WITH mkt_ads AS (
     GROUP BY 1, 2
 ),
 mkt_ga4 AS (
-    -- Consolidação de tráfego do Analytics por mês
     SELECT 
         DATE_TRUNC('month', date)::DATE as period,
         SUM(sessions) as total_sessions,
@@ -25,17 +24,18 @@ mkt_ga4 AS (
     GROUP BY 1
 ),
 fin AS (
-    -- Dados Financeiros (DRE)
     SELECT 
         period_month as period,
         store_id,
-        SUM(CASE WHEN category = 'receita' THEN amount ELSE 0 END) as receita_bruta,
+        SUM(CASE WHEN line_label ILIKE '%TOTAL RECEITA BRUTA%' THEN amount ELSE 0 END) as receita_bruta,
+        SUM(CASE WHEN line_label ILIKE '%LAJIDA%' OR line_label ILIKE '%EBITDA%' THEN amount ELSE 0 END) as ebitda,
+        SUM(CASE WHEN line_label ILIKE '%LUCRO L%QUIDO%' THEN amount ELSE 0 END) as lucro_liquido,
         SUM(CASE WHEN line_label ILIKE '%Marketing%' THEN amount ELSE 0 END) as mkt_dre_spend
     FROM fin_dre
+    WHERE is_subtotal = TRUE OR line_label ILIKE '%Marketing%'
     GROUP BY 1, 2
 ),
 leads AS (
-    -- Dados de Marketing (Leads do Kommo/Planilha)
     SELECT 
         DATE_TRUNC('month', CAST(data_primeiro_contato AS DATE))::DATE as period,
         store_id,
@@ -47,24 +47,31 @@ leads AS (
     GROUP BY 1, 2
 )
 SELECT 
-    COALESCE(f.period, l.period, a.period, g.period) as periodo,
+    COALESCE(f.period, l.period, a.period, g.period) as period_month,
     COALESCE(f.store_id, l.store_id, a.store_id, 'brisa-matriz') as store_id,
     
     -- Financeiro
     COALESCE(f.receita_bruta, 0) as receita_total,
+    COALESCE(f.ebitda, 0) as ebitda,
+    COALESCE(f.lucro_liquido, 0) as lucro_liquido,
     
-    -- Marketing Investimento (Usa o maior entre DRE e Ads para segurança)
+    -- Marketing Investimento
     GREATEST(COALESCE(f.mkt_dre_spend, 0), COALESCE(a.total_ads_spend, 0)) as investimento_mkt_real,
     
     -- Marketing Performance (Leads)
-    COALESCE(l.total_leads, 0) as leads_totais,
-    COALESCE(l.total_agendados, 0) as agendados,
-    COALESCE(l.total_comparecidos, 0) as comparecidos,
+    COALESCE(l.total_leads, 0) as leads_gerados,
+    COALESCE(l.total_agendados, 0) as agendamentos,
+    COALESCE(l.total_comparecidos, 0) as comparecimentos,
+    
+    -- Taxa de comparecimento
+    CASE WHEN COALESCE(l.total_agendados, 0) > 0 
+         THEN ROUND(COALESCE(l.total_comparecidos, 0)::NUMERIC / l.total_agendados * 100, 1)
+         ELSE 0 END as taxa_comparecimento,
     
     -- Conversão & ROI
     CASE WHEN COALESCE(l.total_leads, 0) > 0 
          THEN GREATEST(COALESCE(f.mkt_dre_spend, 0), COALESCE(a.total_ads_spend, 0)) / l.total_leads 
-         ELSE 0 END as cpl (Custo por Lead),
+         ELSE 0 END as custo_por_lead,
          
     CASE WHEN GREATEST(COALESCE(f.mkt_dre_spend, 0), COALESCE(a.total_ads_spend, 0)) > 0 
          THEN COALESCE(f.receita_bruta, 0) / GREATEST(COALESCE(f.mkt_dre_spend, 0), COALESCE(a.total_ads_spend, 0))

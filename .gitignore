@@ -1,2 +1,4 @@
 .env
 CREDENTIALS.md
+.vercel
+.env*.local

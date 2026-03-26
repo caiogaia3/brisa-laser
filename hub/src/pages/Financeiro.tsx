@@ -16,8 +16,9 @@ export const Financeiro = () => {
         marginBottom: '8px'
        }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-          <h1 style={{ fontSize: '1rem', margin: 0, color: 'var(--text-main)', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.05em' }}>
+          <h1 style={{ fontSize: '1rem', margin: 0, color: 'var(--text-main)', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.05em', display: 'flex', alignItems: 'center', gap: '8px' }}>
             Financeiro <span style={{ color: 'var(--text-muted)', fontWeight: 400 }}>/ Radar</span>
+            <span style={{ fontSize: '0.5rem', padding: '2px 4px', background: 'rgba(6, 182, 212, 0.1)', color: 'var(--color-primary)', borderRadius: '4px', border: '1px solid rgba(6, 182, 212, 0.2)' }}>PRO-MAX v1.0</span>
           </h1>
         </div>
         

@@ -117,9 +117,16 @@ Este arquivo é a bússola do projeto. Ele contém o estado atual, a arquitetura
 | `jarvis_orchestrator.ts` | Orquestrador Kommo ↔ Zandu |
 | `zandu-api.ts` | Wrapper da API Zandu |
 | `package.json` | Scripts: health, discover, genesis, sync:dre, sync:leads, backfill |
-| `hub/` | Aplicação Web React (Dashboard + Jarvis) |
 | `supabase/functions/chat/` | Backend do Copilot (Roteador LLM Híbrido) |
-| `hub/vercel.json` | Configuração de SPA Routing |
+
+### hub/
+| Arquivo | Propósito |
+|---------|-----------|
+| `CLAUDE.md` | Guia de Desenvolvimento SDD do Hub |
+| `BACKEND_SPEC.md` | Specs de Backend (Contrato SSOT) |
+| `context.md` | Contexto e Roadmap do Projeto Atual |
+| `CFO.md` | Skill do Oráculo de RevOps |
+| `vercel.json` | Configuração de SPA Routing |
 
 ### scripts/
 | Arquivo | Propósito |

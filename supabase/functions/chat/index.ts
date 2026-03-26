@@ -1,4 +1,4 @@
-import { serve } from 'https://deno.land/std@0.168.0/http/server.ts';
+import "jsr:@supabase/functions-js/edge-runtime.d.ts";
 import { createClient } from 'https://esm.sh/@supabase/supabase-js@2';
 
 const corsHeaders = {
@@ -6,7 +6,7 @@ const corsHeaders = {
   'Access-Control-Allow-Headers': 'authorization, x-client-info, apikey, content-type',
 };
 
-serve(async (req) => {
+Deno.serve(async (req) => {
   if (req.method === 'OPTIONS') {
     return new Response('ok', { headers: corsHeaders });
   }
@@ -14,14 +14,17 @@ serve(async (req) => {
   try {
     const { query, history } = await req.json();
 
-    // 1. Setup do Supabase c/ Service Role Key (para query de dados sem sofrer bypass pro prompt)
+    // 1. Setup do Supabase c/ Service Role Key
     const supabaseUrl = Deno.env.get('SUPABASE_URL')!;
     const supabaseKey = Deno.env.get('SUPABASE_SERVICE_ROLE_KEY')!;
     const supabase = createClient(supabaseUrl, supabaseKey);
 
     // 2. Extrai dados mais recentes para municiar o prompt do Gemini
-    // Puxa o resumo do mês atual e o anterior
-    const { data: dreData } = await supabase.from('vw_brisa_master_bi').select('*').order('period_month', { ascending: false }).limit(2);
+    const { data: dreData } = await supabase
+      .from('vw_brisa_master_bi')
+      .select('*')
+      .order('period_month', { ascending: false })
+      .limit(2);
     
     // 3. Monta o Prompt para a IA
     const systemPrompt = `Você é o Jarvis, o Copilot Executivo Analítico da Brisa Laser - Inteligência de Negócios.
@@ -44,17 +47,25 @@ Abaixo está a pergunta atual do usuário:
     let providerUsed = 'gemini';
 
     try {
-      if (!geminiApiKey) throw new Error("GEMINI_API_KEY ausente");
+      if (!geminiApiKey) throw new Error("GEMINI_API_KEY ausente nos secrets do Supabase");
 
-      // Tenta conexão primária com Gemini (Versão Clássica e Estável 'gemini-pro')
-      const geminiResponse = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key=${geminiApiKey}`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          contents: [{ role: 'user', parts: [{ text: systemPrompt }] }],
-          generationConfig: { temperature: 0.1, maxOutputTokens: 800 }
-        })
-      });
+      // Gemini 2.0 Flash — modelo estável e rápido
+      const geminiResponse = await fetch(
+        `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${geminiApiKey}`,
+        {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            contents: [{ role: 'user', parts: [{ text: systemPrompt }] }],
+            generationConfig: { temperature: 0.1, maxOutputTokens: 1024 }
+          })
+        }
+      );
+
+      if (!geminiResponse.ok) {
+        const errorBody = await geminiResponse.text();
+        throw new Error(`Gemini HTTP ${geminiResponse.status}: ${errorBody.substring(0, 200)}`);
+      }
 
       const geminiData = await geminiResponse.json();
       
@@ -103,7 +114,6 @@ Abaixo está a pergunta atual do usuário:
         textReply = openaiData.choices?.[0]?.message?.content || "ChatGPT respondeu em branco";
 
       } catch (openaiError: any) {
-         // Se ABSOLUTAMENTE tudo falhar (Cata-trófico)
          return new Response(JSON.stringify({ 
            reply: `🔴 **Colapso nos Motores de IA**\nGemini: ${geminiError.message}\nChatGPT: ${openaiError.message}`,
            provider: 'error'

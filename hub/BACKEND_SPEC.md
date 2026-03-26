@@ -13,19 +13,19 @@ Todas as requisições API/Views do Supabase precisarão receber 2 parâmetros o
 
 ---
 
-## 2. Especificação: Cards de KPI (Pro-Max Sparklines)
-Para que os cards de Resumo Executivo fiquem com a densidade visual premium ("Pro-Max"), a View do banco não deve devolver apenas o valor fechado, mas sim um objeto rico:
+## 2. Especificação: Cards de KPI (Pro-Max v1.0)
+Para que os cards de Resumo Executivo fiquem com a densidade visual premium ("Pro-Max"), a View do banco deve devolver:
 
 **Objeto Esperado por KPI (Ex: Receita Bruta):**
 ```json
 {
   "value": 150000.00,
-  "previous_period_percentage": 8.4, 
+  "change_percentage": 8.4, 
   // Regra: Se o preset for '7d', compara com os 7 dias ANTERIORES.
-  "trend": "up", // 'up' | 'down'
+  // Negativo ou Positivo. O Frontend renderiza o "Pill Badge" (Pílula) automaticamente.
   "sparkline_data": [
-      // Regra: ARRAY OBRIGATÓRIO DE 15 a 30 DIAS FIXOS (Independente do preset selecionado).
-      // Isso serve apenas para desenhar a ondinha de mini-gráfico de fundo de tendência mensal.
+      // Regra: ARRAY OBRIGATÓRIO DE 20 pontos de tendência.
+      // Renderizado horizontalmente à direita do badge do KPI.
       {"val": 1200}, {"val": 1500}, /* ... */
   ]
 }
@@ -62,9 +62,8 @@ O controle de qual loja um usuário pode ver:
 ---
 
 ## 6. Histórico de Entregas (Até o momento)
-- [x] Construção do Layout Base (Sidebar SVG Brisa Premium, Menu Superior).
-- [x] Componentização de DateSegmentedControl (Hoje, 7d, 30d).
-- [x] Mockagem dos módulos DRE (Matriz Híbrida) e Resumo.
-- [x] Otimização "Command Center": Cards ultracompactos com minis gráficos (Sparklines).
-- [x] Otimização Gráfico Principal com efeitos de vidro, preenchimento cíano e linha target tracejada.
-- [x] Telas de Gestão de OKRs e Status da Integração prontas no lado do cliente.
+- **Estado Atual (26/03/2026)**:
+    - [x] **Fase 2 (UI Polish)**: Layout Pro-Max concluído com Glassmorphism.
+    - [x] **KPICards**: Redesenhados com Badge Pílula + Sparkline Row.
+    - [x] **Charts**: Tooltips premium com blur de 16px e sombras LED.
+    - [ ] **Fase 3 (Backend Integration)**: Implementação de PDF Export e Metas Dinâmicas.

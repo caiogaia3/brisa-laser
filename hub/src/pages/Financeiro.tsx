@@ -6,31 +6,36 @@ export const Financeiro = () => {
   const isResumo = location.pathname === '/financeiro';
 
   return (
-    <div style={{ width: '100%', maxWidth: '100%', overflowX: 'hidden', display: 'flex', flexDirection: 'column', gap: '24px' }}>
-      <header>
-        <h1 style={{ marginBottom: '8px' }}>Módulo Financeiro (CFO)</h1>
-        <p style={{ color: 'var(--text-muted)', marginBottom: '24px' }}>Acompanhamento de saúde financeira e demonstrativos de resultados.</p>
+    <div style={{ width: '100%', maxWidth: '100%', overflowX: 'hidden', display: 'flex', flexDirection: 'column', gap: '16px' }}>
+      <header style={{ 
+        display: 'flex', 
+        alignItems: 'center', 
+        justifyContent: 'space-between', 
+        paddingBottom: '12px',
+        borderBottom: '1px solid var(--color-glass-border)'
+       }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
+          <h1 style={{ fontSize: '1.25rem', margin: 0, color: 'var(--text-main)', fontWeight: 600 }}>CFO Dashboard</h1>
+        </div>
         
-        <div style={{ display: 'flex', gap: '16px', borderBottom: '1px solid var(--color-glass-border)', paddingBottom: '0' }}>
+        <div style={{ display: 'flex', gap: '8px' }}>
           <NavLink to="/financeiro" end style={{
-             padding: '8px 16px', 
-             borderBottom: isResumo ? '2px solid var(--color-primary)' : '2px solid transparent',
-             color: isResumo ? 'var(--text-main)' : 'var(--text-muted)',
-             textDecoration: 'none',
-             display: 'flex', alignItems: 'center', gap: '8px',
-             fontWeight: isResumo ? 600 : 400,
-             transition: 'all 0.2s'
-          }}><BarChart2 size={16} /> Resumo Executivo</NavLink>
+             padding: '6px 12px', borderRadius: '6px',
+             backgroundColor: isResumo ? 'rgba(59, 130, 246, 0.1)' : 'transparent',
+             color: isResumo ? 'var(--color-primary)' : 'var(--text-muted)',
+             textDecoration: 'none', display: 'flex', alignItems: 'center', gap: '6px',
+             fontWeight: isResumo ? 600 : 500, transition: 'all 0.2s',
+             fontSize: '0.875rem'
+          }}><BarChart2 size={14} /> Resumo</NavLink>
           
           <NavLink to="/financeiro/dre" style={{
-             padding: '8px 16px', 
-             borderBottom: !isResumo ? '2px solid var(--color-accent)' : '2px solid transparent',
-             color: !isResumo ? 'var(--text-main)' : 'var(--text-muted)',
-             textDecoration: 'none',
-             display: 'flex', alignItems: 'center', gap: '8px',
-             fontWeight: !isResumo ? 600 : 400,
-             transition: 'all 0.2s'
-          }}><FileText size={16} /> DRE Detalhado</NavLink>
+             padding: '6px 12px', borderRadius: '6px',
+             backgroundColor: !isResumo ? 'rgba(16, 185, 129, 0.1)' : 'transparent',
+             color: !isResumo ? 'var(--color-accent)' : 'var(--text-muted)',
+             textDecoration: 'none', display: 'flex', alignItems: 'center', gap: '6px',
+             fontWeight: !isResumo ? 600 : 500, transition: 'all 0.2s',
+             fontSize: '0.875rem'
+          }}><FileText size={14} /> DRE</NavLink>
         </div>
       </header>
       <Outlet />

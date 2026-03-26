@@ -14,8 +14,10 @@ Kiro-style Spec Driven Development implementation on AI-DLC (AI Development Life
 **Specs** (`.kiro/specs/`) - Formalize development process for individual features
 
 ### Active Specifications
-- Check `.kiro/specs/` for active specifications
-- Use `/kiro:spec-status [feature-name]` to check progress
+- [BACKEND_SPEC.md](./BACKEND_SPEC.md) - SSOT para Integração Supabase/n8n.
+- [context.md](./context.md) - Status e Contexto do Hub.
+- Check `.kiro/specs/` for active specifications.
+- Use `/kiro:spec-status [feature-name]` to check progress.
 
 ## Development Guidelines
 - Think in English, generate responses in Portuguese. All Markdown content written to project files (e.g., requirements.md, design.md, tasks.md, research.md, validation reports) MUST be written in the target language configured for this specification (see spec.json.language).

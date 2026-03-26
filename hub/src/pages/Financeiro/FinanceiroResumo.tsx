@@ -88,12 +88,12 @@ export const FinanceiroResumo = () => {
     <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
       {/* Top row: High Density KPI Cards */}
       <section style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(160px, 1fr))', gap: '8px' }}>
-        <KPICard title="Receita Bruta" value={currentMonthPivot.receita_bruta.toLocaleString('pt-BR')} change={5.2} prefix="R$" trend="neutral" />
-        <KPICard title="Despesas Totais" value={currentMonthPivot.despesas_totais.toLocaleString('pt-BR')} change={2.1} prefix="R$" trend="down" />
-        <KPICard title="Margem Contrib." value={currentMonthPivot.margem_contribuicao.toLocaleString('pt-BR')} change={8.4} prefix="R$" trend={currentMonthPivot.margem_contribuicao >= 0 ? 'up' : 'down'} />
-        <KPICard title="EBITDA" value={currentMonthPivot.ebitda.toLocaleString('pt-BR')} change={12.5} prefix="R$" trend={currentMonthPivot.ebitda >= 0 ? 'up' : 'down'} />
-        <KPICard title="Lucro Líquido" value={currentMonthPivot.lucro_liquido.toLocaleString('pt-BR')} change={18.2} prefix="R$" trend={currentMonthPivot.lucro_liquido >= 0 ? 'up' : 'down'} />
-        <KPICard title="Saldo Caixa" value={currentMonthPivot.saldo_final.toLocaleString('pt-BR')} change={0.0} prefix="R$" trend="neutral" />
+        <KPICard title="Receita Bruta" value={currentMonthPivot.receita_bruta.toLocaleString('pt-BR')} change={5.2} prefix="R$" />
+        <KPICard title="Despesas Totais" value={currentMonthPivot.despesas_totais.toLocaleString('pt-BR')} change={-2.1} prefix="R$" />
+        <KPICard title="Margem Contrib." value={currentMonthPivot.margem_contribuicao.toLocaleString('pt-BR')} change={currentMonthPivot.margem_contribuicao >= 0 ? 8.4 : -8.4} prefix="R$" />
+        <KPICard title="EBITDA" value={currentMonthPivot.ebitda.toLocaleString('pt-BR')} change={currentMonthPivot.ebitda >= 0 ? 12.5 : -12.5} prefix="R$" />
+        <KPICard title="Lucro Líquido" value={currentMonthPivot.lucro_liquido.toLocaleString('pt-BR')} change={currentMonthPivot.lucro_liquido >= 0 ? 18.2 : -18.2} prefix="R$" />
+        <KPICard title="Saldo Caixa" value={currentMonthPivot.saldo_final.toLocaleString('pt-BR')} change={0.0} prefix="R$" />
       </section>
 
       {/* Main Charts & OKRs Row */}

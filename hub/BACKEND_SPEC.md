@@ -34,8 +34,27 @@ Para que os cards de Resumo Executivo fiquem com a densidade visual premium ("Pr
 - **Break-even Progress**: Requer `receita_bruta` e `breakeven` (meta). O componente linear gerencia o progresso percentual e o efeito LED.
 O gráfico central em ciano e laranja interativo altera sua granularidade com base no `period_preset`:
 - Se **'today'**: O backend deve agrupar de hora em hora (24 pontos).
-- Se **'7d'**: O backend deve agrupar por Dia da Semana (7 pontos - Seg, Ter, Qua).
-- Se **'30d'** ou **'custom'**: O backend deve agrupar por data corrida (Ex: 1 Mar, 2 Mar...).
+---
+
+## 3.1 Especificação: Resumo de Marketing (Composite Data)
+A aba 'Resumo' do Marketing consolidará 4 fontes em um único payload:
+- **Google Ads**: Spend, Clicks, Conversions.
+- **Meta Ads**: Spend, Leads, CPL.
+- **GA4**: Sessions, Bounce Rate, Events.
+- **CRM (n8n)**: Leads Verificados, Status, Receita.
+
+**Payload `/marketing/summary`:**
+```json
+{
+  "performance": { "roas": 4.2, "roi": 1.5 },
+  "sources": {
+    "google": { "spend": 1200, "clicks": 450 },
+    "meta": { "spend": 900, "leads": 48 },
+    "ga4": { "sessions": 1500 }
+  },
+  "crm": { "total_leads": 60, "agendados": 12 }
+}
+```
 
 ---
 

@@ -34,6 +34,8 @@
 - **Tooltips**: Glassmorphism com borda ciano vibrante.
 - **Lines**: Stroke de `2px` com `activeDot` estilo LED (shadow glow).
 
-## 📐 Regras de Layout
-- **Gaps**: Grid fixo de `16px` para seções principais, `8px` para KPIs.
-- **Overflow**: Todos os painéis possuem `overflow: hidden` para evitar quebras visuais em grids densos.
+## 🏁 Page Headers (Deluxe Pattern)
+- **Title**: `text-main`, uppercase, weight 800, `1rem`.
+- **Subtitle**: `text-muted`, weight 400, `0.7rem`.
+- **Layout**: Flex col com gap de `2px`.
+- **Navigation**: Tabs compactas (`p-2 rounded-6`) alinhadas à direita.

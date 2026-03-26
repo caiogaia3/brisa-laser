@@ -1,5 +1,6 @@
 import { Outlet, NavLink, useLocation } from 'react-router-dom';
 import { BarChart2, FileText } from 'lucide-react';
+import { PageHeader } from '../components/Layout/PageHeader';
 
 export const Financeiro = () => {
   const location = useLocation();
@@ -7,41 +8,28 @@ export const Financeiro = () => {
 
   return (
     <div style={{ width: '100%', maxWidth: '100%', overflowX: 'hidden', display: 'flex', flexDirection: 'column', gap: '16px' }}>
-      <header style={{ 
-        display: 'flex', 
-        alignItems: 'center', 
-        justifyContent: 'space-between', 
-        paddingBottom: '8px',
-        borderBottom: '1px solid var(--color-glass-border)',
-        marginBottom: '8px'
-       }}>
-        <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-          <h1 style={{ fontSize: '1rem', margin: 0, color: 'var(--text-main)', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.05em', display: 'flex', alignItems: 'center', gap: '8px' }}>
-            Financeiro <span style={{ color: 'var(--text-muted)', fontWeight: 400 }}>/ Radar</span>
-            <span style={{ fontSize: '0.5rem', padding: '2px 4px', background: 'rgba(6, 182, 212, 0.1)', color: 'var(--color-primary)', borderRadius: '4px', border: '1px solid rgba(6, 182, 212, 0.2)' }}>PRO-MAX v1.2</span>
-          </h1>
-        </div>
+      <PageHeader 
+        title="Financeiro" 
+        subtitle="Radar estratégico e auditoria financeira detalhada da operação."
+      >
+        <NavLink to="/financeiro" end style={{
+           padding: '8px 16px', borderRadius: '8px',
+           backgroundColor: isResumo ? 'rgba(59, 130, 246, 0.1)' : 'transparent',
+           color: isResumo ? 'var(--color-primary)' : 'var(--text-muted)',
+           textDecoration: 'none', display: 'flex', alignItems: 'center', gap: '6px',
+           fontWeight: isResumo ? 700 : 500, transition: 'all 0.2s',
+           fontSize: '0.75rem', border: isResumo ? '1px solid rgba(59, 130, 246, 0.2)' : '1px solid transparent'
+        }}><BarChart2 size={14} /> Resumo</NavLink>
         
-        <div style={{ display: 'flex', gap: '8px' }}>
-          <NavLink to="/financeiro" end style={{
-             padding: '6px 12px', borderRadius: '6px',
-             backgroundColor: isResumo ? 'rgba(59, 130, 246, 0.1)' : 'transparent',
-             color: isResumo ? 'var(--color-primary)' : 'var(--text-muted)',
-             textDecoration: 'none', display: 'flex', alignItems: 'center', gap: '6px',
-             fontWeight: isResumo ? 600 : 500, transition: 'all 0.2s',
-             fontSize: '0.875rem'
-          }}><BarChart2 size={14} /> Resumo</NavLink>
-          
-          <NavLink to="/financeiro/dre" style={{
-             padding: '6px 12px', borderRadius: '6px',
-             backgroundColor: !isResumo ? 'rgba(16, 185, 129, 0.1)' : 'transparent',
-             color: !isResumo ? 'var(--color-accent)' : 'var(--text-muted)',
-             textDecoration: 'none', display: 'flex', alignItems: 'center', gap: '6px',
-             fontWeight: !isResumo ? 600 : 500, transition: 'all 0.2s',
-             fontSize: '0.875rem'
-          }}><FileText size={14} /> DRE</NavLink>
-        </div>
-      </header>
+        <NavLink to="/financeiro/dre" style={{
+           padding: '8px 16px', borderRadius: '8px',
+           backgroundColor: !isResumo ? 'rgba(16, 185, 129, 0.1)' : 'transparent',
+           color: !isResumo ? 'var(--color-accent)' : 'var(--text-muted)',
+           textDecoration: 'none', display: 'flex', alignItems: 'center', gap: '6px',
+           fontWeight: !isResumo ? 700 : 500, transition: 'all 0.2s',
+           fontSize: '0.75rem', border: !isResumo ? '1px solid rgba(16, 185, 129, 0.2)' : '1px solid transparent'
+        }}><FileText size={14} /> DRE</NavLink>
+      </PageHeader>
       <Outlet />
     </div>
   );

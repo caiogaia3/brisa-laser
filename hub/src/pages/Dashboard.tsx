@@ -1,4 +1,4 @@
-
+import { PageHeader } from '../components/Layout/PageHeader';
 import { KPICard } from '../components/Cards/KPICard';
 import { RevenueChart } from '../components/Charts/RevenueChart';
 import { LeadsFunnel } from '../components/Charts/LeadsFunnel';
@@ -16,10 +16,10 @@ export const Dashboard = () => {
 
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '32px' }}>
-      <header>
-        <h1 style={{ marginBottom: '8px' }}>Visão Geral (Cockpit)</h1>
-        <p>Acompanhe os principais indicadores da Brisa Laser em tempo real — Multi-Fonte BI.</p>
-      </header>
+      <PageHeader 
+        title="Dashboard Central" 
+        subtitle="Visão 360° da performance financeira e operacional da Brisa Laser."
+      />
 
       {/* Seção de KPIs Financeiros (Supabase DRE) */}
       <section>

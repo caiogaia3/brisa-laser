@@ -3,7 +3,7 @@ import { KPICard } from '../../components/Cards/KPICard';
 import { useDREMatrix } from '../../hooks/useDREMatrix';
 import { usePeriodStore } from '../../store/usePeriodStore';
 
-import { WaterfallChart } from '../../components/Charts/WaterfallChart';
+import { ProMaxRevenueChart } from '../../components/Charts/ProMaxRevenueChart';
 import { DoubleTrendChart } from '../../components/Charts/DoubleTrendChart';
 import { BreakEvenGauge } from '../../components/Charts/BreakEvenGauge';
 import { MarginStackedBar } from '../../components/Charts/MarginStackedBar';
@@ -99,18 +99,29 @@ export const FinanceiroResumo = () => {
       {/* Main Charts & OKRs Row */}
       <section style={{ display: 'grid', gridTemplateColumns: '1fr 300px', gap: '24px' }}>
         {/* Left: Main Performance Chart */}
-        <div className="glass-panel" style={{ padding: '24px', height: '420px', display: 'flex', flexDirection: 'column' }}>
+        <div className="glass-panel" style={{ padding: '24px', height: '420px', display: 'flex', flexDirection: 'column', border: '1px solid rgba(6, 182, 212, 0.2)', boxShadow: '0 0 20px rgba(6, 182, 212, 0.05)' }}>
           <header style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '16px' }}>
             <div>
-              <h3 style={{ fontSize: '1rem', color: 'var(--text-main)' }}>Demonstrativo em Cascata</h3>
-              <p style={{ fontSize: '0.75rem', color: 'var(--text-muted)' }}>A Jornada do Dinheiro (Receita até Lucro).</p>
+              <h3 style={{ fontSize: '1rem', color: 'var(--text-main)', display: 'flex', gap: '8px', alignItems: 'center' }}>
+                <span style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#06b6d4', display: 'inline-block', boxShadow: '0 0 10px #06b6d4' }}></span>
+                Receita vs Despesas Estratégicas
+              </h3>
+              <p style={{ fontSize: '0.75rem', color: 'var(--text-muted)', marginTop: '4px' }}>Performance de fluxo em tempo real interativo.</p>
             </div>
             <div style={{ display: 'flex', gap: '16px', fontSize: '0.75rem', fontWeight: 600 }}>
-              <span style={{ color: 'var(--color-primary)' }}>● Entradas</span>
-              <span style={{ color: 'var(--color-danger)' }}>● Saídas</span>
+              <span style={{ color: '#06b6d4', display: 'flex', alignItems: 'center', gap: '6px' }}>
+                <span style={{ display: 'inline-block', width: '12px', height: '4px', background: '#06b6d4', borderRadius: '2px' }}></span>
+                Receita Bruta
+              </span>
+              <span style={{ color: '#fb923c', display: 'flex', alignItems: 'center', gap: '6px' }}>
+                <span style={{ display: 'inline-block', width: '12px', height: '2px', borderBottom: '2px dashed #fb923c' }}></span>
+                Despesas
+              </span>
             </div>
           </header>
-          <div style={{ flex: 1, minHeight: 0 }}><WaterfallChart data={currentMonthPivot} /></div>
+          <div style={{ flex: 1, minHeight: 0 }}>
+             <ProMaxRevenueChart />
+          </div>
         </div>
 
         {/* Right: OKRs */}

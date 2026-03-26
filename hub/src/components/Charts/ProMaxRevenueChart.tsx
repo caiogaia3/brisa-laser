@@ -6,26 +6,39 @@ const CustomTooltip = ({ active, payload, label }: any) => {
   if (active && payload && payload.length) {
     return (
       <div style={{
-        background: 'rgba(15, 23, 42, 0.95)',
-        border: '1px solid rgba(255,255,255,0.1)',
-        backdropFilter: 'blur(8px)',
-        padding: '12px',
-        borderRadius: '8px',
+        backgroundColor: 'rgba(13, 13, 18, 0.75)',
+        border: '1px solid rgba(255, 255, 255, 0.1)',
+        backdropFilter: 'blur(16px)',
+        padding: '10px 14px',
+        borderRadius: '12px',
         color: '#fff',
-        boxShadow: '0 4px 6px rgba(0,0,0,0.5)',
-        minWidth: '200px'
+        boxShadow: '0 10px 15px -3px rgba(0, 0, 0, 0.5), 0 4px 6px -2px rgba(0, 0, 0, 0.5)',
+        minWidth: '180px'
       }}>
-        <p style={{ margin: '0 0 12px 0', fontSize: '0.75rem', color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '0.05em' }}>{label}</p>
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+        <p style={{ 
+          margin: '0 0 10px 0', 
+          fontSize: '0.65rem', 
+          color: 'var(--text-muted)', 
+          textTransform: 'uppercase', 
+          letterSpacing: '0.1em',
+          fontWeight: 600
+        }}>{label}</p>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
           {payload.map((entry: any) => (
             <div key={entry.name} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
-                <span style={{ width: '8px', height: '8px', borderRadius: '50%', backgroundColor: entry.color }} />
-                <span style={{ fontSize: '0.75rem', color: 'var(--text-muted)' }}>
+                <span style={{ 
+                  width: '6px', 
+                  height: '6px', 
+                  borderRadius: '50%', 
+                  backgroundColor: entry.color,
+                  boxShadow: `0 0 6px ${entry.color}`
+                }} />
+                <span style={{ fontSize: '0.7rem', color: 'rgba(255,255,255,0.7)', fontWeight: 500 }}>
                   {entry.name === 'receita' ? 'Receita' : 'Despesa'}
                 </span>
               </div>
-              <span style={{ fontSize: '0.875rem', fontWeight: 600, color: 'var(--text-main)' }}>
+              <span style={{ fontSize: '0.8rem', fontWeight: 700, color: 'var(--text-main)' }}>
                 {entry.value.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}
               </span>
             </div>

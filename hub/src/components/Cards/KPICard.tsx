@@ -27,7 +27,8 @@ export const KPICard = ({ title, value, change, trend, prefix = '', suffix = '' 
       position: 'relative',
       overflow: 'hidden',
       height: '100px',
-      justifyContent: 'space-between'
+      justifyContent: 'space-between',
+      borderRadius: 'var(--radius-lg)'
     }}>
       <div style={{ zIndex: 1 }}>
         <h3 style={{ 
@@ -72,13 +73,14 @@ export const KPICard = ({ title, value, change, trend, prefix = '', suffix = '' 
       {/* Background Sparkline - Premium Integration */}
       <div style={{ 
         position: 'absolute', 
-        bottom: 0, 
-        left: 0, 
-        right: 0, 
+        bottom: '-1px', 
+        left: '-1px', 
+        right: '-1px', 
         height: '45%', 
         zIndex: 0,
         opacity: 0.6,
-        pointerEvents: 'none'
+        pointerEvents: 'none',
+        overflow: 'hidden'
       }}>
         <ResponsiveContainer width="100%" height="100%">
           <AreaChart data={sparklineData} margin={{ top: 0, right: 0, left: 0, bottom: 0 }}>

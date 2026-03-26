@@ -5,8 +5,8 @@ import { usePeriodStore } from '../../store/usePeriodStore';
 
 import { ProMaxRevenueChart } from '../../components/Charts/ProMaxRevenueChart';
 import { DoubleTrendChart } from '../../components/Charts/DoubleTrendChart';
-import { BreakEvenGauge } from '../../components/Charts/BreakEvenGauge';
-import { MarginStackedBar } from '../../components/Charts/MarginStackedBar';
+import { MarginDonutChart } from '../../components/Charts/MarginDonutChart';
+import { BreakEvenProgress } from '../../components/Charts/BreakEvenProgress';
 
 const OKRBar = ({ title, current, goal, isReverse }: { title: string, current: number, goal: number, isReverse?: boolean }) => {
   const percent = Math.min(100, Math.max(0, goal > 0 ? (current / goal) * 100 : 0));
@@ -154,14 +154,18 @@ export const FinanceiroResumo = () => {
           <div style={{ flex: 1, minHeight: 0 }}><DoubleTrendChart data={trendData} /></div>
         </div>
 
-        <div className="glass-panel" style={{ padding: '16px', height: '300px', display: 'flex', flexDirection: 'column' }}>
-          <h3 style={{ marginBottom: '12px', fontSize: '0.85rem', color: 'var(--text-main)', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Termômetro Break-even</h3>
-          <div style={{ flex: 1, minHeight: 0 }}><BreakEvenGauge data={currentMonthPivot} /></div>
+        <div className="glass-panel" style={{ height: '300px', padding: '24px' }}>
+          <h3 style={{ fontSize: '0.75rem', fontWeight: 600, color: 'var(--text-dim)', letterSpacing: '0.05em', marginBottom: '20px', textTransform: 'uppercase' }}>
+            Termômetro Break-even
+          </h3>
+          <BreakEvenProgress data={currentMonthPivot} />
         </div>
 
-        <div className="glass-panel" style={{ padding: '16px', height: '300px', display: 'flex', flexDirection: 'column' }}>
-          <h3 style={{ marginBottom: '12px', fontSize: '0.85rem', color: 'var(--text-main)', textTransform: 'uppercase', letterSpacing: '0.05em' }}>M. Contribuição (Base 100%)</h3>
-          <div style={{ flex: 1, minHeight: 0, paddingLeft: '8px' }}><MarginStackedBar data={currentMonthPivot} /></div>
+        <div className="glass-panel" style={{ height: '300px', padding: '24px' }}>
+          <h3 style={{ fontSize: '0.75rem', fontWeight: 600, color: 'var(--text-dim)', letterSpacing: '0.05em', marginBottom: '20px', textTransform: 'uppercase' }}>
+            M. Contribuição (Base 100%)
+          </h3>
+          <MarginDonutChart data={currentMonthPivot} />
         </div>
       </section>
     </div>

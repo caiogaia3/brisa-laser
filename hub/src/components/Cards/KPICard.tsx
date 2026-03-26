@@ -66,16 +66,16 @@ export const KPICard = ({ title, value, change, prefix, suffix }: KPICardProps) 
         <div style={{ 
           display: 'inline-flex', 
           alignItems: 'center', 
-          gap: '3px',
-          padding: '2px 8px',
+          gap: '2px',
+          padding: '1px 6px',
           borderRadius: '20px',
-          fontSize: '0.65rem', 
-          fontWeight: 700,
+          fontSize: '0.6rem', 
+          fontWeight: 800,
           color: color,
           backgroundColor: badgeBg,
-          border: `1px solid ${color}20`
+          border: `1px solid ${color}15`
         }}>
-          {isPositive ? <ArrowUp size={10} strokeWidth={3} /> : isNegative ? <ArrowDown size={10} strokeWidth={3} /> : <Minus size={10} />}
+          {isPositive ? <ArrowUp size={8} strokeWidth={4} /> : isNegative ? <ArrowDown size={8} strokeWidth={4} /> : <Minus size={8} />}
           <span>{Math.abs(change)}%</span>
         </div>
 

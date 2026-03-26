@@ -10,12 +10,19 @@
 - **Border Glass**: `rgba(255, 255, 255, 0.08)`
 
 ## 🧱 Componentes Core
-### 1. Glass Panel (`.glass-panel`)
-- **Blur**: `backdrop-filter: blur(16px)`
-- **Radius**: `14px` (`var(--radius-lg)`)
-- **Shadow**: `shadow-[0_8px_32px_0_rgba(0,0,0,0.37)]`
+### 1. Liquid Glass (`.liquid-glass`) [Novo Padrão]
+- **Blur**: `backdrop-filter: blur(28px)` (ultra-smooth).
+- **Background**: `rgba(255, 255, 255, 0.015)`.
+- **Border**: `rgba(255, 255, 255, 0.06)`.
+- **Shadow**: Inset glow + deep drop shadow.
+- **Interatividade**: Hover com brilho ciano (`shadow-glow-cyan`).
 
-### 2. KPICard (High-Density Pro-Max)
+### 2. Glass Panel (`.glass-panel`) [Legacy/Secondary]
+- **Blur**: `16px`.
+- **Uso**: Somente em elementos secundários ou backgrounds simples.
+
+### 3. KPICard (High-Density Liquid)
+- **Container**: Obrigatório `.liquid-glass`.
 - **Altura**: `110px`.
 - **Vertical Rhythm**: Título e Valor agrupados no topo para máxima visibilidade; Pill Badge e Sparkline ancorados na base.
 - **Tipografia**: Valor em `1.5rem / 800` (extra-bold), Título em `0.55rem / 700 / All-Caps`.
@@ -25,7 +32,8 @@
 - **Radius**: `14px` (`var(--radius-lg)`) - Padronizado com os cards de radar.
 - **Background**: `var(--color-surface)` com borda sutil.
 
-### 4. Charts (Premium Visuals)
+### 5. Charts (Premium Liquid Visuals)
+- **Container**: Todo gráfico deve estar envolto em um `.liquid-glass`.
 - **Donut/Pie**: Layout horizontal (Gráfico à esquerda / Legendas à direita).
 - **Interatividade**: Efeito de "Glow" (drop-shadow) em fatias ativas; cursor pointer.
 - **Break-even**: Barra de progresso linear com brilho LED e indicador de alvo (Target Marker).
@@ -56,6 +64,6 @@
 - **Segmented Control**: Pill-style navigation (`H-36px`, blur 10px).
 - **Custom Popover**: 
     - Layout: Side-by-side (`grid-cols-2`) for start/end dates.
-    - Style: Glass-panel (`blur-24px`), dark bg (`0.95 opacity`).
+    - Style: `.liquid-glass` com blur reforçado (`28px`), dark bg.
     - Inputs: Minimalist, `outline: none`, focus border cyan.
     - CTA: Gradient `(primary -> dark-cyan)`, shadow glow.

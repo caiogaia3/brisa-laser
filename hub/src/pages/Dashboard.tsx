@@ -1,4 +1,3 @@
-import { PageHeader } from '../components/Layout/PageHeader';
 import { KPICard } from '../components/Cards/KPICard';
 import { RevenueChart } from '../components/Charts/RevenueChart';
 import { LeadsFunnel } from '../components/Charts/LeadsFunnel';
@@ -6,6 +5,7 @@ import { useCrossMetrics } from '../hooks/useCrossMetrics';
 import { useKPIs } from '../hooks/useKPIs';
 import { Bot, TrendingUp, Users, DollarSign, Target, BarChart3, Zap, ShieldCheck } from 'lucide-react';
 import SummaryTab from '../components/Dashboard/SummaryTab';
+import OKRTracker from '../components/Dashboard/OKRTracker';
 
 export const Dashboard = () => {
   const { loading: kpiLoading, kpis, data } = useKPIs();
@@ -17,20 +17,62 @@ export const Dashboard = () => {
 
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '32px' }}>
-      <PageHeader 
-        title="Dashboard Central" 
-        subtitle="Visão 360° da performance financeira e operacional da Brisa Laser."
-      />
-
-      {/* 👑 The King's Summary (New v1.5 Layer) */}
+      {/* 🛡️ The King's OKRs (Strategic Goal Management) */}
       <section>
-        <h2 style={{ fontSize: '1rem', color: 'var(--color-primary)', marginBottom: '20px', display: 'flex', alignItems: 'center', gap: '8px', fontWeight: 800 }}>
-          <ShieldCheck size={18} /> Central de Inteligência Master
+        <h2 style={{ fontSize: '1.25rem', color: 'white', marginBottom: '24px', display: 'flex', alignItems: 'center', gap: '12px', fontWeight: 900 }}>
+          <ShieldCheck size={24} color="var(--color-primary)" />
+          <span>Diretoria: OKRs Rei (Mês)</span>
         </h2>
-        <SummaryTab />
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '20px' }}>
+          <OKRTracker 
+            title="Dominância Patrimonial"
+            current={3.4}
+            target={3.5}
+            unit="x"
+            tooltipTitle="LTV/CAC Ratio"
+            tooltipContent="O motor de escala. Mede o valor patrimonial criado por real investido. Meta do C-Level: 3.5x."
+            secondaryOKRs={[{label: 'CPL', progress: 95}, {label: 'Conv', progress: 80}]}
+          />
+          <OKRTracker 
+            title="Excelência Operacional"
+            current={64.8}
+            target={72}
+            unit="%"
+            tooltipTitle="Asset Efficiency"
+            tooltipContent="Mede a utilização real da capacidade instalada. Uma máquina parada é lucro perdido. Meta: 72%."
+            secondaryOKRs={[{label: 'Agenda', progress: 85}, {label: 'Turnover', progress: 100}]}
+          />
+          <OKRTracker 
+            title="Lucratividade Blindada"
+            current={42}
+            target={40}
+            unit=" Dias"
+            tooltipTitle="Payback Speed"
+            tooltipContent="Em quanto tempo o investimento em mídia paga se paga. Meta CFO: < 40 dias."
+            secondaryOKRs={[{label: 'Margem', progress: 98}, {label: 'Burn', progress: 100}]}
+          />
+          <OKRTracker 
+            title="Brand Value (ATV)"
+            current={254.8}
+            target={300}
+            prefix="R$ "
+            unit=""
+            tooltipTitle="Average Transaction Value"
+            tooltipContent="Mede o posicionamento premium. Indica se vendemos pacotes master ou serviços avulsos."
+            secondaryOKRs={[{label: 'Mix', progress: 70}, {label: 'Tickets', progress: 60}]}
+          />
+        </div>
       </section>
 
       <div style={{ height: '32px' }} />
+
+      {/* 👑 The King's Summary (Consolidated Intelligence) */}
+      <section>
+        <h2 style={{ fontSize: '1rem', color: 'var(--text-muted)', marginBottom: '20px', display: 'flex', alignItems: 'center', gap: '8px', fontWeight: 800 }}>
+          <Zap size={18} color="var(--color-primary)" /> Central de Inteligência Master
+        </h2>
+        <SummaryTab />
+      </section>
 
       {/* Seção de KPIs Financeiros (Supabase DRE) */}
       <section>

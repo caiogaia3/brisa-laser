@@ -14,15 +14,15 @@ const OKRBar = ({ title, current, goal, isReverse }: { title: string, current: n
   const color = isGood ? 'var(--color-primary)' : 'var(--color-warning)';
   
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
-      <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '0.85rem' }}>
+    <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
+      <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '0.75rem' }}>
         <span style={{ color: 'var(--text-main)', fontWeight: 500 }}>{title}</span>
         <span style={{ color: 'var(--text-muted)' }}>
-          {current.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })} / {goal.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}
+          {percent.toFixed(0)}%
         </span>
       </div>
-      <div style={{ height: '8px', background: 'rgba(255,255,255,0.05)', borderRadius: '4px', overflow: 'hidden' }}>
-        <div style={{ height: '100%', width: `${percent}%`, backgroundColor: color, borderRadius: '4px', transition: 'width 1s ease-in-out' }} />
+      <div style={{ height: '6px', background: 'rgba(255,255,255,0.05)', borderRadius: '3px', overflow: 'hidden' }}>
+        <div style={{ height: '100%', width: `${percent}%`, backgroundColor: color, borderRadius: '3px', transition: 'width 1s ease-in-out' }} />
       </div>
     </div>
   );
@@ -85,9 +85,9 @@ export const FinanceiroResumo = () => {
   }, [matrixData, months]);
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
+    <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
       {/* Top row: High Density KPI Cards */}
-      <section style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))', gap: '12px' }}>
+      <section style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(160px, 1fr))', gap: '8px' }}>
         <KPICard title="Receita Bruta" value={currentMonthPivot.receita_bruta.toLocaleString('pt-BR')} change={5.2} prefix="R$" trend="neutral" />
         <KPICard title="Despesas Totais" value={currentMonthPivot.despesas_totais.toLocaleString('pt-BR')} change={2.1} prefix="R$" trend="down" />
         <KPICard title="Margem Contrib." value={currentMonthPivot.margem_contribuicao.toLocaleString('pt-BR')} change={8.4} prefix="R$" trend={currentMonthPivot.margem_contribuicao >= 0 ? 'up' : 'down'} />
@@ -97,24 +97,23 @@ export const FinanceiroResumo = () => {
       </section>
 
       {/* Main Charts & OKRs Row */}
-      <section style={{ display: 'grid', gridTemplateColumns: '1fr 300px', gap: '24px' }}>
+      <section style={{ display: 'grid', gridTemplateColumns: '1fr 280px', gap: '16px' }}>
         {/* Left: Main Performance Chart */}
-        <div className="glass-panel" style={{ padding: '24px', height: '420px', display: 'flex', flexDirection: 'column', border: '1px solid rgba(6, 182, 212, 0.2)', boxShadow: '0 0 20px rgba(6, 182, 212, 0.05)' }}>
-          <header style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '16px' }}>
+        <div className="glass-panel" style={{ padding: '16px', height: '380px', display: 'flex', flexDirection: 'column', border: '1px solid rgba(6, 182, 212, 0.15)' }}>
+          <header style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '12px' }}>
             <div>
-              <h3 style={{ fontSize: '1rem', color: 'var(--text-main)', display: 'flex', gap: '8px', alignItems: 'center' }}>
-                <span style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#06b6d4', display: 'inline-block', boxShadow: '0 0 10px #06b6d4' }}></span>
-                Receita vs Despesas Estratégicas
+              <h3 style={{ fontSize: '0.9rem', color: 'var(--text-main)', display: 'flex', gap: '8px', alignItems: 'center', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
+                <span style={{ width: '6px', height: '6px', borderRadius: '50%', background: '#06b6d4', display: 'inline-block', boxShadow: '0 0 8px #06b6d4' }}></span>
+                Performance de Fluxo
               </h3>
-              <p style={{ fontSize: '0.75rem', color: 'var(--text-muted)', marginTop: '4px' }}>Performance de fluxo em tempo real interativo.</p>
             </div>
-            <div style={{ display: 'flex', gap: '16px', fontSize: '0.75rem', fontWeight: 600 }}>
-              <span style={{ color: '#06b6d4', display: 'flex', alignItems: 'center', gap: '6px' }}>
-                <span style={{ display: 'inline-block', width: '12px', height: '4px', background: '#06b6d4', borderRadius: '2px' }}></span>
-                Receita Bruta
+            <div style={{ display: 'flex', gap: '12px', fontSize: '0.65rem', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.05em' }}>
+              <span style={{ color: '#06b6d4', display: 'flex', alignItems: 'center', gap: '4px' }}>
+                <span style={{ display: 'inline-block', width: '8px', height: '3px', background: '#06b6d4', borderRadius: '1.5px' }}></span>
+                Receita
               </span>
-              <span style={{ color: '#fb923c', display: 'flex', alignItems: 'center', gap: '6px' }}>
-                <span style={{ display: 'inline-block', width: '12px', height: '2px', borderBottom: '2px dashed #fb923c' }}></span>
+              <span style={{ color: '#fb923c', display: 'flex', alignItems: 'center', gap: '4px' }}>
+                <span style={{ display: 'inline-block', width: '8px', height: '1.5px', borderBottom: '1.5px dashed #fb923c' }}></span>
                 Despesas
               </span>
             </div>
@@ -125,23 +124,23 @@ export const FinanceiroResumo = () => {
         </div>
 
         {/* Right: OKRs */}
-        <div className="glass-panel" style={{ padding: '24px', display: 'flex', flexDirection: 'column', gap: '24px' }}>
+        <div className="glass-panel" style={{ padding: '16px', display: 'flex', flexDirection: 'column', gap: '20px' }}>
           <header>
-            <h3 style={{ fontSize: '1rem', color: 'var(--text-main)', marginBottom: '4px' }}>Live OKRs</h3>
-            <p style={{ fontSize: '0.75rem', color: 'var(--text-muted)' }}>Realizado vs Meta Mensal</p>
+            <h3 style={{ fontSize: '0.9rem', color: 'var(--text-main)', marginBottom: '2px', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Live OKRs</h3>
+            <p style={{ fontSize: '0.65rem', color: 'var(--text-muted)' }}>Realizado vs Meta</p>
           </header>
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '28px' }}>
-            {/* Mockup Goals for Demo -> This will be fetched from DB */}
-            <OKRBar title="Receita Bruta" current={currentMonthPivot.receita_bruta} goal={50000} />
-            <OKRBar title="Despesas (Teto)" current={currentMonthPivot.despesas_totais} goal={25000} isReverse />
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
+            {/* Mockup Goals */}
+            <OKRBar title="Faturamento" current={currentMonthPivot.receita_bruta} goal={50000} />
+            <OKRBar title="Teto Despesas" current={currentMonthPivot.despesas_totais} goal={25000} isReverse />
             <OKRBar title="Margem Contrib." current={currentMonthPivot.margem_contribuicao} goal={20000} />
-            <div style={{ marginTop: 'auto', padding: '12px', background: 'rgba(59, 130, 246, 0.1)', borderRadius: '8px', border: '1px solid rgba(59, 130, 246, 0.2)' }}>
-              <p style={{ fontSize: '0.75rem', color: 'var(--color-primary)', fontWeight: 600, display: 'flex', gap: '8px', alignItems: 'center' }}>
-                <span style={{ width: '8px', height: '8px', borderRadius: '50%', background: 'var(--color-primary)' }} />
-                IA Insight
+            <div style={{ marginTop: '4px', padding: '10px', background: 'rgba(6, 182, 212, 0.05)', borderRadius: '6px', border: '1px solid rgba(6, 182, 212, 0.1)' }}>
+              <p style={{ fontSize: '0.65rem', color: 'var(--color-primary)', fontWeight: 700, display: 'flex', gap: '6px', alignItems: 'center', textTransform: 'uppercase' }}>
+                <span style={{ width: '5px', height: '5px', borderRadius: '50%', background: 'var(--color-primary)' }} />
+                Jarvis AI
               </p>
-              <p style={{ fontSize: '0.75rem', color: 'var(--text-main)', marginTop: '4px', lineHeight: 1.4 }}>
-                Receita superou 80% da meta, mas as despesas operacionais aceleraram 12% a mais que a média móvel.
+              <p style={{ fontSize: '0.7rem', color: 'var(--text-muted)', marginTop: '4px', lineHeight: 1.4 }}>
+                Receita em 80% da meta. Despesas aceleraram 12% acima da média móvel.
               </p>
             </div>
           </div>
@@ -149,20 +148,20 @@ export const FinanceiroResumo = () => {
       </section>
 
       {/* Bottom Rows: Secondary Analysis */}
-      <section style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '24px' }}>
-        <div className="glass-panel" style={{ padding: '24px', height: '350px', display: 'flex', flexDirection: 'column' }}>
-          <h3 style={{ marginBottom: '16px', fontSize: '1rem', color: 'var(--text-main)' }}>Eficiência (Receita vs EBITDA)</h3>
+      <section style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '16px' }}>
+        <div className="glass-panel" style={{ padding: '16px', height: '300px', display: 'flex', flexDirection: 'column' }}>
+          <h3 style={{ marginBottom: '12px', fontSize: '0.85rem', color: 'var(--text-main)', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Eficiência (Receita/EBITDA)</h3>
           <div style={{ flex: 1, minHeight: 0 }}><DoubleTrendChart data={trendData} /></div>
         </div>
 
-        <div className="glass-panel" style={{ padding: '24px', height: '350px', display: 'flex', flexDirection: 'column' }}>
-          <h3 style={{ marginBottom: '16px', fontSize: '1rem', color: 'var(--text-main)' }}>Termômetro Break-even</h3>
+        <div className="glass-panel" style={{ padding: '16px', height: '300px', display: 'flex', flexDirection: 'column' }}>
+          <h3 style={{ marginBottom: '12px', fontSize: '0.85rem', color: 'var(--text-main)', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Termômetro Break-even</h3>
           <div style={{ flex: 1, minHeight: 0 }}><BreakEvenGauge data={currentMonthPivot} /></div>
         </div>
 
-        <div className="glass-panel" style={{ padding: '24px', height: '350px', display: 'flex', flexDirection: 'column' }}>
-          <h3 style={{ marginBottom: '16px', fontSize: '1rem', color: 'var(--text-main)' }}>Markup (Base 100%)</h3>
-          <div style={{ flex: 1, minHeight: 0, paddingLeft: '12px' }}><MarginStackedBar data={currentMonthPivot} /></div>
+        <div className="glass-panel" style={{ padding: '16px', height: '300px', display: 'flex', flexDirection: 'column' }}>
+          <h3 style={{ marginBottom: '12px', fontSize: '0.85rem', color: 'var(--text-main)', textTransform: 'uppercase', letterSpacing: '0.05em' }}>M. Contribuição (Base 100%)</h3>
+          <div style={{ flex: 1, minHeight: 0, paddingLeft: '8px' }}><MarginStackedBar data={currentMonthPivot} /></div>
         </div>
       </section>
     </div>

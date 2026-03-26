@@ -11,11 +11,14 @@ export const Financeiro = () => {
         display: 'flex', 
         alignItems: 'center', 
         justifyContent: 'space-between', 
-        paddingBottom: '12px',
-        borderBottom: '1px solid var(--color-glass-border)'
+        paddingBottom: '8px',
+        borderBottom: '1px solid var(--color-glass-border)',
+        marginBottom: '8px'
        }}>
-        <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
-          <h1 style={{ fontSize: '1.25rem', margin: 0, color: 'var(--text-main)', fontWeight: 600 }}>CFO Dashboard</h1>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+          <h1 style={{ fontSize: '1rem', margin: 0, color: 'var(--text-main)', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.05em' }}>
+            Financeiro <span style={{ color: 'var(--text-muted)', fontWeight: 400 }}>/ Radar</span>
+          </h1>
         </div>
         
         <div style={{ display: 'flex', gap: '8px' }}>

@@ -1,29 +1,32 @@
 :root {
-  --color-bg: #0a0a0f;
-  --color-surface: #12121a;
-  --color-surface-hover: #1a1a24;
-  --color-glass: rgba(255, 255, 255, 0.04);
-  --color-glass-border: rgba(255, 255, 255, 0.08);
+  /* Brisa Pro-Max Palette */
+  --color-bg: #050508;
+  --color-surface: #0d0d12;
+  --color-surface-hover: #14141d;
+  --color-glass: rgba(255, 255, 255, 0.03);
+  --color-glass-border: rgba(255, 255, 255, 0.07);
   
-  --color-primary: #3b82f6; /* Azul premium Brisa */
-  --color-primary-hover: #2563eb;
-  --color-primary-light: rgba(59, 130, 246, 0.15);
+  --color-primary: #06b6d4; /* Ciano Brisa - Receita */
+  --color-primary-glow: rgba(6, 182, 212, 0.4);
+  --color-orange: #f97316;  /* Laranja Brisa - Despesa */
+  --color-orange-glow: rgba(249, 115, 22, 0.4);
   
-  --color-accent: #06b6d4;
   --color-success: #10b981;
   --color-danger: #ef4444;
   --color-warning: #f59e0b;
   
-  --text-main: #f8fafc;
-  --text-muted: #94a3b8;
+  --text-main: #fcfcfd;
+  --text-muted: #71717a;
+  --text-dim: #52525b;
   
   --font-family: 'Inter', system-ui, -apple-system, sans-serif;
-  --radius: 12px;
-  --radius-lg: 16px;
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 14px;
   --radius-full: 9999px;
-  --shadow-sm: 0 1px 2px rgba(0,0,0,0.5);
-  --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.5), 0 2px 4px -2px rgba(0,0,0,0.5);
-  --shadow-glow: 0 0 15px rgba(59, 130, 246, 0.3);
+  
+  --shadow-premium: 0 0 0 1px rgba(255, 255, 255, 0.05), 0 4px 12px -2px rgba(0, 0, 0, 0.5);
+  --shadow-glow-cyan: 0 0 20px rgba(6, 182, 212, 0.15);
 }
 
 * {

@@ -64,19 +64,19 @@ export const Sidebar = () => {
               to={item.to}
               style={({ isActive }) => ({
                 display: 'flex', alignItems: 'center', gap: '16px',
-                padding: '12px', borderRadius: 'var(--radius)',
+                padding: '10px 12px', borderRadius: 'var(--radius-md)',
                 textDecoration: 'none',
                 color: isActive ? 'var(--text-main)' : 'var(--text-muted)',
-                backgroundColor: isActive && isHovered ? 'var(--color-primary-light)' : 'transparent',
-                border: isActive && isHovered ? '1px solid rgba(59, 130, 246, 0.3)' : '1px solid transparent',
+                backgroundColor: isActive && isHovered ? 'rgba(6, 182, 212, 0.1)' : 'transparent',
+                border: isActive && isHovered ? '1px solid rgba(6, 182, 212, 0.2)' : '1px solid transparent',
                 transition: 'all 0.2s',
                 fontWeight: isActive ? 600 : 400
               })}
             >
-              <div style={{ minWidth: '36px', display: 'flex', justifyContent: 'center' }}>
-                <item.icon size={24} style={{ color: 'inherit' }} />
+              <div style={{ minWidth: '32px', display: 'flex', justifyContent: 'center' }}>
+                <item.icon size={20} style={{ color: 'inherit' }} />
               </div>
-              <span style={{ opacity: isHovered ? 1 : 0, transition: 'opacity 0.2s', whiteSpace: 'nowrap' }}>{item.label}</span>
+              <span style={{ fontSize: '0.85rem', opacity: isHovered ? 1 : 0, transition: 'opacity 0.2s', whiteSpace: 'nowrap' }}>{item.label}</span>
             </NavLink>
           ))}
         </nav>
@@ -86,19 +86,19 @@ export const Sidebar = () => {
             to="/config"
             style={({ isActive }) => ({
               display: 'flex', alignItems: 'center', gap: '16px',
-              padding: '12px', borderRadius: 'var(--radius)',
+              padding: '10px 12px', borderRadius: 'var(--radius-md)',
               textDecoration: 'none',
               color: isActive ? 'var(--text-main)' : 'var(--text-muted)',
-              backgroundColor: isActive && isHovered ? 'var(--color-primary-light)' : 'transparent',
-              border: isActive && isHovered ? '1px solid rgba(59, 130, 246, 0.3)' : '1px solid transparent',
+              backgroundColor: isActive && isHovered ? 'rgba(6, 182, 212, 0.1)' : 'transparent',
+              border: isActive && isHovered ? '1px solid rgba(6, 182, 212, 0.2)' : '1px solid transparent',
               transition: 'all 0.2s',
               fontWeight: isActive ? 600 : 400
             })}
           >
-            <div style={{ minWidth: '36px', display: 'flex', justifyContent: 'center' }}>
-              <Settings size={24} style={{ color: 'inherit' }} />
+            <div style={{ minWidth: '32px', display: 'flex', justifyContent: 'center' }}>
+              <Settings size={20} style={{ color: 'inherit' }} />
             </div>
-            <span style={{ opacity: isHovered ? 1 : 0, transition: 'opacity 0.2s', whiteSpace: 'nowrap' }}>Configurações</span>
+            <span style={{ fontSize: '0.85rem', opacity: isHovered ? 1 : 0, transition: 'opacity 0.2s', whiteSpace: 'nowrap' }}>Configurações</span>
           </NavLink>
         </div>
       </aside>

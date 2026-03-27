@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { Info } from 'lucide-react';
 
 interface InfoTooltipProps {
@@ -8,66 +8,58 @@ interface InfoTooltipProps {
 
 const InfoTooltip: React.FC<InfoTooltipProps> = ({ title, content }) => {
   const [isVisible, setIsVisible] = useState(false);
+  const [position, setPosition] = useState({ top: 0, left: 0 });
+  const iconRef = useRef<HTMLDivElement>(null);
+
+  const handleMouseEnter = () => {
+    if (iconRef.current) {
+      const rect = iconRef.current.getBoundingClientRect();
+      setPosition({
+        top: rect.top + 20,
+        left: Math.min(rect.left - 110, window.innerWidth - 280)
+      });
+      setIsVisible(true);
+    }
+  };
 
   return (
     <div 
-      style={{ position: 'relative', display: 'inline-flex', alignItems: 'center', marginLeft: '6px' }}
-      onMouseEnter={() => setIsVisible(true)}
+      style={{ display: 'inline-flex', alignItems: 'center', marginLeft: '6px' }}
+      onMouseEnter={handleMouseEnter}
       onMouseLeave={() => setIsVisible(false)}
+      ref={iconRef}
     >
-      <Info 
-        size={14} 
-        style={{ 
-          cursor: 'help', 
-          color: isVisible ? 'var(--color-primary)' : 'rgba(255, 255, 255, 0.3)',
-          transition: 'color 0.2s'
-        }} 
-      />
+      <div className="info-icon" style={{ cursor: 'help' }}>
+        <Info size={12} />
+      </div>
       
       {isVisible && (
-        <div className="liquid-glass" style={{
-          position: 'absolute',
-          bottom: '100%',
-          left: '50%',
-          transform: 'translateX(-50%)',
-          marginBottom: '10px',
-          width: '240px',
-          padding: '12px',
-          background: 'rgba(5, 5, 8, 0.9)',
-          backdropFilter: 'blur(28px)',
-          border: '1px solid rgba(255, 255, 255, 0.1)',
-          borderRadius: '12px',
-          boxShadow: '0 10px 40px rgba(0, 0, 0, 0.6)',
-          zIndex: 100,
-          pointerEvents: 'none',
-          animation: 'fade-in-up 0.2s ease-out'
-        }}>
+        <div 
+          className="info-tooltip-content"
+          style={{ 
+            position: 'fixed',
+            top: `${position.top}px`,
+            left: `${position.left}px`,
+            opacity: 1,
+            pointerEvents: 'none',
+            zIndex: 9999,
+            width: '260px',
+            animation: 'fadeIn 0.3s ease-out',
+            backdropFilter: 'blur(48px) saturate(220%)',
+            background: 'rgba(5, 5, 10, 0.85)',
+            border: '1px solid rgba(255, 255, 255, 0.2)',
+            boxShadow: 'inset 0 0 0 1px rgba(255, 255, 255, 0.1), 0 20px 50px rgba(0, 0, 0, 0.8)',
+            transform: 'scale(1) translateY(0)'
+          }}
+        >
           <div style={{ fontSize: '0.65rem', fontWeight: 800, color: 'var(--color-primary)', textTransform: 'uppercase', marginBottom: '6px', letterSpacing: '0.1em' }}>
             {title}
           </div>
-          <div style={{ fontSize: '0.75rem', color: 'rgba(255, 255, 255, 0.8)', lineHeight: '1.4', fontWeight: 500 }}>
+          <div style={{ fontSize: '0.75rem', color: 'rgba(255, 255, 255, 0.9)', lineHeight: '1.4', fontWeight: 500 }}>
             {content}
           </div>
-          
-          {/* Arrow */}
-          <div style={{
-            position: 'absolute',
-            top: '100%',
-            left: '50%',
-            transform: 'translateX(-50%)',
-            borderWidth: '6px',
-            borderStyle: 'solid',
-            borderColor: 'rgba(255, 255, 255, 0.1) transparent transparent transparent'
-          }} />
         </div>
       )}
-
-      <style>{`
-        @keyframes fade-in-up {
-          from { opacity: 0; transform: translateX(-50%) translateY(10px); }
-          to { opacity: 1; transform: translateX(-50%) translateY(0); }
-        }
-      `}</style>
     </div>
   );
 };

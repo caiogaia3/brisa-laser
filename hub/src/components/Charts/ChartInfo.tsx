@@ -14,8 +14,8 @@ export const ChartInfo: React.FC<ChartInfoProps> = ({ title, description }) => {
     if (iconRef.current) {
       const rect = iconRef.current.getBoundingClientRect();
       setPosition({
-        top: rect.top + window.scrollY + 20,
-        left: Math.min(rect.left + window.scrollX - 100, window.innerWidth - 260)
+        top: rect.top + 20,
+        left: Math.min(rect.left - 100, window.innerWidth - 280)
       });
       setIsVisible(true);
     }

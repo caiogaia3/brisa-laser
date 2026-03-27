@@ -3,6 +3,7 @@ import { TrendingUp, Zap, BarChart3, TrendingDown } from 'lucide-react';
 import { KingChart_Growth } from '../components/Charts/KingChart_Growth';
 import { OKRInputPanel } from '../components/Dashboard/OKRInputPanel';
 import KingChart_ROAS from '../components/Charts/KingChart_ROAS';
+import InfoTooltip from '../components/Common/InfoTooltip';
 
 export const Estrategia = () => {
   const scalingData = [
@@ -41,7 +42,13 @@ export const Estrategia = () => {
               <TrendingUp size={24} color="var(--color-accent)" />
             </div>
             <div>
-              <p style={{ fontSize: '0.65rem', color: 'var(--text-muted)', textTransform: 'uppercase', fontWeight: 700 }}>Oportunidade</p>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+                <p style={{ fontSize: '0.65rem', color: 'var(--text-muted)', textTransform: 'uppercase', fontWeight: 700 }}>Oportunidade</p>
+                <InfoTooltip 
+                  title="Escalar Google Ads" 
+                  content="Análise de ROI por canal indica que o Google Ads possui custo por conversão estável e alto faturamento escalável." 
+                />
+              </div>
               <h4 style={{ fontSize: '1rem', fontWeight: 800, color: 'white' }}>Escalar Google</h4>
               <p style={{ fontSize: '0.6rem', color: 'var(--color-accent)' }}>+ R$ 12k de Lucro Projetado</p>
             </div>
@@ -52,7 +59,13 @@ export const Estrategia = () => {
               <TrendingDown size={24} color="var(--color-orange)" />
             </div>
             <div>
-              <p style={{ fontSize: '0.65rem', color: 'var(--text-muted)', textTransform: 'uppercase', fontWeight: 700 }}>Risco Detectado</p>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+                <p style={{ fontSize: '0.65rem', color: 'var(--text-muted)', textTransform: 'uppercase', fontWeight: 700 }}>Risco Detectado</p>
+                <InfoTooltip 
+                  title="Erosão de CPA" 
+                  content="Aumento do custo por aquisição detectado devido à fadiga de criativos no Meta Ads. Frequência > 2.8 exige novos assets." 
+                />
+              </div>
               <h4 style={{ fontSize: '1rem', fontWeight: 800, color: 'white' }}>Erosão de CPA</h4>
               <p style={{ fontSize: '0.6rem', color: 'var(--color-warning)' }}>Frequência Meta Ads &gt; 2.8</p>
             </div>
@@ -63,7 +76,13 @@ export const Estrategia = () => {
               <Zap size={24} color="#a855f7" />
             </div>
             <div>
-              <p style={{ fontSize: '0.65rem', color: 'var(--text-muted)', textTransform: 'uppercase', fontWeight: 700 }}>Inteligência LTV</p>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+                <p style={{ fontSize: '0.65rem', color: 'var(--text-muted)', textTransform: 'uppercase', fontWeight: 700 }}>Inteligência LTV</p>
+                <InfoTooltip 
+                  title="Retenção Máxima" 
+                  content="Clientes que tratam mais de 4 áreas simultâneas possuem LTV 3.5x maior que a média da base Brisa." 
+                />
+              </div>
               <h4 style={{ fontSize: '1rem', fontWeight: 800, color: 'white' }}>Retenção Máxima</h4>
               <p style={{ fontSize: '0.6rem', color: '#a855f7' }}>Média de 4.2 áreas p/ cliente</p>
             </div>

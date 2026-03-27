@@ -51,14 +51,19 @@ export const ChartInfo: React.FC<ChartInfoProps> = ({ title, description }) => {
             translate: '0',
             pointerEvents: 'none',
             zIndex: 9999,
-            width: '240px',
-            animation: 'fadeIn 0.2s ease-out'
+            width: '260px',
+            animation: 'fadeIn 0.3s ease-out',
+            backdropFilter: 'blur(48px) saturate(220%)',
+            background: 'rgba(5, 5, 10, 0.8)',
+            border: '1px solid rgba(255, 255, 255, 0.2)',
+            boxShadow: 'inset 0 0 0 1px rgba(255, 255, 255, 0.1), 0 20px 50px rgba(0, 0, 0, 0.8)',
+            transform: 'scale(1) translateY(0)'
           }}
         >
           <div style={{ fontSize: '0.65rem', fontWeight: 800, color: 'var(--color-primary)', textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: '6px' }}>
             {title}
           </div>
-          <div style={{ fontSize: '0.75rem', color: 'rgba(255, 255, 255, 0.8)', lineHeight: '1.4', fontWeight: 500 }}>
+          <div style={{ fontSize: '0.75rem', color: 'rgba(255, 255, 255, 0.9)', lineHeight: '1.4', fontWeight: 500 }}>
             {description}
           </div>
         </div>

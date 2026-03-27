@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { Target, Info, Save, CheckCircle2 } from 'lucide-react';
+import { Target, Save, CheckCircle2 } from 'lucide-react';
+import InfoTooltip from '../Common/InfoTooltip';
 
 interface OKRItemProps {
   label: string;
@@ -15,9 +16,7 @@ const OKRItem: React.FC<OKRItemProps> = ({ label, value, onChange, tooltip, pref
       <label style={{ fontSize: '0.75rem', fontWeight: 600, color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
         {label}
       </label>
-      <div className="info-icon" title={tooltip} style={{ cursor: 'help' }}>
-        <Info size={12} color="var(--color-primary)" />
-      </div>
+      <InfoTooltip title={label} content={tooltip} />
     </div>
     <div style={{ position: 'relative' }}>
       {prefix && <span style={{ position: 'absolute', left: '12px', top: '50%', transform: 'translateY(-50%)', color: 'rgba(255,255,255,0.4)', fontSize: '0.85rem' }}>{prefix}</span>}

@@ -1,4 +1,5 @@
 import React from 'react';
+import { ChartInfo } from './ChartInfo';
 
 interface ZanduDonutProps {
   value: number;
@@ -54,7 +55,13 @@ const ZanduDonut: React.FC<ZanduDonutProps> = ({ value, target, label, subValue 
       </div>
 
       <div style={{ marginTop: '20px', textAlign: 'center' }}>
-        <div style={{ fontSize: '0.875rem', fontWeight: 800, color: 'white' }}>{label}</div>
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px' }}>
+          <div style={{ fontSize: '0.875rem', fontWeight: 800, color: 'white' }}>{label}</div>
+          <ChartInfo 
+            title="Faturamento Bruto" 
+            description="Monitoramento em tempo real do faturamento acumulado versus a meta mensal estabelecida no OKR estratégico." 
+          />
+        </div>
         <div style={{ fontSize: '0.65rem', color: 'rgba(255, 255, 255, 0.4)', marginTop: '4px' }}>Meta: R$ {target.toLocaleString('pt-BR')}</div>
       </div>
     </div>

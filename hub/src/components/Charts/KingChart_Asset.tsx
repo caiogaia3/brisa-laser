@@ -1,5 +1,6 @@
 import React from 'react';
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
+import { ChartInfo } from './ChartInfo';
 
 interface KingChartAssetProps {
   data: any[];
@@ -9,7 +10,13 @@ const KingChart_Asset: React.FC<KingChartAssetProps> = ({ data }) => {
   return (
     <div className="liquid-glass" style={{ padding: '20px', display: 'flex', flexDirection: 'column', height: '100%' }}>
       <div style={{ marginBottom: '16px' }}>
-        <div style={{ fontSize: '0.6rem', fontWeight: 700, color: 'var(--color-success)', textTransform: 'uppercase', letterSpacing: '0.1em' }}>KING CHART D</div>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+          <div style={{ fontSize: '0.6rem', fontWeight: 700, color: 'var(--color-success)', textTransform: 'uppercase', letterSpacing: '0.1em' }}>KING CHART D</div>
+          <ChartInfo 
+            title="Eficiência de Ativo (Laser)" 
+            description="Mede a ocupação das máquinas versus rentabilidade horária. Foca em maximizar o ticket médio por disparo e reduzir a ociosidade do equipamento." 
+          />
+        </div>
         <div style={{ fontSize: '0.875rem', fontWeight: 900, color: 'white', letterSpacing: '-0.02em' }}>Eficiência de Ativo (Laser)</div>
       </div>
 

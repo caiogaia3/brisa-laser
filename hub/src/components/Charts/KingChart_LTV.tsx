@@ -1,5 +1,6 @@
 import React from 'react';
 import { Radar, RadarChart, PolarGrid, PolarAngleAxis, ResponsiveContainer } from 'recharts';
+import { ChartInfo } from './ChartInfo';
 
 interface KingChartLTVProps {
   data: any[];
@@ -9,7 +10,13 @@ const KingChart_LTV: React.FC<KingChartLTVProps> = ({ data }) => {
   return (
     <div className="liquid-glass" style={{ padding: '20px', display: 'flex', flexDirection: 'column', height: '100%' }}>
       <div style={{ marginBottom: '16px' }}>
-        <div style={{ fontSize: '0.6rem', fontWeight: 700, color: 'var(--color-secondary)', textTransform: 'uppercase', letterSpacing: '0.1em' }}>KING CHART B</div>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+          <div style={{ fontSize: '0.6rem', fontWeight: 700, color: 'var(--color-secondary)', textTransform: 'uppercase', letterSpacing: '0.1em' }}>KING CHART B</div>
+          <ChartInfo 
+            title="Matriz de LTV por Canal" 
+            description="Life Time Value: Valor total projetado que um cliente gera para a Brisa ao longo do tempo. Foca em recorrência, indicação e cross-sell de serviços." 
+          />
+        </div>
         <div style={{ fontSize: '0.875rem', fontWeight: 900, color: 'white', letterSpacing: '-0.02em' }}>Matriz de LTV por Canal</div>
       </div>
 

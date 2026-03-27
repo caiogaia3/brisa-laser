@@ -67,13 +67,13 @@ body {
   border-radius: var(--radius-lg);
   box-shadow: 
     inset 0 0 20px rgba(255, 255, 255, 0.02),
-    0 10px 40px -12px rgba(0, 0, 0, 0.6);
+    0 10px 40px -12px rgba(0, 0, 0, 0.6),
+    0 25px 50px -12px rgba(0, 0, 0, 0.5); /* shadow-2xl equivalent */
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  @apply shadow-2xl;
 }
 
 .liquid-glass:hover {
-  @apply border-white/10;
+  border-color: rgba(255, 255, 255, 0.1); /* border-white/10 equivalent */
   box-shadow: inset 0 0 20px rgba(255, 255, 255, 0.05), 0 0 30px rgba(6, 182, 212, 0.1);
 }
 
@@ -91,11 +91,34 @@ body {
 
 /* Info Tooltips */
 .info-icon {
-  @apply w-3.5 h-3.5 flex items-center justify-center rounded-full border border-white/20 text-[10px] text-white/40 cursor-help transition-all hover:border-white/40 hover:text-white/60;
+  width: 0.875rem;
+  height: 0.875rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 9999px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  font-size: 10px;
+  color: rgba(255, 255, 255, 0.4);
+  cursor: help;
+  transition: all 0.2s;
+}
+
+.info-icon:hover {
+  border-color: rgba(255, 255, 255, 0.4);
+  color: rgba(255, 255, 255, 0.6);
 }
 
 .info-tooltip-content {
-  @apply liquid-glass p-3 rounded-xl fixed pointer-events-none opacity-0 translate-y-2 transition-all duration-300 z-[100] max-w-[240px];
+  padding: 0.75rem;
+  border-radius: 0.75rem;
+  position: fixed;
+  pointer-events: none;
+  opacity: 0;
+  transform: translateY(8px);
+  transition: all 0.3s duration-300;
+  z-index: 100;
+  max-width: 240px;
   backdrop-filter: blur(28px);
   background: rgba(5, 5, 8, 0.9);
   border: 1px solid rgba(255, 255, 255, 0.1);
@@ -103,7 +126,9 @@ body {
 
 .info-icon:hover + .info-tooltip-content,
 .info-tooltip-content:hover {
-  @apply opacity-100 translate-y-0 pointer-events-auto;
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
 }
 
 /* Atmospheric Blur for Radar */

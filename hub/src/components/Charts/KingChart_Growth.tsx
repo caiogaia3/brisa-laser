@@ -8,6 +8,7 @@ import {
   ReferenceLine,
   ComposedChart
 } from 'recharts';
+import { ChartInfo } from './ChartInfo';
 
 interface GrowthData {
   name: string;
@@ -31,7 +32,13 @@ export const KingChart_Growth: React.FC = () => {
     <div className="liquid-glass" style={{ padding: '20px', display: 'flex', flexDirection: 'column', height: '100%', minHeight: '260px' }}>
       <div style={{ marginBottom: '16px', display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
         <div>
-          <div style={{ fontSize: '0.6rem', fontWeight: 700, color: 'var(--color-primary)', textTransform: 'uppercase', letterSpacing: '0.1em' }}>KING CHART E</div>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+            <div style={{ fontSize: '0.6rem', fontWeight: 700, color: 'var(--color-primary)', textTransform: 'uppercase', letterSpacing: '0.1em' }}>KING CHART E</div>
+            <ChartInfo 
+              title="Previsão de Faturamento" 
+              description="Algoritmo preditivo que projeta o faturamento mensal acumulado (Run-rate) cruzando a velocidade atual de vendas com o histórico sazonal da Brisa." 
+            />
+          </div>
           <div style={{ fontSize: '0.875rem', fontWeight: 900, color: 'white', letterSpacing: '-0.02em' }}>Previsão de Faturamento</div>
         </div>
         <div style={{ padding: '4px 8px', borderRadius: '4px', backgroundColor: 'rgba(6, 182, 212, 0.1)', border: '1px solid rgba(6, 182, 212, 0.2)' }}>

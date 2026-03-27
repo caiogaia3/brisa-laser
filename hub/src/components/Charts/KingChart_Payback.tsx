@@ -1,5 +1,6 @@
 import React from 'react';
 import { Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, AreaChart } from 'recharts';
+import { ChartInfo } from './ChartInfo';
 
 interface KingChartPaybackProps {
   data: any[];
@@ -9,7 +10,13 @@ const KingChart_Payback: React.FC<KingChartPaybackProps> = ({ data }) => {
   return (
     <div className="liquid-glass" style={{ padding: '20px', display: 'flex', flexDirection: 'column', height: '100%' }}>
       <div style={{ marginBottom: '16px' }}>
-        <div style={{ fontSize: '0.6rem', fontWeight: 700, color: 'var(--color-warning)', textTransform: 'uppercase', letterSpacing: '0.1em' }}>KING CHART C</div>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+          <div style={{ fontSize: '0.6rem', fontWeight: 700, color: 'var(--color-warning)', textTransform: 'uppercase', letterSpacing: '0.1em' }}>KING CHART C</div>
+          <ChartInfo 
+            title="Timeline de Payback" 
+            description="Mede o tempo médio para o lucro bruto acumulado de um cliente cobrir seu custo de aquisição (CAC). Crucial para gestão de caixa." 
+          />
+        </div>
         <div style={{ fontSize: '0.875rem', fontWeight: 900, color: 'white', letterSpacing: '-0.02em' }}>Timeline de Payback</div>
       </div>
 

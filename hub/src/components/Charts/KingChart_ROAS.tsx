@@ -1,5 +1,6 @@
 import React from 'react';
 import { Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Line, ComposedChart } from 'recharts';
+import { ChartInfo } from './ChartInfo';
 
 interface KingChartROASProps {
   data: any[];
@@ -12,8 +13,14 @@ const KingChart_ROAS: React.FC<KingChartROASProps> = ({ data, subtitle, isSubcom
     <div className={isSubcomponent ? "" : "liquid-glass"} style={{ padding: isSubcomponent ? '0' : '20px', display: 'flex', flexDirection: 'column', height: '100%' }}>
       <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '16px' }}>
         <div>
-          <div style={{ fontSize: '0.6rem', fontWeight: 700, color: 'var(--color-primary)', textTransform: 'uppercase', letterSpacing: '0.1em' } as any}>
-            {subtitle || 'KING CHART A'}
+          <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+            <div style={{ fontSize: '0.6rem', fontWeight: 700, color: 'var(--color-primary)', textTransform: 'uppercase', letterSpacing: '0.1em' } as any}>
+              {subtitle || 'KING CHART A'}
+            </div>
+            <ChartInfo 
+              title={isSubcomponent ? "Simulador de Escala" : "ROAS Real por Origem"} 
+              description="Simulador de escala que projeta a receita incremental versus investimento em Ads, calibrado para a perda natural de eficiência em orçamentos elevados." 
+            />
           </div>
           <div style={{ fontSize: '0.875rem', fontWeight: 900, color: 'white', letterSpacing: '-0.02em' }}>
             {isSubcomponent ? 'Impacto de Mídia vs Receita' : 'ROAS Real por Origem'}

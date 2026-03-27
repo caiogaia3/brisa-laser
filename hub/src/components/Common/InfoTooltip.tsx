@@ -25,27 +25,27 @@ const InfoTooltip: React.FC<InfoTooltipProps> = ({ title, content }) => {
       />
       
       {isVisible && (
-        <div style={{
+        <div className="liquid-glass" style={{
           position: 'absolute',
           bottom: '100%',
           left: '50%',
           transform: 'translateX(-50%)',
           marginBottom: '10px',
-          width: '220px',
+          width: '240px',
           padding: '12px',
-          background: 'rgba(10, 10, 15, 0.95)',
-          backdropFilter: 'blur(20px)',
+          background: 'rgba(5, 5, 8, 0.9)',
+          backdropFilter: 'blur(28px)',
           border: '1px solid rgba(255, 255, 255, 0.1)',
           borderRadius: '12px',
-          boxShadow: '0 10px 30px rgba(0, 0, 0, 0.5)',
+          boxShadow: '0 10px 40px rgba(0, 0, 0, 0.6)',
           zIndex: 100,
           pointerEvents: 'none',
           animation: 'fade-in-up 0.2s ease-out'
         }}>
-          <div style={{ fontSize: '0.62rem', fontWeight: 900, color: 'var(--color-primary)', textTransform: 'uppercase', marginBottom: '6px', letterSpacing: '0.08em' }}>
+          <div style={{ fontSize: '0.65rem', fontWeight: 800, color: 'var(--color-primary)', textTransform: 'uppercase', marginBottom: '6px', letterSpacing: '0.1em' }}>
             {title}
           </div>
-          <div style={{ fontSize: '0.68rem', color: 'rgba(255, 255, 255, 0.9)', lineHeight: '1.45', fontWeight: 450 }}>
+          <div style={{ fontSize: '0.75rem', color: 'rgba(255, 255, 255, 0.8)', lineHeight: '1.4', fontWeight: 500 }}>
             {content}
           </div>
           

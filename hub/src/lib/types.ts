@@ -34,3 +34,23 @@ export interface KPI {
   suffix?: string;
   sparkline_data?: any[];
 }
+
+export interface OKRGoal {
+  id: string;
+  category: string;
+  title: string;
+  current: number;
+  target: number;
+  unit: string;
+  prefix?: string;
+  tooltip_title: string;
+  tooltip_content: string;
+  secondary_okrs: { label: string; progress: number }[];
+}
+
+export interface KingChartData {
+  name: string;
+  revenue: number;
+  spend: number;
+  margin: number;
+}

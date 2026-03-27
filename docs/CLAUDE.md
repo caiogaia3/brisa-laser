@@ -19,7 +19,8 @@ Este arquivo é a bússola ativa do projeto. Baseado no **Lean Agent Protocol (L
 2. **Match de Telefone**: Limpar tudo (`Regex \D`) e pegar apenas os **8 últimos dígitos** (`slice(-8)`).
 3. **Build Gate**: Nunca considere uma tarefa do Hub pronta sem rodar `npm run build`.
 4. **Context Loop**: Histórico longo deve ser arquivado em `archive/history_sessions.md`.
-5. **Orquestração SDD**: Mudanças de contrato devem ser refletidas em `hub/BACKEND_SPEC.md`.
+5. **Orquestração SDD**: Mudanças de contrato DEVEM ser refletidas primeiro em [docs/BACKEND_SPEC.md](file:///Users/CaioGaia/Documents/PROJETOS%20/temp/brisa-laser/docs/BACKEND_SPEC.md).
+6. **Contract-First Protocol**: Jamais crie uma funcionalidade de interface em `src/features/` sem antes definir seu JSON Schema em `BACKEND_SPEC.md`. Isso deixa as migalhas prontas para o servidor.
 
 ## 📅 Próximos Passos
 1. Implementar `okr_goals` dinâmicos no Supabase.

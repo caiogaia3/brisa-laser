@@ -7,7 +7,7 @@ import { Financeiro } from './pages/Financeiro';
 import { FinanceiroResumo } from './pages/Financeiro/FinanceiroResumo';
 import { FinanceiroDRE } from './pages/Financeiro/FinanceiroDRE';
 import { Configuracoes } from './pages/Configuracoes';
-import { OKRs } from './pages/OKRs';
+import { Estrategia } from './pages/Estrategia';
 
 function App() {
   return (
@@ -20,7 +20,7 @@ function App() {
             <Route index element={<FinanceiroResumo />} />
             <Route path="dre" element={<FinanceiroDRE />} />
           </Route>
-          <Route path="okrs" element={<OKRs />} />
+          <Route path="estrategia" element={<Estrategia />} />
           <Route path="config" element={<Configuracoes />} />
           <Route path="*" element={<Navigate to="/" replace />} />
         </Route>

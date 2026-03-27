@@ -12,7 +12,7 @@ const navItems = [
   { icon: LayoutDashboard, label: 'Resumo Executivo', to: '/' },
   { icon: PieChart, label: 'Marketing & Ads', to: '/marketing' },
   { icon: DollarSign, label: 'Financeiro DRE', to: '/financeiro' },
-  { icon: Target, label: 'OKRs & Metas', to: '/okrs' },
+  { icon: Target, label: 'Estratégia & OKRs', to: '/estrategia' },
 ];
 
 export const Sidebar = () => {

@@ -3,15 +3,21 @@ import { Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Line, 
 
 interface KingChartROASProps {
   data: any[];
+  subtitle?: string;
+  isSubcomponent?: boolean;
 }
 
-const KingChart_ROAS: React.FC<KingChartROASProps> = ({ data }) => {
+const KingChart_ROAS: React.FC<KingChartROASProps> = ({ data, subtitle, isSubcomponent }) => {
   return (
-    <div className="liquid-glass" style={{ padding: '20px', display: 'flex', flexDirection: 'column', height: '100%' }}>
+    <div className={isSubcomponent ? "" : "liquid-glass"} style={{ padding: isSubcomponent ? '0' : '20px', display: 'flex', flexDirection: 'column', height: '100%' }}>
       <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '16px' }}>
         <div>
-          <div style={{ fontSize: '0.6rem', fontWeight: 700, color: 'var(--color-primary)', uppercase: 'true', letterSpacing: '0.1em' } as any}>KING CHART A</div>
-          <div style={{ fontSize: '0.875rem', fontWeight: 900, color: 'white', letterSpacing: '-0.02em' }}>ROAS Real por Origem</div>
+          <div style={{ fontSize: '0.6rem', fontWeight: 700, color: 'var(--color-primary)', textTransform: 'uppercase', letterSpacing: '0.1em' } as any}>
+            {subtitle || 'KING CHART A'}
+          </div>
+          <div style={{ fontSize: '0.875rem', fontWeight: 900, color: 'white', letterSpacing: '-0.02em' }}>
+            {isSubcomponent ? 'Impacto de Mídia vs Receita' : 'ROAS Real por Origem'}
+          </div>
         </div>
         <div style={{ display: 'flex', gap: '16px' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>

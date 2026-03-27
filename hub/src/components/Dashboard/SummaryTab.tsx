@@ -5,6 +5,7 @@ import KingChart_ROAS from '../Charts/KingChart_ROAS';
 import KingChart_LTV from '../Charts/KingChart_LTV';
 import KingChart_Payback from '../Charts/KingChart_Payback';
 import KingChart_Asset from '../Charts/KingChart_Asset';
+import { KingChart_Growth } from '../Charts/KingChart_Growth';
 
 const SummaryTab: React.FC = () => {
   // 💎 The 5 King KPIs (Elite Metrics)
@@ -127,6 +128,7 @@ const SummaryTab: React.FC = () => {
           }}>
             <KingChart_ROAS data={roasData} />
             <KingChart_LTV data={ltvData} />
+            <KingChart_Growth />
             <KingChart_Payback data={paybackData} />
             <KingChart_Asset data={assetData} />
           </div>

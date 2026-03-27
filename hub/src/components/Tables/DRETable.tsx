@@ -24,46 +24,51 @@ export const DRETable = ({ matrixData, months }: DRETableProps) => {
       width: '100%',
       maxWidth: '100%', 
       overflowX: 'auto', 
-      maxHeight: 'calc(100vh - 280px)', 
+      maxHeight: 'calc(100vh - 300px)', 
       border: '1px solid var(--color-glass-border)', 
-      borderRadius: '8px',
-      backgroundColor: 'var(--color-bg)',
-      position: 'relative'
+      borderRadius: '12px',
+      backgroundColor: 'rgba(5, 5, 8, 0.4)',
+      position: 'relative',
+      boxShadow: '0 20px 50px rgba(0, 0, 0, 0.5)'
     }}>
       <table style={{ 
         width: 'max-content',
         minWidth: '100%',
-        borderCollapse: 'separate', /* Critical for sticky first column borders */
+        borderCollapse: 'separate',
         borderSpacing: 0,
-        fontSize: '0.75rem',
+        fontSize: '0.65rem', /* Super Compact */
+        fontVariantNumeric: 'tabular-nums'
       }}>
-        <thead style={{ position: 'sticky', top: 0, zIndex: 40 }}>
+        <thead style={{ position: 'sticky', top: 0, zIndex: 100 }}>
           <tr>
             <th style={{ 
-              padding: '10px 16px', 
+              padding: '8px 12px', 
               textAlign: 'left', 
-              fontWeight: 700, 
-              color: 'var(--text-muted)', 
+              fontWeight: 800, 
+              color: '#06b6d4', 
               position: 'sticky', 
               left: 0, 
-              backgroundColor: 'var(--color-surface)', 
-              zIndex: 50, 
-              borderRight: '2px solid var(--color-glass-border)',
-              borderBottom: '2px solid var(--color-glass-border)',
-              minWidth: '280px'
+              backgroundColor: '#0a0a14', 
+              zIndex: 110, 
+              borderRight: '2px solid rgba(255, 255, 255, 0.1)',
+              borderBottom: '2px solid rgba(255, 255, 255, 0.1)',
+              minWidth: '240px',
+              textTransform: 'uppercase',
+              letterSpacing: '0.05em',
+              boxShadow: '4px 0 10px rgba(0,0,0,0.3)'
             }}>
-              Conta / Descrição Detalhada
+              CONTA / DESCRIÇÃO
             </th>
             {months.map(m => (
               <th key={m} style={{ 
-                padding: '10px 16px', 
+                padding: '8px 12px', 
                 textAlign: 'right', 
-                fontWeight: 700, 
-                color: 'var(--text-main)', 
-                backgroundColor: 'var(--color-surface)',
-                borderBottom: '2px solid var(--color-glass-border)',
+                fontWeight: 800, 
+                color: 'white', 
+                backgroundColor: '#0a0a14',
+                borderBottom: '2px solid rgba(255, 255, 255, 0.1)',
                 borderRight: '1px solid rgba(255,255,255,0.05)',
-                minWidth: '100px'
+                minWidth: '90px'
               }}>
                 {formatMonth(m)}
               </th>
@@ -79,22 +84,22 @@ export const DRETable = ({ matrixData, months }: DRETableProps) => {
               <tr 
                 key={row.id || idx} 
                 style={{ 
-                  backgroundColor: subtotal || header ? 'rgba(255, 255, 255, 0.03)' : 'transparent',
+                  backgroundColor: subtotal || header ? 'rgba(6, 182, 212, 0.03)' : 'transparent',
                   transition: 'background 0.2s'
                 }}
-                className="hover:bg-white/5"
               >
                 <td style={{ 
-                  padding: '8px 16px', 
+                  padding: '6px 12px', 
                   position: 'sticky', 
                   left: 0, 
-                  backgroundColor: subtotal || header ? '#12121a' : 'var(--color-bg)', 
+                  backgroundColor: subtotal || header ? '#12121a' : '#050508', 
                   zIndex: 20, 
-                  borderRight: '2px solid var(--color-glass-border)',
-                  borderBottom: '1px solid rgba(255,255,255,0.05)',
-                  color: subtotal || header ? 'var(--color-primary)' : 'var(--text-main)',
-                  fontWeight: subtotal || header ? 700 : 400,
-                  whiteSpace: 'nowrap'
+                  borderRight: '2px solid rgba(255, 255, 255, 0.1)',
+                  borderBottom: '1px solid rgba(255, 255, 255, 0.05)',
+                  color: subtotal || header ? '#06b6d4' : 'rgba(255, 255, 255, 0.9)',
+                  fontWeight: subtotal || header ? 700 : 500,
+                  whiteSpace: 'nowrap',
+                  boxShadow: '4px 0 10px rgba(0,0,0,0.3)'
                 }}>
                   {row.conta_descricao}
                 </td>
@@ -104,12 +109,12 @@ export const DRETable = ({ matrixData, months }: DRETableProps) => {
                   const isNegative = val < 0;
                   return (
                     <td key={`${row.id}-${m}`} style={{ 
-                      padding: '8px 16px', 
+                      padding: '6px 12px', 
                       textAlign: 'right',
-                      borderBottom: '1px solid rgba(255,255,255,0.05)',
-                      borderRight: '1px solid rgba(255,255,255,0.03)',
-                      color: isNegative ? 'var(--color-danger)' : 'var(--text-muted)',
-                      fontWeight: subtotal || header ? 600 : 400
+                      borderBottom: '1px solid rgba(255, 255, 255, 0.05)',
+                      borderRight: '1px solid rgba(255, 255, 255, 0.03)',
+                      color: isNegative ? '#f87171' : 'rgba(255, 255, 255, 0.7)',
+                      fontWeight: subtotal || header ? 700 : 400
                     }}>
                       {new Intl.NumberFormat('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(val)}
                     </td>

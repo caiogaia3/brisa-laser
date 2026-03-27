@@ -16,9 +16,10 @@ Arquivo de memória de longo prazo para o projeto Brisa Laser. Mantenha aqui o q
 - **Evolução Master Zandu**: Webhook unificado tratando 5 eventos vitais (criado, compareceu, faltou, remarcado, pdv_compra).
 - **Blindagem Sheets**: Resolvido erro de bad request no Kommo e formatação de moeda automática na planilha.
 
-### 🤖 IA & Hub (25/03/2026)
-- **Roteador LLM Híbrido**: Gemini e OpenAI integrados com fallback automático.
-- **Visual "Liquid Glass"**: UI premium inspirada em cockpits de alta densidade concluída.
+### 🤖 IA & Hub (27/03/2026)
+- **Polimento "Liquid Glass v2"**: Finalizado com filtros Neon Glow e King KPIs ativos no Hub.
+- **Orquestração de SSoT**: Restaurado o `docs/BACKEND_SPEC.md` e amarrado às regras do `docs/CLAUDE.md`.
+- **System Instructions**: Criado o `.agent/rules/workspace.md` e o "Guia Definitivo" do Brisa OS.
 - **Deploy**: Pipeline Vercel ativa via `caiogaia3/brisa-laser`.
 
 ---

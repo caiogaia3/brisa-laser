@@ -21,7 +21,7 @@ export const Financeiro = () => {
   });
 
   return (
-    <div style={{ width: '100%', maxWidth: '100%', overflowX: 'hidden', display: 'flex', flexDirection: 'column', gap: '16px' }}>
+    <div style={{ width: '100%', maxWidth: '100%', minWidth: 0, overflowX: 'hidden', display: 'flex', flexDirection: 'column', gap: '16px' }}>
       <PageHeader 
         title="Financeiro" 
         subtitle="Radar estratégico e auditoria financeira detalhada da operação."

@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
-import { supabase } from '../lib/supabase';
-import type { FinDRE } from '../lib/types';
+import { supabase } from '../../../lib/supabase';
+import type { FinDRE } from '../../../lib/types';
 
 export function useDRE(selectedMonth: string) {
   const [loading, setLoading] = useState(true);

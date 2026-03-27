@@ -89,13 +89,14 @@ export const MarginDonutChart = ({ data }: { data: any }) => {
             </PieAny>
             <Tooltip 
               contentStyle={{ 
-                backgroundColor: '#0d0d12', 
+                backgroundColor: 'rgba(13, 13, 18, 0.85)', 
                 border: '1px solid rgba(255,255,255,0.1)', 
                 borderRadius: '12px',
-                backdropFilter: 'blur(10px)',
-                padding: '8px 12px'
+                backdropFilter: 'blur(16px)',
+                padding: '10px 14px',
+                boxShadow: '0 10px 15px -3px rgba(0, 0, 0, 0.5)'
               }}
-              itemStyle={{ fontSize: '0.8rem', fontWeight: 600 }}
+              itemStyle={{ fontSize: '0.8rem', fontWeight: 700 }}
               formatter={(val: any) => [`R$ ${Number(val).toLocaleString('pt-BR')}`, 'Valor']}
             />
           </PieChart>
@@ -139,7 +140,7 @@ export const MarginDonutChart = ({ data }: { data: any }) => {
             }}
           >
             <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
-              <div style={{ width: '8px', height: '8px', borderRadius: '50%', background: item.color }} />
+              <div style={{ width: '8px', height: '8px', borderRadius: '50%', background: item.color, boxShadow: `0 0 8px ${item.color}80` }} />
               <span style={{ fontSize: '0.65rem', color: 'var(--text-muted)', textTransform: 'uppercase', fontWeight: 600 }}>
                 {item.name}
               </span>

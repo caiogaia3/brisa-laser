@@ -35,13 +35,13 @@ export function useKPIs() {
         if (!dreData) {
           // Zeroed state if no data for the month
           setKpis([
-            { title: 'Receita Bruta', value: '0', change: 0, prefix: 'R$' },
-            { title: 'Margem de Contribuição', value: '0', change: 0, prefix: 'R$' },
-            { title: 'Despesas Totais', value: '0', change: 0, prefix: 'R$' },
-            { title: 'Despesas Fixas', value: '0', change: 0, prefix: 'R$' },
-            { title: 'EBITDA (LAJIDA)', value: '0', change: 0, prefix: 'R$' },
-            { title: 'Lucro Líquido Final', value: '0', change: 0, prefix: 'R$' },
-            { title: 'Ponto Equilíbrio (Break-even)', value: '0', change: 0, prefix: 'R$' },
+             { title: 'Receita Bruta', value: 'R$ 0,00', change: 0, sparkline_data: [] },
+             { title: 'Margem de Contribuição', value: 'R$ 0,00', change: 0, sparkline_data: [] },
+             { title: 'Despesas Totais', value: 'R$ 0,00', change: 0, sparkline_data: [] },
+             { title: 'Despesas Fixas', value: 'R$ 0,00', change: 0, sparkline_data: [] },
+             { title: 'EBITDA (LAJIDA)', value: 'R$ 0,00', change: 0, sparkline_data: [] },
+             { title: 'Lucro Líquido Final', value: 'R$ 0,00', change: 0, sparkline_data: [] },
+             { title: 'Break-even (Ponto Mágico)', value: 'R$ 0,00', change: 0, sparkline_data: [] },
           ]);
           setData(null);
           setLoading(false);
@@ -50,49 +50,58 @@ export function useKPIs() {
 
         setData(dreData);
         
-        // Setup dinâmico real baseado no retorno da View
+        // Helper to format currency if backend sent number, or use string directly from backend spec
+        const formatValue = (val: any) => {
+          if (typeof val === 'string') return val;
+          return `R$ ${(val || 0).toLocaleString('pt-BR', { minimumFractionDigits: 2 })}`;
+        };
+
+        // Extrai dados reais se existirem na view, caso contrário usa default
+        const parseSparklines = (raw: any) => Array.isArray(raw) ? raw : [];
+
+        // Setup dinâmico real baseado no retorno da View (Spec 100% Aligned)
         const formattedKPIs: KPI[] = [
           { 
             title: 'Receita Bruta', 
-            value: (dreData.receita_bruta || 0).toLocaleString('pt-BR'), 
-            change: 0,
-            prefix: 'R$' 
+            value: formatValue(dreData.receita_bruta_formatted || dreData.receita_bruta), 
+            change: dreData.receita_bruta_change || 0,
+            sparkline_data: parseSparklines(dreData.receita_bruta_sparkline)
           },
           { 
             title: 'Margem de Contribuição', 
-            value: (dreData.margem_contribuicao || 0).toLocaleString('pt-BR'), 
-            change: 0, 
-            prefix: 'R$' 
+            value: formatValue(dreData.margem_contribuicao_formatted || dreData.margem_contribuicao), 
+            change: dreData.margem_contribuicao_change || 0, 
+            sparkline_data: parseSparklines(dreData.margem_contribuicao_sparkline)
           },
           { 
             title: 'Despesas Totais', 
-            value: (dreData.despesas_totais || 0).toLocaleString('pt-BR'), 
-            change: 0, 
-            prefix: 'R$' 
+            value: formatValue(dreData.despesas_totais_formatted || dreData.despesas_totais), 
+            change: dreData.despesas_totais_change || 0, 
+            sparkline_data: parseSparklines(dreData.despesas_totais_sparkline)
           },
           { 
             title: 'Despesas Fixas', 
-            value: (dreData.despesas_fixas || 0).toLocaleString('pt-BR'), 
-            change: 0, 
-            prefix: 'R$' 
+            value: formatValue(dreData.despesas_fixas_formatted || dreData.despesas_fixas), 
+            change: dreData.despesas_fixas_change || 0, 
+            sparkline_data: parseSparklines(dreData.despesas_fixas_sparkline)
           },
           { 
             title: 'EBITDA (LAJIDA)', 
-            value: (dreData.ebitda || 0).toLocaleString('pt-BR'), 
-            change: 0, 
-            prefix: 'R$' 
+            value: formatValue(dreData.ebitda_formatted || dreData.ebitda), 
+            change: dreData.ebitda_change || 0, 
+            sparkline_data: parseSparklines(dreData.ebitda_sparkline)
           },
           { 
             title: 'Lucro Líquido Final', 
-            value: (dreData.lucro_liquido || 0).toLocaleString('pt-BR'), 
-            change: 0, 
-            prefix: 'R$' 
+            value: formatValue(dreData.lucro_liquido_formatted || dreData.lucro_liquido), 
+            change: dreData.lucro_liquido_change || 0, 
+            sparkline_data: parseSparklines(dreData.lucro_liquido_sparkline)
           },
           { 
             title: 'Break-even (Ponto Mágico)', 
-            value: (dreData.breakeven || 0).toLocaleString('pt-BR'), 
-            change: 0, 
-            prefix: 'R$' 
+            value: formatValue(dreData.breakeven_formatted || dreData.breakeven), 
+            change: dreData.breakeven_change || 0, 
+            sparkline_data: parseSparklines(dreData.breakeven_sparkline)
           },
         ];
         
@@ -105,7 +114,7 @@ export function useKPIs() {
     }
 
     fetchKPIs();
-  }, [month, year]);
+  }, [month, year, storeId]);
 
   return { loading, data, kpis };
 }

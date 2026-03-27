@@ -1,4 +1,4 @@
-import type { DREMatrixRow } from '../../hooks/useDREMatrix';
+import type { DREMatrixRow } from '../../features/financeiro/hooks/useDREMatrix';
 
 interface DRETableProps {
   matrixData: DREMatrixRow[];

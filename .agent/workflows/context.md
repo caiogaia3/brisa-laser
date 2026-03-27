@@ -1,23 +1,32 @@
 ---
-description: Workflow para gerenciar e recuperar o contexto do projeto usando o PROJECT_STATUS.md
+description: Workflow para gerenciar e recuperar o contexto do projeto usando o CLAUDE.md
 ---
 
-#  Productivity Workflow: Context Management (/context)
+# 🧠 Workflow de Contexto e Orquestração (LAP)
 
-Este workflow garante que o Jarvis (Antigravity) sempre tenha clareza do estado atual do projeto usando a nova arquitetura 4.1.
+Este workflow dita como o sistema (eu, a IA) e você (o usuário) operam para manter o projeto rápido, com custo baixo e impecável (economia máxima de tokens).
 
-### Passos:
+## 1. No Início de Cada Sessão
+Sempre que você abrir esta janela para um novo dia de trabalho ou precisar de foco total:
+> *"Inicie o projeto lendo o `CLAUDE.md` limitando-se apenas às regras listadas ali."*
 
-1. **Leitura de Contexto Ativo**:
-   - Sempre comece lendo o arquivo `CLAUDE.md` na raiz do projeto.
-   - Consulte o `claude-mem` (memória reflexiva) para detalhes técnicos de sessões passadas.
+Isso fará a IA dar boot carregando apenas as diretrizes absolutas e sem ler lixo histórico.
 
-2. **Sincronização com AGENTS.md**:
-   - Verifique se as ações planejadas respeitam a hierarquia do Jarvis 4.1.
+## 2. Durante o Desenvolvimento (Auto-Registry)
+A medida que formos matando tarefas ou mudindo a estratégia, a IA é obrigada a manter o seguinte bloco no fim do `CLAUDE.md` atualizado:
 
-3. **Atualização do Estado**:
-   - Ao final da tarefa, execute o **/record-activity** para manter o `CLAUDE.md` e os logs em dia.
+```markdown
+## 📥 Caixa de Saída (Prontos para Arquivar)
+- [x] Correção do gráfico XYZ e refatoração do botão CTA de Vendas concluídas.
+```
 
-// turbo-all
-4. **Comando de Status**:
-   - Se o usuário perguntar "em que pé estamos?", apresente o resumo do `CLAUDE.md`.
+## 3. No Final da Sessão (A Faxina de Tokens)
+Quando você sentir que o chat está ficando arrastado ou que terminamos uma grande "feature":
+> *"Rode o `npm run context:sync`"*
+
+// turbo
+O que esse script fará magicamente por você:
+1. Ele varre o `CLAUDE.md`.
+2. Move cirurgicamente as vitórias (marcadas com `[x]`) da Caixa de Saída direto para a base fria em `archive/history_sessions.md`.
+3. Esazia a Caixa de Saída para o próximo ciclo de desenvolvimento.
+4. Faz a **Poda de Emergência** no servidor frio, deletando do history coisas antiquadas (com limitador duro de 400 linhas).

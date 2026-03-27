@@ -1,5 +1,5 @@
 import { KPICard } from '../components/Cards/KPICard';
-import { RevenueChart } from '../components/Charts/RevenueChart';
+import { ProMaxRevenueChart } from '../components/Charts/ProMaxRevenueChart';
 import { LeadsFunnel } from '../components/Charts/LeadsFunnel';
 import { useCrossMetrics } from '../hooks/useCrossMetrics';
 import { useKPIs } from '../hooks/useKPIs';
@@ -172,9 +172,8 @@ export const Dashboard = () => {
           <h3 style={{ marginBottom: '24px', display: 'flex', alignItems: 'center', gap: '8px' }}>
             <TrendingUp size={18} /> Receita Bruta vs Custos Totais
           </h3>
-          <div style={{ flex: 1, minHeight: '300px' }}>
-            {data && <RevenueChart data={[data]} />}
-            {!data && <RevenueChart data={[]} />}
+          <div style={{ flex: 1, minHeight: '320px' }}>
+            <ProMaxRevenueChart />
           </div>
         </div>
         
@@ -213,25 +212,35 @@ export const Dashboard = () => {
         </div>
       </section>
 
-      {/* Botão de Call To Action Jarvis */}
-      <div style={{ 
-        marginTop: '24px', padding: '32px', borderRadius: 'var(--radius-lg)',
-        background: 'linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(6, 182, 212, 0.1))',
-        border: '1px solid rgba(59, 130, 246, 0.2)',
-        display: 'flex', justifyContent: 'space-between', alignItems: 'center'
+      {/* Botão de Call To Action Jarvis (Liquid Glass v2) */}
+      <div className="liquid-glass" style={{ 
+        marginTop: '24px', padding: '40px', borderRadius: 'var(--radius-lg)',
+        background: 'linear-gradient(135deg, rgba(6, 182, 212, 0.08), rgba(168, 85, 247, 0.08))',
+        border: '1px solid rgba(6, 182, 212, 0.15)',
+        display: 'flex', justifyContent: 'space-between', alignItems: 'center',
+        position: 'relative', overflow: 'hidden'
       }}>
-        <div>
-          <h2 style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '8px' }}>
-            <Bot color="var(--color-primary)" />
+        {/* Background Atmosphere */}
+        <div style={{ position: 'absolute', top: '-50%', right: '-10%', width: '300px', height: '300px', background: 'var(--color-primary)', opacity: 0.05, filter: 'blur(100px)', borderRadius: '50%' }} />
+        
+        <div style={{ position: 'relative', zIndex: 1 }}>
+          <h2 style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '12px', color: 'white', fontSize: '1.25rem' }}>
+            <Bot color="var(--color-primary)" size={24} style={{ filter: 'drop-shadow(0 0 8px var(--color-primary))' }} />
             <span>Fale com o Copilot Jarvis</span>
           </h2>
-          <p style={{ maxWidth: '600px' }}>Pergunte sobre CAC, ROAS, tendências de faturamento ou projeções — com dados cruzados de todas as 5 fontes em tempo real.</p>
+          <p style={{ maxWidth: '600px', color: 'var(--text-muted)', lineHeight: '1.6' }}>
+            Simule cenários de crescimento, analise o ROAS real por canal ou peça um resumo executivo do seu DRE — tudo em linguagem natural cruzando dados de todas as 5 fontes.
+          </p>
         </div>
-        <button style={{ 
-          padding: '12px 24px', backgroundColor: 'var(--color-primary)', 
-          color: 'white', border: 'none', borderRadius: 'var(--radius-full)',
-          fontWeight: 600, cursor: 'pointer', boxShadow: 'var(--shadow-glow)'
-        }}>Abrir Intelligence Chat</button>
+        <button className="liquid-glass" style={{ 
+          padding: '14px 28px', backgroundColor: 'rgba(6, 182, 212, 0.1)', 
+          color: 'var(--color-primary)', border: '1px solid rgba(6, 182, 212, 0.3)', borderRadius: 'var(--radius-full)',
+          fontWeight: 700, cursor: 'pointer', fontSize: '0.85rem', textTransform: 'uppercase', letterSpacing: '0.05em',
+          transition: 'all 0.3s ease', boxShadow: '0 0 20px rgba(6, 182, 212, 0.1)'
+        }} onMouseEnter={(e) => { e.currentTarget.style.backgroundColor = 'var(--color-primary)'; e.currentTarget.style.color = 'white'; }}
+           onMouseLeave={(e) => { e.currentTarget.style.backgroundColor = 'rgba(6, 182, 212, 0.1)'; e.currentTarget.style.color = 'var(--color-primary)'; }}>
+          Abrir Intelligence Chat
+        </button>
       </div>
     </div>
   );

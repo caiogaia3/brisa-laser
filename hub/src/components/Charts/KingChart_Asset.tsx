@@ -23,7 +23,13 @@ const KingChart_Asset: React.FC<KingChartAssetProps> = ({ data }) => {
       <div style={{ flex: 1, minHeight: '160px' }}>
         <ResponsiveContainer width="100%" height="100%">
           <BarChart data={data} margin={{ top: 10, right: 10, left: -20, bottom: 0 }}>
-            <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.03)" vertical={false} />
+            <defs>
+              <filter id="glowAsset" x="-20%" y="-20%" width="140%" height="140%">
+                <feGaussianBlur stdDeviation="3" result="blur" />
+                <feComposite in="SourceGraphic" in2="blur" operator="over" />
+              </filter>
+            </defs>
+            <CartesianGrid strokeDasharray="4 4" stroke="rgba(255,255,255,0.06)" vertical={false} />
             <XAxis 
               dataKey="name" 
               axisLine={false} 
@@ -33,24 +39,28 @@ const KingChart_Asset: React.FC<KingChartAssetProps> = ({ data }) => {
             <YAxis hide />
             <Tooltip 
               contentStyle={{ 
-                background: 'rgba(5, 5, 8, 0.9)', 
+                backgroundColor: 'rgba(13, 13, 18, 0.85)', 
                 border: '1px solid rgba(255, 255, 255, 0.1)',
                 borderRadius: '12px',
-                fontSize: '11px'
+                fontSize: '11px',
+                backdropFilter: 'blur(16px)',
+                boxShadow: '0 10px 15px -3px rgba(0, 0, 0, 0.5)'
               }}
+              labelStyle={{ color: 'var(--text-muted)', fontSize: '0.65rem', textTransform: 'uppercase', letterSpacing: '0.1em', fontWeight: 600, marginBottom: '6px' }}
+              itemStyle={{ color: '#fff', fontWeight: 700 }}
             />
             <Bar 
               dataKey="hours" 
-              fill="rgba(34, 197, 94, 0.1)" 
+              fill="rgba(16, 185, 129, 0.05)" 
               radius={[4, 4, 0, 0]}
-              stroke="var(--color-success)"
+              stroke="rgba(16, 185, 129, 0.3)"
               strokeDasharray="4 2"
             />
             <Bar 
               dataKey="revenuePerHour" 
-              fill="var(--color-success)" 
+              fill="#10b981" 
               radius={[4, 4, 0, 0]}
-              style={{ filter: 'drop-shadow(0 0 8px rgba(34, 197, 94, 0.4))' }}
+              style={{ filter: 'url(#glowAsset)' }}
             />
           </BarChart>
         </ResponsiveContainer>

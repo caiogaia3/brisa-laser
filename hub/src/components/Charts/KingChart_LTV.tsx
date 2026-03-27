@@ -30,17 +30,24 @@ const KingChart_LTV: React.FC<KingChartLTVProps> = ({ data }) => {
         
         <ResponsiveContainer width="100%" height="100%">
           <RadarChart cx="50%" cy="50%" outerRadius="80%" data={data}>
-            <PolarGrid stroke="rgba(255,255,255,0.05)" />
+            <defs>
+              <filter id="glowRadar" x="-20%" y="-20%" width="140%" height="140%">
+                <feGaussianBlur stdDeviation="6" result="blur" />
+                <feComposite in="SourceGraphic" in2="blur" operator="over" />
+              </filter>
+            </defs>
+            <PolarGrid stroke="rgba(255,255,255,0.06)" />
             <PolarAngleAxis 
               dataKey="subject" 
-              tick={{ fill: 'rgba(255,255,255,0.4)', fontSize: 9, fontWeight: 600 }} 
+              tick={{ fill: 'rgba(255,255,255,0.5)', fontSize: 10, fontWeight: 600 }} 
             />
             <Radar
               name="Intelligence"
               dataKey="value"
-              stroke="var(--color-secondary)"
-              fill="var(--color-secondary)"
-              fillOpacity={0.2}
+              stroke="#a855f7" 
+              fill="#a855f7" 
+              fillOpacity={0.4}
+              style={{ filter: 'url(#glowRadar)' }}
             />
           </RadarChart>
         </ResponsiveContainer>

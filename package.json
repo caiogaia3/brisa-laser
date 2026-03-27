@@ -10,7 +10,8 @@
     "genesis": "npx tsx jarvis_orchestrator.ts genesis",
     "sync:dre": "npx tsx scripts/sync_dre.ts",
     "sync:leads": "npx tsx scripts/sync_leads.ts",
-    "backfill": "npx tsx scripts/backfill_dashboard.ts"
+    "backfill": "npx tsx scripts/backfill_dashboard.ts",
+    "context:sync": "npx tsx scripts/context_snapshot.ts"
   },
   "dependencies": {
     "axios": "^1.6.0",

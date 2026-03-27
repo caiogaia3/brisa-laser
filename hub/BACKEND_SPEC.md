@@ -102,4 +102,11 @@ Esta seção define o cálculo e a origem de dados para os indicadores de v1.5 (
 - **Estado Atual (26/03/2026)**:
     - [x] **Fase 4 (King Dashboard)**: Interface v1.5 "Liquid Glass" com Aba Resumo concluída.
     - [x] **King Charts Implementation**: ROAS, LTV Radar, Payback e Asset Efficiency em React Estável.
-    - [/] **Fase 5 (Integration Logic)**: Mapeamento de lógica de assets no `BACKEND_SPEC.md` iniciado.
+    - [x] **Fase 5 (Integration Logic)**: Mapeamento de lógica de assets no `BACKEND_SPEC.md` iniciado.
+    - [x] **Sync Frontend (27/03/2026)**: Hooks (`useKPIs`, `useDREMatrix`, `useCrossMetrics`) 100% sincronizados com este Spec, incluindo consumo de `sparkline_data` e tabela real de `okr_goals`.
+
+---
+
+## 9. Orquestração Contexto ↔ Backend (Auto-Registry)
+Este documento é orquestrado em tempo real pelo `CLAUDE.md` (Contexto Mestre).
+**Regra de Sincronia Automática:** Sempre que o Jarvis (Antigravity) atualizar o contexto do projeto com novas decisões sobre dados, métricas ou integrações, ele automaticamente chamará este `BACKEND_SPEC.md` com o gatilho: *"Oh, isso aqui é importante pra você!"*, registrando imediatamente as especificações e mantendo a engenharia 100% alinhada ao negócio.

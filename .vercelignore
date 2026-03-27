@@ -1,0 +1,12 @@
+node_modules
+arsenal
+archive_n8n_exports
+docs
+scripts
+sql
+supabase
+temp-skill
+.gemini
+.agent
+.agents
+.cursor

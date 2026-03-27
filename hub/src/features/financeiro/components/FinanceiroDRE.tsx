@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import { useDREMatrix } from '../../hooks/useDREMatrix';
-import { DRETable } from '../../components/Tables/DRETable';
+import { useDREMatrix } from '../hooks/useDREMatrix';
+import { DRETable } from '../../../components/Tables/DRETable';
 import { Download, ChevronDown, FileText, Table } from 'lucide-react';
 
 export const FinanceiroDRE = () => {

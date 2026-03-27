@@ -43,11 +43,19 @@ const KingChart_ROAS: React.FC<KingChartROASProps> = ({ data, subtitle, isSubcom
           <ComposedChart data={data} margin={{ top: 10, right: 10, left: -20, bottom: 0 }}>
             <defs>
               <linearGradient id="colorRevenue" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="5%" stopColor="#06b6d4" stopOpacity={0.15}/>
+                <stop offset="5%" stopColor="#06b6d4" stopOpacity={0.25}/>
                 <stop offset="95%" stopColor="#06b6d4" stopOpacity={0}/>
               </linearGradient>
+              <filter id="glowCyan" x="-20%" y="-20%" width="140%" height="140%">
+                <feGaussianBlur stdDeviation="4" result="blur" />
+                <feComposite in="SourceGraphic" in2="blur" operator="over" />
+              </filter>
+              <filter id="glowOrange" x="-20%" y="-20%" width="140%" height="140%">
+                <feGaussianBlur stdDeviation="3" result="blur" />
+                <feComposite in="SourceGraphic" in2="blur" operator="over" />
+              </filter>
             </defs>
-            <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.03)" vertical={false} />
+            <CartesianGrid strokeDasharray="4 4" stroke="rgba(255,255,255,0.06)" vertical={false} />
             <XAxis 
               dataKey="name" 
               axisLine={false} 
@@ -58,13 +66,15 @@ const KingChart_ROAS: React.FC<KingChartROASProps> = ({ data, subtitle, isSubcom
             <YAxis hide />
             <Tooltip 
               contentStyle={{ 
-                background: 'rgba(5, 5, 8, 0.9)', 
+                backgroundColor: 'rgba(13, 13, 18, 0.85)', 
                 border: '1px solid rgba(255, 255, 255, 0.1)',
                 borderRadius: '12px',
                 fontSize: '11px',
-                backdropFilter: 'blur(20px)'
+                backdropFilter: 'blur(16px)',
+                boxShadow: '0 10px 15px -3px rgba(0, 0, 0, 0.5)'
               }}
-              itemStyle={{ color: '#fff' }}
+              labelStyle={{ color: 'var(--text-muted)', fontSize: '0.65rem', textTransform: 'uppercase', letterSpacing: '0.1em', fontWeight: 600, marginBottom: '6px' }}
+              itemStyle={{ color: '#fff', fontWeight: 700 }}
               cursor={{ stroke: 'rgba(255,255,255,0.1)', strokeWidth: 1 }}
             />
             <Area 
@@ -74,15 +84,16 @@ const KingChart_ROAS: React.FC<KingChartROASProps> = ({ data, subtitle, isSubcom
               fillOpacity={1} 
               fill="url(#colorRevenue)" 
               isAnimationActive={true}
+              style={{ filter: 'url(#glowCyan)' }}
             />
             <Line 
               type="monotone" 
               dataKey="spend" 
-              stroke="#06b6d4" 
+              stroke="#fb923c" 
               strokeWidth={2} 
-              dot={{ r: 3, fill: '#06b6d4', strokeWidth: 0 }}
-              activeDot={{ r: 6, fill: '#06b6d4', stroke: '#fff', strokeWidth: 2 }}
-              style={{ filter: 'drop-shadow(0 0 8px rgba(6, 182, 212, 0.6))' }}
+              dot={{ r: 3, fill: '#fb923c', strokeWidth: 0 }}
+              activeDot={{ r: 6, fill: '#fb923c', stroke: '#fff', strokeWidth: 2 }}
+              style={{ filter: 'url(#glowOrange)' }}
             />
           </ComposedChart>
         </ResponsiveContainer>

@@ -31,10 +31,11 @@ const OKRListItem: React.FC<OKRListItemProps> = ({
       gridTemplateColumns: 'minmax(180px, 0.8fr) 2fr minmax(120px, 0.5fr) 100px',
       alignItems: 'center',
       gap: '24px',
-      padding: '12px 20px',
-      borderBottom: '1px solid rgba(255,255,255,0.05)',
-      background: 'rgba(255,255,255,0.01)'
-    }}>
+      padding: '16px 24px',
+      borderBottom: '1px solid rgba(255,255,255,0.04)',
+      background: 'rgba(255,255,255,0.01)',
+      transition: 'all 0.2s ease'
+    }} className="okr-row-hover">
       {/* Category & Title */}
       <div style={{ display: 'flex', flexDirection: 'column' }}>
         {category && (
@@ -64,19 +65,19 @@ const OKRListItem: React.FC<OKRListItemProps> = ({
         </div>
       </div>
 
-      {/* Progress Bar (Liquid) */}
-      <div style={{ position: 'relative', height: '8px', background: 'rgba(255,255,255,0.05)', borderRadius: '10px' }}>
+      <div style={{ position: 'relative', height: '6px', background: 'rgba(255,255,255,0.04)', borderRadius: '10px', border: '1px solid rgba(255,255,255,0.02)' }}>
         <div style={{ 
           position: 'absolute', top: 0, left: 0, height: '100%', 
           width: `${Math.min(percentage, 100)}%`,
-          background: `linear-gradient(90deg, ${getStatusColor()}11, ${getStatusColor()})`,
+          background: `linear-gradient(90deg, ${getStatusColor()}22, ${getStatusColor()})`,
           borderRadius: '10px',
-          boxShadow: `0 0 10px ${getStatusColor()}33`,
+          boxShadow: `0 0 12px ${getStatusColor()}44`,
           transition: 'width 1.5s cubic-bezier(0.1, 0, 0, 1)'
         }} />
         <div style={{ 
-          position: 'absolute', top: '-4px', left: '100%', height: '16px', width: '2px', 
-          background: 'rgba(255,255,255,0.2)'
+          position: 'absolute', top: '-4px', left: `${Math.min(percentage, 100)}%`, height: '14px', width: '2px', 
+          background: 'rgba(255,255,255,0.3)',
+          boxShadow: '0 0 8px rgba(255,255,255,0.2)'
         }} />
       </div>
 
@@ -118,6 +119,12 @@ export const OKRList: React.FC<{ items: OKRListItemProps[], title: string, icon:
           <OKRListItem key={i} {...item} />
         ))}
       </div>
+      <style>{`
+        .okr-row-hover:hover {
+          background: rgba(255, 255, 255, 0.03) !important;
+          transform: translateX(4px);
+        }
+      `}</style>
     </div>
   );
 };

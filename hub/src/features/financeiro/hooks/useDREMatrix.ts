@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
-import { supabase } from '../lib/supabase';
+import { supabase } from '../../../lib/supabase';
 
-import { usePeriodStore } from '../store/usePeriodStore';
+import { usePeriodStore } from '../../../store/usePeriodStore';
 
 export interface DREMatrixRow {
   id: string;
@@ -60,14 +60,14 @@ export function useDREMatrix() {
           setMonths(allMonths);
 
           // 4. Merge Live data into Matrix Rows
-          const merged = history.map(row => {
+          const merged = history.map((row: any) => {
             const updatedValores = { ...row.valores };
             
             // Initial zero for current month if it's new
             if (!updatedValores[currentMonthKey]) updatedValores[currentMonthKey] = 0;
 
             if (liveData) {
-              const liveSum = liveData.reduce((acc, l: any) => {
+              const liveSum = liveData.reduce((acc: number, l: any) => {
                 const secao = l.fin_categorias?.secao_dre;
                 
                 // Logic to match DRE rows to account sections based on Spreadsheet Niveis

@@ -4,8 +4,8 @@ import { Dashboard } from './pages/Dashboard';
 
 import { Marketing } from './pages/Marketing';
 import { Financeiro } from './pages/Financeiro';
-import { FinanceiroResumo } from './pages/Financeiro/FinanceiroResumo';
-import { FinanceiroDRE } from './pages/Financeiro/FinanceiroDRE';
+import { FinanceiroResumo } from './features/financeiro/components/FinanceiroResumo';
+import { FinanceiroDRE } from './features/financeiro/components/FinanceiroDRE';
 import { Configuracoes } from './pages/Configuracoes';
 import { Estrategia } from './pages/Estrategia';
 

@@ -21,25 +21,35 @@ const ZanduDonut: React.FC<ZanduDonutProps> = ({ value, target, label, subValue 
       
       <div style={{ position: 'relative', width: '180px', height: '180px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
         <svg width="180" height="180" viewBox="0 0 180 180" style={{ transform: 'rotate(-90deg)' }}>
+          <defs>
+            <linearGradient id="donutGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" stopColor="#06b6d4" />
+              <stop offset="100%" stopColor="#22d3ee" />
+            </linearGradient>
+            <filter id="donutGlow" x="-20%" y="-20%" width="140%" height="140%">
+              <feGaussianBlur stdDeviation="5" result="blur" />
+              <feComposite in="SourceGraphic" in2="blur" operator="over" />
+            </filter>
+          </defs>
           {/* Base Circle */}
           <circle
             cx="90" cy="90" r={radius}
             fill="transparent"
-            stroke="rgba(255,255,255,0.05)"
-            strokeWidth="12"
+            stroke="rgba(255,255,255,0.03)"
+            strokeWidth="10"
           />
           {/* Progress Circle (Glow) */}
           <circle
             cx="90" cy="90" r={radius}
             fill="transparent"
-            stroke="var(--color-primary)"
-            strokeWidth="12"
+            stroke="url(#donutGradient)"
+            strokeWidth="10"
             strokeDasharray={circumference}
             strokeDashoffset={offset}
             strokeLinecap="round"
             style={{ 
-              transition: 'stroke-dashoffset 1s ease-out',
-              filter: 'drop-shadow(0 0 8px var(--color-primary))'
+              transition: 'stroke-dashoffset 1.5s cubic-bezier(0.1, 0, 0, 1)',
+              filter: 'url(#donutGlow)'
             }}
           />
         </svg>

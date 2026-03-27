@@ -32,4 +32,5 @@ export interface KPI {
   change: number;
   prefix?: string;
   suffix?: string;
+  sparkline_data?: any[];
 }

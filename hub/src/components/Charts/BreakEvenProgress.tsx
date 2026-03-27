@@ -52,12 +52,14 @@ export const BreakEvenProgress = ({ data }: { data: any }) => {
         <div style={{ 
           flex: 1, 
           padding: '10px', 
-          background: 'rgba(255,255,255,0.02)', 
+          background: 'rgba(255, 255, 255, 0.02)', 
+          backdropFilter: 'blur(8px)',
           borderRadius: '12px', 
           border: '1px solid rgba(255,255,255,0.05)',
+          boxShadow: 'inset 0 0 10px rgba(0,0,0,0.5)',
           textAlign: 'center'
         }}>
-          <div style={{ fontSize: '0.6rem', color: 'var(--text-muted)', textTransform: 'uppercase' }}>Faltam</div>
+          <div style={{ fontSize: '0.6rem', color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Faltam para o Alvo</div>
           <div style={{ fontSize: '0.9rem', fontWeight: 700, color: 'var(--text-main)' }}>
             {isComplete ? 'META ATINGIDA' : `R$ ${Math.max(0, target - receita).toLocaleString('pt-BR')}`}
           </div>

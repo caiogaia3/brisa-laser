@@ -1,12 +1,12 @@
 import { useMemo } from 'react';
-import { KPICard } from '../../components/Cards/KPICard';
-import { useDREMatrix } from '../../hooks/useDREMatrix';
-import { usePeriodStore } from '../../store/usePeriodStore';
+import { KPICard } from '../../../components/Cards/KPICard';
+import { useDREMatrix } from '../hooks/useDREMatrix';
+import { usePeriodStore } from '../../../store/usePeriodStore';
 
-import { ProMaxRevenueChart } from '../../components/Charts/ProMaxRevenueChart';
-import { DoubleTrendChart } from '../../components/Charts/DoubleTrendChart';
-import { MarginDonutChart } from '../../components/Charts/MarginDonutChart';
-import { BreakEvenProgress } from '../../components/Charts/BreakEvenProgress';
+import { ProMaxRevenueChart } from '../../../components/Charts/ProMaxRevenueChart';
+import { DoubleTrendChart } from '../../../components/Charts/DoubleTrendChart';
+import { MarginDonutChart } from '../../../components/Charts/MarginDonutChart';
+import { BreakEvenProgress } from '../../../components/Charts/BreakEvenProgress';
 
 const OKRBar = ({ title, current, goal, isReverse }: { title: string, current: number, goal: number, isReverse?: boolean }) => {
   const percent = Math.min(100, Math.max(0, goal > 0 ? (current / goal) * 100 : 0));

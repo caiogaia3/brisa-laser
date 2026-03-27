@@ -93,16 +93,24 @@ export const ProMaxRevenueChart = () => {
       <ComposedChart data={mockData} margin={{ top: 10, right: 10, left: -20, bottom: 0 }}>
         <defs>
           <linearGradient id="colorReceita" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="5%" stopColor="#06b6d4" stopOpacity={0.4}/>
+            <stop offset="5%" stopColor="#06b6d4" stopOpacity={0.6}/>
             <stop offset="95%" stopColor="#06b6d4" stopOpacity={0}/>
           </linearGradient>
+          <filter id="glowCyan" x="-20%" y="-20%" width="140%" height="140%">
+            <feGaussianBlur stdDeviation="4" result="blur" />
+            <feComposite in="SourceGraphic" in2="blur" operator="over" />
+          </filter>
+          <filter id="glowOrange" x="-20%" y="-20%" width="140%" height="140%">
+            <feGaussianBlur stdDeviation="3" result="blur" />
+            <feComposite in="SourceGraphic" in2="blur" operator="over" />
+          </filter>
         </defs>
-        <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="rgba(255,255,255,0.05)" />
+        <CartesianGrid strokeDasharray="4 4" vertical={false} stroke="rgba(255,255,255,0.06)" />
         <XAxis dataKey="time" stroke="var(--text-muted)" fontSize={11} tickLine={false} axisLine={false} tickMargin={12} />
         <YAxis stroke="var(--text-muted)" fontSize={11} tickLine={false} axisLine={false} tickFormatter={(val) => `R$${val/1000}k`} tickMargin={12} />
         <Tooltip content={<CustomTooltip />} cursor={{ stroke: 'rgba(255,255,255,0.1)', strokeWidth: 1, strokeDasharray: '5 5' }} />
-        <Area type="monotone" dataKey="receita" stroke="#06b6d4" strokeWidth={3} fillOpacity={1} fill="url(#colorReceita)" />
-        <Line type="monotone" dataKey="despesa" stroke="#fb923c" strokeWidth={2} strokeDasharray="5 5" opacity={0.8} dot={false} isAnimationActive={true} />
+        <Area type="monotone" dataKey="receita" stroke="#06b6d4" strokeWidth={3} fillOpacity={1} fill="url(#colorReceita)" style={{ filter: 'url(#glowCyan)' }} />
+        <Line type="monotone" dataKey="despesa" stroke="#fb923c" strokeWidth={2} strokeDasharray="5 5" opacity={0.9} dot={false} isAnimationActive={true} style={{ filter: 'url(#glowOrange)' }} />
       </ComposedChart>
     </ResponsiveContainer>
   );

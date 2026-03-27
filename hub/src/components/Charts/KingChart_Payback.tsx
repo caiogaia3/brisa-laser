@@ -25,11 +25,15 @@ const KingChart_Payback: React.FC<KingChartPaybackProps> = ({ data }) => {
           <AreaChart data={data} margin={{ top: 10, right: 10, left: -20, bottom: 0 }}>
             <defs>
               <linearGradient id="colorPayback" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="5%" stopColor="var(--color-warning)" stopOpacity={0.2}/>
-                <stop offset="95%" stopColor="var(--color-warning)" stopOpacity={0}/>
+                <stop offset="5%" stopColor="#f59e0b" stopOpacity={0.3}/>
+                <stop offset="95%" stopColor="#f59e0b" stopOpacity={0}/>
               </linearGradient>
+              <filter id="glowPayback" x="-20%" y="-20%" width="140%" height="140%">
+                <feGaussianBlur stdDeviation="5" result="blur" />
+                <feComposite in="SourceGraphic" in2="blur" operator="over" />
+              </filter>
             </defs>
-            <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.03)" vertical={false} />
+            <CartesianGrid strokeDasharray="4 4" stroke="rgba(255,255,255,0.06)" vertical={false} />
             <XAxis 
               dataKey="name" 
               axisLine={false} 
@@ -39,20 +43,24 @@ const KingChart_Payback: React.FC<KingChartPaybackProps> = ({ data }) => {
             <YAxis hide domain={['auto', 'auto']} />
             <Tooltip 
               contentStyle={{ 
-                background: 'rgba(5, 5, 8, 0.9)', 
+                backgroundColor: 'rgba(13, 13, 18, 0.85)', 
                 border: '1px solid rgba(255, 255, 255, 0.1)',
                 borderRadius: '12px',
-                fontSize: '11px'
+                fontSize: '11px',
+                backdropFilter: 'blur(16px)',
+                boxShadow: '0 10px 15px -3px rgba(0, 0, 0, 0.5)'
               }}
+              labelStyle={{ color: 'var(--text-muted)', fontSize: '0.65rem', textTransform: 'uppercase', letterSpacing: '0.1em', fontWeight: 600, marginBottom: '6px' }}
+              itemStyle={{ color: '#fff', fontWeight: 700 }}
             />
             <Area 
               type="stepAfter" 
               dataKey="value" 
-              stroke="var(--color-warning)" 
+              stroke="#f59e0b" 
               strokeWidth={3}
               fillOpacity={1} 
               fill="url(#colorPayback)" 
-              style={{ filter: 'drop-shadow(0 0 10px rgba(245, 158, 11, 0.3))' }}
+              style={{ filter: 'url(#glowPayback)' }}
             />
           </AreaChart>
         </ResponsiveContainer>

@@ -12,6 +12,7 @@ interface KPICardProps {
   isGolden?: boolean;
   tooltipTitle?: string;
   tooltipContent?: string;
+  sparkline_data?: any[];
 }
 
 export const KPICard = ({ 
@@ -22,7 +23,8 @@ export const KPICard = ({
   suffix, 
   isGolden,
   tooltipTitle,
-  tooltipContent 
+  tooltipContent,
+  sparkline_data
 }: KPICardProps) => {
   const isPositive = change > 0;
   const isNegative = change < 0;
@@ -30,9 +32,11 @@ export const KPICard = ({
   const badgeBg = isPositive ? 'rgba(74, 222, 128, 0.1)' : isNegative ? 'rgba(248, 113, 113, 0.1)' : 'rgba(255, 255, 255, 0.05)';
   const gradientId = useId();
 
-  const sparklineData = Array.from({ length: 20 }, (_, i) => ({
-    val: 40 + Math.random() * 40 + (isPositive ? i * 2 : isNegative ? -i * 2 : 0)
-  }));
+  const sparklineData = sparkline_data && sparkline_data.length > 0 
+    ? sparkline_data 
+    : Array.from({ length: 20 }, (_, i) => ({
+        val: 40 + Math.random() * 40 + (isPositive ? i * 2 : isNegative ? -i * 2 : 0)
+      }));
 
   return (
     <div className={`liquid-glass ${isGolden ? 'status-alert' : ''}`} style={{ 
